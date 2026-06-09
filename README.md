@@ -1,4 +1,4 @@
-# capstone-kiezkeeper
+# Capstone - kiezkeeper
 
 ## Requirements:
 
