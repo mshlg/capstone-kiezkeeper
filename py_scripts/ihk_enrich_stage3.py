@@ -135,6 +135,45 @@ def run() -> pd.DataFrame:
     return meta
 
 
+# %% Sample check (optional) — eyeball that the mapping landed sensibly
+def sample_check(seed: int | None = None) -> None:
+    """Draw one random enriched file per scheme period and print, for every
+    classified code, its ihk_branch_id, ihk_branch_desc and resulting mapping
+    (gastro_class / is_tourism) with counts.
+
+    Within a scheme the mapping is identical across months, so one file per period
+    is enough to verify correctness; the two periods use different schemes, so we
+    always show one from each. Pass a seed to make the draw reproducible.
+    """
+    import random
+
+    if seed is not None:
+        random.seed(seed)
+
+    months = sorted(f.name[:7] for f in ENRICHED_DIR.glob(FILE_PATTERN))
+    pool_2008 = [m for m in months if m.replace("_", "-") < SCHEME_SWITCH]
+    pool_2025 = [m for m in months if m.replace("_", "-") >= SCHEME_SWITCH]
+    picks = [(random.choice(pool_2008), "WZ2008 scheme"),
+             (random.choice(pool_2025), "WZ2025 scheme")]
+    print(f"Sample check — picked: {picks[0][0]} (WZ2008), {picks[1][0]} (WZ2025)\n")
+
+    for tag, label in picks:
+        df = pd.read_csv(ENRICHED_DIR / f"{tag}_IHK_Berlin_Gewerbedaten.csv",
+                         dtype={"ihk_branch_id": str},
+                         usecols=["ihk_branch_id", "ihk_branch_desc", "gastro_class", "is_tourism"])
+        tab = (df.groupby(["ihk_branch_id", "ihk_branch_desc", "gastro_class", "is_tourism"],
+                          dropna=False)
+                 .size().rename("n").reset_index())
+        classified = tab[(tab["gastro_class"].notna()) | (tab["is_tourism"] == True)].sort_values("ihk_branch_id")
+
+        print(f"{'='*95}\n{label}: {tag}  ({len(classified)} classified codes)\n{'='*95}")
+        with pd.option_context("display.max_rows", None, "display.width", 120,
+                               "display.max_colwidth", 50):
+            print(classified.to_string(index=False))
+        print()
+
+
 if __name__ == "__main__":
     meta = run()
+    sample_check()      # pass a seed (e.g. sample_check(42)) for a reproducible draw
 # %%
