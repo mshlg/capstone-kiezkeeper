@@ -32,6 +32,8 @@ XLSX_OUT = FINAL_DIR / "feature_dictionary_commercial.xlsx"
 MD_OUT = FINAL_DIR / "feature_dictionary_commercial.md"
 
 LEVEL_YEAR = "2026"
+PREFIX = "com_"          # feature columns in the matrix carry this prefix
+KEY_OUT = "plr_id"       # key column name in the matrix
 
 # --- the 19 modelling variables: (name, dimension, description) ---
 # dimension is used for grouping + colour coding
@@ -115,10 +117,10 @@ def build_rows(matrix: pd.DataFrame) -> list[dict]:
         pct = f"{n_missing / n_plr * 100:.1f}%"
         return (n_missing, pct)
 
-    # 19 variables × 3 derived columns
+    # 19 variables × 3 derived columns (columns in the matrix carry the com_ prefix)
     for name, dim, desc in VARS:
         for suffix in ("level_2026", "slope", "r2"):
-            col = f"{name}_{suffix}"
+            col = f"{PREFIX}{name}_{suffix}"
             type_label, comp = TYPE_INFO[suffix]
             n_missing, pct = na_stats(col)
             rows.append({
@@ -132,11 +134,12 @@ def build_rows(matrix: pd.DataFrame) -> list[dict]:
                 "% fehlend": pct,
             })
 
-    # 3 size/structure columns
+    # 3 size/structure columns (also prefixed in the matrix)
     for name, dim, type_label, desc, comp in SIZE_COLS:
-        n_missing, pct = na_stats(name)
+        col = f"{PREFIX}{name}"
+        n_missing, pct = na_stats(col)
         rows.append({
-            "Spalte": name,
+            "Spalte": col,
             "Basis-Variable": name,
             "Dimension": dim,
             "Typ": type_label,
