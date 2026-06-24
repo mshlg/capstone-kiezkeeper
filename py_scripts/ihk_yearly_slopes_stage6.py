@@ -30,7 +30,7 @@ try:
 except NameError:
     REPO_ROOT = Path.cwd()
 
-BASE_DIR = REPO_ROOT / "data/IHK_Berlin_Gewerbedaten"
+BASE_DIR = REPO_ROOT / "data/commercial/IHK_Berlin_Gewerbedaten"
 ANALYSIS_DIR = BASE_DIR / "analysis_ready_data"
 
 MIN_VALID_MONTHS = 12          # minimum valid monthly points required to fit a slope
