@@ -23,7 +23,7 @@ try:
 except NameError:
     REPO_ROOT = Path.cwd()
 
-BASE_DIR = REPO_ROOT / "data/IHK_Berlin_Gewerbedaten"
+BASE_DIR = REPO_ROOT / "data/commercial/IHK_Berlin_Gewerbedaten"
 ENRICHED_DIR = BASE_DIR / "enriched_data"
 ANALYSIS_DIR = BASE_DIR / "analysis_ready_data"
 CHURN_PATH = ANALYSIS_DIR / "churn_panel.csv"

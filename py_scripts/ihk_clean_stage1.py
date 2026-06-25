@@ -9,7 +9,7 @@
 #     (the raw data mixes "s_lor_plr_2021.01100312", "01100312" and 1100312.0).
 #   * REBUILDS Bezirk deterministically from the planungsraum_id prefix (first 2 digits
 #     = official LOR district key). Bezirk is unreliable in the raw data: empty in three
-#     months (2024-08/09/10), abbreviated there, and sometimes wrong for the same PLR, resulting in duplicates.
+#     months (2024-08/09/10), abbreviated there, and sometimes wrong for the same PLR.
 #   * DEDUPLICATES to one row per business per month (drop_duplicates on opendata_id).
 #     After the Bezirk rebuild the duplicate rows are identical, so this is lossless.
 #   * DROP: a row is removed only if it is missing `opendata_id` OR
@@ -22,10 +22,10 @@
 # %% Imports & configuration
 from pathlib import Path
 import pandas as pd
- 
- 
+
+
 # --- PATHS ------------------------------------------------------------------
-# The script lives in <repo>/py_scripts/ and the data lives in <repo>/data/.
+# The script lives in <repo>/python_scripts/ and the data lives in <repo>/data/.
 # Anchor to the repo root so paths work no matter where you launch from, and
 # stay portable (nothing hardcoded -> safe to commit).
 #
@@ -37,15 +37,15 @@ try:
     REPO_ROOT = Path(__file__).resolve().parent.parent
 except NameError:  # interactive cells: no __file__
     REPO_ROOT = Path.cwd()
- 
+
 # BASE_DIR is the folder that contains raw_data / intermediate_data / analysis_ready_data
-BASE_DIR = REPO_ROOT / "data/IHK_Berlin_Gewerbedaten"
+BASE_DIR = REPO_ROOT / "data/commercial/IHK_Berlin_Gewerbedaten"
 RAW_DIR = BASE_DIR / "raw_data"
 INTERMEDIATE_DIR = BASE_DIR / "intermediate_data"
 META_PATH = INTERMEDIATE_DIR / "stage1_cleaning_meta.csv"
 # ---------------------------------------------------------------------------
 FILE_PATTERN = "*_IHK_Berlin_Gewerbedaten.csv"
- 
+
 # All identifier / code columns -> clean strings. IDs are labels, not quantities:
 # uniform string dtype keeps every join key the same type across stages, so
 # column-wise merges and churn-matching can't silently miss. The float-coded IDs
@@ -63,17 +63,17 @@ ID_COLS = [
     "nace_id",
     "branch_top_level_id",
 ]
- 
+
 # planungsraum_id is handled SEPARATELY (see normalize_planungsraum_id): across the
 # 36 files it appears in three forms — "s_lor_plr_2021.01100312" (prefixed string),
 # "01100312" (zero-padded string), and 1100312.0 (float that already dropped its
 # leading zero). It must NOT go through the Int64 path, which would null the string
 # forms and keep the leading zero stripped. The canonical key is the 8-digit code.
 PLANUNGSRAUM_CODE_WIDTH = 8
- 
+
 # A row is dropped ONLY if it is missing one of these (identity + neighbourhood).
 GLOBAL_REQUIRED = ["opendata_id", "planungsraum_id"]
- 
+
 # Fallback only: official LOR district key = first 2 digits of the 8-digit PLR code.
 # Used in fix_bezirk ONLY for a PLR whose Bezirk is ambiguous in EVERY row of a file
 # (no clean reference). Verify against your data before trusting it (see note below).
@@ -91,20 +91,20 @@ BEZIRK_BY_PREFIX = {
     "11": "Lichtenberg",
     "12": "Reinickendorf",
 }
- 
+
 # If False, cleaned files that already exist are NOT rewritten.
 # (The meta file is regenerated for every file regardless, so it stays complete.)
 OVERWRITE = True
- 
- 
+
+
 # %% Helpers
 def normalize_planungsraum_id(s: pd.Series) -> tuple[pd.Series, dict]:
     """Collapse the three raw forms of planungsraum_id to one canonical 8-digit string.
- 
+
         s_lor_plr_2021.01100312  -> "01100312"   (strip prefix, keep code)
         01100312                 -> "01100312"   (already canonical)
         1100312.0                -> "01100312"   (strip .0, left-pad lost leading zero)
- 
+
     Returns (normalized_series, diagnostics). A `planungsraum_id_bad_width` count
     flags any code that isn't 7 or 8 digits after extraction — i.e. not a valid LOR
     key — so a surprise shows up in the meta instead of silently becoming a bad key.
@@ -118,19 +118,23 @@ def normalize_planungsraum_id(s: pd.Series) -> tuple[pd.Series, dict]:
         else:
             code = text.split(".")[0]    # numeric form: drop the ".0"
         return code
- 
+
     codes = s.map(extract)
     present = codes.dropna()
-    # flag anything that won't pad cleanly to an 8-digit code (expected widths: 7 or 8)
-    bad_width = int((~present.str.len().isin([PLANUNGSRAUM_CODE_WIDTH - 1, PLANUNGSRAUM_CODE_WIDTH])).sum())
+    # flag anything that won't pad cleanly to an 8-digit code (expected widths: 7 or 8).
+    # Compute length via len(str(c)) -> plain python int, so the isin([7,8]) check is
+    # immune to dtype quirks (pandas 3.0 can return a nullable Int64 from .str.len()
+    # on the new string dtype, which made this count unreliable).
+    lengths = present.map(lambda c: len(str(c)))
+    bad_width = int((~lengths.isin([PLANUNGSRAUM_CODE_WIDTH - 1, PLANUNGSRAUM_CODE_WIDTH])).sum())
     # left-pad to fixed width, restoring the leading zero the float form dropped
     normalized = codes.where(codes.isna(), codes.str.zfill(PLANUNGSRAUM_CODE_WIDTH)).astype("string")
     return normalized, {"planungsraum_id_bad_width": bad_width}
- 
- 
+
+
 def fix_bezirk(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     """Rebuild Bezirk deterministically from the planungsraum_id prefix.
- 
+
     Bezirk is unreliable in the raw data: in three months (2024-08/09/10) the column is
     almost entirely empty, in those months the few present values use short names
     ("Friedrichshain" instead of "Friedrichshain-Kreuzberg"), and in other months the
@@ -138,22 +142,22 @@ def fix_bezirk(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     contrast, is complete and clean, and its first two digits ARE the official LOR
     district key (verified against all well-populated months). So we set Bezirk for
     EVERY row from BEZIRK_BY_PREFIX — one rule, always correct, no guessing.
- 
+
     This also fixes the duplicate-id rows (same PLR, mismatched Bezirk) so they become
     identical and the later dedup is lossless. Returns (df, diagnostics).
     """
     before = df["Bezirk"]
     prefix = df["planungsraum_id"].str[:2]
     rebuilt = prefix.map(BEZIRK_BY_PREFIX)
- 
+
     # diagnostics: how many Bezirk values changed, and any prefix with no mapping
     n_changed = int((before.fillna("") != rebuilt.fillna("")).sum())
     n_unmapped = int(rebuilt.isna().sum())  # rows whose PLR prefix is not in BEZIRK_BY_PREFIX
- 
+
     df["Bezirk"] = rebuilt
     return df, {"bezirk_changed": n_changed, "bezirk_unmapped": n_unmapped}
- 
- 
+
+
 def standardize_ids(df: pd.DataFrame, id_cols: list[str]) -> tuple[pd.DataFrame, dict]:
     """Coerce float- or int-coded IDs to clean nullable-integer-backed strings.
     4501044.0 -> "4501044"; missing values stay <NA>. Returns (df, diagnostics).
@@ -175,50 +179,54 @@ def standardize_ids(df: pd.DataFrame, id_cols: list[str]) -> tuple[pd.DataFrame,
         except (TypeError, ValueError): # conversion failed (e.g. genuine fractional values)
             diags[f"{col}_standardize_failed"] = 1 # flag it, leave column as-is, keep the run alive
     return df, diags # hand back the modified frame + the diagnostics
- 
- 
+
+
 def month_from_filename(name: str) -> str:
     """'2023_07_IHK_Berlin_Gewerbedaten.csv' -> '2023-07' (consistent join key)."""
     return pd.to_datetime(name[:7], format="%Y_%m").strftime("%Y-%m")
- 
- 
+
+
 def clean_file(path: Path) -> tuple[pd.DataFrame, dict]:
     """Clean a single monthly file and return (cleaned_df, meta_record)."""
- 
-    df = pd.read_csv(path)
+
+    # Read planungsraum_id explicitly as string so its textual form is deterministic
+    # and independent of pandas' type inference (which under pandas 3.0 can read it as
+    # float64 and feed an inconsistent str() form into normalization). The other ID
+    # columns are still standardized later by standardize_ids().
+    df = pd.read_csv(path, dtype={"planungsraum_id": str})
     n_before = len(df)
- 
+
     # Record missing values for ALL columns BEFORE any deletion.
     missing_per_col = df.isna().sum()
- 
+
     # Normalize planungsraum_id to the canonical 8-digit string FIRST, so the
     # drop reason and core drop below see the cleaned key (raw forms aren't NaN,
     # just inconsistently formatted, so counting before this would mislead).
     df["planungsraum_id"], plr_diags = normalize_planungsraum_id(df["planungsraum_id"])
- 
+
     # Why rows will be dropped, broken out per core field.
     drop_reason = {
         f"dropped_missing_{col}": int(df[col].isna().sum()) for col in GLOBAL_REQUIRED
     }
- 
+
     # Standardize float and int-coded IDs -> clean strings.
     df, id_diags = standardize_ids(df, ID_COLS)
- 
+
     # Apply the narrow core drop.
     keep_mask = df[GLOBAL_REQUIRED].notna().all(axis=1)
     df_clean = df[keep_mask].copy()
- 
+
     # Repair Bezirk from planungsraum_id (only Bezirk is corrupted; other geo cols are fine).
     df_clean, bezirk_diags = fix_bezirk(df_clean)
- 
+
     # One row per business per month: after the Bezirk repair the duplicate-id rows are
     # identical, so dropping them is lossless. This is a frozen property of Tier 1.
     n_before_dedup = len(df_clean)
     df_clean = df_clean.drop_duplicates("opendata_id", keep="first")
     n_duplicate_id = n_before_dedup - len(df_clean)
- 
+
     n_after = len(df_clean)
- 
+
     meta = {
         "source_file": path.name,
         "month": month_from_filename(path.name),
@@ -233,51 +241,50 @@ def clean_file(path: Path) -> tuple[pd.DataFrame, dict]:
     meta.update(plr_diags) # planungsraum_id_bad_width diagnostic
     meta.update(bezirk_diags) # bezirk_changed, bezirk_ambiguous_plr
     return df_clean, meta
- 
- 
+
+
 # %% Run
 def run() -> pd.DataFrame:
     INTERMEDIATE_DIR.mkdir(parents=True, exist_ok=True) #Creates intermediate_data if not there. also creates any missing parent folders
- 
+
     files = sorted(RAW_DIR.glob(FILE_PATTERN)) #finds everything matching the pattern and sorts according to date
     if not files: #raise error if no files are found
         raise FileNotFoundError(f"No files matching {FILE_PATTERN!r} in {RAW_DIR}")
- 
+
     meta_records = [] #collects meta dict per file as loop runs
- 
+
     for path in files:
         out_path = INTERMEDIATE_DIR / path.name #sets output path
         df_clean, meta = clean_file(path)  # meta is always computed
- 
+
         if out_path.exists() and not OVERWRITE: #If the output already exists and OVERWRITE is False, skip writing
             meta["written"] = False
         else:
             df_clean.to_csv(out_path, index=False)
             meta["written"] = True
- 
+
         meta_records.append(meta) #add meta to list
         print(
             f"{path.name}: {meta['rows_before']:>7} -> {meta['rows_after']:>7} " #progress print
             f"({meta['rows_dropped']} dropped)"
         )
- 
+
     meta_df = pd.DataFrame(meta_records)
- 
+
     # Tidy column order: summary first, then per-column missingness / diagnostics.
     front = (
         ["source_file", "month", "rows_before", "rows_after", "rows_dropped", "written"]
         + [f"dropped_missing_{c}" for c in GLOBAL_REQUIRED]
     )
- 
+
     cols = front + [c for c in meta_df.columns if c not in front]
     meta_df = meta_df[cols]
- 
+
     meta_df.to_csv(META_PATH, index=False)
     print(f"\nMeta written: {META_PATH}  ({len(meta_df)} rows)")
     return meta_df
- 
- 
+
+
 if __name__ == "__main__":
     meta_df = run()
-
 # %%
