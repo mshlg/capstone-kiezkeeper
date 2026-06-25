@@ -24,7 +24,7 @@ try:
 except NameError:  # interactive cells: no __file__
     REPO_ROOT = Path.cwd()
 
-BASE_DIR = REPO_ROOT / "data/IHK_Berlin_Gewerbedaten"
+BASE_DIR = REPO_ROOT / "data/commercial/IHK_Berlin_Gewerbedaten"
 INTERMEDIATE_DIR = BASE_DIR / "intermediate_data"
 ANALYSIS_DIR = BASE_DIR / "analysis_ready_data"
 PANEL_PATH = ANALYSIS_DIR / "churn_panel.csv"
