@@ -7,7 +7,7 @@
 #   * SLOPE  — the annualised monthly trend, from slopes_panel.csv (Stage 6)
 #   * R2     — the linear-trend quality of that slope (Stage 6)
 #
-# 19 variables x (level + slope + r2) = 57 feature columns.
+# 22 variables x (level + slope + r2) = 66 feature columns.
 # PLUS gastronomy size context (kept raw, NOT transformed here):
 #   * n_gastro, n_upscale          — average-stock denominators (2026 level, raw)
 #   * has_gastro_structure         — binary, 1 if n_gastro (2026) >= 5 (a PLR with at
@@ -55,7 +55,7 @@ GASTRO_STRUCTURE_MIN = 5      # n_gastro >= 5 -> has_gastro_structure = 1
 KEY_OUT = "plr_id"
 PREFIX = "com_"
 
-# The 19 variables that have both a 2026 level and a slope (must match Stage 6).
+# The variables that have both a 2026 level and a slope (must match Stage 6).
 # The share_upscale_max_* group was dropped (denominator n_upscale too small in ~36%
 # of PLRs to make the young-share meaningful).
 VARS = [
@@ -70,6 +70,8 @@ VARS = [
     "upscale_quotient_bezirk", "upscale_quotient_berlin",
     # tourism
     "tourism_share", "tourism_quotient_bezirk", "tourism_quotient_berlin",
+    # churn rates (incl. moves between PLRs — relevant for displacement/influx)
+    "entry_rate", "exit_rate", "churn_rate",
 ]
 
 # raw gastronomy size denominators to carry over as features (2026 level, kept raw)
@@ -89,7 +91,7 @@ def build_feature_matrix() -> pd.DataFrame:
     miss_size = [v for v in SIZE_VARS if v not in level.columns]
     if miss_size:
         raise KeyError(f"size variables missing in yearly panel: {miss_size}")
-    # keep the 19 modelling vars (renamed to _level_2026) plus the raw size denominators
+    # keep the modelling vars (renamed to _level_2026) plus the raw size denominators
     keep = level[["planungsraum_id"] + VARS + SIZE_VARS].copy()
     keep = keep.rename(columns={v: f"{v}_level_2026" for v in VARS})
 
@@ -137,9 +139,9 @@ def run() -> pd.DataFrame:
 # %% Validation
 def validate(feat: pd.DataFrame) -> None:
     n_feat_cols = feat.shape[1] - 1
-    expected = 3 * len(VARS) + len(SIZE_VARS) + 1   # 57 + 2 + 1 = 60
+    expected = 3 * len(VARS) + len(SIZE_VARS) + 1   # 3 per var + 2 counts + 1 flag
     print("PLRs:", len(feat), "| feature columns:", n_feat_cols,
-          f"(= 19x3 + n_gastro + n_upscale + has_gastro_structure = {expected})")
+          f"(= {len(VARS)}x3 + n_gastro + n_upscale + has_gastro_structure = {expected})")
     print("unique PLRs:", feat[KEY_OUT].nunique())
     print("no duplicate columns:", feat.columns.is_unique)
     print(f"key column '{KEY_OUT}' present:", KEY_OUT in feat.columns)
