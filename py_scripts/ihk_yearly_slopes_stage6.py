@@ -13,7 +13,7 @@
 #   * A slope is only computed when a PLR has at least MIN_VALID_MONTHS (=12) valid
 #     points; otherwise the slope is NaN (too few points for a reliable trend).
 #
-# Output per PLR (one row): for each of the 19 variables
+# Output per PLR (one row): for each of the 22 variables
 #   * <var>_slope       — annualised trend (per year), float, NaN if < MIN_VALID_MONTHS
 #   * <var>_r2          — R^2 of the linear fit (trend quality): high = clean linear
 #                         trend, low = non-linear / noisy. NaN if < MIN_VALID_MONTHS.
@@ -37,7 +37,8 @@ MIN_VALID_MONTHS = 12          # minimum valid monthly points required to fit a 
 MONTHS_PER_YEAR = 12           # scale monthly slope -> per-year slope
 
 # The four monthly infrastructure panels and the share/quotient (+ median_age) variables
-# whose trend we want. Counts and raw flows are intentionally excluded.
+# whose trend we want. Counts and raw flows are intentionally excluded; churn RATES are
+# included (entry/exit/turnover) because their trend captures the pace of business renewal.
 PANEL_VARS = {
     "demographics.csv": [
         "median_age",
@@ -53,13 +54,16 @@ PANEL_VARS = {
     "tourism.csv": [
         "tourism_share", "tourism_quotient_bezirk", "tourism_quotient_berlin",
     ],
+    "churn_panel.csv": [
+        "entry_rate", "exit_rate", "churn_rate",
+    ],
 }
 
 
 # %% Helpers
 def load_long() -> pd.DataFrame:
     """Load the four monthly panels, keep only the wanted variables, return one
-    long table keyed on (planungsraum_id, month) with all 19 variables side by side."""
+    long table keyed on (planungsraum_id, month) with all 22 variables side by side."""
     merged = None
     key = ["planungsraum_id", "month"]
     for fname, variables in PANEL_VARS.items():
@@ -180,7 +184,9 @@ def run() -> tuple:
 def validate(feat: pd.DataFrame, meta: pd.DataFrame, all_vars: list, months: list) -> None:
     print("PLRs:", len(feat), "| months in series:", len(months),
           "| variables:", len(all_vars))
-    print("feature columns:", feat.shape[1], "(= 1 id + 19 slopes + 19 r2 + 19 n_months_in_slope =",
+    nv = len(all_vars)
+    print("feature columns:", feat.shape[1],
+          f"(= 1 id + {nv} slopes + {nv} r2 + {nv} n_months_in_slope =",
           1 + 3 * len(all_vars), ")")
 
     # n_months_in_slope never exceeds the number of months
