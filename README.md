@@ -32,6 +32,22 @@ All data used in this project is openly accessible (links provided below). The f
 ### Extraction
 #### Real-estate dimension
 #### Social dimension
+The social dimension is based on several datasets from the [Amt für Statistik Berlin-Brandenburg](https://www.statistik-berlin-brandenburg.de/) — including population data (*Einwohnerbestand*), median income data (*Medianeinkommen*), population fluctuation data (*Einwohnerbewegung*), and household data (*Privathaushalte*) — as well as data from the [Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen](https://www.berlin.de/sen/stadt/stadtdaten/stadtwissen/monitoring-soziale-stadtentwicklung/) (*Monitoring Soziale Stadtentwicklung*, MSS context and index files).
+
+All data was collected in June 2026. Some datasets for previous years were obtained by sending personal requests via email to the two agencies mentioned above.
+
+The unchanged raw datasets can be found in [`data/social/raw`](./data/social/raw), including a [file explaining the variables](./data/social/raw/explanation_variables_raw_datasets_socialD.md) contained in the raw datasets.
+
+##### Cleaning, merging, and final dataset pipeline
+
+1. All raw datasets were cleaned in the [`social_data_cleaning.ipynb` notebook](./notebooks/data_prep/social_data_cleaning.ipynb). PLR IDs were corrected, date columns were converted to pandas datetime format, numerical values were formatted consistently, and missing-value symbols were removed. Afterwards, all datasets were merged into one dataset, and duplicate and empty rows were dropped.
+   The resulting dataset was saved as [`social_panel_clean.csv`](./data/social/raw/social_panel_clean.csv) in the `data/social/raw` directory.
+
+2. In the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb), only the features relevant for modeling were extracted from the `social_panel_clean.csv` dataset. The resulting dataset was saved as [`final_social_features.csv`](./data/social/final_variables_for_EDA/final_social_features.csv).
+
+3. In the [`social_dimension_EDA.ipynb` notebook](./notebooks/EDA/social_dimension_EDA.ipynb), the final features of the social dimension were analyzed. Due to correlations above 0.8, two features were dropped from the final dataset: average household size and unemployment share. This feature removal was implemented as the final step in the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb).
+
+
 #### Commercial dimension
 The commercial dimension is built from 36 monthly IHK Berlin business-register (https://cloud.ihk.berlin/d/62fad06b540745098ab7/; accessed on June 15th, 2026)
 files through a seven-stage pipeline (`py_scripts/ihk_*`), producing one row per Planungsraum (PLR).
