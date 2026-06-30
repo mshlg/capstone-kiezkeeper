@@ -102,7 +102,13 @@ celerybeat.pid
 *.sage.py
 
 #data
-data/commercial/
+# ignore everything under commercial/ ...
+data/commercial/*
+# ... but re-include the path down to the classification docs
+!data/commercial/IHK_Berlin_Gewerbedaten/
+data/commercial/IHK_Berlin_Gewerbedaten/*
+!data/commercial/IHK_Berlin_Gewerbedaten/classification_docs/
+
 
 
 # Environments
