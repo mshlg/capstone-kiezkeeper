@@ -36,20 +36,21 @@ Commercial design note: each underlying business indicator contributes a **Level
 
 | Variable | Type | Definition | Derivation | Source | File format | Spatial level |
 |---|---|---|---|---|---|---|
-| soc_young_to_middle_adult_share_2025 |  |  |  |  |  |  |
-| soc_young_to_middle_adult_share_change_2021_2025 |  |  |  |  |  |  |
-| soc_single_person_hh_share_2024 |  |  |  |  |  |  |
-| soc_single_person_hh_share_change_2021_2024 |  |  |  |  |  |  |
-| soc_households_without_minor_children_share_2024 |  |  |  |  |  |  |
-| soc_households_without_minor_children_share_change_2021_2024 |  |  |  |  |  |  |
-| soc_internal_migration_volume_rate_2025 |  |  |  |  |  |  |
-| soc_internal_migration_volume_rate_change_2021_2025 |  |  |  |  |  |  |
-| soc_internal_net_migration_rate_2025 |  |  |  |  |  |  |
-| soc_internal_net_migration_rate_change_2021_2025 |  |  |  |  |  |  |
-| soc_transfer_benefit_share_2024 |  |  |  |  |  |  |
-| soc_transfer_benefit_share_change_2020_2024 |  |  |  |  |  |  |
-| soc_single_parent_household_share_2024 |  |  |  |  |  |  |
-| soc_single_parent_household_share_change_2021_2024 |  |  |  |  |  |  |
+| soc_young_to_middle_adult_share_2025 | Level (2025) | Share of residents aged 18 to under 45 among all residents. | Calculated from the raw variables as `(age_4 + age_5) / res_count`. | Amt für Statistik Berlin-Brandenburg, Einwohnerbestand | CSV | PLR |
+| soc_young_to_middle_adult_share_change_2021_2025 | Change (2021-2025) | Absolute change in the share of residents aged 18 to under 45 between 2021 and 2025. | Calculated as an absolute difference: `soc_young_to_middle_adult_share_2025 - soc_young_to_middle_adult_share_2021`. | Amt für Statistik Berlin-Brandenburg, Einwohnerbestand | CSV | PLR |
+| soc_single_person_hh_share_2024 | Level (2024) | Share of single-person households among all households. | Calculated from the raw variables as `single_pers_hh_count / households_total`. | Amt für Statistik Berlin-Brandenburg, Privathaushalte | CSV | PLR |
+| soc_single_person_hh_share_change_2021_2024 | Change (2021-2024) | Absolute change in the share of single-person households between 2021 and 2024. | Calculated as an absolute difference: `soc_single_person_hh_share_2024 - soc_single_person_hh_share_2021`. | Amt für Statistik Berlin-Brandenburg, Privathaushalte | CSV | PLR |
+| soc_households_without_minor_children_share_2024 | Level (2024) | Share of households without minor children among all households. | Calculated from the raw variables as `1 - (hh_with_child_total_count / households_total)`. | Amt für Statistik Berlin-Brandenburg, Privathaushalte | CSV | PLR |
+| soc_households_without_minor_children_share_change_2021_2024 | Change (2021-2024) | Absolute change in the share of households without minor children between 2021 and 2024. | Calculated as an absolute difference: `soc_households_without_minor_children_share_2024 - soc_households_without_minor_children_share_2021`. | Amt für Statistik Berlin-Brandenburg, Privathaushalte | CSV | PLR |
+| soc_internal_migration_volume_rate_2025 | Level (2025) | Internal migration volume rate within Berlin in one year. | Calculated as `(int_in_migr_count + int_out_migr_count) / population_exposure_t` for 2025. | Amt für Statistik Berlin-Brandenburg, Einwohnerbewegung and Einwohnerbestand | CSV | PLR |
+| soc_internal_migration_volume_rate_change_2021_2025 | Change (2021-2025) | Absolute change in the internal migration volume rate between 2021 and 2025. | Calculated as an absolute difference: `soc_internal_migration_volume_rate_2025 - soc_internal_migration_volume_rate_2021`. | Amt für Statistik Berlin-Brandenburg, Einwohnerbewegung and Einwohnerbestand | CSV | PLR |
+| soc_internal_net_migration_rate_2025 | Level (2025) | Internal net migration rate within Berlin in one year. | Calculated as `(int_in_migr_count - int_out_migr_count) / population_exposure_t` for 2025. | Amt für Statistik Berlin-Brandenburg, Einwohnerbewegung and Einwohnerbestand | CSV | PLR |
+| soc_internal_net_migration_rate_change_2021_2025 | Change (2021-2025) | Absolute change in the internal net migration rate between 2021 and 2025. | Calculated as an absolute difference: `soc_internal_net_migration_rate_2025 - soc_internal_net_migration_rate_2021`. | Amt für Statistik Berlin-Brandenburg, Einwohnerbewegung and Einwohnerbestand | CSV | PLR |
+| soc_transfer_benefit_share_2024 | Level (2024) | Share of non-unemployed transfer benefit recipients according to the MSS transfer benefit status indicator. | Calculated from the raw variables as `s3_transfer_benefit_status_indicator / 100`. | Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen, Monitoring Soziale Stadtentwicklung (MSS) | CSV | PLR |
+| soc_transfer_benefit_share_change_2020_2024 | Change (2020-2024) | Absolute change in the share of non-unemployed transfer benefit recipients between 2020 and 2024. | Calculated as an absolute difference: `soc_transfer_benefit_share_2024 - soc_transfer_benefit_share_2020`. | Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen, Monitoring Soziale Stadtentwicklung (MSS) | CSV | PLR |
+| soc_single_parent_household_share_2024 | Level (2024) | Share of single-parent households among all households. | Calculated from the raw variables as `single_parent_hh_count / households_total`. | Amt für Statistik Berlin-Brandenburg, Privathaushalte | CSV | PLR |
+| soc_single_parent_household_share_change_2021_2024 | Change (2021-2024) | Absolute change in the share of single-parent households between 2021 and 2024. | Calculated as an absolute difference: `soc_single_parent_household_share_2024 - soc_single_parent_household_share_2021`. | Amt für Statistik Berlin-Brandenburg, Privathaushalte | CSV | PLR |
+
 ## Commercial (N = 21)
 
 | Variable | Type | Definition | Derivation | Source | File format | Spatial level |
