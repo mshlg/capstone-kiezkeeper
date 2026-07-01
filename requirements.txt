@@ -15,5 +15,6 @@ seaborn==0.13.2
 # notebook runtime 
 ipykernel==7.3.0
 
-#Module2 xgboost
+#Module2 
 xgboost==3.2.0
+shap==0.51.0
