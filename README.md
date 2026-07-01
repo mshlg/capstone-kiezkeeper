@@ -36,16 +36,16 @@ The social dimension is based on several datasets from the [Amt für Statistik B
 
 All data was collected in June 2026. Some datasets for previous years were obtained by sending personal requests via email to the two agencies mentioned above.
 
-The unchanged raw datasets can be found in [`data/social/raw`](./data/social/raw), including a [file explaining the variables](./data/social/raw/explanation_variables_raw_datasets_socialD.md) contained in the raw datasets.
+The datasets can be found in [`data/social/raw`](./data/social/raw), including a [file explaining the variables](./data/social/raw/explanation_variables_raw_datasets_socialD.md) of the datasets.
 
 ##### Cleaning, merging, and final dataset pipeline
 
-1. All raw datasets were cleaned in the [`social_data_cleaning.ipynb` notebook](./notebooks/data_prep/social_data_cleaning.ipynb). PLR IDs were corrected, date columns were converted to pandas datetime format, numerical values were formatted consistently, and missing-value symbols were removed. Afterwards, all datasets were merged into one dataset, and duplicate and empty rows were dropped.
+1. All input datasets were cleaned in the [`social_data_cleaning.ipynb` notebook](./notebooks/data_prep/social_data_cleaning.ipynb). PLR IDs were corrected, date columns were converted to pandas datetime format, numerical values were formatted consistently, and missing-value symbols were removed. Afterwards, all datasets were merged into one dataset, and duplicate and empty rows were dropped.
    The resulting dataset was saved as [`social_panel_clean.csv`](./data/social/raw/social_panel_clean.csv) in the `data/social/raw` directory.
 
-2. In the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb), only the features relevant for modeling were extracted from the `social_panel_clean.csv` dataset. The resulting dataset was saved as [`final_social_features.csv`](./data/social/final_variables_for_EDA/final_social_features.csv).
+2. In the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb), only the features relevant for modeling were extracted and calculated from the `social_panel_clean.csv` dataset. The resulting dataset was saved as [`final_social_features.csv`](./data/social/final_variables_for_EDA/final_social_features.csv).
 
-3. In the [`social_dimension_EDA.ipynb` notebook](./notebooks/EDA/social_dimension_EDA.ipynb), the final features of the social dimension were analyzed. Due to correlations above 0.8, two features were dropped from the final dataset: average household size and unemployment share. This feature removal was implemented as the final step in the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb).
+3. In the [`social_dimension_EDA.ipynb` notebook](./notebooks/EDA/social_dimension_EDA.ipynb), the final features of the social dimension were analyzed. Due to correlations above 0.8, three features were dropped from the final dataset: unemployment_share_2024, single_person_hh_share_2024 and households_without_minor_children_share_2024. This feature removal was implemented as the final step in the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb).
 
 
 #### Commercial dimension
