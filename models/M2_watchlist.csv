@@ -1,0 +1,33 @@
+plr_id,plr_name,bez,oof_prob,urgency,milieu_anteil,status,rank_oof,rank_urgency,in_oof_top25,in_urgency_top25
+01100416,Arkonaplatz,01 - Mitte,0.9959756731987,0.9950201009310958,0.000959433340912,effectively unprotected,3.0,1.0,True,True
+04501147,Leon-Jessel-Platz,04 - Charlottenburg-Wilmersdorf,0.9846000075340272,0.9846000075340272,0.0,effectively unprotected,7.0,2.0,True,True
+01200522,Elberfelder Straße,01 - Mitte,0.9832627773284912,0.9832368662433234,2.6352146918709167e-05,effectively unprotected,9.0,3.0,True,True
+01200628,Lüneburger Straße,01 - Mitte,0.979387104511261,0.979387104511261,0.0,effectively unprotected,10.0,4.0,True,True
+01300834,Brunnenstraße,01 - Mitte,0.976186990737915,0.9760473916907622,0.0001430044125535,effectively unprotected,12.0,5.0,True,True
+01300836,Humboldthain Nordwest,01 - Mitte,0.9840062260627748,0.8564382759206819,0.1296414054741506,partially protected,8.0,6.0,True,True
+04300416,Amtsgerichtsplatz,04 - Charlottenburg-Wilmersdorf,0.8628243803977966,0.8468925068093991,0.0184647930104297,effectively unprotected,22.0,7.0,True,True
+09200511,Griechischer Park,09 - Treptow-Köpenick,0.9774777889251708,0.8397633957841113,0.1408874909500394,partially protected,11.0,8.0,True,True
+04300414,Schloßstraße,04 - Charlottenburg-Wilmersdorf,0.8710215091705322,0.836801276224204,0.0392874717627995,effectively unprotected,21.0,9.0,True,True
+12100102,Hausotterplatz,12 - Reinickendorf,0.8249589204788208,0.8249589204788208,0.0,effectively unprotected,24.0,10.0,True,True
+04501150,Wilhelmsaue,04 - Charlottenburg-Wilmersdorf,0.8236569762229919,0.8236569762229919,0.0,effectively unprotected,25.0,11.0,True,True
+01100309,Oranienburger Straße,01 - Mitte,0.9099525809288024,0.8205081410032765,0.0982957154033549,effectively unprotected,16.0,12.0,True,True
+01300731,Koloniestraße,01 - Mitte,0.9976006150245668,0.7770114326237908,0.2211197337677501,partially protected,2.0,13.0,True,True
+01400937,Afrikanische Straße,01 - Mitte,0.8917918801307678,0.76257473053353,0.1448960822319778,partially protected,19.0,14.0,True,True
+01100205,Wilhelmstraße,01 - Mitte,0.7566664814949036,0.7566664617992639,2.6029486109271992e-08,effectively unprotected,,15.0,False,True
+05100316,Carl-Schurz-Straße,05 - Spandau,0.7665170431137085,0.7527076756442066,0.018015734410035,effectively unprotected,,16.0,False,True
+01401049,Schulstraße,01 - Mitte,0.9859592318534852,0.751033251743115,0.2382714949265575,partially protected,6.0,17.0,True,True
+07300619,Grazer Platz,07 - Tempelhof-Schöneberg,0.9160007238388062,0.7446186780156849,0.1870981554522007,partially protected,15.0,18.0,True,True
+09100101,Alt-Treptow,09 - Treptow-Köpenick,0.8952305316925049,0.7302433428839785,0.1842957573135993,partially protected,17.0,19.0,True,True
+04501042,Breitscheidplatz,04 - Charlottenburg-Wilmersdorf,0.7129411101341248,0.7129411059869909,5.816937525906522e-09,effectively unprotected,,20.0,False,True
+12100103,Breitkopfbecken,12 - Reinickendorf,0.7127301096916199,0.7127301096916199,0.0,effectively unprotected,,21.0,False,True
+09200716,Dörpfeldstraße West,09 - Treptow-Köpenick,0.7041215896606445,0.7041215896606445,0.0,effectively unprotected,,22.0,False,True
+01100415,Invalidenstraße,01 - Mitte,0.6938844919204712,0.6938844919204712,0.0,effectively unprotected,,23.0,False,True
+09100304,Baumschulenweg West,09 - Treptow-Köpenick,0.689616322517395,0.689616322517395,0.0,effectively unprotected,,24.0,False,True
+01400938,Kameruner Straße,01 - Mitte,0.8389071226119995,0.6391452296459401,0.2381215841201657,partially protected,23.0,25.0,True,True
+01401044,Uferstraße,01 - Mitte,0.9991092085838318,0.5120199082731809,0.4875235821327944,near-designated,1.0,,True,False
+07100206,Großgörschenstraße,07 - Tempelhof-Schöneberg,0.9925047159194946,0.5005881814265053,0.4956314328816653,near-designated,4.0,,True,False
+01200623,Stephankiez,01 - Mitte,0.986148238182068,0.6082308520781754,0.3832257377456466,partially protected,5.0,,True,False
+02200211,Chamissokiez,02 - Friedrichshain-Kreuzberg,0.975650429725647,0.5336406078451602,0.4530411799283274,near-designated,13.0,,True,False
+03601142,Falkplatz,03 - Pankow,0.963522732257843,0.6273716565656792,0.3488771613145587,partially protected,14.0,,True,False
+08100102,Schillerpromenade Nord,08 - Neukölln,0.8939265012741089,0.5052742553947841,0.4347697996707568,near-designated,18.0,,True,False
+07200414,Hohenfriedbergstraße,07 - Tempelhof-Schöneberg,0.8714181184768677,0.449644373419224,0.4840084640365897,near-designated,20.0,,True,False
