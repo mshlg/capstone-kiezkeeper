@@ -1,6 +1,6 @@
 # Capstone - KiezKeeper
 
-KiezKeeper analyzes commercial gentrification across Berlin at the level of its
+KiezKeeper analyzes gentrification across Berlin at the level of its
 542 Planungsräume (PLR), the city's fine-grained neighborhood units. Rather than
 reducing gentrification to rising rents, the project approaches it through three
 complementary dimensions — real-estate, social, and commercial — each built from
@@ -31,6 +31,31 @@ All data used in this project is openly accessible (links provided below). The f
 
 ### Extraction
 #### Real-estate dimension
+## Data sources 
+The real-estate dimension of gentrification is based on several datasets depending on the variable. 
+
+Variable 1 and 2, the current rent level and the change 2021 was taken from the IBB - Berlin's Development Bank, the raw data set can be found here: https://www.ibb.de/media/dokumente/publikationen/berliner-wohnungsmarkt/wohnungsmarktbericht/2025/ibb-wohnungsmarktbericht-angebotsmieten_2012-2025.pdf
+
+Variable 3 and 7, the vacancy rate and buildings' age were taken from the census 2022 which was adapted on the local level by the Statistical Office Berlin-Brandenburg. The raw data can be found here: https://www.statistik-berlin-brandenburg.de/zensus22/lokale-daten-berlin
+
+Variable 5, the standard land value, was downloaded from the Geoportal Berlin and can be found here: https://daten.berlin.de/datensaetze/bodenrichtwerte-01-01-2025-wfs-7ca7f2c3
+
+Finally, variable 6, the density of AirBNBs in 2025, was taken from InsideAirBnb and can be found here: https://insideairbnb.com/get-the-data/
+
+## Data Preparation and Feature Engineering 
+Variable 1 and 2: Rent trend 2021 - 2025 and rent niveau 
+
+- trend: OLS slope of median rent across all available years (€/m² per year); requires ≥2 years, so undefined for 16 PLR
+- niveau: most recent available median rent per PLR; missing only for 11 chronically empty PLR
+- flag variable "miete_unsicher" below <21 housing adds per PLR. 
+
+Variable 3: the vacancy rate 
+vacant dwellings / total dwellings per PLR, from the Zensus dwelling-use table;
+
+
+
+All data was collected in June 2026. 
+The dataset including the raw data can be found in ./data/real-estate.
 #### Social dimension
 The social dimension is based on several datasets from the [Amt für Statistik Berlin-Brandenburg](https://www.statistik-berlin-brandenburg.de/) — including population data (*Einwohnerbestand*), median income data (*Medianeinkommen*), population fluctuation data (*Einwohnerbewegung*), and household data (*Privathaushalte*) — as well as data from the [Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen](https://www.berlin.de/sen/stadt/stadtdaten/stadtwissen/monitoring-soziale-stadtentwicklung/) (*Monitoring Soziale Stadtentwicklung*, MSS context and index files).
 
