@@ -17,7 +17,7 @@ st.set_page_config(layout="wide")
 
 # set title
 st.logo('kiezkeeper_vector_logo.svg', size="large")
-st.markdown("# KiezKeeper :small[Frühwarnung für Berliner Kieze]")
+st.markdown("# KiezKeeper :small[Data-Driven Detection of Gentrification in Berlin]")
 st.markdown("***")
 
 # set style for containers
@@ -86,10 +86,12 @@ def calculate_matching_height(min_lon, max_lon, min_lat, max_lat, width_px):
 
 
 # create Berlin map
-# import Milieuschutzareale
-df_milieu = pd.read_csv("target_milieuschutz.csv")
-df_milieu = df_milieu.drop(["plr_name", "bez", "milieu_anteil"], axis=1)
-df_milieu["plr_id"] = df_milieu["plr_id"].astype(str).str.zfill(8)
+# import final output dataset
+df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
+df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
+
+# slim copy with only the columns needed for THIS map
+df_map = df_final[["plr_id", "cluster_4k", "ms_binary", "ms_portion"]].copy()
 
 # Cache the function so the geodata is not loaded again on every rerun
 @st.cache_data
@@ -112,7 +114,7 @@ def load_plr_geometries():
 
     # Make the geometries simpler, so the map loads faster
     plr_geo["geometry"] = plr_geo["geometry"].simplify(
-        tolerance=20,
+        tolerance=3,
         preserve_topology=True
     )
 
@@ -126,25 +128,32 @@ def load_plr_geometries():
 # Load the prepared PLR geometries
 plr_geo = load_plr_geometries()
 
-# Make sure the PLR ID in the data table has the same format
-df_milieu["plr_id"] = df_milieu["plr_id"].astype(str).str.zfill(8)
 
-# Join the geodata with the Milieuschutz data
+# Join the geodata with the cluster / milieuschutz data
 gdf = plr_geo.merge(
-    df_milieu,
+    df_map,
     on="plr_id",
     how="left"
 )
 
-# Create a readable map categories
-gdf["milieu_status"] = "Kein Milieuschutz"
-gdf.loc[gdf["milieu_majoritaet"] == 1, "milieu_status"] = "Milieuschutz"
-gdf.loc[gdf["milieu_majoritaet"].isna(), "milieu_status"] = "Keine Daten"
+# Create readable cluster labels
+cluster_labels = {
+    1: "City core",
+    3: "City ring",
+    2: "Disadvantaged outskirts",
+    0: "Affluent outskirts",
+}
+gdf["cluster_status"] = gdf["cluster_4k"].map(cluster_labels)
+gdf.loc[gdf["cluster_4k"].isna(), "cluster_status"] = "No data available"
 
-# Numeric code per status, needed for the single shared trace
-# (this is what makes hover work the same for ALL areas, not just protected ones)
-status_to_code = {"Keine Daten": -1, "Kein Milieuschutz": 0, "Milieuschutz": 1}
-gdf["milieu_code"] = gdf["milieu_status"].map(status_to_code)
+# Readable milieuschutz label for the hover text
+gdf["ms_status"] = "No milieu protection"
+gdf.loc[gdf["ms_binary"] == 1, "ms_status"] = "Milieu protection area"
+
+# Numeric code per cluster, needed for the single shared trace
+# (this is what makes hover work the same for ALL areas, not just clustered ones)
+gdf["cluster_code"] = gdf["cluster_4k"]
+gdf.loc[gdf["cluster_4k"].isna(), "cluster_code"] = -1
 
 # Reset the index and create a unique ID for Plotly
 gdf = gdf.reset_index(drop=True)
@@ -158,7 +167,6 @@ min_lon, min_lat, max_lon, max_lat = gdf.total_bounds
 center_lon = (min_lon + max_lon) / 2
 center_lat = (min_lat + max_lat) / 2
 
-# --- HIER die alte Zeile ersetzen ---
 # Assumed total browser window width for a typical laptop/desktop screen
 ASSUMED_WINDOW_WIDTH_PX = 1400
 
@@ -181,15 +189,27 @@ zoom_level = calculate_zoom(
     padding_factor=0.97
 )
 
-# Discrete colorscale for the 3 status categories
+# Discrete colorscale for the 5 categories: no data + 4 clusters
+# (same stepped-colorscale technique as the milieuschutz map, generalized
+# to 5 evenly spaced bands instead of 3)
 colorscale = [
-    [0.00, "#4b5563"],  # Keine Daten
-    [0.33, "#4b5563"],
-    [0.34, "#fac4c4"],  # Kein Milieuschutz
-    [0.66, "#fac4c4"],
-    [0.67, "#d62828"],  # Milieuschutz
-    [1.00, "#d62828"],
+    [0.0, "#FFFFFF"], [0.2, "#FFFFFF"],   # No data available
+    [0.2, "#B8B8B8"], [0.4, "#B8B8B8"],   # Affluent outskirts (cluster 0)
+    [0.4, "#8B0000"], [0.6, "#8B0000"],   # City core (cluster 1)
+    [0.6, "#737373"], [0.8, "#737373"],   # Disadvantaged outskirts (cluster 2)
+    [0.8, "#EE4B2B"], [1.0, "#EE4B2B"],   # City ring (cluster 3)
 ]
+
+# initialize session state for map click with a default (here: first PLR in the data)
+if "selected_plr_id" not in st.session_state:
+    st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
+
+# Static per-row border styling for milieuschutz areas (thicker + black
+# border). This does NOT depend on the click/session state, so it stays
+# stable across reruns and doesn't interfere with the click handling
+# (unlike a selection-based border, which caused instability earlier).
+ms_line_widths = np.where(gdf["ms_binary"] == 1, 2.0, 0.4)
+ms_line_colors = np.where(gdf["ms_binary"] == 1, "#000000", "#ffffff")
 
 # Create map
 # Single Choroplethmapbox trace instead of one trace per category,
@@ -198,20 +218,21 @@ fig = go.Figure(
     go.Choroplethmapbox(
         geojson=geojson,
         locations=gdf["plr_id"],
-        z=gdf["milieu_code"],
+        z=gdf["cluster_code"],
         zmin=-1,
-        zmax=1,
+        zmax=3,
         featureidkey="properties.plr_id",
         colorscale=colorscale,
         showscale=False,
-        marker_opacity=0.75,
-        marker_line_width=0.4,
-        marker_line_color="grey",
-        customdata=gdf[["plr_name", "plr_id", "milieu_status"]],
+        marker_opacity=0.85,
+        marker_line_width=ms_line_widths,
+        marker_line_color=ms_line_colors,
+        customdata=gdf[["plr_name", "plr_id", "cluster_status", "ms_status"]],
         hovertemplate=(
             "<b>%{customdata[0]}</b><br>"
             "PLR-ID: %{customdata[1]}<br>"
-            "Status: %{customdata[2]}"
+            "Cluster: %{customdata[2]}<br>"
+            "Status: %{customdata[3]}"
             "<extra></extra>"
         ),
     )
@@ -229,7 +250,6 @@ fig.update_layout(
     margin={"r": 0, "t": 0, "l": 0, "b": 0},
     height=MAP_HEIGHT_PX,   # fixed height, matched to TARGET_WIDTH_PX
     autosize=True,
-    uirevision="constant",        # width stays responsive
 )
 
 # Show map on half the page
@@ -237,20 +257,38 @@ left_col, right_col = st.columns([2, 1], gap="large")
 
 with left_col:
     with st.container(key="white_container_left", border=True):
-        st.subheader("Karte von Berlin")
-        st.plotly_chart(fig, width="stretch", config={"responsive": True})
+        st.subheader("Map of Berlin")
+
+        map_event = st.plotly_chart(
+            fig,
+            width="stretch",
+            config={"responsive": True},
+            on_select="rerun",
+            selection_mode="points",
+            key="berlin_map"
+        )
 
         # legend
         st.markdown(
             """
-            <div style="display:flex; gap:16px; font-size:1rem; margin-top:8px;">
-              <span><span style="display:inline-block;width:15px;height:15px;background:#d62828;border-radius:2px;"></span> Milieuschutz</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#fac4c4;border-radius:2px;"></span> Kein Milieuschutz</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#4b5563;border-radius:2px;"></span> Keine Daten</span>
+            <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:1rem; margin-top:8px;">
+              <span><span style="display:inline-block;width:15px;height:15px;background:#8B0000;border-radius:2px;"></span> City core</span>
+              <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City belt</span>
+              <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadvantaged outskirts</span>
+              <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Affluent outskirts</span>
+              <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data available</span>
+              <span><span style="display:inline-block;width:15px;height:15px;background:none;border:2px solid black;border-radius:2px;"></span> Milieu protection area</span>
             </div>
             """,
             unsafe_allow_html=True,
         )
+
+
+# update selection if the user clicked on the map (NOT indented under left_col)
+if map_event and map_event["selection"]["points"]:
+    clicked_plr_id = map_event["selection"]["points"][0]["location"]
+    st.session_state.selected_plr_id = clicked_plr_id
+
 
 #############################################################
 ######### DOWNLOAD BUTTON ##################################
@@ -283,31 +321,41 @@ RIGHT_CONTAINER_HEIGHT_PX = MAP_HEIGHT_PX + HEADER_FOOTER_OVERHEAD_PX
 # toggle it on click
 with right_col:
     with st.container(key="white_container_right", border=True, height=RIGHT_CONTAINER_HEIGHT_PX):
-        PLR = "Koepenik"
-        plr_id = 12345678
-        st.subheader("Kurzprofil für Planungsraum")
+
+        # look up the row mathing the currently selected PLR
+        selected_row = gdf.loc[gdf["plr_id"] == st.session_state.selected_plr_id].iloc[0]
+        
+        PLR = selected_row["plr_name"]
+        plr_id = selected_row["plr_id"]
+        cluster_status = selected_row["cluster_status"]
+        ms_status = selected_row["ms_status"]
+        
+        st.markdown("### Short Profile")
 
         # gray boy for text
         with st.container(key="profile_textbox", border=False):
-            st.markdown(f"PLR Name: {PLR}")
-            st.markdown(f"PLR ID: {plr_id}")
+            st.markdown("*- Please click on a planning area in the map -*", text_alignment="center")
+            st.markdown("")
+            st.markdown(f"**Name of planning area**: {PLR}")
+            st.markdown(f"**Identification number of planning area**: {plr_id}")
+            st.markdown(f"**Gentrification cluster**: {cluster_status}")
+            st.markdown(f"**Milieu protection status**: {ms_status}")
         
-        if st.button(label="↓ Steckbrief öffnen", type="primary"):
+        if st.button(label="↓ Open profile", type="primary"):
             st.session_state.show_profile = not st.session_state.show_profile
 
 # render content based on state
 if st.session_state.show_profile:
     with st.container(key="white_container_profile", border=True):
-        st.subheader("Planungsraum-Steckbrief")
+        st.subheader("Profile of Planning Area")
+        
         # download button
-        plr = 'Koepenik'
-
-        csv = df_milieu.to_csv().encode("utf-8")
+        csv = df_final.to_csv().encode("utf-8")
 
         st.download_button(
-            label="Steckbrief Download",
+            label="Download profile",
             data=csv,
-            file_name=f"{plr}.csv",
+            file_name=f"{PLR}.csv",
             mime="text/csv",
             type="primary",
             icon=":material/download:"
