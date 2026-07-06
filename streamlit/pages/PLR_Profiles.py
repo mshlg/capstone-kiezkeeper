@@ -39,13 +39,23 @@ st.html(f"<style>{css}</style>")
 df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
 df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 
-plr_dict = dict(zip(df_final["plr_id"], df_final["plr_name"]))
-
-# sort plrs alphabetically
-sorted_plr_ids = sorted(plr_dict.keys(), key=lambda x: plr_dict[x])
+# group plrs by bez:
+grouped_by_bez = df_final.groupby("bez")
 
 with st.container(key="white_container_profile", border=True):
-        st.subheader("Profile of Planning Area")
+        st.subheader("Profile of Planning Area (PLR)")
+        selected_bez = st.selectbox(
+            label="Select a District",
+            options=sorted(df_final["bez"].unique())
+        )
+
+        # only the PLRs belonging to the selected district
+        plrs_of_bez = grouped_by_bez.get_group(selected_bez)
+
+        # id -> name mapping, but scoped to just this district
+        plr_dict = dict(zip(plrs_of_bez["plr_id"], plrs_of_bez["plr_name"]))
+        sorted_plr_ids = sorted(plr_dict.keys(), key=lambda x: plr_dict[x])
+
         selected_plr_id = st.selectbox(
             label="Select a Planning Area",
             options=sorted_plr_ids,

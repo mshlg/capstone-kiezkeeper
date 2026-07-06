@@ -273,7 +273,7 @@ with left_col:
             """
             <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:1rem; margin-top:8px;">
               <span><span style="display:inline-block;width:15px;height:15px;background:#8B0000;border-radius:2px;"></span> City core</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City ring</span>
+              <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City belt</span>
               <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadvantaged outskirts</span>
               <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Affluent outskirts</span>
               <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data available</span>
