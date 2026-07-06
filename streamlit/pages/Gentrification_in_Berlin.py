@@ -23,6 +23,7 @@ st.markdown("***")
 
 # set style for containers
 css = """
+.st-key-white_container_upper,
 .st-key-white_container_left,
 .st-key-white_container_right,
 .st-key-white_container_profile{
@@ -95,7 +96,7 @@ df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
 df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 
 # slim copy with only the columns needed for THIS map
-df_map = df_final[["plr_id", "cluster_4k", "ms_binary", "ms_portion"]].copy()
+df_map = df_final[["plr_id", "cluster_4k", "ms_binary", "ms_portion"]].copy() ###################################### TO BE CHANGED
 
 # Cache the function so the geodata is not loaded again on every rerun
 @st.cache_data
@@ -126,13 +127,15 @@ def load_plr_geometries():
 # Load the prepared PLR geometries
 plr_geo = load_plr_geometries()
 
-
 # Join the geodata with the cluster / milieuschutz data
 gdf = plr_geo.merge(
     df_map,
     on="plr_id",
     how="left"
 )
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++
+#++++++++ CLUSTER MAP ++++++++++++++++++++++++++++
 
 # Create readable cluster labels
 cluster_labels = {
@@ -250,41 +253,72 @@ fig.update_layout(
     autosize=True,
 )
 
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#+++++++++++ SIMILARITY MAP +++++++++++++++++++++++++++++++++++
+
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#++++++++++++ SHOW MAPS +++++++++++++++++++++++++++++++++++++++++
+with st.container(key="white_container_upper", border=True):
+    st.markdown("##### Welcome to KiezKeeper.")
+    st.markdown("KiezKeeper was developed to detect gentrificaiton in Berlin. On the sidebar, you have the option to choose between the cluster outcome and the similarity score. BLABLABLA")
+    map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Clusters", "Similarity Scores"], horizontal=True)
+
 # Show map on half the page
 left_col, right_col = st.columns([2, 1], gap="large")
 
 with left_col:
     with st.container(key="white_container_left", border=True):
-        st.subheader("Map of Berlin -- Planning areas (PLR)")
+        
+        # initialize both as None, so the click-handling code below
+        # can safely check "whichever one actually got clicked"
+        map_event = None
+        map_second_event = None
 
-        map_event = st.plotly_chart(
-            fig,
-            width="stretch",
-            config={"responsive": True},
-            on_select="rerun",
-            selection_mode="points",
-            key="berlin_map"
-        )
+        if map_status == "Gentrification Clusters":
+            st.subheader("Planning areas (PLR) of Berlin -- Gentrification Clusters :small[*- Please choose a map on the sidebar -*]")
 
-        # legend
-        st.markdown(
-            """
-            <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
-              <span><span style="display:inline-block;width:15px;height:15px;background:#8B0000;border-radius:2px;"></span> City core</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City belt</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadv. outskirts</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Affluent outskirts</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data</span>
-              <span><span style="display:inline-block;width:15px;height:15px;background:none;border:2px solid black;border-radius:2px;"></span> Milieu protection</span>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+            map_event = st.plotly_chart(
+                fig,
+                width="stretch",
+                config={"responsive": True},
+                on_select="rerun",
+                selection_mode="points",
+                key="cluster_map"
+            )
 
+            # legend (unchanged)
+            st.markdown(
+                """
+                <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
+                <span><span style="display:inline-block;width:15px;height:15px;background:#8B0000;border-radius:2px;"></span> City core</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City belt</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadv. outskirts</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Affluent outskirts</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:none;border:2px solid black;border-radius:2px;"></span> Milieu protection</span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        else:
+            st.subheader("Planning areas (PLR) of Berlin -- Similarity Scores :small[*- Please choose a map on the sidebar -*]")
 
-# update selection if the user clicked on the map (NOT indented under left_col)
-if map_event and map_event["selection"]["points"]:
-    clicked_plr_id = map_event["selection"]["points"][0]["location"]
+            # map_second_event = st.plotly_chart(
+            #     fig_similarity,   # deine zweite, noch zu bauende Figure
+            #     width="stretch",
+            #     config={"responsive": True},
+            #     on_select="rerun",
+            #     selection_mode="points",
+            #     key="similarity_map"
+            # )
+
+# update selection based on WHICHEVER map was actually clicked
+active_event = map_event if map_event is not None else map_second_event
+
+if active_event and active_event["selection"]["points"]:
+    clicked_plr_id = active_event["selection"]["points"][0]["location"]
     st.session_state.selected_plr_id = clicked_plr_id
 
 
@@ -335,11 +369,10 @@ with right_col:
             f'<div style="font-weight:600;">{label}</div><div>{value}</div>'
             for label, value in profile_rows.items()
         )
-        st.markdown("### Short Profile of PLR")
+        st.markdown("### Short Profile of PLR :small[*- Please click on a planning area in the map -*]")
         
         # gray box wih text
         with st.container(key="short_profile_textbox", border=False):
-            st.markdown("*- Please click on a planning area in the map -*", text_alignment="center")
             st.markdown("")
             st.markdown(
                 f"""
