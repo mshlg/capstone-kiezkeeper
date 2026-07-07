@@ -189,29 +189,6 @@ colorscale = [
 if "selected_plr_id" not in st.session_state:
     st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
 
-# flatten geometry to lon/lat lines (for boundary traces)
-def geometry_to_lonlat_lines(geoseries):
-    lons, lats = [], []
-    for geom in geoseries:
-        if geom is None or geom.is_empty:
-            continue
-        parts = geom.geoms if geom.geom_type.startswith("Multi") else [geom]
-        for part in parts:
-            xs, ys = part.xy
-            lons.extend(xs)
-            lats.extend(ys)
-            lons.append(None)
-            lats.append(None)
-    return lons, lats
-
-
-# berlin outline (cached, shared by both maps)
-@st.cache_data(show_spinner=False)
-def get_berlin_outline():
-    boundary = gdf.geometry.unary_union.boundary
-    return geometry_to_lonlat_lines([boundary])
-
-
 # ms status text (uncached, always current)
 def compute_ms_status(ms_column, threshold_pct):
     status = pd.Series(
@@ -257,19 +234,6 @@ def build_cluster_map(ms_column, threshold_pct):
                 "Status: %{customdata[3]}"
                 "<extra></extra>"
             ),
-        )
-    )
-
-    # berlin outline
-    outline_lons, outline_lats = get_berlin_outline()
-    fig_map.add_trace(
-        go.Scattermapbox(
-            lon=outline_lons,
-            lat=outline_lats,
-            mode="lines",
-            line=dict(width=1.2, color="#3a3a3a"),
-            hoverinfo="skip",
-            showlegend=False,
         )
     )
 
@@ -413,19 +377,6 @@ def build_similarity_map():
                 name="watchlist",
             )
         )
-
-    # berlin outline
-    outline_lons, outline_lats = get_berlin_outline()
-    fig_similarity.add_trace(
-        go.Scattermapbox(
-            lon=outline_lons,
-            lat=outline_lats,
-            mode="lines",
-            line=dict(width=1.2, color="#3a3a3a"),
-            hoverinfo="skip",
-            showlegend=False,
-        )
-    )
 
     # layout
     fig_similarity.update_layout(
