@@ -12,6 +12,7 @@ import geopandas as gpd
 import json
 import numpy as np
 import re
+import io
 
 # set page to wide format
 st.set_page_config(layout="wide")
@@ -150,6 +151,8 @@ gdf.loc[gdf["cluster_4k"].isna(), "cluster_status"] = "No data available"
 # Readable milieuschutz label for the hover text
 gdf["ms_status"] = "Proportion of milieu protected area less than 50% of PLR"
 gdf.loc[gdf["ms_binary"] == 1, "ms_status"] = "Proportion of milieu protected area more than 50% of PLR"
+# fix: PLRs with no ms_binary data were incorrectly shown as "less than 50%" -- now explicit
+gdf.loc[gdf["ms_binary"].isna(), "ms_status"] = "No data available"
 
 # Numeric code per cluster, needed for the single shared trace
 # (this is what makes hover work the same for ALL areas, not just clustered ones)
@@ -206,9 +209,7 @@ if "selected_plr_id" not in st.session_state:
     st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
 
 # Static per-row border styling for milieuschutz areas (thicker + black
-# border). This does NOT depend on the click/session state, so it stays
-# stable across reruns and doesn't interfere with the click handling
-# (unlike a selection-based border, which caused instability earlier).
+# border)
 ms_line_widths = np.where(gdf["ms_binary"] == 1, 2.0, 0.4)
 ms_line_colors = np.where(gdf["ms_binary"] == 1, "#000000", "#ffffff")
 
@@ -263,10 +264,10 @@ fig.update_layout(
 with st.container(key="white_container_upper", border=True):
     st.markdown("##### Welcome to KiezKeeper.")
     st.markdown("KiezKeeper was developed to detect gentrificaiton in Berlin. On the sidebar, you have the option to choose between the cluster outcome and the similarity score. BLABLABLA")
-    map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Clusters", "Similarity Scores"], horizontal=True)
+    map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Similarity Scores"], horizontal=True)
 
 # Show map on half the page
-left_col, right_col = st.columns([2, 1], gap="large")
+left_col, right_col = st.columns([2.7, 1.5], gap="small")
 
 with left_col:
     with st.container(key="white_container_left", border=True):
@@ -276,8 +277,9 @@ with left_col:
         map_event = None
         map_second_event = None
 
-        if map_status == "Gentrification Clusters":
-            st.subheader("Planning areas (PLR) of Berlin -- Gentrification Clusters :small[*- Please choose a map on the sidebar -*]")
+        if map_status == "Gentrification Profiles":
+            st.markdown("#### Planning areas (PLR) of Berlin -- Gentrification Profiles", text_alignment="center")
+            st.markdown(body="*- Please choose a map on the sidebar -*", text_alignment="center")
 
             map_event = st.plotly_chart(
                 fig,
@@ -330,7 +332,7 @@ if "show_profile" not in st.session_state:
     st.session_state.show_profile = False
 
 # container height for right container
-HEADER_FOOTER_OVERHEAD_PX = 126  # rough space for title, divider, legend etc.
+HEADER_FOOTER_OVERHEAD_PX = 157  # rough space for title, divider, legend etc.
 RIGHT_CONTAINER_HEIGHT_PX = MAP_HEIGHT_PX + HEADER_FOOTER_OVERHEAD_PX
 
 # toggle it on click
@@ -339,11 +341,20 @@ with right_col:
 
         # look up the row mathing the currently selected PLR
         selected_row = gdf.loc[gdf["plr_id"] == st.session_state.selected_plr_id].iloc[0]
-        selected_row_for_bez = df_final.loc[df_final["plr_id"] == st.session_state.selected_plr_id].iloc[0]
-        
+
+        # fix: some PLRs (no-data areas) don't exist in df_final at all --
+        # guard against the empty lookup instead of crashing on .iloc[0]
+        matching_final_rows = df_final.loc[df_final["plr_id"] == st.session_state.selected_plr_id]
+
         PLR = selected_row["plr_name"]
         plr_id = selected_row["plr_id"]
-        bez = selected_row_for_bez["bez"]
+
+        if not matching_final_rows.empty:
+            selected_row_for_bez = matching_final_rows.iloc[0]
+            bez = selected_row_for_bez["bez"]
+        else:
+            bez = "No data available"
+
         cluster_status = selected_row["cluster_status"]
         cluster_profile = "This is an explanation of a cluster profile"
         ms_status = selected_row["ms_status"]
@@ -357,10 +368,10 @@ with right_col:
             "Identification number": plr_id,
             "District": bez,
             "Milieu protection status": ms_status,
-            "Gentrification cluster": cluster_status,
-            "Cluster profile": cluster_profile,
+            "Gentrification profile": cluster_status,
+            "Profile details": cluster_profile,
             "Similarity score": similarity_score,
-            "Proportion of milieu protection": proportion_milieu,
+            "% of milieu protection": proportion_milieu,
             "Watchlist status": watchlist,
             "Watchlist rank": rank_of_watchlist
         }
@@ -369,14 +380,15 @@ with right_col:
             f'<div style="font-weight:600;">{label}</div><div>{value}</div>'
             for label, value in profile_rows.items()
         )
-        st.markdown("### Short Profile of PLR :small[*- Please click on a planning area in the map -*]")
+        st.markdown("#### Short Profile of PLR", text_alignment="center")
+        st.markdown(body="*- Please click on a planning area in the map -*", text_alignment="center")
         
         # gray box wih text
         with st.container(key="short_profile_textbox", border=False):
             st.markdown("")
             st.markdown(
                 f"""
-                <div style="display:grid; grid-template-columns:auto 1fr; column-gap:12px; row-gap:6px;">
+                <div style="display:grid; grid-template-columns:auto 1fr; column-gap:12px; row-gap:12px;">
                     {rows_html}
                 </div>
                 """,
@@ -388,7 +400,7 @@ with right_col:
             st.session_state.show_profile = not st.session_state.show_profile
 
 ###############################################################################
-#################### COMPLETE PROFILE PLR #####################################
+#################### PLOTS PLR ##############################################
 
 #create table with most important variables: 
 id_vars = ['plr_id', 'plr_name', 'bez']
@@ -522,7 +534,7 @@ plot_table = pd.concat([plot_table, berlin_df], axis=1).copy()
 
 
 # -----------------------------------------------------------
-# Dimension colors / labels (unchanged from your code)
+# Dimension colors / labels
 # -----------------------------------------------------------
 dimension_colors = {
     "re": "#C9A227",
@@ -565,60 +577,77 @@ def make_dimension_figure(dim, row, bez_name, plr_name):
         ax.set_xticks([0])
         ax.set_xticklabels([""])
         ax.set_xlim(-0.5, 0.5)
-        ax.set_ylabel(var_raw, fontsize=10)
+        ax.set_ylabel(var_raw, fontsize=14)
 
         if i == 0:
             ax.set_title(f"{var_raw} ({years_by_label[var_raw]})",
-                         color=dimension_colors[dim], fontsize=11)
+                         color=dimension_colors[dim], fontsize=14)
         else:
-            ax.set_title(f"{var_raw} ({years_by_label[var_raw]})", color=dimension_colors[dim], fontsize=11)
+            ax.set_title(f"{var_raw} ({years_by_label[var_raw]})", color=dimension_colors[dim], fontsize=14)
 
     fig.legend(
         handles=[bez_line, berlin_line],
         labels=[f"Bezirk: {bez_name}", "Berlin"],
-        title="Comparison:",
+        #title="Comparison:",
         loc="upper center", bbox_to_anchor=(0.5, 0.0),
         ncol=2, frameon=False,
-        fontsize=10,
+        fontsize=14,
     )
 
     fig.tight_layout(rect=[0, 0.04, 1, 1])
     return fig
 
 
+# fix: st.pyplot() auto-crops figures to their rendered content, which made
+# the three dimension plots come out at slightly different sizes even
+# though figsize/width were identical. Rendering to a fixed-size PNG
+# ourselves (no bbox_inches="tight") guarantees all three are the same size.
+def fig_to_fixed_image(fig, dpi=150):
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi=dpi)
+    plt.close(fig)
+    buf.seek(0)
+    return buf
+
+
 #### PROFILE CONTAINER
 # render content based on state
 if st.session_state.show_profile:
     with st.container(key="white_container_profile", border=True):
-        st.subheader(f"Profile of Planning Area: {PLR}")
+        st.markdown(f"#### Profile of Planning Area: {PLR}")
         st.markdown(f"**PLR ID**: {plr_id}")
 
         # get the row for the currently selected PLR (uses id_vars/vars_keep
         # table you already built above: plot_table)
-        row = plot_table.loc[plot_table["plr_id"] == st.session_state.selected_plr_id].iloc[0]
-        bez_name = row["bez"]
-        plr_name_for_plot = row.get("plr_name", st.session_state.selected_plr_id)
+        # fix: guard against PLRs with no entry in plot_table (no-data areas)
+        matching_plot_rows = plot_table.loc[plot_table["plr_id"] == st.session_state.selected_plr_id]
 
-        bottom_left_col, bottom_middle_col, bottom_right_col = st.columns([1, 1, 1], gap="large")
+        if matching_plot_rows.empty:
+            st.info("No detailed data available for this planning area.")
+        else:
+            row = matching_plot_rows.iloc[0]
+            bez_name = row["bez"]
+            plr_name_for_plot = row.get("plr_name", st.session_state.selected_plr_id)
 
-        with bottom_left_col:
-            with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
-                st.markdown("##### Real Estate Dimension", text_alignment="center")
-                fig_re = make_dimension_figure("re", row, bez_name, plr_name_for_plot)
-                st.pyplot(fig_re, width=380)
-        
-        with bottom_middle_col:
-            with st.container(key="middle_profile_textbox", border=False, horizontal_alignment="center"):
-                st.markdown("##### Social Dimension", text_alignment="center")
-                fig_soc = make_dimension_figure("soc", row, bez_name, plr_name_for_plot)
-                st.pyplot(fig_soc, width=380)
+            bottom_left_col, bottom_middle_col, bottom_right_col = st.columns([1, 1, 1], gap="large")
 
-        with bottom_right_col:
-            with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
-                st.markdown("##### Commercial Dimension", text_alignment="center")
-                fig_com = make_dimension_figure("com", row, bez_name, plr_name_for_plot)
-                st.pyplot(fig_com, width=380)
+            with bottom_left_col:
+                with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
+                    st.markdown("##### Real Estate Dimension", text_alignment="center")
+                    fig_re = make_dimension_figure("re", row, bez_name, plr_name_for_plot)
+                    st.image(fig_to_fixed_image(fig_re), width=400)
 
+            with bottom_middle_col:
+                with st.container(key="middle_profile_textbox", border=False, horizontal_alignment="center"):
+                    st.markdown("##### Social Dimension", text_alignment="center")
+                    fig_soc = make_dimension_figure("soc", row, bez_name, plr_name_for_plot)
+                    st.image(fig_to_fixed_image(fig_soc), width=400)
+
+            with bottom_right_col:
+                with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
+                    st.markdown("##### Commercial Dimension", text_alignment="center")
+                    fig_com = make_dimension_figure("com", row, bez_name, plr_name_for_plot)
+                    st.image(fig_to_fixed_image(fig_com), width=400)
 
         # download button
         csv = df_final.to_csv().encode("utf-8")
