@@ -97,7 +97,12 @@ df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
 df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 
 # slim copy with only the columns needed for THIS map
-df_map = df_final[["plr_id", "cluster_4k", "ms_binary", "ms_portion"]].copy() ###################################### TO BE CHANGED
+# FIX: "ms_binary" no longer exists in the current CSV -- the binary
+# milieu-protection flag is now split into 5 threshold columns
+# (ms_over50/60/70/80/90). We keep all of them here because the
+# sidebar control lets the user switch between thresholds.
+MS_THRESHOLD_COLUMNS = ["ms_over50", "ms_over60", "ms_over70", "ms_over80", "ms_over90"]
+df_map = df_final[["plr_id", "cluster_4k", "ms_portion"] + MS_THRESHOLD_COLUMNS].copy()
 
 # Cache the function so the geodata is not loaded again on every rerun
 @st.cache_data
@@ -147,12 +152,6 @@ cluster_labels = {
 }
 gdf["cluster_status"] = gdf["cluster_4k"].map(cluster_labels)
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_status"] = "No data available"
-
-# Readable milieuschutz label for the hover text
-gdf["ms_status"] = "Proportion of milieu protected area less than 50% of PLR"
-gdf.loc[gdf["ms_binary"] == 1, "ms_status"] = "Proportion of milieu protected area more than 50% of PLR"
-# fix: PLRs with no ms_binary data were incorrectly shown as "less than 50%" -- now explicit
-gdf.loc[gdf["ms_binary"].isna(), "ms_status"] = "No data available"
 
 # Numeric code per cluster, needed for the single shared trace
 # (this is what makes hover work the same for ALL areas, not just clustered ones)
@@ -208,51 +207,81 @@ colorscale = [
 if "selected_plr_id" not in st.session_state:
     st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
 
-# Static per-row border styling for milieuschutz areas (thicker + black
-# border)
-ms_line_widths = np.where(gdf["ms_binary"] == 1, 2.0, 0.4)
-ms_line_colors = np.where(gdf["ms_binary"] == 1, "#000000", "#ffffff")
-
-# Create map
-# Single Choroplethmapbox trace instead of one trace per category,
-# so hover works consistently for every area
-fig = go.Figure(
-    go.Choroplethmapbox(
-        geojson=geojson,
-        locations=gdf["plr_id"],
-        z=gdf["cluster_code"],
-        zmin=-1,
-        zmax=3,
-        featureidkey="properties.plr_id",
-        colorscale=colorscale,
-        showscale=False,
-        marker_opacity=0.85,
-        marker_line_width=ms_line_widths,
-        marker_line_color=ms_line_colors,
-        customdata=gdf[["plr_name", "plr_id", "cluster_status", "ms_status"]],
-        hovertemplate=(
-            "<b>%{customdata[0]}</b><br>"
-            "PLR-ID: %{customdata[1]}<br>"
-            "Cluster: %{customdata[2]}<br>"
-            "Status: %{customdata[3]}"
-            "<extra></extra>"
-        ),
+# called every rerun so that gdf["ms_status"] (used later in the Short Profile section) is
+# always up to date, regardless of whether the map figure itself came
+# from cache or not.
+def compute_ms_status(ms_column, threshold_pct):
+    status = pd.Series(
+        f"Proportion of milieu protected area less than {threshold_pct}% of PLR",
+        index=gdf.index,
     )
-)
+    status[gdf[ms_column] == 1] = f"Proportion of milieu protected area more than {threshold_pct}% of PLR"
+    status[gdf[ms_column].isna()] = "No data available"
+    return status
 
-# Style borders and layout
-fig.update_layout(
-    mapbox_style=grey_map_style,
-    mapbox=dict(
-        center={"lat": center_lat, "lon": center_lon},
-        zoom=zoom_level,
-        bearing=0,
-        pitch=0,
-    ),
-    margin={"r": 0, "t": 0, "l": 0, "b": 0},
-    height=MAP_HEIGHT_PX,   # fixed height, matched to TARGET_WIDTH_PX
-    autosize=True,
-)
+
+# Builds the cluster map figure for a given milieuschutz threshold column
+# (e.g. "ms_over50", "ms_over80", ...). Cached so that flipping back and
+# forth between thresholds on the sidebar doesn't rebuild the whole
+# Plotly figure every single time
+#
+# IMPORTANT: this function must not mutate the global "gdf" (e.g. via
+# "gdf['ms_status'] = ..."). On a cache HIT the function body doesn't
+# run at all, so any such side effect would silently go stale. That's
+# why ms_status is computed as a local Series here and merged into a
+# throwaway "customdata" frame instead of written back onto gdf.
+@st.cache_data(show_spinner=False)
+def build_cluster_map(ms_column, threshold_pct):
+    ms_status = compute_ms_status(ms_column, threshold_pct)
+
+    # Static per-row border styling for milieuschutz areas (thicker + black border)
+    ms_line_widths = np.where(gdf[ms_column] == 1, 2.0, 0.4)
+    ms_line_colors = np.where(gdf[ms_column] == 1, "#000000", "#ffffff")
+
+    customdata = gdf[["plr_name", "plr_id", "cluster_status"]].copy()
+    customdata["ms_status"] = ms_status
+
+    # Create map
+    # Single Choroplethmapbox trace instead of one trace per category,
+    # so hover works consistently for every area
+    fig_map = go.Figure(
+        go.Choroplethmapbox(
+            geojson=geojson,
+            locations=gdf["plr_id"],
+            z=gdf["cluster_code"],
+            zmin=-1,
+            zmax=3,
+            featureidkey="properties.plr_id",
+            colorscale=colorscale,
+            showscale=False,
+            marker_opacity=0.85,
+            marker_line_width=ms_line_widths,
+            marker_line_color=ms_line_colors,
+            customdata=customdata,
+            hovertemplate=(
+                "<b>%{customdata[0]}</b><br>"
+                "PLR-ID: %{customdata[1]}<br>"
+                "Cluster: %{customdata[2]}<br>"
+                "Status: %{customdata[3]}"
+                "<extra></extra>"
+            ),
+        )
+    )
+
+    # Style borders and layout
+    fig_map.update_layout(
+        mapbox_style=grey_map_style,
+        mapbox=dict(
+            center={"lat": center_lat, "lon": center_lon},
+            zoom=zoom_level,
+            bearing=0,
+            pitch=0,
+        ),
+        margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        height=MAP_HEIGHT_PX,   # fixed height, matched to TARGET_WIDTH_PX
+        autosize=True,
+    )
+    return fig_map
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #+++++++++++ SIMILARITY MAP +++++++++++++++++++++++++++++++++++
@@ -265,9 +294,38 @@ with st.container(key="white_container_upper", border=True):
     st.markdown("##### Welcome to KiezKeeper.")
     st.markdown("KiezKeeper was developed to detect gentrificaiton in Berlin. On the sidebar, you have the option to choose between the cluster outcome and the similarity score. BLABLABLA")
     map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Similarity Scores"], horizontal=True)
+    if map_status == "Gentrification Profiles":
+        ms_proportion = st.sidebar.radio(
+            label="% of total area of PLR designated for milieu protection:", 
+            options=["more than 50%", "more than 60%", "more than 70%", "more than 80%", "more than 90%"]
+        )
+    else:
+        # default so nothing breaks if "Similarity Scores" is selected.
+        ms_proportion = "more than 50%"
+
+# translate the radio label ("more than 70%") into the matching
+# dataframe column ("ms_over70"), and pull out the bare number for the
+# hover text, then (re)build the map figure for that threshold.
+ms_threshold_columns = {
+    "more than 50%": "ms_over50",
+    "more than 60%": "ms_over60",
+    "more than 70%": "ms_over70",
+    "more than 80%": "ms_over80",
+    "more than 90%": "ms_over90",
+}
+ms_column = ms_threshold_columns[ms_proportion]
+threshold_pct = re.search(r"\d+", ms_proportion).group()
+
+# Always keep gdf["ms_status"] current
+gdf["ms_status"] = compute_ms_status(ms_column, threshold_pct)
+
+# Cached: only actually rebuilds the figure the first time a given
+# threshold is selected in this session; subsequent switches back to an
+# already-seen threshold are served straight from cache.
+fig_map = build_cluster_map(ms_column, threshold_pct)
 
 # Show map on half the page
-left_col, right_col = st.columns([2.7, 1.5], gap="small")
+left_col, right_col = st.columns([3, 2], gap="small")
 
 with left_col:
     with st.container(key="white_container_left", border=True):
@@ -277,12 +335,14 @@ with left_col:
         map_event = None
         map_second_event = None
 
+        # showing cluster map
         if map_status == "Gentrification Profiles":
             st.markdown("#### Planning areas (PLR) of Berlin -- Gentrification Profiles", text_alignment="center")
             st.markdown(body="*- Please choose a map on the sidebar -*", text_alignment="center")
 
+            # plot map
             map_event = st.plotly_chart(
-                fig,
+                fig_map,
                 width="stretch",
                 config={"responsive": True},
                 on_select="rerun",
@@ -290,7 +350,8 @@ with left_col:
                 key="cluster_map"
             )
 
-            # legend (unchanged)
+            # legend -- two explicit rows: cluster colors on top,
+            # "No data" + "Milieu protection" always on their own row below
             st.markdown(
                 """
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
@@ -298,14 +359,20 @@ with left_col:
                 <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City belt</span>
                 <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadv. outskirts</span>
                 <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Affluent outskirts</span>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
                 <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data</span>
-                <span><span style="display:inline-block;width:15px;height:15px;background:none;border:2px solid black;border-radius:2px;"></span> Milieu protection</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:none;border:2px solid black;border-radius:2px;"></span> Milieu protection (&gt;""" + threshold_pct + """%)</span>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
+        
+        
+        # showing similarity map
         else:
-            st.subheader("Planning areas (PLR) of Berlin -- Similarity Scores :small[*- Please choose a map on the sidebar -*]")
+            st.markdown("#### Planning areas (PLR) of Berlin -- Similarity Scores", text_alignment="center")
+            st.markdown(body="*- Please choose a map on the sidebar -*", text_alignment="center")
 
             # map_second_event = st.plotly_chart(
             #     fig_similarity,   # deine zweite, noch zu bauende Figure
@@ -327,12 +394,15 @@ if active_event and active_event["selection"]["points"]:
 ################################################################
 ##################### SHORT PROFILE #############################
 
+# load another dataframe for resident count and other variables
+plot_df = pd.read_csv("data/plot_df.csv", dtype={"plr_id": str})
+
 # initialize state
 if "show_profile" not in st.session_state:
     st.session_state.show_profile = False
 
 # container height for right container
-HEADER_FOOTER_OVERHEAD_PX = 157  # rough space for title, divider, legend etc.
+HEADER_FOOTER_OVERHEAD_PX = 188  # rough space for title, divider, legend etc.
 RIGHT_CONTAINER_HEIGHT_PX = MAP_HEIGHT_PX + HEADER_FOOTER_OVERHEAD_PX
 
 # toggle it on click
@@ -342,31 +412,53 @@ with right_col:
         # look up the row mathing the currently selected PLR
         selected_row = gdf.loc[gdf["plr_id"] == st.session_state.selected_plr_id].iloc[0]
 
-        # fix: some PLRs (no-data areas) don't exist in df_final at all --
+        # some PLRs (no-data areas) don't exist in df_final at all --
         # guard against the empty lookup instead of crashing on .iloc[0]
         matching_final_rows = df_final.loc[df_final["plr_id"] == st.session_state.selected_plr_id]
+
+        # same for plot df
+        matching_plot_df_rows = plot_df.loc[plot_df["plr_id"] == st.session_state.selected_plr_id]
 
         PLR = selected_row["plr_name"]
         plr_id = selected_row["plr_id"]
 
         if not matching_final_rows.empty:
-            selected_row_for_bez = matching_final_rows.iloc[0]
-            bez = selected_row_for_bez["bez"]
+            selected_row_from_final = matching_final_rows.iloc[0]
+            bez = selected_row_from_final["bez"]
         else:
             bez = "No data available"
+
+        if not matching_plot_df_rows.empty:
+            selected_row_from_plot_df = matching_plot_df_rows.iloc[0]
+            res_count = selected_row_from_plot_df["res_count"]
+            res_count = int(res_count)
+        else:
+            res_count = "No data available"
 
         cluster_status = selected_row["cluster_status"]
         cluster_profile = "This is an explanation of a cluster profile"
         ms_status = selected_row["ms_status"]
-        similarity_score = "This is a placeholder"
-        proportion_milieu = "This is a placeholder"
-        watchlist = "Yes/No"
+
+        if not matching_final_rows.empty:
+            
+            if selected_row_from_final["ms_over50"] == 0:
+                similarity_score = round(selected_row_from_final["oof_prob"], 2)
+            else:
+                similarity_score = "Proportion of milieu protected area already more than 50% of PLR"
+            
+            proportion_milieu = f'{round(selected_row_from_final["ms_portion"] * 100, 1)}%'
+            watchlist = "Yes" if bool(selected_row_from_final["on_watchlist"]) else "No"
+        else:
+            similarity_score = "No data available"
+            proportion_milieu = "No data available"
+            watchlist = "No data available"
         rank_of_watchlist = "This is a placeholder"
 
         profile_rows = {
             "Name of PLR": PLR,
             "Identification number": plr_id,
             "District": bez,
+            "Resident count": res_count,
             "Milieu protection status": ms_status,
             "Gentrification profile": cluster_status,
             "Profile details": cluster_profile,
@@ -430,8 +522,8 @@ vars_keep = [
 labels = {
     "re_miete_niveau": "Rent level (€/m²)",
     "re_miete_trend": "Rent trend",
-    "re_altbau_share": "Share of pre-war buildings",
-    "re_dichte_all": "AirBnB density",
+    "re_altbau_share": "Share of buildings built before 1919",
+    "re_dichte_all": "AirBnB density (per 1000 Apts.)",
     "re_brw_niveau": "Land value (€/m²)",
     "soc_single_parent_household_share_2024": "Share of single-parent households",
     "soc_transfer_benefit_share_2024": "Share of benefit recipients",
@@ -537,9 +629,9 @@ plot_table = pd.concat([plot_table, berlin_df], axis=1).copy()
 # Dimension colors / labels
 # -----------------------------------------------------------
 dimension_colors = {
-    "re": "#C9A227",
-    "soc": "#4A78A8",
-    "com": "#5A9367",
+    "re": "#A06B34",   # Real estate -- brown
+    "soc": "#6FA8C7",  # Social -- blue
+    "com": "#1D5B4E",  # Commercial -- teal
 }
 
 dimension_labels = {
@@ -549,65 +641,72 @@ dimension_labels = {
 }
 
 selected_vars_raw = {
-    "re":  ["Rent level (€/m²)", "AirBnB density"],
+    "re":  ["Rent level (€/m²)", "AirBnB density (per 1000 Apts.)"],
     "soc": ["Share of single-parent households", "Share of benefit recipients"],
     "com": ["Business exit rate", "Share of upscale gastronomy"],
 }
 
+# -----------------------------------------------------------
+# Font sizes
+# -----------------------------------------------------------
+dimension_fontsize = 14
+var_title_fontsize = 11
+suptitle_fontsize = 20
+legend_fontsize = 14
 
-def make_dimension_figure(dim, row, bez_name, plr_name):
-    vars_in_dim = selected_vars_raw[dim]
-    fig, axes = plt.subplots(len(vars_in_dim), 1, figsize=(4.5, 4.5 * len(vars_in_dim)))
+dims = ["re", "soc", "com"]
 
-    for i, var_raw in enumerate(vars_in_dim):
-        ax = axes[i]
-        var = re.sub(r"_+", "_", var_raw.replace(" ", "_").replace("/", "_"))
+# this function takes the already-looked-up "row" as an argument and is only called once we
+# actually have a valid row to plot (see the show_profile section further down).
+def build_profile_figure(row):
+    fig_profile, axes = plt.subplots(2, 3, figsize=(4.2 * 3, 4.5 * 2))
 
-        plr_val = row[var]
-        bez_center = row[f"{var}_bez_median"]
-        berlin_center = row[f"{var}_berlin_median"]
+    for col, dim in enumerate(dims):
+        for row_idx in range(2):
+            ax = axes[row_idx][col]
+            var_raw = selected_vars_raw[dim][row_idx]
+            var = re.sub(r"_+", "_", var_raw.replace(" ", "_").replace("/", "_"))
 
-        ax.bar([0], [plr_val], width=0.5, color=dimension_colors[dim], zorder=2)
+            plr_val = row[var]
 
-        bez_line, = ax.plot([-0.5, 0.5], [bez_center, bez_center], color="gray",
-                             linestyle="--", linewidth=2, zorder=3)
-        berlin_line, = ax.plot([-0.5, 0.5], [berlin_center, berlin_center], color="black",
-                                linestyle="--", linewidth=2, zorder=3)
+            bez_center = row[f"{var}_bez_median"]
+            berlin_center = row[f"{var}_berlin_median"]
 
-        ax.set_xticks([0])
-        ax.set_xticklabels([""])
-        ax.set_xlim(-0.5, 0.5)
-        ax.set_ylabel(var_raw, fontsize=14)
+            ax.bar([0], [plr_val], width=0.5, color=dimension_colors[dim], zorder=2)
 
-        if i == 0:
-            ax.set_title(f"{var_raw} ({years_by_label[var_raw]})",
-                         color=dimension_colors[dim], fontsize=14)
-        else:
-            ax.set_title(f"{var_raw} ({years_by_label[var_raw]})", color=dimension_colors[dim], fontsize=14)
+            bez_line, = ax.plot([-0.5, 0.5], [bez_center, bez_center], color="gray",
+                                 linestyle="--", linewidth=2, zorder=3)
+            berlin_line, = ax.plot([-0.5, 0.5], [berlin_center, berlin_center], color="black",
+                                    linestyle="--", linewidth=2, zorder=3)
 
-    fig.legend(
+            ax.set_xticks([0])
+            ax.set_xticklabels([""])
+            ax.set_xlim(-0.5, 0.5)
+            ax.set_ylabel(var_raw)
+
+            if row_idx == 0:
+                ax.text(0.5, 1.28, f"Dimension: {dimension_labels[dim]}",
+                        transform=ax.transAxes, ha="center",
+                        fontsize=dimension_fontsize, fontweight="bold",
+                        color=dimension_colors[dim])
+                ax.text(0.5, 1.05, f"{var_raw} ({years_by_label[var_raw]})",
+                        transform=ax.transAxes, ha="center",
+                        fontsize=var_title_fontsize, fontweight="normal",
+                        color="black")
+            else:
+                ax.set_title(f"{var_raw} ({years_by_label[var_raw]})",
+                             fontsize=var_title_fontsize, fontweight="normal", color="black")
+
+    fig_profile.legend(
         handles=[bez_line, berlin_line],
-        labels=[f"Bezirk: {bez_name}", "Berlin"],
-        #title="Comparison:",
-        loc="upper center", bbox_to_anchor=(0.5, 0.0),
+        labels=["District Median", "Berlin Median"],
+        loc="upper center", bbox_to_anchor=(0.5, 0.02),
         ncol=2, frameon=False,
-        fontsize=14,
+        fontsize=legend_fontsize,
     )
 
-    fig.tight_layout(rect=[0, 0.04, 1, 1])
-    return fig
-
-
-# fix: st.pyplot() auto-crops figures to their rendered content, which made
-# the three dimension plots come out at slightly different sizes even
-# though figsize/width were identical. Rendering to a fixed-size PNG
-# ourselves (no bbox_inches="tight") guarantees all three are the same size.
-def fig_to_fixed_image(fig, dpi=150):
-    buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=dpi)
-    plt.close(fig)
-    buf.seek(0)
-    return buf
+    fig_profile.tight_layout(rect=[0, 0.05, 1, 1])
+    return fig_profile
 
 
 #### PROFILE CONTAINER
@@ -619,7 +718,6 @@ if st.session_state.show_profile:
 
         # get the row for the currently selected PLR (uses id_vars/vars_keep
         # table you already built above: plot_table)
-        # fix: guard against PLRs with no entry in plot_table (no-data areas)
         matching_plot_rows = plot_table.loc[plot_table["plr_id"] == st.session_state.selected_plr_id]
 
         if matching_plot_rows.empty:
@@ -629,34 +727,16 @@ if st.session_state.show_profile:
             bez_name = row["bez"]
             plr_name_for_plot = row.get("plr_name", st.session_state.selected_plr_id)
 
-            bottom_left_col, bottom_middle_col, bottom_right_col = st.columns([1, 1, 1], gap="large")
+            bottom_left_col, bottom_right_col = st.columns([1, 2], gap="small")
 
             with bottom_left_col:
                 with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
-                    st.markdown("##### Real Estate Dimension", text_alignment="center")
-                    fig_re = make_dimension_figure("re", row, bez_name, plr_name_for_plot)
-                    st.image(fig_to_fixed_image(fig_re), width=400)
-
-            with bottom_middle_col:
-                with st.container(key="middle_profile_textbox", border=False, horizontal_alignment="center"):
-                    st.markdown("##### Social Dimension", text_alignment="center")
-                    fig_soc = make_dimension_figure("soc", row, bez_name, plr_name_for_plot)
-                    st.image(fig_to_fixed_image(fig_soc), width=400)
+                    st.markdown("I am a text box that can be used for descriptions :P")
 
             with bottom_right_col:
                 with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
                     st.markdown("##### Commercial Dimension", text_alignment="center")
-                    fig_com = make_dimension_figure("com", row, bez_name, plr_name_for_plot)
-                    st.image(fig_to_fixed_image(fig_com), width=400)
-
-        # download button
-        csv = df_final.to_csv().encode("utf-8")
-
-        st.download_button(
-            label="Download profile",
-            data=csv,
-            file_name=f"{PLR}.csv",
-            mime="text/csv",
-            type="primary",
-            icon=":material/download:"
-        )
+                    # FIX: build the figure now that "row" actually exists,
+                    # and use st.pyplot() -- st.plot() doesn't exist in Streamlit
+                    fig_profile = build_profile_figure(row)
+                    st.pyplot(fig_profile)
