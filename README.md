@@ -1,12 +1,12 @@
 # Capstone - KiezKeeper
 
 KiezKeeper analyzes gentrification across Berlin at the level of its
-542 Planungsräume (PLR), the city's fine-grained neighborhood units. Rather than
+542 planning areas (PLR), the city's fine-grained neighborhood units. Rather than
 reducing gentrification to rising rents, the project approaches it through three
-complementary dimensions — real-estate, social, and commercial — each built from
+complementary dimensions: real-estate, social, and commercial, each built from
 its own data sources and indicators.  **INSERT MODELING + RAG DESCRIPTION HERE**
 
-## Requirements:
+## Requirements
 
 - pyenv with Python: 3.11.3
 
@@ -28,34 +28,29 @@ pip install -r requirements.txt
 ## Data
 
 All data used in this project is openly accessible (links provided below). The final dataset used for modeling can be found in the folder **final_datasets** `dataset_0.csv`. A description of all variables and their meaning can be found under **INSERT FILE HERE** The data extraction process for each dimension is provided below, along with a short overview of the merge and cleaning process of the final dataset. 
-
-### Extraction
 #### Real-estate dimension
-## Data sources 
-The real-estate dimension of gentrification is based on several datasets depending on the variable. 
+##### Data Extraction
 
-Variable 1 and 2, the current rent level and the change 2021 was taken from the IBB - Berlin's Development Bank, the raw data set can be found here: https://www.ibb.de/media/dokumente/publikationen/berliner-wohnungsmarkt/wohnungsmarktbericht/2025/ibb-wohnungsmarktbericht-angebotsmieten_2012-2025.pdf
+The real-estate dimension of gentrification is based on several datasets depending on the variable: 
 
-Variable 3 and 7, the vacancy rate and buildings' age were taken from the census 2022 which was adapted on the local level by the Statistical Office Berlin-Brandenburg. The raw data can be found here: https://www.statistik-berlin-brandenburg.de/zensus22/lokale-daten-berlin
+The variables "current median rent level / PLR" and "median rent level change 2021-2025" were taken from the IBB (Berlin's Development Bank). The raw data set used for the variables can be found here: https://www.ibb.de/media/dokumente/publikationen/berliner-wohnungsmarkt/wohnungsmarktbericht/2025/ibb-wohnungsmarktbericht-angebotsmieten_2012-2025.pdf
 
-Variable 5, the standard land value, was downloaded from the Geoportal Berlin and can be found here: https://daten.berlin.de/datensaetze/bodenrichtwerte-01-01-2025-wfs-7ca7f2c3
+The variables "vacancy rate", "re_altbau_share" and "re_neubau_share" were taken from the census 2022 which was adapted on the local level by the Statistical Office Berlin-Brandenburg. The raw data can be found here: https://www.statistik-berlin-brandenburg.de/zensus22/lokale-daten-berlin
 
-Finally, variable 6, the density of AirBNBs in 2025, was taken from InsideAirBnb and can be found here: https://insideairbnb.com/get-the-data/
+The variables "standard land value trend" and "current standard land value" were downloaded from the Berlin geoportal and can be found here: https://daten.berlin.de/datensaetze/bodenrichtwerte-01-01-2025-wfs-7ca7f2c3
 
-## Data Preparation and Feature Engineering 
-Variable 1 and 2: Rent trend 2021 - 2025 and rent niveau 
+Finally, the variable "density of AirBNBs / 1000 apartments in 2025" was taken from the website InsideAirBnb and can be found here: https://insideairbnb.com/get-the-data/
 
-- trend: OLS slope of median rent across all available years (€/m² per year); requires ≥2 years, so undefined for 16 PLR
-- niveau: most recent available median rent per PLR; missing only for 11 chronically empty PLR
-- flag variable "miete_unsicher" below <21 housing adds per PLR. 
+##### Cleaning, merging, and final dataset pipeline
 
-Variable 3: the vacancy rate 
-vacant dwellings / total dwellings per PLR, from the Zensus dwelling-use table;
-
-
+Before merging the variables with the other dimensions, an exploratory data analysis was conducted focusing on the distributions of the variables, the correlation between variables and the missing values. Some variables were highly right-skewed which demands a logarithmic transformation for some analyses. When variables correlated more than 0.8 (Spearman), they were excluded. The missing values, the outliers and the reliability flags were inspected. No further recoding was done based on these analyses, they were conducted after merging due to their dependency on the model. 
 
 All data was collected in June 2026. 
-The dataset including the raw data can be found in ./data/real-estate.
+The dataset including the raw data can be found in ./data/real-estate. 
+
+### hier fehlt noch n teil von Laura 
+
+
 #### Social dimension
 The social dimension is based on several datasets from the [Amt für Statistik Berlin-Brandenburg](https://www.statistik-berlin-brandenburg.de/) — including population data (*Einwohnerbestand*), median income data (*Medianeinkommen*), population fluctuation data (*Einwohnerbewegung*), and household data (*Privathaushalte*) — as well as data from the [Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen](https://www.berlin.de/sen/stadt/stadtdaten/stadtwissen/monitoring-soziale-stadtentwicklung/) (*Monitoring Soziale Stadtentwicklung*, MSS context and index files).
 
@@ -122,5 +117,8 @@ PLR-level dataset, with each variable carrying a dimension prefix (`com_`, `re_`
 
 ### Module 1: 
 
-### Module 2:
+### Module 2: the supervised classification 
+We built a binary target from the Berlin WFS Milieuschutz layer — milieu_majoritaet, set where more than 50 % of a planning area's surface is protected and treated it as positive-unlabeled, since a 0 means "not (yet) designated" rather than a confirmed negative (109 of 527 PLR positive, 20.7 %). On identical features, GroupKFold-by-district splits and leakage-safe fold-wise preprocessing, we trained a logistic-regression baseline and an XGBoost model and evaluated them with AUC-PR, the threshold-free metric matching a rank-based tool: XGBoost won (0.676 vs. 0.628, both far above the 0.207 baseline) and was carried forward. 
+Standardized coefficients and SHAP agree that designation-like areas are marked by high Altbau share, land value (BRW), transfer-benefit share and young-adult share, with a level-versus-change divergence that we read as the early-warning signal. 
+From the out-of-fold probabilities we derived the module's core deliverable: a 25-area resemblance watchlist of undesignated PLR that most resemble protected ones, cut at the largest gap in the ranking (0.824 → 0.767). The watchlist is validated two ways: Cleanlab flags all 25 as label-inconsistent (100 %) and an independent regression on the continuous milieu_anteil recovers 20 of 25, and an optional urgency layer (oof_prob × (1 − milieu_anteil)) is provided as a transparent policy filter rather than a second module. 
 
