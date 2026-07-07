@@ -1,0 +1,39 @@
+rank,plr_id,plr_name,bez,oof_prob
+1,01401044,Uferstraße,01 - Mitte,0.9991092085838318
+2,01300731,Koloniestraße,01 - Mitte,0.9976006150245668
+3,01100416,Arkonaplatz,01 - Mitte,0.9959756731987
+4,07100206,Großgörschenstraße,07 - Tempelhof-Schöneberg,0.9925047159194946
+5,01200623,Stephankiez,01 - Mitte,0.986148238182068
+6,01401049,Schulstraße,01 - Mitte,0.9859592318534852
+7,04501147,Leon-Jessel-Platz,04 - Charlottenburg-Wilmersdorf,0.9846000075340272
+8,01300836,Humboldthain Nordwest,01 - Mitte,0.9840062260627748
+9,01200522,Elberfelder Straße,01 - Mitte,0.9832627773284912
+10,01200628,Lüneburger Straße,01 - Mitte,0.979387104511261
+11,09200511,Griechischer Park,09 - Treptow-Köpenick,0.9774777889251708
+12,01300834,Brunnenstraße,01 - Mitte,0.976186990737915
+13,02200211,Chamissokiez,02 - Friedrichshain-Kreuzberg,0.975650429725647
+14,03601142,Falkplatz,03 - Pankow,0.963522732257843
+15,07300619,Grazer Platz,07 - Tempelhof-Schöneberg,0.9160007238388062
+16,01100309,Oranienburger Straße,01 - Mitte,0.9099525809288024
+17,09100101,Alt-Treptow,09 - Treptow-Köpenick,0.8952305316925049
+18,08100102,Schillerpromenade Nord,08 - Neukölln,0.8939265012741089
+19,01400937,Afrikanische Straße,01 - Mitte,0.8917918801307678
+20,07200414,Hohenfriedbergstraße,07 - Tempelhof-Schöneberg,0.8714181184768677
+21,04300414,Schloßstraße,04 - Charlottenburg-Wilmersdorf,0.8710215091705322
+22,04300416,Amtsgerichtsplatz,04 - Charlottenburg-Wilmersdorf,0.8628243803977966
+23,01400938,Kameruner Straße,01 - Mitte,0.8389071226119995
+24,12100102,Hausotterplatz,12 - Reinickendorf,0.8249589204788208
+25,04501150,Wilhelmsaue,04 - Charlottenburg-Wilmersdorf,0.8236569762229919
+26,05100316,Carl-Schurz-Straße,05 - Spandau,0.7665170431137085
+27,01100205,Wilhelmstraße,01 - Mitte,0.7566664814949036
+28,04501042,Breitscheidplatz,04 - Charlottenburg-Wilmersdorf,0.7129411101341248
+29,12100103,Breitkopfbecken,12 - Reinickendorf,0.7127301096916199
+30,09200716,Dörpfeldstraße West,09 - Treptow-Köpenick,0.7041215896606445
+31,12100204,Schäfersee,12 - Reinickendorf,0.6947739720344543
+32,01100415,Invalidenstraße,01 - Mitte,0.6938844919204712
+33,09100304,Baumschulenweg West,09 - Treptow-Köpenick,0.689616322517395
+34,08100101,Hasenheide,08 - Neukölln,0.6581676602363586
+35,04501151,Hildegardstraße,04 - Charlottenburg-Wilmersdorf,0.6385456919670105
+36,04501149,Nikolsburger Platz,04 - Charlottenburg-Wilmersdorf,0.6166600584983826
+37,01200624,Heidestraße,01 - Mitte,0.6045414209365845
+38,04501043,Preußenpark,04 - Charlottenburg-Wilmersdorf,0.5862716436386108
