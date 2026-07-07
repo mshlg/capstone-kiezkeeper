@@ -205,9 +205,17 @@ def compute_ms_status(ms_column, threshold_pct):
 def build_cluster_map(ms_column, threshold_pct):
     ms_status = compute_ms_status(ms_column, threshold_pct)
 
-    # border marks milieu protection
-    ms_line_widths = np.where(gdf[ms_column] == 1, 2.0, 0.4)
-    ms_line_colors = np.where(gdf[ms_column] == 1, "#000000", "#ffffff")
+    # border: black = protected, grey = no data, white = regular
+    ms_line_widths = np.select(
+        [gdf[ms_column] == 1, gdf["cluster_code"] == -1],
+        [2.0, 0.4],
+        default=0.4,
+    )
+    ms_line_colors = np.select(
+        [gdf[ms_column] == 1, gdf["cluster_code"] == -1],
+        ["#000000", "#999999"],
+        default="#ffffff",
+    )
 
     customdata = gdf[["plr_name", "plr_id", "cluster_status"]].copy()
     customdata["ms_status"] = ms_status
