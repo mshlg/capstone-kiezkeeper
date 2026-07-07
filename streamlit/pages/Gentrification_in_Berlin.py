@@ -1,8 +1,7 @@
 ##################################################
 #### PREREQUISITES###############################
 
-
-# import libraries
+# load libraries
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,15 +13,15 @@ import numpy as np
 import re
 import io
 
-# set page to wide format
+# page config
 st.set_page_config(layout="wide")
 
-# set title
+# title
 st.logo('kiezkeeper_vector_logo.svg', size="large")
 st.markdown("# KiezKeeper :small[Data-Driven Detection of Gentrification in Berlin]")
 st.markdown("***")
 
-# set style for containers
+# container styling
 css = """
 .st-key-white_container_upper,
 .st-key-white_container_left,
@@ -43,7 +42,7 @@ st.html(f"<style>{css}</style>")
 ##########################################################
 ########## BERLIN MAP ###################################
 
-# background style for map
+# map background style
 grey_map_style = {
     "version": 8,
     "sources": {},
@@ -56,10 +55,9 @@ grey_map_style = {
     ]
 }
 
-# Calculate the zoom level needed so a bounding box always fits
-# inside a given pixel width/height (prevents the map from being cropped)
+# fit zoom to bounding box
 def calculate_zoom(min_lon, max_lon, min_lat, max_lat, width_px, height_px, padding_factor=0.9):
-    WORLD_DIM = 512  # tile size at zoom level 0 (Mapbox default)
+    WORLD_DIM = 512  # tile size at zoom level 0
 
     def lat_to_merc_y(lat):
         rad = np.radians(lat)
@@ -72,13 +70,11 @@ def calculate_zoom(min_lon, max_lon, min_lat, max_lat, width_px, height_px, padd
     zoom_lat = np.log2(height_px * 2 * np.pi / (lat_diff * WORLD_DIM))
 
     zoom = min(zoom_lon, zoom_lat)
-    zoom = zoom + np.log2(padding_factor)  # add a bit of padding at the edges
+    zoom = zoom + np.log2(padding_factor)  # padding
     return zoom
 
 
-# Calculate the map height that matches Berlin's bounding-box aspect ratio
-# at the target width, so top/bottom and left/right margins are both
-# minimal at once (instead of guessing a fixed height)
+# fit height to bounding box aspect ratio
 def calculate_matching_height(min_lon, max_lon, min_lat, max_lat, width_px):
     def lat_to_merc_y(lat):
         rad = np.radians(lat)
@@ -91,49 +87,42 @@ def calculate_matching_height(min_lon, max_lon, min_lat, max_lat, width_px):
     return int(round(height_px))
 
 
-# create Berlin map
-# import final output dataset
+# load final dataset
 df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
 df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 
-# slim copy with only the columns needed for THIS map
-# FIX: "ms_binary" no longer exists in the current CSV -- the binary
-# milieu-protection flag is now split into 5 threshold columns
-# (ms_over50/60/70/80/90). We keep all of them here because the
-# sidebar control lets the user switch between thresholds.
+# ms threshold columns
 MS_THRESHOLD_COLUMNS = ["ms_over50", "ms_over60", "ms_over70", "ms_over80", "ms_over90"]
-df_map = df_final[["plr_id", "cluster_4k", "ms_portion"] + MS_THRESHOLD_COLUMNS].copy()
 
-# Cache the function so the geodata is not loaded again on every rerun
+# slim data for map
+df_map = df_final[["plr_id", "bez", "cluster_4k", "ms_portion", "oof_prob", "on_watchlist"] + MS_THRESHOLD_COLUMNS].copy()
+
+# load PLR geometries (cached)
 @st.cache_data
 def load_plr_geometries():
-
-    # Load the PLR geometries from the URL
     plr_geo = gpd.read_file("plr_geometries.gpkg")
-
-    # Make sure the PLR ID is a string with 8 digits
     plr_geo["plr_id"] = plr_geo["plr_id"].astype(str).str.zfill(8)
-
-    # Keep only the columns we need
     plr_geo = plr_geo[["plr_id", "plr_name", "geometry"]]
-
-    # Make the geometries simpler, so the map loads faster
     plr_geo["geometry"] = plr_geo["geometry"].simplify(
         tolerance=3,
         preserve_topology=True
     )
-
-    # Convert geometries to web map coordinates
     plr_geo = plr_geo.to_crs(epsg=4326)
-
-    # Return the prepared geodata
     return plr_geo
 
 
-# Load the prepared PLR geometries
-plr_geo = load_plr_geometries()
+# load watchlist (cached)
+@st.cache_data
+def load_watchlist():
+    watchlist_df = pd.read_csv("../models/M2_watchlist.csv", dtype={"plr_id": str})
+    return watchlist_df
 
-# Join the geodata with the cluster / milieuschutz data
+
+# load data
+plr_geo = load_plr_geometries()
+watchlist_df = load_watchlist()
+
+# merge geometry with data
 gdf = plr_geo.merge(
     df_map,
     on="plr_id",
@@ -143,7 +132,7 @@ gdf = plr_geo.merge(
 #+++++++++++++++++++++++++++++++++++++++++++++++++
 #++++++++ CLUSTER MAP ++++++++++++++++++++++++++++
 
-# Create readable cluster labels
+# cluster labels
 cluster_labels = {
     1: "City core",
     3: "City ring",
@@ -153,33 +142,28 @@ cluster_labels = {
 gdf["cluster_status"] = gdf["cluster_4k"].map(cluster_labels)
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_status"] = "No data available"
 
-# Numeric code per cluster, needed for the single shared trace
-# (this is what makes hover work the same for ALL areas, not just clustered ones)
+# cluster code for shared trace
 gdf["cluster_code"] = gdf["cluster_4k"]
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_code"] = -1
 
-# Reset the index and create a unique ID for Plotly
+# build geojson
 gdf = gdf.reset_index(drop=True)
 geojson = json.loads(gdf.to_json())
 
-# Convert the GeoDataFrame to GeoJSON for Plotly
-geojson = json.loads(gdf.to_json())
-
-# Calculate center from geometries
+# map center
 min_lon, min_lat, max_lon, max_lat = gdf.total_bounds
 center_lon = (min_lon + max_lon) / 2
 center_lat = (min_lat + max_lat) / 2
 
-# Assumed total browser window width for a typical laptop/desktop screen
+# assumed window width
 ASSUMED_WINDOW_WIDTH_PX = 1400
 
-# Must match the ratio you pass into st.columns([...]) below !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-MAP_COLUMN_RATIO = 2 / 3
+# must match st.columns([...]) ratio below !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+MAP_COLUMN_RATIO = 3 / 5
 
 TARGET_WIDTH_PX = ASSUMED_WINDOW_WIDTH_PX * MAP_COLUMN_RATIO
 
-# Map height derived from Berlin's aspect ratio at that width, so
-# top/bottom and left/right margins are both minimal at once
+# map sizing
 MAP_HEIGHT_PX = calculate_matching_height(
     min_lon, max_lon, min_lat, max_lat,
     width_px=TARGET_WIDTH_PX
@@ -192,9 +176,7 @@ zoom_level = calculate_zoom(
     padding_factor=0.97
 )
 
-# Discrete colorscale for the 5 categories: no data + 4 clusters
-# (same stepped-colorscale technique as the milieuschutz map, generalized
-# to 5 evenly spaced bands instead of 3)
+# cluster colorscale
 colorscale = [
     [0.0, "#FFFFFF"], [0.2, "#FFFFFF"],   # No data available
     [0.2, "#B8B8B8"], [0.4, "#B8B8B8"],   # Affluent outskirts (cluster 0)
@@ -203,13 +185,34 @@ colorscale = [
     [0.8, "#EE4B2B"], [1.0, "#EE4B2B"],   # City ring (cluster 3)
 ]
 
-# initialize session state for map click with a default (here: first PLR in the data)
+# init selected PLR
 if "selected_plr_id" not in st.session_state:
     st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
 
-# called every rerun so that gdf["ms_status"] (used later in the Short Profile section) is
-# always up to date, regardless of whether the map figure itself came
-# from cache or not.
+# flatten geometry to lon/lat lines (for boundary traces)
+def geometry_to_lonlat_lines(geoseries):
+    lons, lats = [], []
+    for geom in geoseries:
+        if geom is None or geom.is_empty:
+            continue
+        parts = geom.geoms if geom.geom_type.startswith("Multi") else [geom]
+        for part in parts:
+            xs, ys = part.xy
+            lons.extend(xs)
+            lats.extend(ys)
+            lons.append(None)
+            lats.append(None)
+    return lons, lats
+
+
+# berlin outline (cached, shared by both maps)
+@st.cache_data(show_spinner=False)
+def get_berlin_outline():
+    boundary = gdf.geometry.unary_union.boundary
+    return geometry_to_lonlat_lines([boundary])
+
+
+# ms status text (uncached, always current)
 def compute_ms_status(ms_column, threshold_pct):
     status = pd.Series(
         f"Proportion of milieu protected area less than {threshold_pct}% of PLR",
@@ -220,30 +223,19 @@ def compute_ms_status(ms_column, threshold_pct):
     return status
 
 
-# Builds the cluster map figure for a given milieuschutz threshold column
-# (e.g. "ms_over50", "ms_over80", ...). Cached so that flipping back and
-# forth between thresholds on the sidebar doesn't rebuild the whole
-# Plotly figure every single time
-#
-# IMPORTANT: this function must not mutate the global "gdf" (e.g. via
-# "gdf['ms_status'] = ..."). On a cache HIT the function body doesn't
-# run at all, so any such side effect would silently go stale. That's
-# why ms_status is computed as a local Series here and merged into a
-# throwaway "customdata" frame instead of written back onto gdf.
+# build cluster map (cached per threshold)
 @st.cache_data(show_spinner=False)
 def build_cluster_map(ms_column, threshold_pct):
     ms_status = compute_ms_status(ms_column, threshold_pct)
 
-    # Static per-row border styling for milieuschutz areas (thicker + black border)
+    # border marks milieu protection
     ms_line_widths = np.where(gdf[ms_column] == 1, 2.0, 0.4)
     ms_line_colors = np.where(gdf[ms_column] == 1, "#000000", "#ffffff")
 
     customdata = gdf[["plr_name", "plr_id", "cluster_status"]].copy()
     customdata["ms_status"] = ms_status
 
-    # Create map
-    # Single Choroplethmapbox trace instead of one trace per category,
-    # so hover works consistently for every area
+    # cluster choropleth
     fig_map = go.Figure(
         go.Choroplethmapbox(
             geojson=geojson,
@@ -268,7 +260,20 @@ def build_cluster_map(ms_column, threshold_pct):
         )
     )
 
-    # Style borders and layout
+    # berlin outline
+    outline_lons, outline_lats = get_berlin_outline()
+    fig_map.add_trace(
+        go.Scattermapbox(
+            lon=outline_lons,
+            lat=outline_lats,
+            mode="lines",
+            line=dict(width=1.2, color="#3a3a3a"),
+            hoverinfo="skip",
+            showlegend=False,
+        )
+    )
+
+    # layout
     fig_map.update_layout(
         mapbox_style=grey_map_style,
         mapbox=dict(
@@ -278,7 +283,7 @@ def build_cluster_map(ms_column, threshold_pct):
             pitch=0,
         ),
         margin={"r": 0, "t": 0, "l": 0, "b": 0},
-        height=MAP_HEIGHT_PX,   # fixed height, matched to TARGET_WIDTH_PX
+        height=MAP_HEIGHT_PX,
         autosize=True,
     )
     return fig_map
@@ -286,10 +291,163 @@ def build_cluster_map(ms_column, threshold_pct):
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #+++++++++++ SIMILARITY MAP +++++++++++++++++++++++++++++++++++
 
+# watchlist colorscale (matches cluster map reds)
+WATCHLIST_COLORSCALE = [
+    [0.0, "#FFFFFF"],
+    [0.5, "#EE4B2B"],
+    [1.0, "#8B0000"],
+]
+
+
+# build similarity map (cached, no sidebar dependency)
+@st.cache_data(show_spinner=False)
+def build_similarity_map():
+    fig_similarity = go.Figure()
+
+    # no data
+    no_data = gdf.loc[gdf["ms_over50"].isna()]
+    if not no_data.empty:
+        fig_similarity.add_trace(
+            go.Choroplethmapbox(
+                geojson=geojson,
+                locations=no_data["plr_id"],
+                z=[0] * len(no_data),
+                featureidkey="properties.plr_id",
+                colorscale=[[0, "#FFFFFF"], [1, "#FFFFFF"]],
+                showscale=False,
+                marker_opacity=0.85,
+                marker_line_width=0.4,
+                marker_line_color="#999999",
+                customdata=no_data[["plr_name", "plr_id"]],
+                hovertemplate=(
+                    "<b>%{customdata[0]}</b><br>"
+                    "PLR-ID: %{customdata[1]}<br>"
+                    "Status: No data available"
+                    "<extra></extra>"
+                ),
+                name="no_data",
+            )
+        )
+
+    # base (not on watchlist, not protected)
+    base = gdf.loc[gdf["ms_over50"].notna()]
+    if not base.empty:
+        fig_similarity.add_trace(
+            go.Choroplethmapbox(
+                geojson=geojson,
+                locations=base["plr_id"],
+                z=[0] * len(base),
+                featureidkey="properties.plr_id",
+                colorscale=[[0, "#B8B8B8"], [1, "#B8B8B8"]],
+                showscale=False,
+                marker_opacity=0.85,
+                marker_line_width=0.3,
+                marker_line_color="#ffffff",
+                customdata=base[["plr_name", "plr_id"]],
+                hovertemplate=(
+                    "<b>%{customdata[0]}</b><br>"
+                    "PLR-ID: %{customdata[1]}<br>"
+                    "Status: not on watchlist"
+                    "<extra></extra>"
+                ),
+                name="base",
+            )
+        )
+
+    # protected (same fill as base, marked only by border)
+    protected = gdf.loc[gdf["ms_over50"] == 1]
+    if not protected.empty:
+        fig_similarity.add_trace(
+            go.Choroplethmapbox(
+                geojson=geojson,
+                locations=protected["plr_id"],
+                z=[0] * len(protected),
+                featureidkey="properties.plr_id",
+                colorscale=[[0, "#B8B8B8"], [1, "#B8B8B8"]],
+                showscale=False,
+                marker_opacity=0.85,
+                marker_line_width=2.0,
+                marker_line_color="#000000",
+                customdata=protected[["plr_name", "plr_id"]],
+                hovertemplate=(
+                    "<b>%{customdata[0]}</b><br>"
+                    "PLR-ID: %{customdata[1]}<br>"
+                    "Status: already milieu-protected"
+                    "<extra></extra>"
+                ),
+                name="protected",
+            )
+        )
+
+    # watchlist, shaded by resemblance score
+    watchlist_area = gdf.loc[gdf["on_watchlist"] == True].merge(
+        watchlist_df[["plr_id", "rank"]], on="plr_id", how="left"
+    )
+    if not watchlist_area.empty:
+        fig_similarity.add_trace(
+            go.Choroplethmapbox(
+                geojson=geojson,
+                locations=watchlist_area["plr_id"],
+                z=watchlist_area["oof_prob"],
+                zmin=float(watchlist_area["oof_prob"].min()),
+                zmax=float(watchlist_area["oof_prob"].max()),
+                featureidkey="properties.plr_id",
+                colorscale=WATCHLIST_COLORSCALE,
+                showscale=True,
+                colorbar=dict(
+                    title=dict(text="Resemblance<br>(oof_prob)", font=dict(size=11)),
+                    thickness=15,
+                    len=0.5,
+                ),
+                marker_opacity=0.9,
+                marker_line_width=0.3,
+                marker_line_color="#ffffff",
+                customdata=watchlist_area[["plr_name", "plr_id", "oof_prob", "rank"]],
+                hovertemplate=(
+                    "<b>%{customdata[0]}</b><br>"
+                    "PLR-ID: %{customdata[1]}<br>"
+                    "Watchlist rank: %{customdata[3]}<br>"
+                    "Resemblance score: %{customdata[2]:.2f}"
+                    "<extra></extra>"
+                ),
+                name="watchlist",
+            )
+        )
+
+    # berlin outline
+    outline_lons, outline_lats = get_berlin_outline()
+    fig_similarity.add_trace(
+        go.Scattermapbox(
+            lon=outline_lons,
+            lat=outline_lats,
+            mode="lines",
+            line=dict(width=1.2, color="#3a3a3a"),
+            hoverinfo="skip",
+            showlegend=False,
+        )
+    )
+
+    # layout
+    fig_similarity.update_layout(
+        mapbox_style=grey_map_style,
+        mapbox=dict(
+            center={"lat": center_lat, "lon": center_lon},
+            zoom=zoom_level,
+            bearing=0,
+            pitch=0,
+        ),
+        margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        height=MAP_HEIGHT_PX,
+        autosize=True,
+        showlegend=False,
+    )
+    return fig_similarity
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #++++++++++++ SHOW MAPS +++++++++++++++++++++++++++++++++++++++++
+
+# sidebar controls
 with st.container(key="white_container_upper", border=True):
     st.markdown("##### Welcome to KiezKeeper.")
     st.markdown("KiezKeeper was developed to detect gentrificaiton in Berlin. On the sidebar, you have the option to choose between the cluster outcome and the similarity score. BLABLABLA")
@@ -300,12 +458,9 @@ with st.container(key="white_container_upper", border=True):
             options=["more than 50%", "more than 60%", "more than 70%", "more than 80%", "more than 90%"]
         )
     else:
-        # default so nothing breaks if "Similarity Scores" is selected.
-        ms_proportion = "more than 50%"
+        ms_proportion = "more than 50%"  # default, unused for similarity map
 
-# translate the radio label ("more than 70%") into the matching
-# dataframe column ("ms_over70"), and pull out the bare number for the
-# hover text, then (re)build the map figure for that threshold.
+# translate threshold selection
 ms_threshold_columns = {
     "more than 50%": "ms_over50",
     "more than 60%": "ms_over60",
@@ -316,31 +471,27 @@ ms_threshold_columns = {
 ms_column = ms_threshold_columns[ms_proportion]
 threshold_pct = re.search(r"\d+", ms_proportion).group()
 
-# Always keep gdf["ms_status"] current
+# keep ms status current
 gdf["ms_status"] = compute_ms_status(ms_column, threshold_pct)
 
-# Cached: only actually rebuilds the figure the first time a given
-# threshold is selected in this session; subsequent switches back to an
-# already-seen threshold are served straight from cache.
+# build maps
 fig_map = build_cluster_map(ms_column, threshold_pct)
+fig_similarity = build_similarity_map()
 
-# Show map on half the page
+# show maps
 left_col, right_col = st.columns([3, 2], gap="small")
 
 with left_col:
     with st.container(key="white_container_left", border=True):
-        
-        # initialize both as None, so the click-handling code below
-        # can safely check "whichever one actually got clicked"
+
         map_event = None
         map_second_event = None
 
-        # showing cluster map
+        # cluster map
         if map_status == "Gentrification Profiles":
             st.markdown("#### Planning areas (PLR) of Berlin -- Gentrification Profiles", text_alignment="center")
             st.markdown(body="*- Please choose a map on the sidebar -*", text_alignment="center")
 
-            # plot map
             map_event = st.plotly_chart(
                 fig_map,
                 width="stretch",
@@ -350,8 +501,7 @@ with left_col:
                 key="cluster_map"
             )
 
-            # legend -- two explicit rows: cluster colors on top,
-            # "No data" + "Milieu protection" always on their own row below
+            # legend
             st.markdown(
                 """
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
@@ -367,57 +517,69 @@ with left_col:
                 """,
                 unsafe_allow_html=True,
             )
-        
-        
-        # showing similarity map
+
+        # similarity map
         else:
             st.markdown("#### Planning areas (PLR) of Berlin -- Similarity Scores", text_alignment="center")
             st.markdown(body="*- Please choose a map on the sidebar -*", text_alignment="center")
 
-            # map_second_event = st.plotly_chart(
-            #     fig_similarity,   # deine zweite, noch zu bauende Figure
-            #     width="stretch",
-            #     config={"responsive": True},
-            #     on_select="rerun",
-            #     selection_mode="points",
-            #     key="similarity_map"
-            # )
+            map_second_event = st.plotly_chart(
+                fig_similarity,
+                width="stretch",
+                config={"responsive": True},
+                on_select="rerun",
+                selection_mode="points",
+                key="similarity_map"
+            )
 
-# update selection based on WHICHEVER map was actually clicked
+            # legend
+            st.markdown(
+                """
+                <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
+                <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Not on watchlist</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:linear-gradient(90deg,#FFFFFF,#EE4B2B,#8B0000);border-radius:2px;"></span> On watchlist (shaded by resemblance score)</span>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
+                <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border:2px solid black;border-radius:2px;"></span> Already milieu-protected</span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+# handle map click
 active_event = map_event if map_event is not None else map_second_event
 
 if active_event and active_event["selection"]["points"]:
-    clicked_plr_id = active_event["selection"]["points"][0]["location"]
-    st.session_state.selected_plr_id = clicked_plr_id
+    clicked_point = active_event["selection"]["points"][0]
+    if "location" in clicked_point:
+        st.session_state.selected_plr_id = clicked_point["location"]
 
 
 ################################################################
 ##################### SHORT PROFILE #############################
 
-# load another dataframe for resident count and other variables
+# load short profile data
 plot_df = pd.read_csv("data/plot_df.csv", dtype={"plr_id": str})
+# watchlist_df already loaded above (load_watchlist())
 
-# initialize state
+# init state
 if "show_profile" not in st.session_state:
     st.session_state.show_profile = False
 
-# container height for right container
-HEADER_FOOTER_OVERHEAD_PX = 188  # rough space for title, divider, legend etc.
+# right container height
+HEADER_FOOTER_OVERHEAD_PX = 188
 RIGHT_CONTAINER_HEIGHT_PX = MAP_HEIGHT_PX + HEADER_FOOTER_OVERHEAD_PX
 
-# toggle it on click
+# short profile container
 with right_col:
     with st.container(key="white_container_right", border=True, height=RIGHT_CONTAINER_HEIGHT_PX):
 
-        # look up the row mathing the currently selected PLR
+        # look up selected PLR
         selected_row = gdf.loc[gdf["plr_id"] == st.session_state.selected_plr_id].iloc[0]
-
-        # some PLRs (no-data areas) don't exist in df_final at all --
-        # guard against the empty lookup instead of crashing on .iloc[0]
         matching_final_rows = df_final.loc[df_final["plr_id"] == st.session_state.selected_plr_id]
-
-        # same for plot df
         matching_plot_df_rows = plot_df.loc[plot_df["plr_id"] == st.session_state.selected_plr_id]
+        matching_watchlist_df_rows = watchlist_df.loc[watchlist_df["plr_id"] == st.session_state.selected_plr_id]
 
         PLR = selected_row["plr_name"]
         plr_id = selected_row["plr_id"]
@@ -440,19 +602,27 @@ with right_col:
         ms_status = selected_row["ms_status"]
 
         if not matching_final_rows.empty:
-            
+
             if selected_row_from_final["ms_over50"] == 0:
                 similarity_score = round(selected_row_from_final["oof_prob"], 2)
             else:
                 similarity_score = "Proportion of milieu protected area already more than 50% of PLR"
-            
+
             proportion_milieu = f'{round(selected_row_from_final["ms_portion"] * 100, 1)}%'
             watchlist = "Yes" if bool(selected_row_from_final["on_watchlist"]) else "No"
         else:
             similarity_score = "No data available"
             proportion_milieu = "No data available"
             watchlist = "No data available"
-        rank_of_watchlist = "This is a placeholder"
+
+        if not matching_final_rows.empty:
+            if bool(selected_row_from_final["on_watchlist"]):
+                selected_row_from_watchlist_df = matching_watchlist_df_rows.iloc[0]
+                watchlist_rank = selected_row_from_watchlist_df['rank']
+            else:
+                watchlist_rank = "Not on watchlist"
+        else:
+            watchlist_rank = "No data available"
 
         profile_rows = {
             "Name of PLR": PLR,
@@ -465,7 +635,7 @@ with right_col:
             "Similarity score": similarity_score,
             "% of milieu protection": proportion_milieu,
             "Watchlist status": watchlist,
-            "Watchlist rank": rank_of_watchlist
+            "Watchlist rank": watchlist_rank
         }
 
         rows_html = "".join(
@@ -474,8 +644,8 @@ with right_col:
         )
         st.markdown("#### Short Profile of PLR", text_alignment="center")
         st.markdown(body="*- Please click on a planning area in the map -*", text_alignment="center")
-        
-        # gray box wih text
+
+        # profile text box
         with st.container(key="short_profile_textbox", border=False):
             st.markdown("")
             st.markdown(
@@ -486,15 +656,14 @@ with right_col:
                 """,
                 unsafe_allow_html=True,
             )
-        
-           
+
         if st.button(label="↓ Show more", type="primary"):
             st.session_state.show_profile = not st.session_state.show_profile
 
 ###############################################################################
 #################### PLOTS PLR ##############################################
 
-#create table with most important variables: 
+# profile table setup
 id_vars = ['plr_id', 'plr_name', 'bez']
 
 vars_keep = [
@@ -514,11 +683,7 @@ vars_keep = [
     "com_n_gastro" #gastro count, 2026
 ]
 
-# -----------------------------------------------------------
-# Single source of truth: technical name -> display label.
-# Renaming happens ONCE here -- every downstream cell reuses
-# this dict instead of redefining its own labels.
-# -----------------------------------------------------------
+# labels
 labels = {
     "re_miete_niveau": "Rent level (€/m²)",
     "re_miete_trend": "Rent trend",
@@ -535,9 +700,8 @@ labels = {
     "com_gastro_share_level_2026": "Share of gastronomy businesses",
     "com_n_gastro": "Number of gastro establishments"
 }
-# -----------------------------------------------------------
-# Single source of truth: technical name -> reference year
-# -----------------------------------------------------------
+
+# reference years
 years_by_tech = {
     "re_miete_niveau": "2025",
     "re_miete_trend": "2021-2025",
@@ -555,20 +719,17 @@ years_by_tech = {
     "com_n_gastro": "2026",
 }
 
-# Derived once, reused everywhere downstream -- never redefine labels/years again
 years_by_label = {labels[tech]: year for tech, year in years_by_tech.items()}
 
-# plr table
+# plr/district/berlin tables
 plr_table = df_final[id_vars + vars_keep].rename(columns = labels)
 
-# district table
 bez_table = (
     df_final.groupby("bez", as_index=False)[vars_keep]
       .mean().rename(columns = labels)
 )
 
-# berlin table
-vars_plot = list(labels.values())  # derived from the single labels dict, not a separate list
+vars_plot = list(labels.values())
 
 berlin_table = pd.DataFrame({
     "Variable": vars_plot,
@@ -579,9 +740,7 @@ berlin_table = pd.DataFrame({
 })
 berlin_table = berlin_table.round(2)
 
-# -----------------------------------------------------------
-# Sanitize column names: spaces/slashes -> "_", collapse "__"
-# -----------------------------------------------------------
+# sanitize column names
 plr_table.columns = (
     plr_table.columns
     .str.replace(" ", "_", regex=False)
@@ -589,15 +748,9 @@ plr_table.columns = (
     .str.replace(r"_+", "_", regex=True)
 )
 
-# -----------------------------------------------------------
-# Variables to summarize (everything except id/name/bez)
-# -----------------------------------------------------------
 vars_plot = [c for c in plr_table.columns if c not in ["plr_id", "plr_name", "bez"]]
 
-# -----------------------------------------------------------
-# Bezirk aggregates: one row per bez, columns suffixed _bez_<stat>
-# add_suffix keeps naming clean -- no MultiIndex, no lambda renaming
-# -----------------------------------------------------------
+# district aggregates
 bez_mean   = plr_table.groupby("bez")[vars_plot].mean().add_suffix("_bez_mean")
 bez_median = plr_table.groupby("bez")[vars_plot].median().add_suffix("_bez_median")
 bez_sd     = plr_table.groupby("bez")[vars_plot].std().add_suffix("_bez_sd")
@@ -608,11 +761,7 @@ bez_agg = pd.concat([bez_mean, bez_median, bez_sd, bez_q1, bez_q3], axis=1).rese
 
 plot_table = plr_table.merge(bez_agg, on="bez", how="left")
 
-# -----------------------------------------------------------
-# Berlin aggregates: a scalar per variable, broadcast to every row.
-# Built as a dict and concatenated once to avoid fragmenting the
-# DataFrame with repeated single-column inserts.
-# -----------------------------------------------------------
+# berlin aggregates
 berlin_cols = {}
 for var in vars_plot:
     berlin_cols[f"{var}_berlin_mean"]   = plot_table[var].mean()
@@ -624,14 +773,11 @@ for var in vars_plot:
 berlin_df = pd.DataFrame([berlin_cols] * len(plot_table), index=plot_table.index)
 plot_table = pd.concat([plot_table, berlin_df], axis=1).copy()
 
-
-# -----------------------------------------------------------
-# Dimension colors / labels
-# -----------------------------------------------------------
+# dimension colors/labels
 dimension_colors = {
-    "re": "#A06B34",   # Real estate -- brown
-    "soc": "#6FA8C7",  # Social -- blue
-    "com": "#1D5B4E",  # Commercial -- teal
+    "re": "#A06B34",
+    "soc": "#6FA8C7",
+    "com": "#1D5B4E",
 }
 
 dimension_labels = {
@@ -646,9 +792,7 @@ selected_vars_raw = {
     "com": ["Business exit rate", "Share of upscale gastronomy"],
 }
 
-# -----------------------------------------------------------
-# Font sizes
-# -----------------------------------------------------------
+# font sizes
 dimension_fontsize = 14
 var_title_fontsize = 11
 suptitle_fontsize = 20
@@ -656,8 +800,7 @@ legend_fontsize = 14
 
 dims = ["re", "soc", "com"]
 
-# this function takes the already-looked-up "row" as an argument and is only called once we
-# actually have a valid row to plot (see the show_profile section further down).
+# build profile figure
 def build_profile_figure(row):
     fig_profile, axes = plt.subplots(2, 3, figsize=(4.2 * 3, 4.5 * 2))
 
@@ -709,15 +852,12 @@ def build_profile_figure(row):
     return fig_profile
 
 
-#### PROFILE CONTAINER
-# render content based on state
+# profile container
 if st.session_state.show_profile:
     with st.container(key="white_container_profile", border=True):
         st.markdown(f"#### Profile of Planning Area: {PLR}")
         st.markdown(f"**PLR ID**: {plr_id}")
 
-        # get the row for the currently selected PLR (uses id_vars/vars_keep
-        # table you already built above: plot_table)
         matching_plot_rows = plot_table.loc[plot_table["plr_id"] == st.session_state.selected_plr_id]
 
         if matching_plot_rows.empty:
@@ -736,7 +876,5 @@ if st.session_state.show_profile:
             with bottom_right_col:
                 with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
                     st.markdown("##### Commercial Dimension", text_alignment="center")
-                    # FIX: build the figure now that "row" actually exists,
-                    # and use st.pyplot() -- st.plot() doesn't exist in Streamlit
                     fig_profile = build_profile_figure(row)
                     st.pyplot(fig_profile)
