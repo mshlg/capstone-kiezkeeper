@@ -4,8 +4,6 @@ File: `dataset_0.csv` · 527 PLRs × 47 columns
 
 The matrix combines three dimensions: **Real estate** · **Social** · **Commercial** 
 
-Only the commercial variables are documented below; the real-estate and social rows are left blank as a template to be completed by their respective owners.
-
 Commercial design note: each underlying business indicator contributes a **Level (2026)** and a **Trend (slope, per year)**; two churn rates (entry/exit) and one structural count complete the set. The R², quotient and binary-flag columns from the standalone commercial EDA were dropped for this reduced modeling matrix.
 
 ---
@@ -18,19 +16,18 @@ Commercial design note: each underlying business indicator contributes a **Level
 | plr_name | ID | Name of PLR | n.a. | see dimensions | CSV | PLR |
 | bez | ID | Name of Bezirk | n.a. | see dimensions | CSV | PLR |
 
-## Real estate (N = 9)
+## Real estate (N = 8)
 
 | Variable | Type | Definition | Derivation | Source | File format | Spatial level |
 |---|---|---|---|---|---|---|
-| re_miete_niveau |  |  |  |  |  |  |
-| re_miete_trend |  |  |  |  |  |  |
-| re_leerstandsquote |  |  |  |  |  |  |
-| re_brw_niveau |  |  |  |  |  |  |
-| re_brw_trend |  |  |  |  |  |  |
-| re_cov_wohnen_2025 |  |  |  |  |  |  |
-| re_dichte_all |  |  |  |  |  |  |
-| re_altbau_share |  |  |  |  |  |  |
-| re_neubau_share |  |  |  |  |  |  |
+| re_miete_niveau | Continuous, €/m² | Most recent available median asking rent per PLR (usually 2025; backfilled to 2024 or earlier where the newest year is missing). | Regex-parsed from the IBB asking-rent PDF (PLR, year, median), reshaped to one row per PLR with a column per year; level = first non-null across 2025→2021 (backfill). Reliability flag `miete_unsicher` where mean listings < 21 (IBB threshold). | IBB (Investitionsbank Berlin), Wohnungsmarktbericht — Angebotsmieten 2012–2025 | PDF | PLR |
+| re_miete_trend | Continuous, €/m² per year | Linear slope of the median asking rent over 2021–2025 (annual change in €/m²). | OLS slope via `polyfit(year, median)` over the available yearly medians; ≥ 2 usable years required, else NaN. Same reliability flag as the level. | IBB (Investitionsbank Berlin), Wohnungsmarktbericht — Angebotsmieten 2012–2025 | PDF | PLR |
+| re_leerstandsquote | Rate, percentage points | Structural vacancy rate: vacant dwellings as a percentage of total dwellings per PLR (Zensus definition, single reference date). | `vacant / total dwellings × 100` from the Zensus dwelling-use table (sheet 4.9); German number formats cleaned, suppressed cells kept as NaN; plausibility-guarded to the Berlin total (~2 %). | Zensus 2022, Amt für Statistik Berlin-Brandenburg | XLSX | PLR |
+| re_brw_niveau | Continuous, €/m² | Residential standard land value (Bodenrichtwert), 2025 level, per PLR. | Annual BRW polygons overlaid on PLR as an area-weighted mean, restricted to residential (`wohnen`) land use; niveau = 2025 area-weighted value. | BORIS Berlin (Bodenrichtwerte) via Berlin Geoportal WFS | WFS vector (+ PLR GeoJSON) | PLR (aggregated from BRW zones) |
+| re_brw_trend | Continuous, log-ratio | Residential land-value trend, `ln(2025 / 2021)`, per PLR. | `ln(BRW_wohnen_2025 / BRW_wohnen_2021)` where both years > 0; trend-outlier flag where \|z\| > 3 within the reliable pool. | BORIS Berlin (Bodenrichtwerte) via Berlin Geoportal WFS | WFS vector (+ PLR GeoJSON) | PLR (aggregated from BRW zones) |
+| re_dichte_all | Density, per 1,000 dwellings | Airbnb listings per 1,000 dwellings per PLR (all listing types). | Listings geocoded and spatially joined `within` PLR (EPSG 4326→25833); count / residential dwelling stock × 1,000; PLR with no listings set to 0, PLR with no dwelling base kept as NaN. Strong right skew (log transform at modelling). | InsideAirbnb (listings) + dwelling stock (`Anzahl_whg_PLR`, Amt für Statistik Berlin-Brandenburg) | CSV.gz (+ XLSX) | PLR (points joined to PLR) |
+| re_altbau_share  | Share, 0–1 | Share of pre-1919 (Gründerzeit) dwellings per PLR — old-building proxy. | Taken directly as the pre-1919 band of the Zensus building-age profile (re_altbau_share = re_anteil_vor_1919); bands are class count / total dwellings. Reliability flag where < 50 dwellings. | Zensus 2022, Amt für Statistik Berlin-Brandenburg | XLSX | PLR |
+| re_neubau_share | Share, 0–1 | Share of dwellings built from 2001 onwards per PLR — new-construction proxy. | Sum of the two most recent Zensus age bands (re_neubau_share = re_anteil_y2001_2010 + re_anteil_y2011_plus). The seven original bands are dropped after the collapse; the modernisation complement (1 − re_neubau_share) is intentionally not stored (near-constant, overlaps Altbau). | Zensus 2022, Amt für Statistik Berlin-Brandenburg | XLSX | PLR |
 
 ## Social (N = 14)
 
