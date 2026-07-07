@@ -11,6 +11,7 @@ import plotly.graph_objects as go
 import geopandas as gpd
 import json
 import numpy as np
+from pywaffle import Waffle
 
 # set page to wide format
 st.set_page_config(layout="wide")
@@ -61,3 +62,25 @@ with st.container(key="white_container_profile", border=True):
             options=sorted_plr_ids,
             format_func=lambda x: plr_dict[x],   # shows the name, but returns the id
         )
+
+############################################################
+########### PROFILE PLOTS ##################################
+
+
+
+
+############################################################
+########### DOWNLOAD PROFILE ###############################
+
+
+# # Download button
+#         csv = df_final.to_csv().encode("utf-8")
+
+#         st.download_button(
+#             label="Download profile",
+#             data=csv,
+#             file_name=f"{PLR}.csv",
+#             mime="text/csv",
+#             type="primary",
+#             icon=":material/download:"
+#         )
