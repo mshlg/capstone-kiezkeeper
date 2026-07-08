@@ -1,0 +1,26 @@
+plr_id,plr_name,rank,oof_prob,nearest_designated
+1401044,Uferstraße,1,0.9991092085838318,Westliche Müllerstraße
+1300731,Koloniestraße,2,0.9976006150245668,Leopoldplatz
+1100416,Arkonaplatz,3,0.9959756731987,Teutoburger Platz
+7100206,Großgörschenstraße,4,0.9925047159194946,Richard-Sorge-Viertel
+1200623,Stephankiez,5,0.986148238182068,Richard-Sorge-Viertel
+1401049,Schulstraße,6,0.9859592318534852,Drontheimer Straße
+4501147,Leon-Jessel-Platz,7,0.9846000075340272,Bayerischer Platz
+1300836,Humboldthain Nordwest,8,0.9840062260627748,Körnerpark
+1200522,Elberfelder Straße,9,0.9832627773284912,Feuerbachstraße
+1200628,Lüneburger Straße,10,0.979387104511261,Köpenicker Straße
+9200511,Griechischer Park,11,0.9774777889251708,Letteplatz
+1300834,Brunnenstraße,12,0.976186990737915,Rollberg
+2200211,Chamissokiez,13,0.975650429725647,Wrangelkiez
+3601142,Falkplatz,14,0.963522732257843,Urbanstraße
+7300619,Grazer Platz,15,0.9160007238388062,Friedrich-Karl-Straße
+1100309,Oranienburger Straße,16,0.9099525809288024,Teutoburger Platz
+9100101,Alt-Treptow,17,0.8952305316925049,Viktoriapark
+8100102,Schillerpromenade Nord,18,0.8939265012741089,Flughafenstraße
+1400937,Afrikanische Straße,19,0.8917918801307678,Bremer Straße
+7200414,Hohenfriedbergstraße,20,0.8714181184768677,Friedrich-Karl-Straße
+4300414,Schloßstraße,21,0.8710215091705322,Richard-Wagner-Straße
+4300416,Amtsgerichtsplatz,22,0.8628243803977966,Richard-Wagner-Straße
+1400938,Kameruner Straße,23,0.8389071226119995,Westliche Müllerstraße
+12100102,Hausotterplatz,24,0.8249589204788208,Letteplatz
+4501150,Wilhelmsaue,25,0.8236569762229919,Richard-Wagner-Straße
