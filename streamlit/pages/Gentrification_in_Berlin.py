@@ -216,7 +216,7 @@ def compute_ms_status(ms_column, threshold_pct):
 @st.cache_data(show_spinner=False)
 def build_cluster_map(ms_column, threshold_pct):
     ms_status = compute_ms_status(ms_column, threshold_pct)
-
+ 
     # border: black = protected, grey = no data, white = regular
     ms_line_widths = np.select(
         [gdf[ms_column] == 1, gdf["cluster_code"] == -1],
@@ -228,13 +228,13 @@ def build_cluster_map(ms_column, threshold_pct):
         ["#000000", "#999999"],
         default="#ffffff",
     )
-
+ 
     customdata = gdf[["plr_name", "plr_id", "cluster_status"]].copy()
     customdata["ms_status"] = ms_status
-
+ 
     # cluster choropleth
     fig_map = go.Figure(
-        go.Choroplethmapbox(
+        go.Choroplethmap(
             geojson=geojson,
             locations=gdf["plr_id"],
             z=gdf["cluster_code"],
@@ -256,11 +256,11 @@ def build_cluster_map(ms_column, threshold_pct):
             ),
         )
     )
-
+ 
     # layout
     fig_map.update_layout(
-        mapbox_style=grey_map_style,
-        mapbox=dict(
+        map_style=grey_map_style,
+        map=dict(
             center={"lat": center_lat, "lon": center_lon},
             zoom=zoom_level,
             bearing=0,
@@ -275,129 +275,82 @@ def build_cluster_map(ms_column, threshold_pct):
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #+++++++++++ SIMILARITY MAP +++++++++++++++++++++++++++++++++++
 
-# watchlist colorscale (matches cluster map reds)
-WATCHLIST_COLORSCALE = [
-    [0.0, "#FFFFFF"],
-    [0.5, "#EE4B2B"],
-    [1.0, "#8B0000"],
+# combined colorscale: no data (white) / base+protected (grey) / watchlist gradient
+# hard steps via duplicate positions, same technique as the cluster colorscale
+SIMILARITY_COLORSCALE = [
+    [0.000, "#FFFFFF"],
+    [0.333, "#FFFFFF"],   # no data band ends
+    [0.334, "#B8B8B8"],
+    [0.666, "#B8B8B8"],   # base/protected band ends
+    [0.667, "#FFFFFF"],   # watchlist gradient starts (resemblance 0)
+    [0.833, "#EE4B2B"],   # resemblance 0.5
+    [1.000, "#8B0000"],   # resemblance 1
 ]
-
-
-# build similarity map (cached, no sidebar dependency)
+ 
+ 
+# build similarity map with single trace like the cluster map 
 @st.cache_data(show_spinner=False)
 def build_similarity_map():
-    fig_similarity = go.Figure()
-
-    # no data
-    no_data = gdf.loc[gdf["ms_over50"].isna()]
-    if not no_data.empty:
-        fig_similarity.add_trace(
-            go.Choroplethmapbox(
-                geojson=geojson,
-                locations=no_data["plr_id"],
-                z=[0] * len(no_data),
-                featureidkey="properties.plr_id",
-                colorscale=[[0, "#FFFFFF"], [1, "#FFFFFF"]],
-                showscale=False,
-                marker_opacity=0.85,
-                marker_line_width=0.4,
-                marker_line_color="#999999",
-                customdata=no_data[["plr_name", "plr_id"]],
-                hovertemplate=(
-                    "<b>%{customdata[0]}</b><br>"
-                    "PLR-ID: %{customdata[1]}<br>"
-                    "Status: No data available"
-                    "<extra></extra>"
-                ),
-                name="no_data",
-            )
-        )
-
-    # base (not on watchlist, not protected)
-    base = gdf.loc[gdf["ms_over50"].notna()]
-    if not base.empty:
-        fig_similarity.add_trace(
-            go.Choroplethmapbox(
-                geojson=geojson,
-                locations=base["plr_id"],
-                z=[0] * len(base),
-                featureidkey="properties.plr_id",
-                colorscale=[[0, "#B8B8B8"], [1, "#B8B8B8"]],
-                showscale=False,
-                marker_opacity=0.85,
-                marker_line_width=0.3,
-                marker_line_color="#ffffff",
-                customdata=base[["plr_name", "plr_id"]],
-                hovertemplate=(
-                    "<b>%{customdata[0]}</b><br>"
-                    "PLR-ID: %{customdata[1]}<br>"
-                    "Status: not on watchlist"
-                    "<extra></extra>"
-                ),
-                name="base",
-            )
-        )
-
-    # protected (same fill as base, marked only by border)
-    protected = gdf.loc[gdf["ms_over50"] == 1]
-    if not protected.empty:
-        fig_similarity.add_trace(
-            go.Choroplethmapbox(
-                geojson=geojson,
-                locations=protected["plr_id"],
-                z=[0] * len(protected),
-                featureidkey="properties.plr_id",
-                colorscale=[[0, "#B8B8B8"], [1, "#B8B8B8"]],
-                showscale=False,
-                marker_opacity=0.85,
-                marker_line_width=2.0,
-                marker_line_color="#000000",
-                customdata=protected[["plr_name", "plr_id"]],
-                hovertemplate=(
-                    "<b>%{customdata[0]}</b><br>"
-                    "PLR-ID: %{customdata[1]}<br>"
-                    "Status: already milieu-protected"
-                    "<extra></extra>"
-                ),
-                name="protected",
-            )
-        )
-
-    # watchlist, shaded by resemblance score
-    watchlist_area = gdf.loc[gdf["on_watchlist"] == True].merge(
+    local = gdf[["plr_id", "plr_name", "ms_over50", "on_watchlist", "oof_prob"]].merge(
         watchlist_df[["plr_id", "rank"]], on="plr_id", how="left"
     )
-    if not watchlist_area.empty:
-        fig_similarity.add_trace(
-            go.Choroplethmapbox(
-                geojson=geojson,
-                locations=watchlist_area["plr_id"],
-                z=watchlist_area["oof_prob"],
-                zmin=float(watchlist_area["oof_prob"].min()),
-                zmax=float(watchlist_area["oof_prob"].max()),
-                featureidkey="properties.plr_id",
-                colorscale=WATCHLIST_COLORSCALE,
-                showscale=True,
-                colorbar=dict(
-                    title=dict(text="Resemblance<br>(oof_prob)", font=dict(size=11)),
-                    thickness=15,
-                    len=0.5,
-                ),
-                marker_opacity=0.9,
-                marker_line_width=0.3,
-                marker_line_color="#ffffff",
-                customdata=watchlist_area[["plr_name", "plr_id", "oof_prob", "rank"]],
-                hovertemplate=(
-                    "<b>%{customdata[0]}</b><br>"
-                    "PLR-ID: %{customdata[1]}<br>"
-                    "Watchlist rank: %{customdata[3]}<br>"
-                    "Resemblance score: %{customdata[2]:.2f}"
-                    "<extra></extra>"
-                ),
-                name="watchlist",
-            )
+    is_wl = local["on_watchlist"] == True
+ 
+    # combined z: -1 no data, 0 base/protected, [1, 2] watchlist by resemblance
+    z = pd.Series(0.0, index=local.index)
+    z[local["ms_over50"].isna()] = -1.0
+    wl_min = local.loc[is_wl, "oof_prob"].min()
+    wl_max = local.loc[is_wl, "oof_prob"].max()
+    wl_range = wl_max - wl_min if wl_max > wl_min else 1.0
+    z[is_wl] = 1.0 + (local.loc[is_wl, "oof_prob"] - wl_min) / wl_range
+ 
+    # border: black = protected, grey = no data, white = regular
+    line_widths = np.select(
+        [local["ms_over50"] == 1, local["ms_over50"].isna()],
+        [2.0, 0.4],
+        default=0.3,
+    )
+    line_colors = np.select(
+        [local["ms_over50"] == 1, local["ms_over50"].isna()],
+        ["#000000", "#999999"],
+        default="#ffffff",
+    )
+ 
+    # hover status text
+    status = pd.Series("Not on watchlist", index=local.index)
+    status[local["ms_over50"] == 1] = "Already milieu-protected"
+    status[local["ms_over50"].isna()] = "No data available"
+    status[is_wl] = (
+        "On watchlist -- rank " + local.loc[is_wl, "rank"].astype("Int64").astype(str)
+        + ", resemblance " + local.loc[is_wl, "oof_prob"].round(2).astype(str)
+    )
+ 
+    customdata = local[["plr_name", "plr_id"]].copy()
+    customdata["status"] = status
+ 
+    fig_similarity = go.Figure(
+        go.Choroplethmapbox(
+            geojson=geojson,
+            locations=local["plr_id"],
+            z=z,
+            zmin=-1,
+            zmax=2,
+            featureidkey="properties.plr_id",
+            colorscale=SIMILARITY_COLORSCALE,
+            showscale=False,
+            marker_opacity=0.85,
+            marker_line_width=line_widths,
+            marker_line_color=line_colors,
+            customdata=customdata,
+            hovertemplate=(
+                "<b>%{customdata[0]}</b><br>"
+                "PLR-ID: %{customdata[1]}<br>"
+                "%{customdata[2]}"
+                "<extra></extra>"
+            ),
         )
-
+    )
+ 
     # layout
     fig_similarity.update_layout(
         mapbox_style=grey_map_style,
@@ -422,7 +375,7 @@ def build_similarity_map():
 with st.container(key="white_container_upper", border=True):
     st.markdown("##### Welcome to KiezKeeper.")
     st.markdown("KiezKeeper was developed to detect gentrificaiton in Berlin. On the sidebar, you have the option to choose between the cluster outcome and the similarity score. BLABLABLA")
-    map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Similarity Scores"], horizontal=True)
+    map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Watchlist"], horizontal=True)
     if map_status == "Gentrification Profiles":
         ms_proportion = st.sidebar.radio(
             label="% of total area of PLR designated for milieu protection:", 
@@ -491,7 +444,7 @@ with left_col:
 
         # similarity map
         else:
-            st.markdown("#### Planning areas (PLR) of Berlin -- Similarity Scores", text_alignment="center")
+            st.markdown("#### Planning areas (PLR) of Berlin -- Watchlist", text_alignment="center")
             st.markdown(body="*- Please choose a map on the sidebar -*", text_alignment="center")
 
             map_second_event = st.plotly_chart(
@@ -509,12 +462,12 @@ with left_col:
             st.markdown(
                 """
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
-                <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Not on watchlist</span>
-                <span><span style="display:inline-block;width:15px;height:15px;background:linear-gradient(90deg,#FFFFFF,#EE4B2B,#8B0000);border-radius:2px;"></span> On watchlist (shaded by resemblance score)</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:linear-gradient(90deg,#FFFFFF,#EE4B2B,#8B0000);border-radius:2px;"></span> On watchlist (shaded by similarity score)</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#e8e8e8;border-radius:2px;"></span> Not on watchlist</span>
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
                 <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data</span>
-                <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border:2px solid black;border-radius:2px;"></span> Already milieu-protected</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:2px solid black;border-radius:2px;"></span> Milieu protection (&gt; 50 %) </span>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -878,18 +831,39 @@ if st.session_state.show_profile:
             bez_name = row["bez"]
             plr_name_for_plot = row.get("plr_name", st.session_state.selected_plr_id)
 
-            bottom_left_col, bottom_right_col = st.columns([1.5, 2.5], gap="small")
+            #bottom_left_col, bottom_right_col = st.columns([1.5, 2.5], gap="small")
 
             # calculate height of figure to match container to
             # PROFILE_PLOT_WIDTH_PX = 1200
             # PROFILE_FIG_ASPECT_RATIO = (4.5 * 2) / (4.2 * 3)
             # PROFILE_BOX_HEIGHT_PX = int(PROFILE_PLOT_WIDTH_PX * PROFILE_FIG_ASPECT_RATIO)
 
-            with bottom_left_col:
-                with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
-                    st.markdown("I am a text box that can be used for descriptions :P")
+            # with bottom_left_col:
+            #     with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
+            #         st.markdown("##### Description", text_alignment="center")
+            #         st.markdown("Each planning area (PLR) is characterised across the three dimensions — real estate, social, and commercial — "
+            #         "with every indicator shown against two reference lines: the median of its district (grey) and of Berlin as a whole (black). "
+            #         "This dual benchmark places each PLR both in its local and in its city-wide context. " 
+            #         "The variables are chosen to capture the mechanisms through which gentrification becomes visible at the neighbourhood level. " \
+            #         "In the real estate dimension, rent level (€/m²) tracks the price pressure that drives displacement, while Airbnb density (listings per 1,000 apartments) " \
+            #         "measures the withdrawal of housing from the regular market through short-term letting — an early and spatially concentrated signal of touristic upgrading. " \
+            #         "The social dimension captures displacement pressure on vulnerable residents: the share of benefit recipients and of single-parent households " \
+            #         "identify two groups that are very exposed to displacement. The commercial dimension reflects the transformation of the local economy: " \
+            #         "the business exit rate captures the turnover and closure of established businesses, and the share of upscale gastronomy indicates the " \
+            #         "commercial upgrading that typically accompanies — and reinforces — residential gentrification.", text_alignment="justify")
 
-            with bottom_right_col:
-                with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
-                    fig_profile = build_profile_figure(row)
-                    st.pyplot(fig_profile, width=1200)
+            #with bottom_right_col:
+            with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
+                fig_profile = build_profile_figure(row)
+                st.pyplot(fig_profile, width=1200)
+                st.markdown("##### Description", text_alignment="center")
+                st.markdown("Each planning area (PLR) is characterised across the three dimensions — real estate, social, and commercial — "
+                    "with every indicator shown against two reference lines: the median of its district (grey) and of Berlin as a whole (black). "
+                    "This dual benchmark places each PLR both in its local and in its city-wide context. " 
+                    "The variables are chosen to capture the mechanisms through which gentrification becomes visible at the neighbourhood level. " \
+                    "In the real estate dimension, rent level (€/m²) tracks the price pressure that drives displacement, while Airbnb density (listings per 1,000 apartments) " \
+                    "measures the withdrawal of housing from the regular market through short-term letting — an early and spatially concentrated signal of touristic upgrading. " \
+                    "The social dimension captures displacement pressure on vulnerable residents: the share of benefit recipients and of single-parent households " \
+                    "identify two groups that are very exposed to displacement. The commercial dimension reflects the transformation of the local economy: " \
+                    "the business exit rate captures the turnover and closure of established businesses, and the share of upscale gastronomy indicates the " \
+                    "commercial upgrading that typically accompanies — and reinforces — residential gentrification.", text_alignment="justify")
