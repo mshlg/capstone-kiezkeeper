@@ -29,6 +29,7 @@ css = """
 .st-key-white_container_profile{
     background: rgba(255, 255, 255);
 }
+.st-key-upper_intro_textbox,
 .st-key-short_profile_textbox{
     background: rgba(245, 244, 244);
     padding: 16px;
@@ -50,6 +51,25 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-left_profile_textbox) [data-tes
 }
 """
 st.html(f"<style>{css}</style>")
+
+###########################################################
+######### INTRODUCTION CONTAINER #########################
+
+# introduction container
+with st.container(key="white_container_upper", border=True):
+    st.markdown("#### Welcome to KiezKeeper.")
+    with st.container(key="upper_intro_textbox", border=False):
+        st.markdown("##### Gentrification Profiles")
+        st.markdown("KiezKeeper groups all of Berlin's neighbourhoods into four profiles: City core, City belt, Disadvantaged outskirts and Affluent outskirts. "
+                    "These profiles are based on similarities across three dimensions of neighbourhood change: real estate, social structure and commercial structure. "
+                    "The profiles are identified from the data itself rather than defined in advance, "
+                    "and can be read as different stages along the path of neighbourhood change.", text_alignment="justify") 
+        st.markdown("##### Watchlist")
+        st.markdown("Within neighbourhoods that do not currently have milieu protection, KiezKeeper compares each area with those already designated by Berlin "
+                    "and measures how closely their profiles match. The areas that most closely resemble the existing milieu protection pattern form the watchlist: "
+                    "a Berlin-wide, objective and consistent starting point for identifying where protection might be needed next.", text_alignment="justify")
+        st.markdown("**On the sidebar, you can choose which resulting map you would like to explore.**")
+
 
 ##########################################################
 ########## BERLIN MAP ###################################
@@ -147,47 +167,47 @@ gdf = plr_geo.merge(
 # cluster labels
 cluster_labels = {
     1: "City core",
-    3: "City belt",
+    3: "City ring",
     2: "Disadvantaged outskirts",
     0: "Affluent outskirts",
 }
 gdf["cluster_status"] = gdf["cluster_4k"].map(cluster_labels)
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_status"] = "No data available"
-
+ 
 # cluster code for shared trace
 gdf["cluster_code"] = gdf["cluster_4k"]
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_code"] = -1
-
+ 
 # build geojson
 gdf = gdf.reset_index(drop=True)
 geojson = json.loads(gdf.to_json())
-
+ 
 # map center
 min_lon, min_lat, max_lon, max_lat = gdf.total_bounds
 center_lon = (min_lon + max_lon) / 2
 center_lat = (min_lat + max_lat) / 2
-
+ 
 # assumed window width
 ASSUMED_WINDOW_WIDTH_PX = 1400
-
+ 
 # must match st.columns([...]) ratio below !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 MAP_COLUMN_RATIO = 3 / 5
-
+ 
 TARGET_WIDTH_PX = ASSUMED_WINDOW_WIDTH_PX * MAP_COLUMN_RATIO
-
+ 
 # map sizing
 MAP_HEIGHT_PX = calculate_matching_height(
     min_lon, max_lon, min_lat, max_lat,
     width_px=TARGET_WIDTH_PX
 )
-
+ 
 zoom_level = calculate_zoom(
     min_lon, max_lon, min_lat, max_lat,
     width_px=TARGET_WIDTH_PX,
     height_px=MAP_HEIGHT_PX,
     padding_factor=0.97
 )
-
+ 
 # cluster colorscale
 colorscale = [
     [0.0, "#FFFFFF"], [0.2, "#FFFFFF"],   # No data available
@@ -196,11 +216,11 @@ colorscale = [
     [0.6, "#737373"], [0.8, "#737373"],   # Disadvantaged outskirts (cluster 2)
     [0.8, "#EE4B2B"], [1.0, "#EE4B2B"],   # City ring (cluster 3)
 ]
-
+ 
 # init selected PLR
 if "selected_plr_id" not in st.session_state:
     st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
-
+ 
 # ms status text (uncached, always current)
 def compute_ms_status(ms_column, threshold_pct):
     status = pd.Series(
@@ -210,8 +230,8 @@ def compute_ms_status(ms_column, threshold_pct):
     status[gdf[ms_column] == 1] = f"Proportion of milieu protected area more than {threshold_pct}% of PLR"
     status[gdf[ms_column].isna()] = "No data available"
     return status
-
-
+ 
+ 
 # build cluster map (cached per threshold)
 @st.cache_data(show_spinner=False)
 def build_cluster_map(ms_column, threshold_pct):
@@ -280,8 +300,8 @@ def build_cluster_map(ms_column, threshold_pct):
 SIMILARITY_COLORSCALE = [
     [0.000, "#FFFFFF"],
     [0.333, "#FFFFFF"],   # no data band ends
-    [0.334, "#B8B8B8"],
-    [0.666, "#B8B8B8"],   # base/protected band ends
+    [0.334, "#8a8a8a"],
+    [0.666, "#8a8a8a"],   # base/protected band ends
     [0.667, "#FFFFFF"],   # watchlist gradient starts (resemblance 0)
     [0.833, "#EE4B2B"],   # resemblance 0.5
     [1.000, "#8B0000"],   # resemblance 1
@@ -290,7 +310,7 @@ SIMILARITY_COLORSCALE = [
  
 # build similarity map with single trace like the cluster map 
 @st.cache_data(show_spinner=False)
-def build_similarity_map():
+def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
     local = gdf[["plr_id", "plr_name", "ms_over50", "on_watchlist", "oof_prob"]].merge(
         watchlist_df[["plr_id", "rank"]], on="plr_id", how="left"
     )
@@ -307,7 +327,7 @@ def build_similarity_map():
     # border: black = protected, grey = no data, white = regular
     line_widths = np.select(
         [local["ms_over50"] == 1, local["ms_over50"].isna()],
-        [2.0, 0.4],
+        [0.3, 0.4],
         default=0.3,
     )
     line_colors = np.select(
@@ -329,14 +349,14 @@ def build_similarity_map():
     customdata["status"] = status
  
     fig_similarity = go.Figure(
-        go.Choroplethmapbox(
+        go.Choroplethmap(
             geojson=geojson,
             locations=local["plr_id"],
             z=z,
             zmin=-1,
             zmax=2,
             featureidkey="properties.plr_id",
-            colorscale=SIMILARITY_COLORSCALE,
+            colorscale=colorscale,
             showscale=False,
             marker_opacity=0.85,
             marker_line_width=line_widths,
@@ -353,8 +373,8 @@ def build_similarity_map():
  
     # layout
     fig_similarity.update_layout(
-        mapbox_style=grey_map_style,
-        mapbox=dict(
+        map_style=grey_map_style,
+        map=dict(
             center={"lat": center_lat, "lon": center_lon},
             zoom=zoom_level,
             bearing=0,
@@ -371,18 +391,15 @@ def build_similarity_map():
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #++++++++++++ SHOW MAPS +++++++++++++++++++++++++++++++++++++++++
 
-# sidebar controls
-with st.container(key="white_container_upper", border=True):
-    st.markdown("##### Welcome to KiezKeeper.")
-    st.markdown("KiezKeeper was developed to detect gentrificaiton in Berlin. On the sidebar, you have the option to choose between the cluster outcome and the similarity score. BLABLABLA")
-    map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Watchlist"], horizontal=True)
-    if map_status == "Gentrification Profiles":
-        ms_proportion = st.sidebar.radio(
-            label="% of total area of PLR designated for milieu protection:", 
-            options=["more than 50%", "more than 60%", "more than 70%", "more than 80%", "more than 90%"]
-        )
-    else:
-        ms_proportion = "more than 50%"  # default, unused for similarity map
+# choice for maps
+map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Watchlist"], horizontal=True)
+if map_status == "Gentrification Profiles":
+    ms_proportion = st.sidebar.radio(
+        label="% of total area of PLR designated for milieu protection:", 
+        options=["more than 50%", "more than 60%", "more than 70%", "more than 80%", "more than 90%"]
+    )
+else:
+    ms_proportion = "more than 50%"  # default, unused for similarity map
 
 # translate threshold selection
 ms_threshold_columns = {
@@ -400,7 +417,7 @@ gdf["ms_status"] = compute_ms_status(ms_column, threshold_pct)
 
 # build maps
 fig_map = build_cluster_map(ms_column, threshold_pct)
-fig_similarity = build_similarity_map()
+fig_similarity = build_similarity_map(SIMILARITY_COLORSCALE)
 
 # show maps
 left_col, right_col = st.columns([3, 2], gap="small")
@@ -456,14 +473,14 @@ with left_col:
                 key="similarity_map"
             )
 
-            st.write(map_second_event)
+            #st.write(map_second_event)     # this is to check the return in case of bugs ;)
 
             # legend
             st.markdown(
                 """
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
                 <span><span style="display:inline-block;width:15px;height:15px;background:linear-gradient(90deg,#FFFFFF,#EE4B2B,#8B0000);border-radius:2px;"></span> On watchlist (shaded by similarity score)</span>
-                <span><span style="display:inline-block;width:15px;height:15px;background:#e8e8e8;border-radius:2px;"></span> Not on watchlist</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#cccccc;border-radius:2px;"></span> Not on watchlist</span>
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
                 <span><span style="display:inline-block;width:15px;height:15px;background:#ffffff;border:1px solid #999;border-radius:2px;"></span> No data</span>
@@ -609,7 +626,7 @@ with right_col:
         with st.container(key="short_profile_textbox", border=False, height=MAP_HEIGHT_PX):
             st.markdown(
                 f"""
-                <div style="display:grid; grid-template-columns:auto 1fr; column-gap:11px; row-gap:8px;">
+                <div style="display:grid; grid-template-columns:auto 1fr; column-gap:11px; row-gap:7px;">
                     {rows_html}
                 </div>
                 """,
