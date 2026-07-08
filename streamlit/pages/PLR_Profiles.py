@@ -23,6 +23,7 @@ st.markdown("***")
 
 # set style for containers
 css = """
+.st-key-white_container_selection,
 .st-key-white_container_profile{
     background: rgba(255, 255, 255);
 }
@@ -43,7 +44,7 @@ df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 # group plrs by bez:
 grouped_by_bez = df_final.groupby("bez")
 
-with st.container(key="white_container_profile", border=True):
+with st.container(key="white_container_selection", border=True):
         st.subheader("Profile of Planning Area (PLR)")
         selected_bez = st.selectbox(
             label="Select a District",
@@ -64,8 +65,19 @@ with st.container(key="white_container_profile", border=True):
         )
 
 ############################################################
-########### PROFILE PLOTS ##################################
+########### PROFILE TEXT ##################################
 
+with st.container(key="white_container_profile", border=True):
+        with st.container(key="profile_textbox", border=False):
+                st.markdown(f"#### Profile for {selected_plr_id}")
+
+
+
+
+
+
+############################################################
+########### PROFILE PLOTS ##################################
 
 
 

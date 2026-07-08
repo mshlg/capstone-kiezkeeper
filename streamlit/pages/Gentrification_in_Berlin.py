@@ -503,6 +503,8 @@ with left_col:
                 key="similarity_map"
             )
 
+            st.write(map_second_event)
+
             # legend
             st.markdown(
                 """
@@ -578,23 +580,23 @@ with right_col:
             " \n - 13% of PLRs majority-protected by Milieuschutz")
         
         cluster_profile_3 = (
-            "_City belt: The high-value inner city where gentrification is already advanced_" \
-            "\n\n - Highest rents, land values and Airbnb density; steepest rent increase"
-            "\n\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
-            " \n\n - 13% of PLRs majority-protected by Milieuschutz")
+            "City belt: The actively transforming inner city — gentrification in progress"
+            "\n - Highest share of buildings built before 1919, high land value and Airbnb density, strong rent increase"
+            "\n - Youngest residents, smallest households; active churn (elevated exit rate, strong gastronomy"
+            "\n - 63% of PLRs majority-protected — by far the most protected cluster")
         
         cluster_profile_2 = (
-            "_Disadvantaged outskirts: The high-value inner city where gentrification is already advanced_" \
-            "\n\n - Highest rents, land values and Airbnb density; steepest rent increase"
-            "\n\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
-            " \n\n - 13% of PLRs majority-protected by Milieuschutz")
+            "Disadvantaged outskirts: Socially strained periphery, little upgrading pressure"
+            "\n - Lowest rents and land values, negligible Airbnb; weakest rent growth"
+            "\n - Highest benefit dependency and single-parent share; most solo businesses, highest exit rate"
+            "\n - 5% of PLRs majority-protected — almost no coverage")
 
         cluster_profile_0 = (
-            "_Affluent outskirts: The high-value inner city where gentrification is already advanced_" \
-            "\n - Highest rents, land values and Airbnb density; steepest rent increase"
-            "\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
-            " \n - 13% of PLRs majority-protected by Milieuschutz")        
-        
+            "Affluent outskirts: Settled, prosperous, family-oriented periphery — not gentrifying"
+            "\n - Land values and rents below city average; lowest young-adult share"
+            "\n - Lowest benefit dependency, largest households, oldest businesses, most newer buildings"
+            "\n - 0% of PLRs protected — displacement not a policy concern")
+       
         if not matching_final_rows.empty:
             if cluster_status == "City core":
                 cluster_profile = cluster_profile_1
