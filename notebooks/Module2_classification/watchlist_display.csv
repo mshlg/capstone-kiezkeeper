@@ -1,0 +1,26 @@
+rank,oof_prob,plr_id,plr_name,bez,nearest_designated,nearest_designated_bez
+1,0.9991092085838318,1401044,Uferstraße,01 - Mitte,Westliche Müllerstraße,01 - Mitte
+2,0.9976006150245668,1300731,Koloniestraße,01 - Mitte,Leopoldplatz,01 - Mitte
+3,0.9959756731987,1100416,Arkonaplatz,01 - Mitte,Teutoburger Platz,03 - Pankow
+4,0.9925047159194946,7100206,Großgörschenstraße,07 - Tempelhof-Schöneberg,Richard-Sorge-Viertel,02 - Friedrichshain-Kreuzberg
+5,0.986148238182068,1200623,Stephankiez,01 - Mitte,Richard-Sorge-Viertel,02 - Friedrichshain-Kreuzberg
+6,0.9859592318534852,1401049,Schulstraße,01 - Mitte,Drontheimer Straße,01 - Mitte
+7,0.9846000075340272,4501147,Leon-Jessel-Platz,04 - Charlottenburg-Wilmersdorf,Bayerischer Platz,07 - Tempelhof-Schöneberg
+8,0.9840062260627748,1300836,Humboldthain Nordwest,01 - Mitte,Körnerpark,08 - Neukölln
+9,0.9832627773284912,1200522,Elberfelder Straße,01 - Mitte,Feuerbachstraße,06 - Steglitz-Zehlendorf
+10,0.979387104511261,1200628,Lüneburger Straße,01 - Mitte,Köpenicker Straße,02 - Friedrichshain-Kreuzberg
+11,0.9774777889251708,9200511,Griechischer Park,09 - Treptow-Köpenick,Letteplatz,12 - Reinickendorf
+12,0.976186990737915,1300834,Brunnenstraße,01 - Mitte,Rollberg,08 - Neukölln
+13,0.975650429725647,2200211,Chamissokiez,02 - Friedrichshain-Kreuzberg,Wrangelkiez,02 - Friedrichshain-Kreuzberg
+14,0.963522732257843,3601142,Falkplatz,03 - Pankow,Urbanstraße,02 - Friedrichshain-Kreuzberg
+15,0.9160007238388062,7300619,Grazer Platz,07 - Tempelhof-Schöneberg,Friedrich-Karl-Straße,07 - Tempelhof-Schöneberg
+16,0.9099525809288024,1100309,Oranienburger Straße,01 - Mitte,Teutoburger Platz,03 - Pankow
+17,0.8952305316925049,9100101,Alt-Treptow,09 - Treptow-Köpenick,Viktoriapark,02 - Friedrichshain-Kreuzberg
+18,0.8939265012741089,8100102,Schillerpromenade Nord,08 - Neukölln,Flughafenstraße,08 - Neukölln
+19,0.8917918801307678,1400937,Afrikanische Straße,01 - Mitte,Bremer Straße,01 - Mitte
+20,0.8714181184768677,7200414,Hohenfriedbergstraße,07 - Tempelhof-Schöneberg,Friedrich-Karl-Straße,07 - Tempelhof-Schöneberg
+21,0.8710215091705322,4300414,Schloßstraße,04 - Charlottenburg-Wilmersdorf,Richard-Wagner-Straße,04 - Charlottenburg-Wilmersdorf
+22,0.8628243803977966,4300416,Amtsgerichtsplatz,04 - Charlottenburg-Wilmersdorf,Richard-Wagner-Straße,04 - Charlottenburg-Wilmersdorf
+23,0.8389071226119995,1400938,Kameruner Straße,01 - Mitte,Westliche Müllerstraße,01 - Mitte
+24,0.8249589204788208,12100102,Hausotterplatz,12 - Reinickendorf,Letteplatz,12 - Reinickendorf
+25,0.8236569762229919,4501150,Wilhelmsaue,04 - Charlottenburg-Wilmersdorf,Richard-Wagner-Straße,04 - Charlottenburg-Wilmersdorf
