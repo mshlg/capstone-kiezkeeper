@@ -29,12 +29,24 @@ css = """
 .st-key-white_container_profile{
     background: rgba(255, 255, 255);
 }
-.st-key-short_profile_textbox,
+.st-key-short_profile_textbox{
+    background: rgba(245, 244, 244);
+    padding: 16px;
+}
+div[data-testid="stHorizontalBlock"]:has(.st-key-left_profile_textbox) {
+    align-items: stretch;
+}
+div[data-testid="stHorizontalBlock"]:has(.st-key-left_profile_textbox) [data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.st-key-left_profile_textbox) [data-testid="stElementContainer"],
+div[data-testid="stHorizontalBlock"]:has(.st-key-left_profile_textbox) [data-testid="stLayoutWrapper"] {
+    height: 100%;
+}
 .st-key-left_profile_textbox,
-.st-key-middle_profile_textbox,
 .st-key-right_profile_textbox{
     background: rgba(245, 244, 244);
     padding: 16px;
+    height: 100% !important;
+    box-sizing: border-box;
 }
 """
 st.html(f"<style>{css}</style>")
@@ -135,7 +147,7 @@ gdf = plr_geo.merge(
 # cluster labels
 cluster_labels = {
     1: "City core",
-    3: "City ring",
+    3: "City belt",
     2: "Disadvantaged outskirts",
     0: "Affluent outskirts",
 }
@@ -466,7 +478,7 @@ with left_col:
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
                 <span><span style="display:inline-block;width:15px;height:15px;background:#8B0000;border-radius:2px;"></span> City core</span>
                 <span><span style="display:inline-block;width:15px;height:15px;background:#EE4B2B;border-radius:2px;"></span> City belt</span>
-                <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadv. outskirts</span>
+                <span><span style="display:inline-block;width:15px;height:15px;background:#737373;border-radius:2px;"></span> Disadvantaged outskirts</span>
                 <span><span style="display:inline-block;width:15px;height:15px;background:#B8B8B8;border-radius:2px;"></span> Affluent outskirts</span>
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.9rem; margin-top:8px;">
@@ -557,9 +569,44 @@ with right_col:
             res_count = "No data available"
 
         cluster_status = selected_row["cluster_status"]
-        cluster_profile = "This is an explanation of a cluster profile"
         ms_status = selected_row["ms_status"]
+    
+        cluster_profile_1 = (
+            "City core: The high-value inner city where gentrification is already advanced"
+            "\n - Highest rents, land values and Airbnb density; steepest rent increase"
+            "\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
+            " \n - 13% of PLRs majority-protected by Milieuschutz")
+        
+        cluster_profile_3 = (
+            "_City belt: The high-value inner city where gentrification is already advanced_" \
+            "\n\n - Highest rents, land values and Airbnb density; steepest rent increase"
+            "\n\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
+            " \n\n - 13% of PLRs majority-protected by Milieuschutz")
+        
+        cluster_profile_2 = (
+            "_Disadvantaged outskirts: The high-value inner city where gentrification is already advanced_" \
+            "\n\n - Highest rents, land values and Airbnb density; steepest rent increase"
+            "\n\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
+            " \n\n - 13% of PLRs majority-protected by Milieuschutz")
 
+        cluster_profile_0 = (
+            "_Affluent outskirts: The high-value inner city where gentrification is already advanced_" \
+            "\n - Highest rents, land values and Airbnb density; steepest rent increase"
+            "\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
+            " \n - 13% of PLRs majority-protected by Milieuschutz")        
+        
+        if not matching_final_rows.empty:
+            if cluster_status == "City core":
+                cluster_profile = cluster_profile_1
+            elif cluster_status == "City belt":
+                cluster_profile = cluster_profile_3
+            elif cluster_status == "Disadvantaged outskirts":
+                cluster_profile = cluster_profile_2
+            else:
+                cluster_profile = cluster_profile_0
+        else:
+            cluster_profile = "No data available"
+        
         if not matching_final_rows.empty:
 
             if selected_row_from_final["ms_over50"] == 0:
@@ -590,7 +637,6 @@ with right_col:
             "Resident count": res_count,
             "Milieu protection status": ms_status,
             "Gentrification profile": cluster_status,
-            "Profile details": cluster_profile,
             "Similarity score": similarity_score,
             "% of milieu protection": proportion_milieu,
             "Watchlist status": watchlist,
@@ -605,15 +651,18 @@ with right_col:
         st.markdown(body="*- Please click on a planning area in the map -*", text_alignment="center")
 
         # profile text box
-        with st.container(key="short_profile_textbox", border=False):
-            st.markdown("")
+        with st.container(key="short_profile_textbox", border=False, height=MAP_HEIGHT_PX):
             st.markdown(
                 f"""
-                <div style="display:grid; grid-template-columns:auto 1fr; column-gap:12px; row-gap:12px;">
+                <div style="display:grid; grid-template-columns:auto 1fr; column-gap:11px; row-gap:8px;">
                     {rows_html}
                 </div>
                 """,
                 unsafe_allow_html=True,
+            )
+            st.markdown("")
+            st.markdown(
+                f"**Profile description** \n\n {cluster_profile}"
             )
 
         if st.button(label="↓ Show more", type="primary"):
@@ -752,10 +801,11 @@ selected_vars_raw = {
 }
 
 # font sizes
-dimension_fontsize = 14
-var_title_fontsize = 11
+dimension_fontsize = 16
+var_title_fontsize = 16
 suptitle_fontsize = 20
 legend_fontsize = 14
+y_label_fontsize = 14
 
 dims = ["re", "soc", "com"]
 
@@ -784,7 +834,7 @@ def build_profile_figure(row):
             ax.set_xticks([0])
             ax.set_xticklabels([""])
             ax.set_xlim(-0.5, 0.5)
-            ax.set_ylabel(var_raw)
+            ax.set_ylabel(var_raw, fontsize=y_label_fontsize)
 
             if row_idx == 0:
                 ax.text(0.5, 1.28, f"Dimension: {dimension_labels[dim]}",
@@ -813,9 +863,9 @@ def build_profile_figure(row):
 
 # profile container
 if st.session_state.show_profile:
-    with st.container(key="white_container_profile", border=True):
-        st.markdown(f"#### Profile of Planning Area: {PLR}")
-        st.markdown(f"**PLR ID**: {plr_id}")
+    with st.container(key="white_container_profile", border=True, height="content"):
+        st.markdown(f"#### Key Indicators by Dimension for PLR: {PLR}", text_alignment="center")
+        #st.markdown(f"**PLR ID**: {plr_id}")
 
         matching_plot_rows = plot_table.loc[plot_table["plr_id"] == st.session_state.selected_plr_id]
 
@@ -826,7 +876,12 @@ if st.session_state.show_profile:
             bez_name = row["bez"]
             plr_name_for_plot = row.get("plr_name", st.session_state.selected_plr_id)
 
-            bottom_left_col, bottom_right_col = st.columns([1, 2], gap="small")
+            bottom_left_col, bottom_right_col = st.columns([1.5, 2.5], gap="small")
+
+            # calculate height of figure to match container to
+            # PROFILE_PLOT_WIDTH_PX = 1200
+            # PROFILE_FIG_ASPECT_RATIO = (4.5 * 2) / (4.2 * 3)
+            # PROFILE_BOX_HEIGHT_PX = int(PROFILE_PLOT_WIDTH_PX * PROFILE_FIG_ASPECT_RATIO)
 
             with bottom_left_col:
                 with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
@@ -834,6 +889,5 @@ if st.session_state.show_profile:
 
             with bottom_right_col:
                 with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
-                    st.markdown("##### Commercial Dimension", text_alignment="center")
                     fig_profile = build_profile_figure(row)
-                    st.pyplot(fig_profile)
+                    st.pyplot(fig_profile, width=1200)
