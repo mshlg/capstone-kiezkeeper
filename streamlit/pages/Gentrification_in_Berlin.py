@@ -1,17 +1,15 @@
 ##################################################
-#### PREREQUISITES###############################
+#### PREREQUISITES ###############################
 
 # load libraries
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.graph_objects as go
 import geopandas as gpd
 import json
 import numpy as np
 import re
-import io
 
 # page config
 st.set_page_config(layout="wide")
@@ -55,7 +53,7 @@ st.html(f"<style>{css}</style>")
 ###########################################################
 ######### INTRODUCTION CONTAINER #########################
 
-# introduction container
+# intro container
 with st.container(key="white_container_upper", border=True):
     st.markdown("#### Welcome to KiezKeeper.")
     with st.container(key="upper_intro_textbox", border=False):
@@ -63,7 +61,7 @@ with st.container(key="white_container_upper", border=True):
         st.markdown("KiezKeeper groups all of Berlin's neighbourhoods into four profiles: City core, City belt, Disadvantaged outskirts and Affluent outskirts. "
                     "These profiles are based on similarities across three dimensions of neighbourhood change: real estate, social structure and commercial structure. "
                     "The profiles are identified from the data itself rather than defined in advance, "
-                    "and can be read as different stages along the path of neighbourhood change.", text_alignment="justify") 
+                    "and can be read as different stages along the path of neighbourhood change.", text_alignment="justify")
         st.markdown("##### Watchlist")
         st.markdown("Within neighbourhoods that do not currently have milieu protection, KiezKeeper compares each area with those already designated by Berlin "
                     "and measures how closely their profiles match. The areas that most closely resemble the existing milieu protection pattern form the watchlist: "
@@ -173,41 +171,41 @@ cluster_labels = {
 }
 gdf["cluster_status"] = gdf["cluster_4k"].map(cluster_labels)
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_status"] = "No data available"
- 
+
 # cluster code for shared trace
 gdf["cluster_code"] = gdf["cluster_4k"]
 gdf.loc[gdf["cluster_4k"].isna(), "cluster_code"] = -1
- 
+
 # build geojson
 gdf = gdf.reset_index(drop=True)
 geojson = json.loads(gdf.to_json())
- 
+
 # map center
 min_lon, min_lat, max_lon, max_lat = gdf.total_bounds
 center_lon = (min_lon + max_lon) / 2
 center_lat = (min_lat + max_lat) / 2
- 
+
 # assumed window width
 ASSUMED_WINDOW_WIDTH_PX = 1400
- 
+
 # must match st.columns([...]) ratio below !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 MAP_COLUMN_RATIO = 3 / 5
- 
+
 TARGET_WIDTH_PX = ASSUMED_WINDOW_WIDTH_PX * MAP_COLUMN_RATIO
- 
+
 # map sizing
 MAP_HEIGHT_PX = calculate_matching_height(
     min_lon, max_lon, min_lat, max_lat,
     width_px=TARGET_WIDTH_PX
 )
- 
+
 zoom_level = calculate_zoom(
     min_lon, max_lon, min_lat, max_lat,
     width_px=TARGET_WIDTH_PX,
     height_px=MAP_HEIGHT_PX,
     padding_factor=0.97
 )
- 
+
 # cluster colorscale
 colorscale = [
     [0.0, "#FFFFFF"], [0.2, "#FFFFFF"],   # No data available
@@ -216,12 +214,12 @@ colorscale = [
     [0.6, "#737373"], [0.8, "#737373"],   # Disadvantaged outskirts (cluster 2)
     [0.8, "#EE4B2B"], [1.0, "#EE4B2B"],   # City ring (cluster 3)
 ]
- 
+
 # init selected PLR
 if "selected_plr_id" not in st.session_state:
     st.session_state.selected_plr_id = gdf["plr_id"].iloc[0]
- 
-# ms status text (uncached, always current)
+
+# ms status text, uncached so it's always current
 def compute_ms_status(ms_column, threshold_pct):
     status = pd.Series(
         f"Proportion of milieu protected area less than {threshold_pct}% of PLR",
@@ -230,13 +228,13 @@ def compute_ms_status(ms_column, threshold_pct):
     status[gdf[ms_column] == 1] = f"Proportion of milieu protected area more than {threshold_pct}% of PLR"
     status[gdf[ms_column].isna()] = "No data available"
     return status
- 
- 
+
+
 # build cluster map (cached per threshold)
 @st.cache_data(show_spinner=False)
 def build_cluster_map(ms_column, threshold_pct):
     ms_status = compute_ms_status(ms_column, threshold_pct)
- 
+
     # border: black = protected, grey = no data, white = regular
     ms_line_widths = np.select(
         [gdf[ms_column] == 1, gdf["cluster_code"] == -1],
@@ -248,10 +246,10 @@ def build_cluster_map(ms_column, threshold_pct):
         ["#000000", "#999999"],
         default="#ffffff",
     )
- 
+
     customdata = gdf[["plr_name", "plr_id", "cluster_status"]].copy()
     customdata["ms_status"] = ms_status
- 
+
     # cluster choropleth
     fig_map = go.Figure(
         go.Choroplethmap(
@@ -276,7 +274,7 @@ def build_cluster_map(ms_column, threshold_pct):
             ),
         )
     )
- 
+
     # layout
     fig_map.update_layout(
         map_style=grey_map_style,
@@ -295,8 +293,7 @@ def build_cluster_map(ms_column, threshold_pct):
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #+++++++++++ SIMILARITY MAP +++++++++++++++++++++++++++++++++++
 
-# combined colorscale: no data (white) / base+protected (grey) / watchlist gradient
-# hard steps via duplicate positions, same technique as the cluster colorscale
+# watchlist gradient colorscale, hard steps via duplicate positions
 SIMILARITY_COLORSCALE = [
     [0.000, "#FFFFFF"],
     [0.333, "#FFFFFF"],   # no data band ends
@@ -306,16 +303,16 @@ SIMILARITY_COLORSCALE = [
     [0.833, "#EE4B2B"],   # resemblance 0.5
     [1.000, "#8B0000"],   # resemblance 1
 ]
- 
- 
-# build similarity map with single trace like the cluster map 
+
+
+# build similarity map, single trace like the cluster map
 @st.cache_data(show_spinner=False)
 def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
     local = gdf[["plr_id", "plr_name", "ms_over50", "on_watchlist", "oof_prob"]].merge(
         watchlist_df[["plr_id", "rank"]], on="plr_id", how="left"
     )
     is_wl = local["on_watchlist"] == True
- 
+
     # combined z: -1 no data, 0 base/protected, [1, 2] watchlist by resemblance
     z = pd.Series(0.0, index=local.index)
     z[local["ms_over50"].isna()] = -1.0
@@ -323,7 +320,7 @@ def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
     wl_max = local.loc[is_wl, "oof_prob"].max()
     wl_range = wl_max - wl_min if wl_max > wl_min else 1.0
     z[is_wl] = 1.0 + (local.loc[is_wl, "oof_prob"] - wl_min) / wl_range
- 
+
     # border: black = protected, grey = no data, white = regular
     line_widths = np.select(
         [local["ms_over50"] == 1, local["ms_over50"].isna()],
@@ -335,7 +332,7 @@ def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
         ["#000000", "#999999"],
         default="#ffffff",
     )
- 
+
     # hover status text
     status = pd.Series("Not on watchlist", index=local.index)
     status[local["ms_over50"] == 1] = "Already milieu-protected"
@@ -344,10 +341,10 @@ def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
         "On watchlist -- rank " + local.loc[is_wl, "rank"].astype("Int64").astype(str)
         + ", resemblance " + local.loc[is_wl, "oof_prob"].round(2).astype(str)
     )
- 
+
     customdata = local[["plr_name", "plr_id"]].copy()
     customdata["status"] = status
- 
+
     fig_similarity = go.Figure(
         go.Choroplethmap(
             geojson=geojson,
@@ -370,7 +367,7 @@ def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
             ),
         )
     )
- 
+
     # layout
     fig_similarity.update_layout(
         map_style=grey_map_style,
@@ -391,11 +388,11 @@ def build_similarity_map(colorscale=SIMILARITY_COLORSCALE):
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #++++++++++++ SHOW MAPS +++++++++++++++++++++++++++++++++++++++++
 
-# choice for maps
+# map choice
 map_status = st.sidebar.radio("Please choose a map.", options=["Gentrification Profiles", "Watchlist"], horizontal=True)
 if map_status == "Gentrification Profiles":
     ms_proportion = st.sidebar.radio(
-        label="% of total area of PLR designated for milieu protection:", 
+        label="% of total area of PLR designated for milieu protection:",
         options=["more than 50%", "more than 60%", "more than 70%", "more than 80%", "more than 90%"]
     )
 else:
@@ -473,8 +470,6 @@ with left_col:
                 key="similarity_map"
             )
 
-            #st.write(map_second_event)     # this is to check the return in case of bugs ;)
-
             # legend
             st.markdown(
                 """
@@ -502,7 +497,7 @@ if active_event and active_event["selection"]["points"]:
 ################################################################
 ##################### SHORT PROFILE #############################
 
-# load short profile data
+# load short profile data, already has all plr/bez/berlin aggregates precomputed
 plot_df = pd.read_csv("data/plot_df.csv", dtype={"plr_id": str})
 # watchlist_df already loaded above (load_watchlist())
 
@@ -535,26 +530,26 @@ with right_col:
 
         if not matching_plot_df_rows.empty:
             selected_row_from_plot_df = matching_plot_df_rows.iloc[0]
-            res_count = selected_row_from_plot_df["res_count"]
-            res_count = int(res_count)
+            res_count = int(selected_row_from_plot_df["res_count"])
         else:
             res_count = "No data available"
 
         cluster_status = selected_row["cluster_status"]
         ms_status = selected_row["ms_status"]
-    
+
+        # hardcoded cluster descriptions, one per profile
         cluster_profile_1 = (
             "City core: The high-value inner city where gentrification is already advanced"
             "\n - Highest rents, land values and Airbnb density; steepest rent increase"
             "\n - Most gastronomy, fewest solo businesses, lowest exit rate; low benefit dependency"
             " \n - 13% of PLRs majority-protected by Milieuschutz")
-        
+
         cluster_profile_3 = (
             "City belt: The actively transforming inner city — gentrification in progress"
             "\n - Highest share of buildings built before 1919, high land value and Airbnb density, strong rent increase"
             "\n - Youngest residents, smallest households; active churn (elevated exit rate, strong gastronomy"
             "\n - 63% of PLRs majority-protected — by far the most protected cluster")
-        
+
         cluster_profile_2 = (
             "Disadvantaged outskirts: Socially strained periphery, little upgrading pressure"
             "\n - Lowest rents and land values, negligible Airbnb; weakest rent growth"
@@ -566,7 +561,7 @@ with right_col:
             "\n - Land values and rents below city average; lowest young-adult share"
             "\n - Lowest benefit dependency, largest households, oldest businesses, most newer buildings"
             "\n - 0% of PLRs protected — displacement not a policy concern")
-       
+
         if not matching_final_rows.empty:
             if cluster_status == "City core":
                 cluster_profile = cluster_profile_1
@@ -578,16 +573,15 @@ with right_col:
                 cluster_profile = cluster_profile_0
         else:
             cluster_profile = "No data available"
-        
-        if not matching_final_rows.empty:
 
+        if not matching_final_rows.empty:
             if selected_row_from_final["ms_over50"] == 0:
                 similarity_score = round(selected_row_from_final["oof_prob"], 2)
             else:
                 similarity_score = "Proportion of milieu protected area already more than 50% of PLR"
 
             proportion_milieu = f'{round(selected_row_from_final["ms_portion"] * 100, 1)}%'
-            watchlist = "Yes" if bool(selected_row_from_final["on_watchlist"]) else "No"
+            watchlist = "On watchlist" if bool(selected_row_from_final["on_watchlist"]) else "Not on watchlist"
         else:
             similarity_score = "No data available"
             proportion_milieu = "No data available"
@@ -608,9 +602,9 @@ with right_col:
             "District": bez,
             "Resident count": res_count,
             "Milieu protection status": ms_status,
+            "% of milieu protection": proportion_milieu,
             "Gentrification profile": cluster_status,
             "Similarity score": similarity_score,
-            "% of milieu protection": proportion_milieu,
             "Watchlist status": watchlist,
             "Watchlist rank": watchlist_rank
         }
@@ -633,9 +627,7 @@ with right_col:
                 unsafe_allow_html=True,
             )
             st.markdown("")
-            st.markdown(
-                f"**Profile description** \n\n {cluster_profile}"
-            )
+            st.markdown(f"**Profile description** \n\n {cluster_profile}")
 
         if st.button(label="↓ Show more", type="primary"):
             st.session_state.show_profile = not st.session_state.show_profile
@@ -643,115 +635,23 @@ with right_col:
 ###############################################################################
 #################### PLOTS PLR ##############################################
 
-# profile table setup
-id_vars = ['plr_id', 'plr_name', 'bez']
-
-vars_keep = [
-    "re_miete_niveau", #rent level, 2025
-    "re_miete_trend", #rent trend, 2021-2025
-    "re_altbau_share", #pre-war building share, 2022
-    "re_dichte_all", #airbnb density, 2025
-    "re_brw_niveau", #land value, 2022
-    "soc_single_parent_household_share_2024", #single parent hh share, 2024
-    "soc_transfer_benefit_share_2024", #transfer benefit share, 2024
-    "soc_young_to_middle_adult_share_2025", #younger adult (18-45) share, 2025
-    "soc_average_household_size_2024", #household size, 2024
-    "com_exit_rate_level_2026", #business exit rate, 2026
-    "com_upscale_share_level_2026", #share of upscale gastro, 2026
-    "com_share_solo_level_2026", #share solo businesses, 2026
-    "com_gastro_share_level_2026", #gastro establishments, 2026
-    "com_n_gastro" #gastro count, 2026
-]
-
-# labels
-labels = {
-    "re_miete_niveau": "Rent level (€/m²)",
-    "re_miete_trend": "Rent trend",
-    "re_altbau_share": "Share of buildings built before 1919",
-    "re_dichte_all": "AirBnB density (per 1000 Apts.)",
-    "re_brw_niveau": "Land value (€/m²)",
-    "soc_single_parent_household_share_2024": "Share of single-parent households",
-    "soc_transfer_benefit_share_2024": "Share of benefit recipients",
-    "soc_young_to_middle_adult_share_2025": "Share of younger adults",
-    "soc_average_household_size_2024": "Average household size",
-    "com_exit_rate_level_2026": "Business exit rate",
-    "com_upscale_share_level_2026": "Share of upscale gastronomy",
-    "com_share_solo_level_2026": "Share of solo businesses",
-    "com_gastro_share_level_2026": "Share of gastronomy businesses",
-    "com_n_gastro": "Number of gastro establishments"
+# display label -> reference year, used for chart annotations
+years_by_label = {
+    "Rent level (€/m²)": "2025",
+    "Rent trend": "2021-2025",
+    "Share of buildings built before 1919": "2022",
+    "AirBnB density (per 1000 Apts.)": "2025",
+    "Land value (€/m²)": "2022",
+    "Share of single-parent households": "2024",
+    "Share of benefit recipients": "2024",
+    "Share of younger adults": "2025",
+    "Average household size": "2024",
+    "Business exit rate": "2026",
+    "Share of upscale gastronomy": "2026",
+    "Share of solo businesses": "2026",
+    "Share of gastronomy businesses": "2026",
+    "Number of gastro establishments": "2026",
 }
-
-# reference years
-years_by_tech = {
-    "re_miete_niveau": "2025",
-    "re_miete_trend": "2021-2025",
-    "re_altbau_share": "2022",
-    "re_dichte_all": "2025",
-    "re_brw_niveau": "2022",
-    "soc_single_parent_household_share_2024": "2024",
-    "soc_transfer_benefit_share_2024": "2024",
-    "soc_young_to_middle_adult_share_2025": "2025",
-    "soc_average_household_size_2024": "2024",
-    "com_exit_rate_level_2026": "2026",
-    "com_upscale_share_level_2026": "2026",
-    "com_share_solo_level_2026": "2026",
-    "com_gastro_share_level_2026": "2026",
-    "com_n_gastro": "2026",
-}
-
-years_by_label = {labels[tech]: year for tech, year in years_by_tech.items()}
-
-# plr/district/berlin tables
-plr_table = df_final[id_vars + vars_keep].rename(columns = labels)
-
-bez_table = (
-    df_final.groupby("bez", as_index=False)[vars_keep]
-      .mean().rename(columns = labels)
-)
-
-vars_plot = list(labels.values())
-
-berlin_table = pd.DataFrame({
-    "Variable": vars_plot,
-    "Median": df_final[vars_keep].median().values,
-    "SD": df_final[vars_keep].std().values,
-    "Q1": df_final[vars_keep].quantile(0.25).values,
-    "Q3": df_final[vars_keep].quantile(0.75).values,
-})
-berlin_table = berlin_table.round(2)
-
-# sanitize column names
-plr_table.columns = (
-    plr_table.columns
-    .str.replace(" ", "_", regex=False)
-    .str.replace("/", "_", regex=False)
-    .str.replace(r"_+", "_", regex=True)
-)
-
-vars_plot = [c for c in plr_table.columns if c not in ["plr_id", "plr_name", "bez"]]
-
-# district aggregates
-bez_mean   = plr_table.groupby("bez")[vars_plot].mean().add_suffix("_bez_mean")
-bez_median = plr_table.groupby("bez")[vars_plot].median().add_suffix("_bez_median")
-bez_sd     = plr_table.groupby("bez")[vars_plot].std().add_suffix("_bez_sd")
-bez_q1     = plr_table.groupby("bez")[vars_plot].quantile(0.25).add_suffix("_bez_q1")
-bez_q3     = plr_table.groupby("bez")[vars_plot].quantile(0.75).add_suffix("_bez_q3")
-
-bez_agg = pd.concat([bez_mean, bez_median, bez_sd, bez_q1, bez_q3], axis=1).reset_index()
-
-plot_table = plr_table.merge(bez_agg, on="bez", how="left")
-
-# berlin aggregates
-berlin_cols = {}
-for var in vars_plot:
-    berlin_cols[f"{var}_berlin_mean"]   = plot_table[var].mean()
-    berlin_cols[f"{var}_berlin_median"] = plot_table[var].median()
-    berlin_cols[f"{var}_berlin_sd"]     = plot_table[var].std()
-    berlin_cols[f"{var}_berlin_q1"]     = plot_table[var].quantile(0.25)
-    berlin_cols[f"{var}_berlin_q3"]     = plot_table[var].quantile(0.75)
-
-berlin_df = pd.DataFrame([berlin_cols] * len(plot_table), index=plot_table.index)
-plot_table = pd.concat([plot_table, berlin_df], axis=1).copy()
 
 # dimension colors/labels
 dimension_colors = {
@@ -775,13 +675,12 @@ selected_vars_raw = {
 # font sizes
 dimension_fontsize = 16
 var_title_fontsize = 16
-suptitle_fontsize = 20
 legend_fontsize = 14
 y_label_fontsize = 14
 
 dims = ["re", "soc", "com"]
 
-# build profile figure
+# build profile figure -- uses plot_df directly, it already has every plr/bez/berlin aggregate
 def build_profile_figure(row):
     fig_profile, axes = plt.subplots(2, 3, figsize=(4.2 * 3, 4.5 * 2))
 
@@ -837,9 +736,8 @@ def build_profile_figure(row):
 if st.session_state.show_profile:
     with st.container(key="white_container_profile", border=True, height="content"):
         st.markdown(f"#### Key Indicators by Dimension for PLR: {PLR}", text_alignment="center")
-        #st.markdown(f"**PLR ID**: {plr_id}")
 
-        matching_plot_rows = plot_table.loc[plot_table["plr_id"] == st.session_state.selected_plr_id]
+        matching_plot_rows = plot_df.loc[plot_df["plr_id"] == st.session_state.selected_plr_id]
 
         if matching_plot_rows.empty:
             st.info("No detailed data available for this planning area.")
@@ -848,35 +746,13 @@ if st.session_state.show_profile:
             bez_name = row["bez"]
             plr_name_for_plot = row.get("plr_name", st.session_state.selected_plr_id)
 
-            #bottom_left_col, bottom_right_col = st.columns([1.5, 2.5], gap="small")
-
-            # calculate height of figure to match container to
-            # PROFILE_PLOT_WIDTH_PX = 1200
-            # PROFILE_FIG_ASPECT_RATIO = (4.5 * 2) / (4.2 * 3)
-            # PROFILE_BOX_HEIGHT_PX = int(PROFILE_PLOT_WIDTH_PX * PROFILE_FIG_ASPECT_RATIO)
-
-            # with bottom_left_col:
-            #     with st.container(key="left_profile_textbox", border=False, horizontal_alignment="center"):
-            #         st.markdown("##### Description", text_alignment="center")
-            #         st.markdown("Each planning area (PLR) is characterised across the three dimensions — real estate, social, and commercial — "
-            #         "with every indicator shown against two reference lines: the median of its district (grey) and of Berlin as a whole (black). "
-            #         "This dual benchmark places each PLR both in its local and in its city-wide context. " 
-            #         "The variables are chosen to capture the mechanisms through which gentrification becomes visible at the neighbourhood level. " \
-            #         "In the real estate dimension, rent level (€/m²) tracks the price pressure that drives displacement, while Airbnb density (listings per 1,000 apartments) " \
-            #         "measures the withdrawal of housing from the regular market through short-term letting — an early and spatially concentrated signal of touristic upgrading. " \
-            #         "The social dimension captures displacement pressure on vulnerable residents: the share of benefit recipients and of single-parent households " \
-            #         "identify two groups that are very exposed to displacement. The commercial dimension reflects the transformation of the local economy: " \
-            #         "the business exit rate captures the turnover and closure of established businesses, and the share of upscale gastronomy indicates the " \
-            #         "commercial upgrading that typically accompanies — and reinforces — residential gentrification.", text_alignment="justify")
-
-            #with bottom_right_col:
             with st.container(key="right_profile_textbox", border=False, horizontal_alignment="center"):
                 fig_profile = build_profile_figure(row)
                 st.pyplot(fig_profile, width=1200)
                 st.markdown("##### Description", text_alignment="center")
                 st.markdown("Each planning area (PLR) is characterised across the three dimensions — real estate, social, and commercial — "
                     "with every indicator shown against two reference lines: the median of its district (grey) and of Berlin as a whole (black). "
-                    "This dual benchmark places each PLR both in its local and in its city-wide context. " 
+                    "This dual benchmark places each PLR both in its local and in its city-wide context. "
                     "The variables are chosen to capture the mechanisms through which gentrification becomes visible at the neighbourhood level. " \
                     "In the real estate dimension, rent level (€/m²) tracks the price pressure that drives displacement, while Airbnb density (listings per 1,000 apartments) " \
                     "measures the withdrawal of housing from the regular market through short-term letting — an early and spatially concentrated signal of touristic upgrading. " \
