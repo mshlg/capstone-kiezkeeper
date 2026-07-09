@@ -17,7 +17,7 @@
 base = "light"
 
 # Primary accent color.
-primaryColor = "#0f766e"
+primaryColor = "#1d5e4b"
 
 # Background color of the app.
 backgroundColor = "#f5f4f4"
