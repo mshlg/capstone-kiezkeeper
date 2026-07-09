@@ -55,7 +55,7 @@ st.html(f"<style>{css}</style>")
 
 # intro container
 with st.container(key="white_container_upper", border=True):
-    st.markdown("#### Welcome to KiezKeeper.")
+    st.markdown("#### This is KiezKeeper.")
     with st.container(key="upper_intro_textbox", border=False):
         st.markdown("##### Gentrification Profiles")
         st.markdown("KiezKeeper groups all of Berlin's neighbourhoods into four profiles: City core, City belt, Disadvantaged outskirts and Affluent outskirts. "
@@ -497,7 +497,7 @@ if active_event and active_event["selection"]["points"]:
 ################################################################
 ##################### SHORT PROFILE #############################
 
-# load short profile data, already has all plr/bez/berlin aggregates precomputed
+# load short profile data
 plot_df = pd.read_csv("data/plot_df.csv", dtype={"plr_id": str})
 # watchlist_df already loaded above (load_watchlist())
 
@@ -537,7 +537,7 @@ with right_col:
         cluster_status = selected_row["cluster_status"]
         ms_status = selected_row["ms_status"]
 
-        # hardcoded cluster descriptions, one per profile
+        # short cluster descriptions
         cluster_profile_1 = (
             "City core: The high-value inner city where gentrification is already advanced"
             "\n - Highest rents, land values and Airbnb density; steepest rent increase"
@@ -635,7 +635,7 @@ with right_col:
 ###############################################################################
 #################### PLOTS PLR ##############################################
 
-# display label -> reference year, used for chart annotations
+# display label -> reference year
 years_by_label = {
     "Rent level (€/m²)": "2025",
     "Rent trend": "2021-2025",
@@ -680,7 +680,7 @@ y_label_fontsize = 14
 
 dims = ["re", "soc", "com"]
 
-# build profile figure -- uses plot_df directly, it already has every plr/bez/berlin aggregate
+# build profile figure
 def build_profile_figure(row):
     fig_profile, axes = plt.subplots(2, 3, figsize=(4.2 * 3, 4.5 * 2))
 

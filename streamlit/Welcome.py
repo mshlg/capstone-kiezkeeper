@@ -20,7 +20,7 @@ st.logo('kiezkeeper_vector_logo.svg', size="large")
 st.title("Welcome to ...")
 st.image('kiezkeeper_vector_real_cut.svg')
 st.markdown("***")
-#with st.container(key="white_textbox", border=False):
+
 st.markdown(
     """
     <div style="font-size: 1.3rem; line-height: 1.6;">
