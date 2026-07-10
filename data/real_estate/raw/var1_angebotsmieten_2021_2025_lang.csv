@@ -1,0 +1,2711 @@
+plr_id,plr_name,jahr,median,fallzahl
+01100101,Stülerstraße,2025,22.7,44
+01100102,Großer Tiergarten,2025,20.3,67
+01100103,Lützowstraße,2025,23.0,72
+01100104,Körnerstraße,2025,26.21,43
+01100205,Wilhelmstraße,2025,26.08,77
+01100206,Unter den Linden,2025,22.34,38
+01100207,Leipziger Straße,2025,20.13,82
+01100308,Charitéviertel,2025,20.0,97
+01100309,Oranienburger Straße,2025,25.0,153
+01100310,Alexanderplatzviertel,2025,19.31,115
+01100311,Karl-Marx-Allee,2025,20.05,59
+01100312,Heine-Viertel West,2025,23.52,127
+01100313,Heine-Viertel Ost,2025,22.0,66
+01100414,Nordbahnhof,2025,20.62,116
+01100415,Invalidenstraße,2025,24.18,92
+01100416,Arkonaplatz,2025,22.81,118
+01200517,Huttenkiez,2025,15.15,46
+01200518,Beusselkiez,2025,15.71,55
+01200519,Emdener Straße,2025,18.01,70
+01200520,Bremer Straße,2025,17.0,61
+01200521,Zwinglistraße,2025,13.93,21
+01200522,Elberfelder Straße,2025,18.0,46
+01200623,Stephankiez,2025,18.0,75
+01200624,Heidestraße,2025,23.01,330
+01200625,Lübecker Straße,2025,13.33,25
+01200626,Thomasiusstraße,2025,19.48,23
+01200627,Zillesiedlung,2025,7.11,9
+01200628,Lüneburger Straße,2025,18.87,28
+01200629,Hansaviertel,2025,17.0,34
+01300730,Drontheimer Straße,2025,12.0,55
+01300731,Koloniestraße,2025,16.5,145
+01300732,Soldiner Straße,2025,15.0,51
+01300733,Gesundbrunnen,2025,16.55,52
+01300834,Brunnenstraße,2025,9.36,89
+01300835,Humboldthain Süd,2025,7.76,24
+01300836,Humboldthain Nordwest,2025,19.0,132
+01400937,Afrikanische Straße,2025,16.86,87
+01400938,Kameruner Straße,2025,15.0,58
+01400939,Glasgower Straße,2025,17.5,50
+01400940,Schillerpark,2025,9.78,88
+01400941,Londoner Straße,2025,17.5,19
+01400942,Westliche Müllerstraße,2025,14.26,64
+01401043,Antonstraße,2025,17.0,29
+01401044,Uferstraße,2025,14.55,69
+01401045,Schwedenstraße,2025,14.25,28
+01401046,Nordufer,2025,16.32,47
+01401047,Sparrplatz,2025,22.0,71
+01401048,Leopoldplatz,2025,17.01,76
+01401049,Schulstraße,2025,10.86,61
+02100101,Askanischer Platz,2025,16.5,95
+02100102,Mehringplatz,2025,8.4,70
+02100103,Am Berlin Museum,2025,12.71,22
+02100104,Moritzplatz,2025,11.2,17
+02100105,Prinzenstraße,2025,9.39,42
+02100106,Wassertorplatz,2025,7.08,6
+02200207,Gleisdreieck,2025,24.67,29
+02200208,Rathaus Yorckstraße,2025,14.29,20
+02200209,Viktoriapark,2025,22.43,40
+02200210,Urbanstraße,2025,17.99,51
+02200211,Chamissokiez,2025,15.47,68
+02200212,Graefekiez Süd,2025,17.89,26
+02200213,Graefekiez Nord,2025,21.27,47
+02300314,Oranienplatz,2025,14.04,20
+02300315,Lausitzer Platz,2025,15.0,39
+02300316,Köpenicker Straße,2025,18.89,6
+02300417,Reichenberger Straße West,2025,20.0,24
+02300418,Reichenberger Straße Ost,2025,21.31,44
+02300419,Wrangelkiez,2025,18.39,47
+02400520,Barnimkiez,2025,12.09,51
+02400521,Friedenstraße,2025,25.93,119
+02400522,Richard-Sorge-Viertel,2025,16.82,73
+02400623,Andreasviertel,2025,20.0,144
+02400624,Weberwiese,2025,21.69,51
+02400625,Wriezener Bahnhof,2025,26.0,43
+02500726,Hausburgviertel,2025,18.7,67
+02500727,Forckenbeckplatz,2025,18.0,28
+02500728,Samariterviertel,2025,17.96,76
+02500729,Pettenkofer Straße,2025,21.73,48
+02500830,Niederbarnimstraße,2025,18.5,26
+02500831,Wismarplatz,2025,15.98,40
+02500832,Traveplatz,2025,21.06,95
+02500833,Boxhagener Platz,2025,20.15,106
+02500834,Revaler Straße,2025,20.97,73
+02500835,Stralauer Kiez,2025,21.83,92
+02500836,Stralauer Halbinsel,2025,19.32,39
+03100101,Bucher Forst,2025,15.5,44
+03100102,Klinikum Buch,2025,9.78,43
+03100103,Karower Chaussee,2025,7.77,78
+03200204,Blankenfelde,2025,,
+03200205,Uhlandstraße,2025,13.7,54
+03200206,Pastor-Niemöller-Platz,2025,14.3,36
+03200207,Herthaplatz,2025,15.45,76
+03200308,Nisbléstraße,2025,13.89,42
+03200309,Eddastraße,2025,14.3,28
+03200310,Krugpfuhl,2025,14.79,67
+03300411,Karow Nord,2025,10.98,127
+03300412,Karow Bahnhof,2025,13.0,12
+03300413,Karow Ost,2025,,
+03300514,Blankenburg,2025,10.53,4
+03300515,Blankenburger Süden,2025,,
+03300516,Heinersdorf,2025,16.91,197
+03300517,Märchenland,2025,,
+03400618,Rosenthal,2025,15.41,37
+03400619,Wilhelmsruh,2025,16.92,103
+03400620,Schönholz,2025,12.73,8
+03400721,Florakiez,2025,18.0,78
+03400722,Parkstraße,2025,14.65,25
+03400723,Garbátyplatz,2025,17.72,46
+03400724,Wolfshagener Straße,2025,11.85,39
+03400725,Schlosspark,2025,19.79,34
+03400826,Tiroler Viertel,2025,19.42,22
+03400827,Trelleborger Viertel,2025,18.01,54
+03400828,Spiekermann Straße,2025,21.22,40
+03400829,Arnold-Zweig-Straße,2025,13.41,29
+03400830,Kissingenviertel,2025,12.96,21
+03400831,Pankower Tor,2025,,
+03500932,Bühringstraße,2025,16.89,96
+03500933,Weißer See,2025,18.0,62
+03500934,Weißenseer Spitze,2025,19.32,108
+03500935,Behaimstraße,2025,16.77,39
+03500936,Komponistenviertel Weißensee,2025,17.7,62
+03501037,Rathaus Weißensee,2025,14.73,51
+03501038,Hansastraße,2025,20.65,72
+03601139,Norweger Viertel,2025,21.64,42
+03601140,Malmöer Straße,2025,19.53,40
+03601141,Arnimplatz,2025,18.0,50
+03601142,Falkplatz,2025,19.99,94
+03601243,Rodenbergstraße,2025,17.96,38
+03601244,Humannplatz,2025,10.0,42
+03601245,Ostseestraße,2025,17.04,88
+03601346,Gethsemanekirche,2025,20.02,44
+03601347,Helmholtzplatz,2025,21.82,61
+03601348,Senefelderstraße,2025,18.09,47
+03601449,Michelangelostraße,2025,9.75,83
+03601450,Volkspark Prenzlauer Berg,2025,9.99,32
+03601451,Anton-Saefkow-Park,2025,16.83,56
+03601452,Velodrom,2025,24.2,69
+03601453,Alter Schlachthof,2025,20.31,28
+03701554,Teutoburger Platz,2025,20.0,70
+03701555,Sredzkistraße,2025,20.5,43
+03701556,Kollwitzplatz,2025,18.49,73
+03701657,Thälmannpark,2025,19.25,86
+03701658,Christburger Straße,2025,20.0,36
+03701659,Immanuelkirchstraße,2025,20.7,70
+03701660,Bötzowstraße,2025,18.18,62
+04100101,Jungfernheide/Plötzensee,2025,10.29,74
+04100102,Paul-Hertz-Siedlung,2025,7.61,93
+04200203,Olympiagelände,2025,12.61,3
+04200204,Angerburger Allee,2025,11.03,53
+04200205,Flatowallee,2025,17.47,12
+04200206,Kranzallee,2025,15.57,11
+04200207,Eichkamp,2025,16.67,3
+04200308,Branitzer Platz,2025,17.46,34
+04200309,Neu Westend,2025,18.0,62
+04200310,Fürstenplatz,2025,18.59,48
+04200311,Königin-Elisabeth-Straße,2025,13.68,47
+04300412,Schlossgarten,2025,20.39,100
+04300413,Klausenerplatz,2025,11.84,44
+04300414,Schloß Charlottenburg,2025,,
+04300415,Lietzensee,2025,18.5,25
+04300416,Amtsgerichtsplatz,2025,20.18,53
+04300517,Tegeler Weg,2025,21.41,53
+04300518,Kaiserin-Augusta-Allee,2025,16.49,46
+04300619,Alt-Lietzow,2025,19.71,51
+04300620,Spreestadt,2025,23.08,51
+04300621,Richard-Wagner-Straße,2025,15.0,74
+04300622,Ernst-Reuter-Platz,2025,18.43,60
+04300623,Karl-August-Platz,2025,19.0,57
+04300624,Savignyplatz,2025,19.76,49
+04400725,Güterbahnhof Grunewald,2025,,
+04400726,Bismarckallee,2025,20.0,38
+04400727,Flinsberger Platz,2025,18.75,42
+04400728,Hagenplatz,2025,18.04,22
+04400729,Hundekehle,2025,20.02,15
+04400830,Forckenbeckstraße,2025,21.15,125
+04400831,Messelpark,2025,17.99,3
+04400832,Breite Straße,2025,17.05,36
+04400833,Schlangenbader Straße,2025,9.45,77
+04400834,Binger Straße,2025,20.37,7
+04400835,Rüdesheimer Platz,2025,14.06,15
+04500936,Droysenstraße,2025,20.0,33
+04500937,Halensee,2025,18.0,50
+04500938,Hochmeisterplatz,2025,19.4,62
+04500939,Eisenzahnstraße,2025,22.73,36
+04501040,Hindemithplatz,2025,22.0,38
+04501041,George-Grosz-Platz,2025,20.01,41
+04501042,Breitscheidplatz,2025,21.34,37
+04501043,Preußenpark,2025,20.83,101
+04501044,Ludwigkirchplatz,2025,21.7,29
+04501045,Schaperstraße,2025,22.46,70
+04501146,Barstraße,2025,19.27,21
+04501147,Leon-Jessel-Platz,2025,20.0,18
+04501148,Brabanter Platz,2025,22.88,15
+04501149,Nikolsburger Platz,2025,20.0,53
+04501150,Wilhelmsaue,2025,22.54,19
+04501151,Hildegardstraße,2025,14.55,16
+04501152,Prager Platz,2025,19.13,39
+04501153,Babelsberger Straße,2025,23.67,66
+05100101,Hakenfelde Nord,2025,11.75,48
+05100102,Am Forstacker,2025,12.61,45
+05100103,Mertensstraße,2025,13.5,162
+05100104,Maselake,2025,18.75,150
+05100105,Amorbacher Weg,2025,15.0,25
+05100206,Griesingerstraße,2025,6.74,12
+05100207,An der Tränke,2025,16.01,22
+05100208,Im Spektefeld,2025,8.24,68
+05100209,Westerwaldstraße,2025,7.79,64
+05100210,Germersheimer Platz,2025,10.14,70
+05100211,An der Kappe,2025,11.6,30
+05100312,Eckschanze,2025,10.67,26
+05100313,Eiswerder,2025,19.48,125
+05100314,Kurstraße,2025,12.51,70
+05100315,Ackerstraße,2025,12.5,58
+05100316,Carl-Schurz-Straße,2025,8.76,122
+05100317,Freiheit,2025,14.01,14
+05200418,Isenburger Weg,2025,,
+05200419,Am Heideberg,2025,,
+05200420,Staakener Straße,2025,17.34,27
+05200421,Spandauer Straße,2025,10.91,15
+05200422,Werkstraße,2025,13.44,41
+05200423,Magistratsweg,2025,10.43,66
+05200524,Döberitzer Weg,2025,9.94,15
+05200525,Pillnitzer Weg,2025,11.31,36
+05200526,Rudolf-Wissell-Großsiedlung,2025,7.7,75
+05200527,Maulbeerallee,2025,7.62,132
+05200528,Weinmeisterhornweg,2025,7.33,59
+05200629,Borkumer Straße,2025,15.75,104
+05200630,Wilhelmstadt West,2025,13.79,116
+05200631,Wilhelmstadt Ost,2025,11.01,90
+05200632,Tiefwerder,2025,7.7,25
+05200633,Graetschelsteig,2025,7.33,38
+05200634,Börnicker Straße,2025,16.0,10
+05300735,Haveleck,2025,16.93,84
+05300736,Zitadellenweg,2025,9.5,34
+05300737,Gartenfelder Straße,2025,10.28,186
+05300838,Gartenfeld,2025,,
+05300839,Rohrdamm,2025,17.05,242
+05300840,Nonnendammallee,2025,8.88,9
+05300841,Siemensdamm,2025,13.06,26
+05400942,Alt-Gatow,2025,11.97,22
+05400943,Jägerallee,2025,13.37,38
+05400944,Kladower Damm,2025,19.61,5
+05400945,Kafkastraße,2025,15.32,5
+06100101,Fichtenberg,2025,15.54,32
+06100102,Schloßstraße,2025,16.36,46
+06100103,Markelstraße,2025,19.83,15
+06100204,Munsterdamm,2025,15.0,17
+06100205,Südende,2025,13.47,53
+06100206,Stadtpark,2025,14.68,33
+06100207,Mittelstraße,2025,15.47,56
+06100208,Bergstraße,2025,17.18,43
+06100209,Feuerbachstraße,2025,16.97,45
+06100210,Bismarckstraße,2025,15.0,7
+06200311,Alt-Lankwitz,2025,18.01,26
+06200312,Komponistenviertel Lankwitz,2025,14.0,28
+06200313,Lankwitz Kirche,2025,12.1,45
+06200314,Kaiser-Wilhelm-Straße,2025,9.66,76
+06200315,Gallwitzallee,2025,13.69,57
+06200316,Belßstraße,2025,12.0,37
+06200317,Lankwitz Süd,2025,13.0,32
+06200418,Landweg,2025,,
+06200419,Thermometersiedlung,2025,8.64,73
+06200420,Lichterfelde Süd,2025,11.81,49
+06200421,Königsberger Straße,2025,15.24,41
+06200422,Oberhofer Platz,2025,14.86,30
+06200423,Schütte-Lanz-Straße,2025,10.63,49
+06300524,Berlepschstraße,2025,14.66,21
+06300525,Zehlendorf Süd,2025,9.92,66
+06300526,Zehlendorf Mitte,2025,17.64,16
+06300527,Sundgauer Straße,2025,15.88,38
+06300528,Teltower Damm,2025,18.14,35
+06300629,Botanischer Garten,2025,16.77,31
+06300630,Hindenburgdamm,2025,17.07,44
+06300631,Goerzwerke,2025,12.63,24
+06300632,Schweizer Viertel,2025,18.01,71
+06300633,Augustaplatz,2025,15.17,31
+06300634,Lichterfelde West,2025,13.18,15
+06400735,Wannsee,2025,15.45,86
+06400736,Düppel,2025,13.28,16
+06400737,Nikolassee,2025,13.39,28
+06400838,Krumme Lanke,2025,12.86,9
+06400839,Fischerhüttenstraße,2025,15.28,20
+06400840,Fischtal,2025,13.0,25
+06400841,Zehlendorf Eiche,2025,18.57,27
+06400842,Hüttenweg,2025,18.5,19
+06400843,Thielallee,2025,15.92,8
+06400844,Dahlem,2025,22.0,29
+07100101,Wittenbergplatz,2025,17.86,47
+07100102,Kalckreuthstraße,2025,21.0,43
+07100103,Frobenstraße,2025,15.18,52
+07100204,Barbarossaplatz,2025,27.5,83
+07100205,Alvenslebenstraße,2025,8.84,16
+07100206,Großgörschenstraße,2025,12.5,34
+07200307,Bayerischer Platz,2025,17.02,64
+07200308,Volkspark (Rudolph-Wilde-Park),2025,16.0,47
+07200409,Belziger Straße,2025,19.25,50
+07200410,Feurigstraße,2025,9.44,15
+07200411,Julius-Leber-Brücke,2025,12.15,11
+07200412,Schöneberger Linse,2025,22.6,56
+07200413,Cheruskerstraße,2025,18.57,25
+07200414,Hohenfriedbergstraße,2025,20.58,14
+07300515,Taunusstraße,2025,15.57,30
+07300516,Odenwaldstraße,2025,16.02,24
+07300517,Perelsplatz,2025,24.49,181
+07300618,Ceciliengärten,2025,16.98,41
+07300619,Grazer Platz,2025,14.91,43
+07400720,Gontermannstraße,2025,9.56,35
+07400721,Paradestraße,2025,12.74,16
+07400822,Lindenhofsiedlung,2025,18.94,34
+07400823,Wittekindstraße,2025,9.75,41
+07400824,Bosepark,2025,16.13,22
+07400825,Friedrich-Karl-Straße,2025,17.75,51
+07400826,Marienhöhe,2025,13.72,6
+07400927,Rathaus Tempelhof,2025,11.91,38
+07400928,Germaniagarten,2025,13.51,31
+07501029,Ringstraße,2025,17.77,62
+07501030,Machonstraße,2025,18.33,48
+07501031,Eisenacher Straße,2025,14.6,31
+07501032,Imbrosweg,2025,12.16,47
+07501133,Fritz-Werner-Straße,2025,12.45,38
+07501134,Hundsteinweg,2025,12.04,35
+07501135,Birnhornweg,2025,13.0,8
+07601236,Marienfelder Allee Nordwest,2025,10.95,69
+07601237,Kirchstraße,2025,12.64,22
+07601238,Marienfelde Nordost,2025,13.5,6
+07601339,Tirschenreuther Ring West,2025,7.99,95
+07601340,Tirschenreuther Ring Ost,2025,9.44,51
+07601341,Diedersdorfer Weg,2025,10.6,13
+07601442,Kettinger Straße,2025,11.83,52
+07601443,Töpchiner Weg,2025,10.54,46
+07601544,John-Locke-Straße,2025,9.75,38
+07601545,Nahariyastraße,2025,8.49,96
+07601546,Franziusweg,2025,13.04,29
+07601547,Horstwalder Straße,2025,9.53,21
+07601548,Wittelsbacherstraße,2025,12.58,6
+08100101,Hasenheide,2025,20.28,23
+08100102,Schillerpromenade Nord,2025,19.68,29
+08100103,Schillerpromenade Süd,2025,12.9,34
+08100104,Wartheplatz,2025,16.0,35
+08100105,Silbersteinstraße,2025,18.75,53
+08100206,Flughafenstraße,2025,15.68,43
+08100207,Rollberg,2025,13.62,24
+08100208,Körnerpark,2025,16.0,56
+08100209,Glasower Straße,2025,18.56,68
+08100310,Maybachufer,2025,19.71,36
+08100311,Reuterplatz,2025,17.22,34
+08100312,Weichselplatz,2025,17.66,59
+08100313,Bouchéstraße,2025,15.0,4
+08100314,Donaustraße,2025,14.86,33
+08100415,Ganghoferstraße,2025,18.51,36
+08100416,Alt-Rixdorf,2025,16.8,20
+08100417,Braunschweiger Straße,2025,18.68,71
+08100418,Hertzbergplatz,2025,17.82,35
+08100419,Treptower Straße Nord,2025,17.0,28
+08100520,Weiße Siedlung,2025,8.49,54
+08100521,Schulenburgpark,2025,7.36,47
+08200622,Jahnstraße,2025,19.4,42
+08200623,Park am Buschkrug,2025,13.5,21
+08200624,Tempelhofer Weg,2025,10.09,63
+08200725,Mohriner Allee Nord,2025,10.92,5
+08200726,Hufeisensiedlung,2025,10.06,53
+08200727,Parchimer Allee Süd,2025,9.76,24
+08200728,Ortolanweg,2025,,
+08200729,Britzer Garten,2025,,
+08200730,Handwerker-Siedlung,2025,8.73,11
+08200831,Buckow West,2025,8.73,39
+08200832,Buckow Mitte,2025,12.27,164
+08200833,Buckow Ost,2025,13.5,98
+08300934,Gropiusstadt Nord-West,2025,8.06,97
+08300935,Gropiusstadt Süd-West,2025,10.65,31
+08301036,Gropiusstadt Mitte,2025,8.54,43
+08301037,Gropiusstadt Süd-Ost,2025,8.74,150
+08401138,Goldhähnchenweg,2025,7.36,15
+08401139,Vogelviertel Süd,2025,9.03,16
+08401140,Vogelviertel Nord,2025,9.08,15
+08401241,Blumenviertel,2025,12.76,11
+08401242,Zittauer Straße,2025,7.55,12
+08401243,Alt-Rudow,2025,11.36,41
+08401244,Waßmannsdorfer Chaussee,2025,17.05,11
+08401245,Frauenviertel,2025,11.2,31
+08401246,Waltersdorfer Chaussee Ost,2025,7.36,39
+09100101,Alt-Treptow,2025,18.13,78
+09100202,Plänterwald West,2025,12.21,23
+09100203,Plänterwald Ost,2025,12.13,40
+09100304,Baumschulenweg West,2025,13.95,38
+09100305,Baumschulenweg Ost,2025,16.36,23
+09100306,Späthsfelde,2025,8.76,3
+09100407,Johannisthal West,2025,17.01,62
+09100408,Johannisthal Ost,2025,13.66,81
+09100409,Landschaftspark Adlershof,2025,11.0,105
+09200510,Helmholtz-Kiez,2025,14.0,146
+09200511,Griechischer Park,2025,9.66,175
+09200512,Wuhlheide,2025,10.67,63
+09200613,Bahnhof Schöneweide,2025,19.66,243
+09200614,Oberspree,2025,17.26,54
+09200715,Wista,2025,15.42,93
+09200716,Dörpfeldstraße West,2025,14.24,84
+09200717,Dörpfeldstraße Ost,2025,13.2,104
+09200818,Spindlersfeld,2025,20.0,324
+09200819,Köllnische Vorstadt,2025,11.05,123
+09300920,Dorf Altglienicke,2025,17.67,157
+09300921,Preußen Siedlung,2025,12.08,36
+09300922,Kosmos Viertel,2025,6.7,16
+09300923,Kölner Viertel,2025,9.95,64
+09301024,Falkenberg,2025,15.5,21
+09301025,Alt-Bohnsdorf,2025,13.06,40
+09301126,Grünau,2025,18.55,206
+09301227,Karolinenhof,2025,15.0,8
+09301228,Schmöckwitz/Rauchfangswerder,2025,16.85,17
+09401329,Kietzer Feld/Nachtheide,2025,16.07,374
+09401330,Wendenschloß,2025,14.11,38
+09401431,Allende I,2025,14.0,104
+09401432,Siedlung Kämmereiheide,2025,10.67,12
+09401433,Allende II,2025,7.02,53
+09401534,Altstadt Köpenick,2025,9.14,154
+09401635,Müggelheim,2025,14.92,23
+09501736,Hirschgarten,2025,9.2,45
+09501737,Alt-Friedrichshagen,2025,10.2,124
+09501838,Rahnsdorf,2025,14.84,131
+09501939,Bahnhofstraße,2025,17.38,140
+09501940,Güterbahnhof Köpenick,2025,13.77,46
+09501941,Friedrichshagener Straße,2025,17.13,66
+09502042,Mittelheide,2025,15.81,79
+09502043,Dammheide,2025,13.79,77
+10100101,Marzahn West,2025,6.88,71
+10100102,Rosenbecker Straße,2025,12.65,55
+10100103,Wittenberger Straße,2025,8.26,74
+10100104,Golliner Straße,2025,7.77,75
+10100205,Gewerbegebiet Bitterfelder Straße,2025,,
+10100206,Wuhletalstraße,2025,14.01,65
+10100207,Ahrensfelder Berge,2025,7.33,84
+10100208,Bürgerpark,2025,8.26,127
+10100209,Lea-Grundig-Straße,2025,11.7,42
+10100210,Marzahner Promenade,2025,6.86,98
+10100311,Marzahner Chaussee,2025,22.5,48
+10100312,Springpfuhl,2025,7.34,113
+10100313,Alt-Marzahn,2025,8.26,39
+10100314,Auersbergstraße,2025,6.88,20
+10100315,Bärenstein,2025,15.0,32
+10100316,Landsberger Tor,2025,10.52,30
+10200417,Zossener Straße,2025,13.0,20
+10200418,Kyritzer Straße,2025,14.91,69
+10200419,Havelländer Ring,2025,14.11,92
+10200420,Gut Hellersdorf,2025,14.92,36
+10200421,Helle Mitte,2025,12.59,32
+10200422,Hellersdorfer Promenade,2025,11.59,54
+10200423,Böhlener Straße,2025,15.83,16
+10200524,Adele-Sandrock-Straße,2025,13.46,67
+10200525,Schleipfuhl,2025,6.77,17
+10200526,Boulevard Kastanienallee,2025,9.26,5
+10200627,Am Kienberg,2025,6.9,16
+10200628,Neue Grottkauer Straße,2025,6.88,14
+10200629,Teterower Ring,2025,16.5,115
+10200630,Cecilienplatz,2025,6.8,59
+10300731,Oberfeldstraße,2025,13.84,15
+10300732,Buckower Ring,2025,10.53,53
+10300733,Alt-Biesdorf,2025,14.0,36
+10300734,Biesdorf Süd,2025,17.65,26
+10400835,Kaulsdorf Nord,2025,14.0,30
+10400836,Alt-Kaulsdorf,2025,15.96,10
+10400837,Kaulsdorf Süd,2025,13.79,46
+10400938,Mahlsdorf Nord,2025,13.9,30
+10400939,Alt-Mahlsdorf,2025,14.85,16
+10400940,Elsensee,2025,14.35,8
+10400941,Pilgramer Straße,2025,14.43,15
+11100101,Dörfer Malchow-Wartenberg,2025,10.38,4
+11100102,Dorf Falkenberg,2025,16.8,26
+11100203,Falkenberg Ost,2025,6.58,41
+11100204,Falkenberg West,2025,7.59,58
+11100205,Wartenberg Süd,2025,7.56,84
+11100206,Wartenberg Nord,2025,7.78,97
+11100307,Zingster Straße Ost,2025,10.47,76
+11100308,Zingster Straße West,2025,7.56,91
+11100309,Mühlengrund,2025,14.5,27
+11200410,Malchower Weg,2025,10.99,75
+11200411,Hauptstraße,2025,14.55,49
+11200512,Orankesee,2025,17.67,21
+11200513,Große-Leege-Straße,2025,15.0,129
+11200514,Landsberger Allee,2025,13.61,141
+11200515,Weiße Taube,2025,16.0,181
+11300616,Hohenschönhausener Straße,2025,,
+11300617,Fennpfuhlpark,2025,7.56,65
+11300618,Storkower Bogen,2025,8.76,33
+11300619,Rudolf-Seiffert-Park,2025,8.48,54
+11300620,Fennpfuhl Ost,2025,7.56,50
+11300721,Herzbergstraße,2025,16.4,40
+11300722,Rathaus Lichtenberg,2025,12.41,72
+11300723,Bornitzstraße,2025,,
+11300724,Roedeliusplatz,2025,11.07,33
+11300725,Nibelungenviertel,2025,15.0,121
+11300826,Frankfurter Allee Süd,2025,7.78,81
+11400927,Victoriastadt,2025,13.5,14
+11400928,Nöldnerplatz,2025,15.5,38
+11400929,Weitlingkiez,2025,14.58,181
+11400930,Zachertstraße,2025,14.0,47
+11400931,Massower Straße,2025,19.19,48
+11401032,Rosenfelder Ring,2025,16.23,146
+11401033,Gensinger Straße,2025,13.16,60
+11401034,Tierpark,2025,17.78,53
+11401135,Dolgenseestraße,2025,9.21,186
+11401136,Volkradstraße,2025,9.25,117
+11401137,Erieseering,2025,7.02,60
+11501238,Rummelsburg,2025,18.0,45
+11501339,Karlshorst West,2025,12.28,104
+11501340,Karlshorst Nord,2025,13.5,57
+11501341,Karlshorst Süd,2025,18.72,150
+12100101,Letteplatz,2025,13.18,113
+12100102,Hausotterplatz,2025,16.15,71
+12100103,Breitkopfbecken,2025,12.34,63
+12100204,Schäfersee,2025,14.84,121
+12100205,Teichstraße,2025,11.73,107
+12100206,Humboldtstraße,2025,10.85,17
+12200307,Reinickes Hof,2025,12.26,18
+12200308,Mellerbogen,2025,,
+12200309,Scharnweberstraße,2025,13.59,69
+12200310,Klixstraße,2025,9.44,93
+12200411,Schumacher-Quartier,2025,,
+12200412,Waldidyll/Flughafensee,2025,14.13,46
+12200413,Tegel Süd,2025,9.75,135
+12200414,TXL,2025,,
+12200515,Alt-Tegel,2025,20.0,126
+12400616,Konradshöhe/Tegelort,2025,16.71,23
+12400617,Alt-Heiligensee,2025,13.73,5
+12400618,Heiligensee Nord,2025,14.02,10
+12400619,Heiligensee,2025,14.89,14
+12400720,Frohnau West,2025,14.47,19
+12400721,Frohnau Ost,2025,12.62,19
+12400722,Hermsdorf West,2025,13.31,29
+12400723,Hermsdorf Ost/Waldsee,2025,15.0,25
+12500824,Ziekowstraße/Freie Scholle,2025,10.78,90
+12500825,Borsigwalde,2025,15.47,100
+12500926,Wittenau Süd,2025,12.77,29
+12500927,Wittenau Nord,2025,12.92,36
+12500928,Waidmannslust,2025,15.0,23
+12500929,Lübars,2025,14.0,11
+12500930,Wittenau Mitte,2025,10.98,30
+12601031,Lübarser Straße,2025,,
+12601032,Rollbergesiedlung,2025,7.9,83
+12601133,Treuenbrietzener Straße,2025,7.89,92
+12601134,Märkisches Zentrum,2025,8.64,129
+12601235,Dannenwalder Weg,2025,7.45,48
+12601236,Schorfheidestraße,2025,10.42,4
+01100101,Stülerstraße,2024,22.81,20
+01100102,Großer Tiergarten,2024,21.99,45
+01100103,Lützowstraße,2024,21.56,57
+01100104,Körnerstraße,2024,22.96,39
+01100205,Wilhelmstraße,2024,24.24,84
+01100206,Unter den Linden,2024,25.17,52
+01100207,Leipziger Straße,2024,21.0,104
+01100308,Charitéviertel,2024,20.0,99
+01100309,Oranienburger Straße,2024,29.43,180
+01100310,Alexanderplatzviertel,2024,18.85,103
+01100311,Karl-Marx-Allee,2024,18.07,31
+01100312,Heine-Viertel West,2024,24.12,125
+01100313,Heine-Viertel Ost,2024,21.88,58
+01100414,Nordbahnhof,2024,20.25,76
+01100415,Invalidenstraße,2024,24.62,96
+01100416,Arkonaplatz,2024,23.18,107
+01200517,Huttenkiez,2024,17.77,36
+01200518,Beusselkiez,2024,19.44,54
+01200519,Emdener Straße,2024,15.79,51
+01200520,Bremer Straße,2024,17.08,64
+01200521,Zwinglistraße,2024,13.75,15
+01200522,Elberfelder Straße,2024,17.65,45
+01200623,Stephankiez,2024,17.19,74
+01200624,Heidestraße,2024,23.5,265
+01200625,Lübecker Straße,2024,12.38,25
+01200626,Thomasiusstraße,2024,15.0,24
+01200627,Zillesiedlung,2024,6.75,12
+01200628,Lüneburger Straße,2024,21.74,26
+01200629,Hansaviertel,2024,17.5,33
+01300730,Drontheimer Straße,2024,15.43,33
+01300731,Koloniestraße,2024,15.29,85
+01300732,Soldiner Straße,2024,15.99,36
+01300733,Gesundbrunnen,2024,12.0,47
+01300834,Brunnenstraße,2024,8.6,49
+01300835,Humboldthain Süd,2024,9.38,48
+01300836,Humboldthain Nordwest,2024,21.69,98
+01400937,Afrikanische Straße,2024,15.0,52
+01400938,Kameruner Straße,2024,14.17,40
+01400939,Glasgower Straße,2024,8.76,36
+01400940,Schillerpark,2024,8.7,25
+01400941,Londoner Straße,2024,17.67,20
+01400942,Westliche Müllerstraße,2024,14.15,63
+01401043,Antonstraße,2024,18.0,14
+01401044,Uferstraße,2024,14.41,55
+01401045,Schwedenstraße,2024,15.9,33
+01401046,Nordufer,2024,16.9,32
+01401047,Sparrplatz,2024,21.08,69
+01401048,Leopoldplatz,2024,15.0,53
+01401049,Schulstraße,2024,7.6,38
+02100101,Askanischer Platz,2024,20.12,60
+02100102,Mehringplatz,2024,9.34,73
+02100103,Am Berlin Museum,2024,13.63,21
+02100104,Moritzplatz,2024,15.25,9
+02100105,Prinzenstraße,2024,15.0,46
+02100106,Wassertorplatz,2024,7.09,6
+02200207,Gleisdreieck,2024,20.13,34
+02200208,Rathaus Yorckstraße,2024,18.46,17
+02200209,Viktoriapark,2024,22.0,54
+02200210,Urbanstraße,2024,19.99,56
+02200211,Chamissokiez,2024,17.83,41
+02200212,Graefekiez Süd,2024,19.01,15
+02200213,Graefekiez Nord,2024,17.79,16
+02300314,Oranienplatz,2024,15.8,22
+02300315,Lausitzer Platz,2024,11.67,28
+02300316,Köpenicker Straße,2024,10.42,5
+02300417,Reichenberger Straße West,2024,15.93,46
+02300418,Reichenberger Straße Ost,2024,20.06,34
+02300419,Wrangelkiez,2024,18.75,31
+02400520,Barnimkiez,2024,18.33,43
+02400521,Friedenstraße,2024,20.83,99
+02400522,Richard-Sorge-Viertel,2024,14.0,52
+02400623,Andreasviertel,2024,22.68,150
+02400624,Weberwiese,2024,18.29,47
+02400625,Wriezener Bahnhof,2024,25.91,44
+02500726,Hausburgviertel,2024,18.63,59
+02500727,Forckenbeckplatz,2024,16.67,27
+02500728,Samariterviertel,2024,18.82,82
+02500729,Pettenkofer Straße,2024,21.13,28
+02500830,Niederbarnimstraße,2024,18.26,22
+02500831,Wismarplatz,2024,18.0,45
+02500832,Traveplatz,2024,20.0,78
+02500833,Boxhagener Platz,2024,18.0,54
+02500834,Revaler Straße,2024,20.0,55
+02500835,Stralauer Kiez,2024,21.68,89
+02500836,Stralauer Halbinsel,2024,17.0,50
+03100101,Bucher Forst,2024,15.5,45
+03100102,Klinikum Buch,2024,12.59,41
+03100103,Karower Chaussee,2024,7.68,44
+03200204,Blankenfelde,2024,14.14,8
+03200205,Uhlandstraße,2024,14.93,35
+03200206,Pastor-Niemöller-Platz,2024,17.0,42
+03200207,Herthaplatz,2024,14.0,64
+03200308,Nisbléstraße,2024,13.51,32
+03200309,Eddastraße,2024,13.38,11
+03200310,Krugpfuhl,2024,13.11,52
+03300411,Karow Nord,2024,10.52,90
+03300412,Karow Bahnhof,2024,11.88,10
+03300413,Karow Ost,2024,,
+03300514,Blankenburg,2024,14.1,7
+03300515,Blankenburger Süden,2024,,
+03300516,Heinersdorf,2024,16.71,226
+03300517,Märchenland,2024,,
+03400618,Rosenthal,2024,14.89,51
+03400619,Wilhelmsruh,2024,16.0,85
+03400620,Schönholz,2024,13.69,8
+03400721,Florakiez,2024,17.14,58
+03400722,Parkstraße,2024,14.65,23
+03400723,Garbátyplatz,2024,15.54,30
+03400724,Wolfshagener Straße,2024,10.91,49
+03400725,Schlosspark,2024,18.33,47
+03400826,Tiroler Viertel,2024,23.64,25
+03400827,Trelleborger Viertel,2024,16.0,44
+03400828,Spiekermann Straße,2024,18.18,38
+03400829,Arnold-Zweig-Straße,2024,10.31,34
+03400830,Kissingenviertel,2024,12.0,22
+03400831,Pankower Tor,2024,,
+03500932,Bühringstraße,2024,17.59,27
+03500933,Weißer See,2024,23.23,48
+03500934,Weißenseer Spitze,2024,16.42,62
+03500935,Behaimstraße,2024,16.0,28
+03500936,Komponistenviertel Weißensee,2024,17.91,30
+03501037,Rathaus Weißensee,2024,14.42,36
+03501038,Hansastraße,2024,16.42,33
+03601139,Norweger Viertel,2024,23.43,62
+03601140,Malmöer Straße,2024,17.86,48
+03601141,Arnimplatz,2024,24.96,106
+03601142,Falkplatz,2024,18.75,80
+03601243,Rodenbergstraße,2024,20.99,36
+03601244,Humannplatz,2024,15.02,27
+03601245,Ostseestraße,2024,17.38,48
+03601346,Gethsemanekirche,2024,22.64,51
+03601347,Helmholtzplatz,2024,19.0,38
+03601348,Senefelderstraße,2024,19.56,43
+03601449,Michelangelostraße,2024,7.5,7
+03601450,Volkspark Prenzlauer Berg,2024,10.82,7
+03601451,Anton-Saefkow-Park,2024,20.0,28
+03601452,Velodrom,2024,23.78,53
+03601453,Alter Schlachthof,2024,20.84,11
+03701554,Teutoburger Platz,2024,22.0,63
+03701555,Sredzkistraße,2024,19.0,40
+03701556,Kollwitzplatz,2024,18.16,67
+03701657,Thälmannpark,2024,19.15,42
+03701658,Christburger Straße,2024,19.99,34
+03701659,Immanuelkirchstraße,2024,19.88,57
+03701660,Bötzowstraße,2024,15.0,44
+04100101,Jungfernheide/Plötzensee,2024,9.78,51
+04100102,Paul-Hertz-Siedlung,2024,7.22,46
+04200203,Olympiagelände,2024,17.14,6
+04200204,Angerburger Allee,2024,9.7,64
+04200205,Flatowallee,2024,19.5,27
+04200206,Kranzallee,2024,14.63,15
+04200207,Eichkamp,2024,,
+04200308,Branitzer Platz,2024,16.17,17
+04200309,Neu Westend,2024,13.47,39
+04200310,Fürstenplatz,2024,16.0,26
+04200311,Königin-Elisabeth-Straße,2024,12.65,33
+04300412,Schlossgarten,2024,21.72,61
+04300413,Klausenerplatz,2024,11.13,36
+04300414,Schloß Charlottenburg,2024,17.72,31
+04300415,Lietzensee,2024,19.12,27
+04300416,Amtsgerichtsplatz,2024,18.01,40
+04300517,Tegeler Weg,2024,16.88,32
+04300518,Kaiserin-Augusta-Allee,2024,17.81,29
+04300619,Alt-Lietzow,2024,23.08,50
+04300620,Spreestadt,2024,22.68,35
+04300621,Richard-Wagner-Straße,2024,19.75,47
+04300622,Ernst-Reuter-Platz,2024,19.56,49
+04300623,Karl-August-Platz,2024,19.79,67
+04300624,Savignyplatz,2024,20.0,73
+04400725,Güterbahnhof Grunewald,2024,,
+04400726,Bismarckallee,2024,20.0,27
+04400727,Flinsberger Platz,2024,17.0,39
+04400728,Hagenplatz,2024,20.0,23
+04400729,Hundekehle,2024,17.89,10
+04400830,Forckenbeckstraße,2024,20.96,66
+04400831,Messelpark,2024,20.59,11
+04400832,Breite Straße,2024,14.6,28
+04400833,Schlangenbader Straße,2024,25.0,15
+04400834,Binger Straße,2024,18.75,10
+04400835,Rüdesheimer Platz,2024,15.22,19
+04500936,Droysenstraße,2024,22.0,21
+04500937,Halensee,2024,19.58,52
+04500938,Hochmeisterplatz,2024,20.0,42
+04500939,Eisenzahnstraße,2024,24.77,52
+04501040,Hindemithplatz,2024,21.67,36
+04501041,George-Grosz-Platz,2024,23.0,23
+04501042,Breitscheidplatz,2024,24.88,35
+04501043,Preußenpark,2024,21.02,71
+04501044,Ludwigkirchplatz,2024,21.12,24
+04501045,Schaperstraße,2024,20.03,39
+04501146,Barstraße,2024,19.4,17
+04501147,Leon-Jessel-Platz,2024,17.28,29
+04501148,Brabanter Platz,2024,14.43,24
+04501149,Nikolsburger Platz,2024,18.83,36
+04501150,Wilhelmsaue,2024,16.22,16
+04501151,Hildegardstraße,2024,17.56,29
+04501152,Prager Platz,2024,23.74,60
+04501153,Babelsberger Straße,2024,17.27,43
+05100101,Hakenfelde Nord,2024,12.41,34
+05100102,Am Forstacker,2024,12.05,43
+05100103,Mertensstraße,2024,14.36,56
+05100104,Maselake,2024,18.7,49
+05100105,Amorbacher Weg,2024,10.13,14
+05100206,Griesingerstraße,2024,6.74,20
+05100207,An der Tränke,2024,9.97,8
+05100208,Im Spektefeld,2024,7.9,93
+05100209,Westerwaldstraße,2024,7.78,33
+05100210,Germersheimer Platz,2024,10.16,51
+05100211,An der Kappe,2024,10.86,20
+05100312,Eckschanze,2024,9.58,21
+05100313,Eiswerder,2024,21.43,85
+05100314,Kurstraße,2024,12.0,49
+05100315,Ackerstraße,2024,13.07,56
+05100316,Carl-Schurz-Straße,2024,9.04,71
+05100317,Freiheit,2024,12.22,8
+05200418,Isenburger Weg,2024,,
+05200419,Am Heideberg,2024,,
+05200420,Staakener Straße,2024,16.05,9
+05200421,Spandauer Straße,2024,10.36,7
+05200422,Werkstraße,2024,13.1,20
+05200423,Magistratsweg,2024,9.04,32
+05200524,Döberitzer Weg,2024,10.54,10
+05200525,Pillnitzer Weg,2024,10.9,27
+05200526,Rudolf-Wissell-Großsiedlung,2024,7.03,58
+05200527,Maulbeerallee,2024,7.62,96
+05200528,Weinmeisterhornweg,2024,7.78,51
+05200629,Borkumer Straße,2024,14.09,83
+05200630,Wilhelmstadt West,2024,14.77,96
+05200631,Wilhelmstadt Ost,2024,10.84,47
+05200632,Tiefwerder,2024,7.28,34
+05200633,Graetschelsteig,2024,7.33,25
+05200634,Börnicker Straße,2024,18.82,19
+05300735,Haveleck,2024,16.46,60
+05300736,Zitadellenweg,2024,10.21,13
+05300737,Gartenfelder Straße,2024,9.26,83
+05300838,Gartenfeld,2024,9.93,5
+05300839,Rohrdamm,2024,15.66,208
+05300840,Nonnendammallee,2024,7.03,5
+05300841,Siemensdamm,2024,11.56,23
+05400942,Alt-Gatow,2024,16.46,26
+05400943,Jägerallee,2024,16.67,21
+05400944,Kladower Damm,2024,17.14,4
+05400945,Kafkastraße,2024,14.01,4
+06100101,Fichtenberg,2024,14.85,17
+06100102,Schloßstraße,2024,16.22,45
+06100103,Markelstraße,2024,16.32,12
+06100204,Munsterdamm,2024,15.0,11
+06100205,Südende,2024,17.0,48
+06100206,Stadtpark,2024,14.34,28
+06100207,Mittelstraße,2024,15.5,37
+06100208,Bergstraße,2024,14.5,14
+06100209,Feuerbachstraße,2024,11.7,19
+06100210,Bismarckstraße,2024,14.29,9
+06200311,Alt-Lankwitz,2024,11.83,24
+06200312,Komponistenviertel Lankwitz,2024,14.5,8
+06200313,Lankwitz Kirche,2024,9.52,25
+06200314,Kaiser-Wilhelm-Straße,2024,8.82,52
+06200315,Gallwitzallee,2024,11.63,24
+06200316,Belßstraße,2024,10.97,27
+06200317,Lankwitz Süd,2024,10.9,21
+06200418,Landweg,2024,,
+06200419,Thermometersiedlung,2024,9.86,41
+06200420,Lichterfelde Süd,2024,11.98,26
+06200421,Königsberger Straße,2024,14.38,29
+06200422,Oberhofer Platz,2024,12.41,21
+06200423,Schütte-Lanz-Straße,2024,10.04,52
+06300524,Berlepschstraße,2024,11.06,10
+06300525,Zehlendorf Süd,2024,8.76,48
+06300526,Zehlendorf Mitte,2024,12.79,20
+06300527,Sundgauer Straße,2024,14.35,34
+06300528,Teltower Damm,2024,13.6,26
+06300629,Botanischer Garten,2024,14.95,19
+06300630,Hindenburgdamm,2024,16.0,54
+06300631,Goerzwerke,2024,15.15,21
+06300632,Schweizer Viertel,2024,15.0,46
+06300633,Augustaplatz,2024,13.87,41
+06300634,Lichterfelde West,2024,14.73,27
+06400735,Wannsee,2024,15.03,78
+06400736,Düppel,2024,13.3,11
+06400737,Nikolassee,2024,12.93,35
+06400838,Krumme Lanke,2024,17.98,9
+06400839,Fischerhüttenstraße,2024,18.0,32
+06400840,Fischtal,2024,10.29,4
+06400841,Zehlendorf Eiche,2024,14.2,17
+06400842,Hüttenweg,2024,17.65,23
+06400843,Thielallee,2024,13.53,11
+06400844,Dahlem,2024,19.9,40
+07100101,Wittenbergplatz,2024,21.03,61
+07100102,Kalckreuthstraße,2024,22.9,46
+07100103,Frobenstraße,2024,16.1,39
+07100204,Barbarossaplatz,2024,17.99,36
+07100205,Alvenslebenstraße,2024,11.24,24
+07100206,Großgörschenstraße,2024,16.44,13
+07200307,Bayerischer Platz,2024,13.81,31
+07200308,Volkspark (Rudolph-Wilde-Park),2024,16.39,40
+07200409,Belziger Straße,2024,21.01,55
+07200410,Feurigstraße,2024,13.11,5
+07200411,Julius-Leber-Brücke,2024,22.77,5
+07200412,Schöneberger Linse,2024,22.2,58
+07200413,Cheruskerstraße,2024,16.25,26
+07200414,Hohenfriedbergstraße,2024,25.0,7
+07300515,Taunusstraße,2024,14.78,20
+07300516,Odenwaldstraße,2024,16.08,19
+07300517,Perelsplatz,2024,23.64,151
+07300618,Ceciliengärten,2024,16.7,19
+07300619,Grazer Platz,2024,11.39,25
+07400720,Gontermannstraße,2024,18.46,21
+07400721,Paradestraße,2024,11.78,11
+07400822,Lindenhofsiedlung,2024,19.43,23
+07400823,Wittekindstraße,2024,9.66,37
+07400824,Bosepark,2024,16.43,19
+07400825,Friedrich-Karl-Straße,2024,15.04,35
+07400826,Marienhöhe,2024,10.67,6
+07400927,Rathaus Tempelhof,2024,12.38,33
+07400928,Germaniagarten,2024,13.24,13
+07501029,Ringstraße,2024,11.6,42
+07501030,Machonstraße,2024,12.36,29
+07501031,Eisenacher Straße,2024,12.61,35
+07501032,Imbrosweg,2024,13.05,42
+07501133,Fritz-Werner-Straße,2024,15.28,31
+07501134,Hundsteinweg,2024,10.16,24
+07501135,Birnhornweg,2024,21.88,5
+07601236,Marienfelder Allee Nordwest,2024,10.16,73
+07601237,Kirchstraße,2024,12.57,13
+07601238,Marienfelde Nordost,2024,12.98,6
+07601339,Tirschenreuther Ring West,2024,7.9,68
+07601340,Tirschenreuther Ring Ost,2024,8.64,55
+07601341,Diedersdorfer Weg,2024,10.6,19
+07601442,Kettinger Straße,2024,12.05,47
+07601443,Töpchiner Weg,2024,10.16,41
+07601544,John-Locke-Straße,2024,9.04,34
+07601545,Nahariyastraße,2024,8.08,96
+07601546,Franziusweg,2024,13.78,13
+07601547,Horstwalder Straße,2024,9.8,14
+07601548,Wittelsbacherstraße,2024,9.8,6
+08100101,Hasenheide,2024,21.18,25
+08100102,Schillerpromenade Nord,2024,16.13,30
+08100103,Schillerpromenade Süd,2024,16.02,30
+08100104,Wartheplatz,2024,20.63,22
+08100105,Silbersteinstraße,2024,16.8,48
+08100206,Flughafenstraße,2024,16.2,37
+08100207,Rollberg,2024,9.37,13
+08100208,Körnerpark,2024,15.8,43
+08100209,Glasower Straße,2024,18.58,65
+08100310,Maybachufer,2024,17.34,23
+08100311,Reuterplatz,2024,22.01,44
+08100312,Weichselplatz,2024,16.48,56
+08100313,Bouchéstraße,2024,,
+08100314,Donaustraße,2024,16.18,31
+08100415,Ganghoferstraße,2024,17.86,28
+08100416,Alt-Rixdorf,2024,22.47,27
+08100417,Braunschweiger Straße,2024,16.93,53
+08100418,Hertzbergplatz,2024,17.98,34
+08100419,Treptower Straße Nord,2024,21.21,19
+08100520,Weiße Siedlung,2024,7.83,66
+08100521,Schulenburgpark,2024,7.45,29
+08200622,Jahnstraße,2024,17.3,43
+08200623,Park am Buschkrug,2024,11.09,13
+08200624,Tempelhofer Weg,2024,10.02,42
+08200725,Mohriner Allee Nord,2024,,
+08200726,Hufeisensiedlung,2024,10.0,26
+08200727,Parchimer Allee Süd,2024,7.73,8
+08200728,Ortolanweg,2024,,
+08200729,Britzer Garten,2024,,
+08200730,Handwerker-Siedlung,2024,9.08,3
+08200831,Buckow West,2024,11.06,19
+08200832,Buckow Mitte,2024,10.63,98
+08200833,Buckow Ost,2024,14.9,40
+08300934,Gropiusstadt Nord-West,2024,7.92,65
+08300935,Gropiusstadt Süd-West,2024,12.5,11
+08301036,Gropiusstadt Mitte,2024,8.93,31
+08301037,Gropiusstadt Süd-Ost,2024,7.95,58
+08401138,Goldhähnchenweg,2024,14.49,19
+08401139,Vogelviertel Süd,2024,9.09,15
+08401140,Vogelviertel Nord,2024,16.9,3
+08401241,Blumenviertel,2024,14.82,11
+08401242,Zittauer Straße,2024,12.92,8
+08401243,Alt-Rudow,2024,11.91,44
+08401244,Waßmannsdorfer Chaussee,2024,14.56,7
+08401245,Frauenviertel,2024,10.53,12
+08401246,Waltersdorfer Chaussee Ost,2024,7.43,18
+09100101,Alt-Treptow,2024,17.38,65
+09100202,Plänterwald West,2024,20.31,5
+09100203,Plänterwald Ost,2024,11.4,24
+09100304,Baumschulenweg West,2024,13.75,49
+09100305,Baumschulenweg Ost,2024,15.0,17
+09100306,Späthsfelde,2024,,
+09100407,Johannisthal West,2024,17.0,68
+09100408,Johannisthal Ost,2024,12.18,90
+09100409,Landschaftspark Adlershof,2024,12.2,23
+09200510,Helmholtz-Kiez,2024,14.0,68
+09200511,Griechischer Park,2024,9.49,117
+09200512,Wuhlheide,2024,10.0,48
+09200613,Bahnhof Schöneweide,2024,17.38,141
+09200614,Oberspree,2024,16.5,46
+09200715,Wista,2024,15.0,63
+09200716,Dörpfeldstraße West,2024,15.71,58
+09200717,Dörpfeldstraße Ost,2024,13.11,74
+09200818,Spindlersfeld,2024,19.0,156
+09200819,Köllnische Vorstadt,2024,12.06,81
+09300920,Dorf Altglienicke,2024,17.51,81
+09300921,Preußen Siedlung,2024,16.0,13
+09300922,Kosmos Viertel,2024,6.9,8
+09300923,Kölner Viertel,2024,12.61,31
+09301024,Falkenberg,2024,17.04,13
+09301025,Alt-Bohnsdorf,2024,13.23,32
+09301126,Grünau,2024,17.19,177
+09301227,Karolinenhof,2024,14.0,9
+09301228,Schmöckwitz/Rauchfangswerder,2024,16.84,15
+09401329,Kietzer Feld/Nachtheide,2024,12.5,126
+09401330,Wendenschloß,2024,16.23,23
+09401431,Allende I,2024,10.56,50
+09401432,Siedlung Kämmereiheide,2024,10.75,19
+09401433,Allende II,2024,7.34,28
+09401534,Altstadt Köpenick,2024,8.49,89
+09401635,Müggelheim,2024,13.64,25
+09501736,Hirschgarten,2024,8.76,26
+09501737,Alt-Friedrichshagen,2024,10.38,95
+09501838,Rahnsdorf,2024,12.73,152
+09501939,Bahnhofstraße,2024,15.01,92
+09501940,Güterbahnhof Köpenick,2024,13.47,34
+09501941,Friedrichshagener Straße,2024,16.3,60
+09502042,Mittelheide,2024,14.09,45
+09502043,Dammheide,2024,10.33,48
+10100101,Marzahn West,2024,6.29,41
+10100102,Rosenbecker Straße,2024,12.5,38
+10100103,Wittenberger Straße,2024,8.64,78
+10100104,Golliner Straße,2024,6.77,31
+10100205,Gewerbegebiet Bitterfelder Straße,2024,,
+10100206,Wuhletalstraße,2024,13.0,72
+10100207,Ahrensfelder Berge,2024,7.78,58
+10100208,Bürgerpark,2024,8.26,110
+10100209,Lea-Grundig-Straße,2024,9.94,35
+10100210,Marzahner Promenade,2024,6.7,97
+10100311,Marzahner Chaussee,2024,28.67,21
+10100312,Springpfuhl,2024,7.02,55
+10100313,Alt-Marzahn,2024,8.26,19
+10100314,Auersbergstraße,2024,9.25,25
+10100315,Bärenstein,2024,16.67,22
+10100316,Landsberger Tor,2024,10.32,23
+10200417,Zossener Straße,2024,6.92,3
+10200418,Kyritzer Straße,2024,15.74,31
+10200419,Havelländer Ring,2024,13.49,96
+10200420,Gut Hellersdorf,2024,11.45,26
+10200421,Helle Mitte,2024,11.79,47
+10200422,Hellersdorfer Promenade,2024,10.48,44
+10200423,Böhlener Straße,2024,12.7,6
+10200524,Adele-Sandrock-Straße,2024,13.63,91
+10200525,Schleipfuhl,2024,6.76,9
+10200526,Boulevard Kastanienallee,2024,,
+10200627,Am Kienberg,2024,6.85,6
+10200628,Neue Grottkauer Straße,2024,6.42,8
+10200629,Teterower Ring,2024,9.25,21
+10200630,Cecilienplatz,2024,9.0,33
+10300731,Oberfeldstraße,2024,14.14,16
+10300732,Buckower Ring,2024,8.5,39
+10300733,Alt-Biesdorf,2024,18.06,20
+10300734,Biesdorf Süd,2024,16.5,27
+10400835,Kaulsdorf Nord,2024,14.0,18
+10400836,Alt-Kaulsdorf,2024,13.16,6
+10400837,Kaulsdorf Süd,2024,14.51,29
+10400938,Mahlsdorf Nord,2024,14.48,28
+10400939,Alt-Mahlsdorf,2024,14.4,19
+10400940,Elsensee,2024,14.35,12
+10400941,Pilgramer Straße,2024,12.81,24
+11100101,Dörfer Malchow-Wartenberg,2024,12.12,4
+11100102,Dorf Falkenberg,2024,9.0,25
+11100203,Falkenberg Ost,2024,6.58,39
+11100204,Falkenberg West,2024,8.64,25
+11100205,Wartenberg Süd,2024,7.68,56
+11100206,Wartenberg Nord,2024,7.5,73
+11100307,Zingster Straße Ost,2024,10.96,63
+11100308,Zingster Straße West,2024,7.16,59
+11100309,Mühlengrund,2024,14.3,12
+11200410,Malchower Weg,2024,10.55,39
+11200411,Hauptstraße,2024,13.41,25
+11200512,Orankesee,2024,17.82,32
+11200513,Große-Leege-Straße,2024,14.04,100
+11200514,Landsberger Allee,2024,8.86,106
+11200515,Weiße Taube,2024,16.0,134
+11300616,Hohenschönhausener Straße,2024,8.19,25
+11300617,Fennpfuhlpark,2024,7.43,14
+11300618,Storkower Bogen,2024,8.76,11
+11300619,Rudolf-Seiffert-Park,2024,12.97,7
+11300620,Fennpfuhl Ost,2024,9.15,16
+11300721,Herzbergstraße,2024,23.91,63
+11300722,Rathaus Lichtenberg,2024,14.42,57
+11300723,Bornitzstraße,2024,,
+11300724,Roedeliusplatz,2024,9.06,21
+11300725,Nibelungenviertel,2024,12.7,65
+11300826,Frankfurter Allee Süd,2024,7.78,21
+11400927,Victoriastadt,2024,19.23,14
+11400928,Nöldnerplatz,2024,21.54,40
+11400929,Weitlingkiez,2024,14.43,137
+11400930,Zachertstraße,2024,12.93,30
+11400931,Massower Straße,2024,16.25,39
+11401032,Rosenfelder Ring,2024,17.08,140
+11401033,Gensinger Straße,2024,13.57,38
+11401034,Tierpark,2024,18.2,40
+11401135,Dolgenseestraße,2024,9.55,87
+11401136,Volkradstraße,2024,9.25,34
+11401137,Erieseering,2024,7.16,27
+11501238,Rummelsburg,2024,18.0,26
+11501339,Karlshorst West,2024,14.75,55
+11501340,Karlshorst Nord,2024,15.44,60
+11501341,Karlshorst Süd,2024,19.27,321
+12100101,Letteplatz,2024,11.66,87
+12100102,Hausotterplatz,2024,11.34,43
+12100103,Breitkopfbecken,2024,12.34,38
+12100204,Schäfersee,2024,18.95,63
+12100205,Teichstraße,2024,10.41,75
+12100206,Humboldtstraße,2024,11.05,16
+12200307,Reinickes Hof,2024,16.61,10
+12200308,Mellerbogen,2024,11.18,19
+12200309,Scharnweberstraße,2024,11.68,50
+12200310,Klixstraße,2024,11.18,71
+12200411,Schumacher-Quartier,2024,,
+12200412,Waldidyll/Flughafensee,2024,13.5,40
+12200413,Tegel Süd,2024,9.26,126
+12200414,TXL,2024,17.42,4
+12200515,Alt-Tegel,2024,17.51,122
+12400616,Konradshöhe/Tegelort,2024,14.15,25
+12400617,Alt-Heiligensee,2024,13.5,6
+12400618,Heiligensee Nord,2024,15.08,11
+12400619,Heiligensee,2024,15.93,9
+12400720,Frohnau West,2024,12.67,23
+12400721,Frohnau Ost,2024,12.91,13
+12400722,Hermsdorf West,2024,11.96,30
+12400723,Hermsdorf Ost/Waldsee,2024,13.5,24
+12500824,Ziekowstraße/Freie Scholle,2024,10.73,47
+12500825,Borsigwalde,2024,11.37,58
+12500926,Wittenau Süd,2024,11.15,22
+12500927,Wittenau Nord,2024,10.53,25
+12500928,Waidmannslust,2024,14.32,7
+12500929,Lübars,2024,13.11,9
+12500930,Wittenau Mitte,2024,10.29,18
+12601031,Lübarser Straße,2024,16.13,5
+12601032,Rollbergesiedlung,2024,12.0,80
+12601133,Treuenbrietzener Straße,2024,7.4,102
+12601134,Märkisches Zentrum,2024,8.25,92
+12601235,Dannenwalder Weg,2024,7.86,34
+12601236,Schorfheidestraße,2024,11.54,3
+01100101,Stülerstraße,2023,16.67,11
+01100102,Großer Tiergarten,2023,21.98,28
+01100103,Lützowstraße,2023,20.73,32
+01100104,Körnerstraße,2023,22.0,39
+01100205,Wilhelmstraße,2023,25.48,67
+01100206,Unter den Linden,2023,16.5,34
+01100207,Leipziger Straße,2023,20.95,75
+01100308,Charitéviertel,2023,19.4,82
+01100309,Oranienburger Straße,2023,24.6,91
+01100310,Alexanderplatzviertel,2023,19.45,75
+01100311,Karl-Marx-Allee,2023,20.96,22
+01100312,Heine-Viertel West,2023,23.61,105
+01100313,Heine-Viertel Ost,2023,21.06,30
+01100414,Nordbahnhof,2023,19.92,62
+01100415,Invalidenstraße,2023,23.3,76
+01100416,Arkonaplatz,2023,23.0,54
+01200517,Huttenkiez,2023,13.79,21
+01200518,Beusselkiez,2023,15.11,39
+01200519,Emdener Straße,2023,15.0,29
+01200520,Bremer Straße,2023,15.25,35
+01200521,Zwinglistraße,2023,10.0,21
+01200522,Elberfelder Straße,2023,16.0,22
+01200623,Stephankiez,2023,18.0,43
+01200624,Heidestraße,2023,22.48,156
+01200625,Lübecker Straße,2023,8.94,10
+01200626,Thomasiusstraße,2023,17.64,22
+01200627,Zillesiedlung,2023,9.09,4
+01200628,Lüneburger Straße,2023,21.41,13
+01200629,Hansaviertel,2023,15.51,25
+01300730,Drontheimer Straße,2023,11.0,25
+01300731,Koloniestraße,2023,11.62,48
+01300732,Soldiner Straße,2023,13.26,43
+01300733,Gesundbrunnen,2023,12.51,45
+01300834,Brunnenstraße,2023,7.52,49
+01300835,Humboldthain Süd,2023,6.86,8
+01300836,Humboldthain Nordwest,2023,15.27,46
+01400937,Afrikanische Straße,2023,13.2,46
+01400938,Kameruner Straße,2023,13.98,24
+01400939,Glasgower Straße,2023,9.26,20
+01400940,Schillerpark,2023,6.93,34
+01400941,Londoner Straße,2023,16.0,16
+01400942,Westliche Müllerstraße,2023,11.41,44
+01401043,Antonstraße,2023,11.49,12
+01401044,Uferstraße,2023,14.86,35
+01401045,Schwedenstraße,2023,12.62,15
+01401046,Nordufer,2023,15.4,26
+01401047,Sparrplatz,2023,23.17,35
+01401048,Leopoldplatz,2023,11.65,35
+01401049,Schulstraße,2023,7.24,34
+02100101,Askanischer Platz,2023,19.0,37
+02100102,Mehringplatz,2023,7.56,34
+02100103,Am Berlin Museum,2023,21.67,6
+02100104,Moritzplatz,2023,15.96,4
+02100105,Prinzenstraße,2023,11.44,23
+02100106,Wassertorplatz,2023,6.63,16
+02200207,Gleisdreieck,2023,21.97,29
+02200208,Rathaus Yorckstraße,2023,16.73,19
+02200209,Viktoriapark,2023,19.6,34
+02200210,Urbanstraße,2023,18.05,43
+02200211,Chamissokiez,2023,17.89,47
+02200212,Graefekiez Süd,2023,22.0,17
+02200213,Graefekiez Nord,2023,18.97,28
+02300314,Oranienplatz,2023,11.43,8
+02300315,Lausitzer Platz,2023,16.88,16
+02300316,Köpenicker Straße,2023,17.5,8
+02300417,Reichenberger Straße West,2023,16.0,33
+02300418,Reichenberger Straße Ost,2023,18.31,23
+02300419,Wrangelkiez,2023,15.0,23
+02400520,Barnimkiez,2023,22.99,16
+02400521,Friedenstraße,2023,25.01,52
+02400522,Richard-Sorge-Viertel,2023,17.05,30
+02400623,Andreasviertel,2023,13.9,70
+02400624,Weberwiese,2023,18.32,36
+02400625,Wriezener Bahnhof,2023,26.8,41
+02500726,Hausburgviertel,2023,18.71,32
+02500727,Forckenbeckplatz,2023,13.73,14
+02500728,Samariterviertel,2023,17.95,51
+02500729,Pettenkofer Straße,2023,20.75,20
+02500830,Niederbarnimstraße,2023,15.0,29
+02500831,Wismarplatz,2023,17.0,34
+02500832,Traveplatz,2023,17.88,58
+02500833,Boxhagener Platz,2023,15.49,40
+02500834,Revaler Straße,2023,19.0,44
+02500835,Stralauer Kiez,2023,20.59,69
+02500836,Stralauer Halbinsel,2023,16.01,23
+03100101,Bucher Forst,2023,13.89,27
+03100102,Klinikum Buch,2023,9.15,30
+03100103,Karower Chaussee,2023,6.04,47
+03200204,Blankenfelde,2023,,
+03200205,Uhlandstraße,2023,13.99,37
+03200206,Pastor-Niemöller-Platz,2023,13.44,29
+03200207,Herthaplatz,2023,12.9,86
+03200308,Nisbléstraße,2023,14.15,52
+03200309,Eddastraße,2023,13.38,8
+03200310,Krugpfuhl,2023,10.58,57
+03300411,Karow Nord,2023,9.54,86
+03300412,Karow Bahnhof,2023,11.49,14
+03300413,Karow Ost,2023,,
+03300514,Blankenburg,2023,13.64,4
+03300515,Blankenburger Süden,2023,,
+03300516,Heinersdorf,2023,21.33,77
+03300517,Märchenland,2023,,
+03400618,Rosenthal,2023,12.15,44
+03400619,Wilhelmsruh,2023,11.98,35
+03400620,Schönholz,2023,16.67,7
+03400721,Florakiez,2023,14.78,50
+03400722,Parkstraße,2023,11.49,9
+03400723,Garbátyplatz,2023,17.0,23
+03400724,Wolfshagener Straße,2023,9.67,32
+03400725,Schlosspark,2023,13.59,15
+03400826,Tiroler Viertel,2023,23.75,32
+03400827,Trelleborger Viertel,2023,15.42,28
+03400828,Spiekermann Straße,2023,16.36,38
+03400829,Arnold-Zweig-Straße,2023,12.0,15
+03400830,Kissingenviertel,2023,8.6,8
+03400831,Pankower Tor,2023,,
+03500932,Bühringstraße,2023,22.01,16
+03500933,Weißer See,2023,13.91,24
+03500934,Weißenseer Spitze,2023,15.0,36
+03500935,Behaimstraße,2023,14.5,27
+03500936,Komponistenviertel Weißensee,2023,15.21,19
+03501037,Rathaus Weißensee,2023,15.0,45
+03501038,Hansastraße,2023,14.16,14
+03601139,Norweger Viertel,2023,10.35,15
+03601140,Malmöer Straße,2023,16.0,30
+03601141,Arnimplatz,2023,22.0,39
+03601142,Falkplatz,2023,18.93,62
+03601243,Rodenbergstraße,2023,14.89,30
+03601244,Humannplatz,2023,14.06,22
+03601245,Ostseestraße,2023,9.63,44
+03601346,Gethsemanekirche,2023,22.5,31
+03601347,Helmholtzplatz,2023,17.65,33
+03601348,Senefelderstraße,2023,16.68,21
+03601449,Michelangelostraße,2023,6.91,24
+03601450,Volkspark Prenzlauer Berg,2023,18.33,3
+03601451,Anton-Saefkow-Park,2023,14.0,24
+03601452,Velodrom,2023,23.66,40
+03601453,Alter Schlachthof,2023,17.13,8
+03701554,Teutoburger Platz,2023,20.0,70
+03701555,Sredzkistraße,2023,16.69,18
+03701556,Kollwitzplatz,2023,18.73,61
+03701657,Thälmannpark,2023,6.97,14
+03701658,Christburger Straße,2023,18.42,36
+03701659,Immanuelkirchstraße,2023,18.79,26
+03701660,Bötzowstraße,2023,16.74,39
+04100101,Jungfernheide/Plötzensee,2023,6.3,25
+04100102,Paul-Hertz-Siedlung,2023,6.2,52
+04200203,Olympiagelände,2023,15.63,3
+04200204,Angerburger Allee,2023,8.95,58
+04200205,Flatowallee,2023,9.11,3
+04200206,Kranzallee,2023,9.74,6
+04200207,Eichkamp,2023,,
+04200308,Branitzer Platz,2023,12.42,14
+04200309,Neu Westend,2023,13.72,25
+04200310,Fürstenplatz,2023,17.0,29
+04200311,Königin-Elisabeth-Straße,2023,11.78,23
+04300412,Schlossgarten,2023,20.07,34
+04300413,Klausenerplatz,2023,9.79,27
+04300414,Schloß Charlottenburg,2023,13.06,26
+04300415,Lietzensee,2023,23.08,12
+04300416,Amtsgerichtsplatz,2023,18.0,31
+04300517,Tegeler Weg,2023,14.67,24
+04300518,Kaiserin-Augusta-Allee,2023,17.38,17
+04300619,Alt-Lietzow,2023,12.02,70
+04300620,Spreestadt,2023,22.11,45
+04300621,Richard-Wagner-Straße,2023,16.45,50
+04300622,Ernst-Reuter-Platz,2023,16.95,42
+04300623,Karl-August-Platz,2023,17.77,71
+04300624,Savignyplatz,2023,17.64,53
+04400725,Güterbahnhof Grunewald,2023,,
+04400726,Bismarckallee,2023,22.0,12
+04400727,Flinsberger Platz,2023,15.12,45
+04400728,Hagenplatz,2023,17.22,16
+04400729,Hundekehle,2023,20.0,10
+04400830,Forckenbeckstraße,2023,20.0,54
+04400831,Messelpark,2023,23.0,14
+04400832,Breite Straße,2023,12.8,12
+04400833,Schlangenbader Straße,2023,9.7,10
+04400834,Binger Straße,2023,18.75,6
+04400835,Rüdesheimer Platz,2023,14.48,26
+04500936,Droysenstraße,2023,14.78,20
+04500937,Halensee,2023,19.05,36
+04500938,Hochmeisterplatz,2023,17.86,41
+04500939,Eisenzahnstraße,2023,21.18,36
+04501040,Hindemithplatz,2023,19.68,21
+04501041,George-Grosz-Platz,2023,18.76,37
+04501042,Breitscheidplatz,2023,25.61,27
+04501043,Preußenpark,2023,18.12,57
+04501044,Ludwigkirchplatz,2023,17.78,12
+04501045,Schaperstraße,2023,22.88,55
+04501146,Barstraße,2023,15.57,5
+04501147,Leon-Jessel-Platz,2023,18.0,14
+04501148,Brabanter Platz,2023,17.67,20
+04501149,Nikolsburger Platz,2023,16.67,29
+04501150,Wilhelmsaue,2023,16.25,12
+04501151,Hildegardstraße,2023,17.84,20
+04501152,Prager Platz,2023,18.0,24
+04501153,Babelsberger Straße,2023,17.83,25
+05100101,Hakenfelde Nord,2023,17.0,38
+05100102,Am Forstacker,2023,12.61,26
+05100103,Mertensstraße,2023,10.45,47
+05100104,Maselake,2023,17.0,48
+05100105,Amorbacher Weg,2023,10.5,18
+05100206,Griesingerstraße,2023,5.89,23
+05100207,An der Tränke,2023,10.27,3
+05100208,Im Spektefeld,2023,6.8,81
+05100209,Westerwaldstraße,2023,6.78,24
+05100210,Germersheimer Platz,2023,8.33,22
+05100211,An der Kappe,2023,11.43,10
+05100312,Eckschanze,2023,9.58,19
+05100313,Eiswerder,2023,17.05,46
+05100314,Kurstraße,2023,11.0,59
+05100315,Ackerstraße,2023,16.47,65
+05100316,Carl-Schurz-Straße,2023,6.78,55
+05100317,Freiheit,2023,11.91,14
+05200418,Isenburger Weg,2023,14.08,3
+05200419,Am Heideberg,2023,,
+05200420,Staakener Straße,2023,15.0,10
+05200421,Spandauer Straße,2023,9.74,4
+05200422,Werkstraße,2023,14.0,25
+05200423,Magistratsweg,2023,7.55,40
+05200524,Döberitzer Weg,2023,9.0,4
+05200525,Pillnitzer Weg,2023,9.55,20
+05200526,Rudolf-Wissell-Großsiedlung,2023,6.54,44
+05200527,Maulbeerallee,2023,6.93,84
+05200528,Weinmeisterhornweg,2023,6.7,48
+05200629,Borkumer Straße,2023,11.08,54
+05200630,Wilhelmstadt West,2023,12.5,64
+05200631,Wilhelmstadt Ost,2023,9.68,43
+05200632,Tiefwerder,2023,6.5,24
+05200633,Graetschelsteig,2023,6.11,23
+05200634,Börnicker Straße,2023,11.0,11
+05300735,Haveleck,2023,9.6,54
+05300736,Zitadellenweg,2023,,
+05300737,Gartenfelder Straße,2023,7.45,104
+05300838,Gartenfeld,2023,,
+05300839,Rohrdamm,2023,9.11,84
+05300840,Nonnendammallee,2023,7.04,8
+05300841,Siemensdamm,2023,10.71,23
+05400942,Alt-Gatow,2023,14.86,4
+05400943,Jägerallee,2023,11.93,33
+05400944,Kladower Damm,2023,12.0,3
+05400945,Kafkastraße,2023,,
+06100101,Fichtenberg,2023,14.1,19
+06100102,Schloßstraße,2023,14.5,36
+06100103,Markelstraße,2023,16.73,7
+06100204,Munsterdamm,2023,16.29,11
+06100205,Südende,2023,15.0,29
+06100206,Stadtpark,2023,11.1,17
+06100207,Mittelstraße,2023,10.71,18
+06100208,Bergstraße,2023,13.0,20
+06100209,Feuerbachstraße,2023,13.0,30
+06100210,Bismarckstraße,2023,12.94,11
+06200311,Alt-Lankwitz,2023,10.24,18
+06200312,Komponistenviertel Lankwitz,2023,13.46,8
+06200313,Lankwitz Kirche,2023,11.97,19
+06200314,Kaiser-Wilhelm-Straße,2023,8.23,46
+06200315,Gallwitzallee,2023,11.51,9
+06200316,Belßstraße,2023,10.0,26
+06200317,Lankwitz Süd,2023,9.56,13
+06200418,Landweg,2023,,
+06200419,Thermometersiedlung,2023,7.85,33
+06200420,Lichterfelde Süd,2023,8.66,34
+06200421,Königsberger Straße,2023,12.7,38
+06200422,Oberhofer Platz,2023,11.63,16
+06200423,Schütte-Lanz-Straße,2023,12.75,11
+06300524,Berlepschstraße,2023,13.55,6
+06300525,Zehlendorf Süd,2023,8.5,52
+06300526,Zehlendorf Mitte,2023,17.17,16
+06300527,Sundgauer Straße,2023,14.32,41
+06300528,Teltower Damm,2023,10.5,23
+06300629,Botanischer Garten,2023,10.05,22
+06300630,Hindenburgdamm,2023,12.24,14
+06300631,Goerzwerke,2023,10.75,13
+06300632,Schweizer Viertel,2023,13.5,35
+06300633,Augustaplatz,2023,14.3,33
+06300634,Lichterfelde West,2023,17.0,13
+06400735,Wannsee,2023,14.62,47
+06400736,Düppel,2023,14.03,12
+06400737,Nikolassee,2023,12.9,20
+06400838,Krumme Lanke,2023,16.2,15
+06400839,Fischerhüttenstraße,2023,,
+06400840,Fischtal,2023,12.02,6
+06400841,Zehlendorf Eiche,2023,12.14,20
+06400842,Hüttenweg,2023,17.74,12
+06400843,Thielallee,2023,12.14,4
+06400844,Dahlem,2023,26.85,25
+07100101,Wittenbergplatz,2023,17.53,38
+07100102,Kalckreuthstraße,2023,14.23,19
+07100103,Frobenstraße,2023,7.61,16
+07100204,Barbarossaplatz,2023,15.89,20
+07100205,Alvenslebenstraße,2023,11.24,16
+07100206,Großgörschenstraße,2023,9.52,7
+07200307,Bayerischer Platz,2023,11.66,26
+07200308,Volkspark (Rudolph-Wilde-Park),2023,17.91,35
+07200409,Belziger Straße,2023,21.01,31
+07200410,Feurigstraße,2023,14.49,10
+07200411,Julius-Leber-Brücke,2023,,
+07200412,Schöneberger Linse,2023,14.9,21
+07200413,Cheruskerstraße,2023,20.5,21
+07200414,Hohenfriedbergstraße,2023,17.49,11
+07300515,Taunusstraße,2023,15.88,25
+07300516,Odenwaldstraße,2023,13.45,22
+07300517,Perelsplatz,2023,16.99,26
+07300618,Ceciliengärten,2023,18.0,18
+07300619,Grazer Platz,2023,12.24,21
+07400720,Gontermannstraße,2023,11.78,17
+07400721,Paradestraße,2023,8.88,8
+07400822,Lindenhofsiedlung,2023,15.87,7
+07400823,Wittekindstraße,2023,7.82,20
+07400824,Bosepark,2023,17.81,14
+07400825,Friedrich-Karl-Straße,2023,13.54,23
+07400826,Marienhöhe,2023,22.18,4
+07400927,Rathaus Tempelhof,2023,14.0,18
+07400928,Germaniagarten,2023,10.57,11
+07501029,Ringstraße,2023,8.2,39
+07501030,Machonstraße,2023,10.82,26
+07501031,Eisenacher Straße,2023,10.02,29
+07501032,Imbrosweg,2023,12.5,33
+07501133,Fritz-Werner-Straße,2023,15.38,36
+07501134,Hundsteinweg,2023,10.01,23
+07501135,Birnhornweg,2023,,
+07601236,Marienfelder Allee Nordwest,2023,9.99,48
+07601237,Kirchstraße,2023,13.13,13
+07601238,Marienfelde Nordost,2023,,
+07601339,Tirschenreuther Ring West,2023,6.48,29
+07601340,Tirschenreuther Ring Ost,2023,11.5,26
+07601341,Diedersdorfer Weg,2023,12.04,3
+07601442,Kettinger Straße,2023,10.58,28
+07601443,Töpchiner Weg,2023,7.41,20
+07601544,John-Locke-Straße,2023,9.74,18
+07601545,Nahariyastraße,2023,8.2,101
+07601546,Franziusweg,2023,11.56,12
+07601547,Horstwalder Straße,2023,8.43,12
+07601548,Wittelsbacherstraße,2023,11.0,4
+08100101,Hasenheide,2023,12.5,17
+08100102,Schillerpromenade Nord,2023,14.1,14
+08100103,Schillerpromenade Süd,2023,14.43,21
+08100104,Wartheplatz,2023,17.01,23
+08100105,Silbersteinstraße,2023,16.0,46
+08100206,Flughafenstraße,2023,13.25,29
+08100207,Rollberg,2023,10.0,10
+08100208,Körnerpark,2023,14.0,34
+08100209,Glasower Straße,2023,14.26,62
+08100310,Maybachufer,2023,18.21,9
+08100311,Reuterplatz,2023,13.24,18
+08100312,Weichselplatz,2023,12.03,31
+08100313,Bouchéstraße,2023,11.06,5
+08100314,Donaustraße,2023,14.86,21
+08100415,Ganghoferstraße,2023,20.95,25
+08100416,Alt-Rixdorf,2023,22.77,23
+08100417,Braunschweiger Straße,2023,16.0,39
+08100418,Hertzbergplatz,2023,15.0,17
+08100419,Treptower Straße Nord,2023,10.32,8
+08100520,Weiße Siedlung,2023,8.29,21
+08100521,Schulenburgpark,2023,7.19,32
+08200622,Jahnstraße,2023,15.5,27
+08200623,Park am Buschkrug,2023,22.14,30
+08200624,Tempelhofer Weg,2023,7.99,23
+08200725,Mohriner Allee Nord,2023,15.5,4
+08200726,Hufeisensiedlung,2023,8.83,8
+08200727,Parchimer Allee Süd,2023,8.51,3
+08200728,Ortolanweg,2023,,
+08200729,Britzer Garten,2023,,
+08200730,Handwerker-Siedlung,2023,7.73,14
+08200831,Buckow West,2023,10.0,13
+08200832,Buckow Mitte,2023,8.99,22
+08200833,Buckow Ost,2023,9.5,60
+08300934,Gropiusstadt Nord-West,2023,7.7,51
+08300935,Gropiusstadt Süd-West,2023,12.01,6
+08301036,Gropiusstadt Mitte,2023,7.27,16
+08301037,Gropiusstadt Süd-Ost,2023,6.48,59
+08401138,Goldhähnchenweg,2023,7.14,8
+08401139,Vogelviertel Süd,2023,10.14,13
+08401140,Vogelviertel Nord,2023,9.97,4
+08401241,Blumenviertel,2023,16.67,9
+08401242,Zittauer Straße,2023,17.11,6
+08401243,Alt-Rudow,2023,13.57,31
+08401244,Waßmannsdorfer Chaussee,2023,9.8,4
+08401245,Frauenviertel,2023,10.52,11
+08401246,Waltersdorfer Chaussee Ost,2023,7.23,16
+09100101,Alt-Treptow,2023,18.75,45
+09100202,Plänterwald West,2023,13.19,4
+09100203,Plänterwald Ost,2023,17.83,14
+09100304,Baumschulenweg West,2023,14.06,55
+09100305,Baumschulenweg Ost,2023,11.49,16
+09100306,Späthsfelde,2023,,
+09100407,Johannisthal West,2023,17.0,34
+09100408,Johannisthal Ost,2023,10.77,35
+09100409,Landschaftspark Adlershof,2023,9.55,11
+09200510,Helmholtz-Kiez,2023,11.73,65
+09200511,Griechischer Park,2023,8.38,68
+09200512,Wuhlheide,2023,10.67,37
+09200613,Bahnhof Schöneweide,2023,16.9,99
+09200614,Oberspree,2023,15.45,5
+09200715,Wista,2023,11.0,98
+09200716,Dörpfeldstraße West,2023,13.85,37
+09200717,Dörpfeldstraße Ost,2023,11.72,63
+09200818,Spindlersfeld,2023,19.5,101
+09200819,Köllnische Vorstadt,2023,10.31,93
+09300920,Dorf Altglienicke,2023,17.0,69
+09300921,Preußen Siedlung,2023,12.89,5
+09300922,Kosmos Viertel,2023,,
+09300923,Kölner Viertel,2023,11.06,24
+09301024,Falkenberg,2023,13.5,10
+09301025,Alt-Bohnsdorf,2023,12.5,22
+09301126,Grünau,2023,15.16,135
+09301227,Karolinenhof,2023,18.0,16
+09301228,Schmöckwitz/Rauchfangswerder,2023,15.0,10
+09401329,Kietzer Feld/Nachtheide,2023,10.33,71
+09401330,Wendenschloß,2023,15.39,22
+09401431,Allende I,2023,6.63,20
+09401432,Siedlung Kämmereiheide,2023,9.58,21
+09401433,Allende II,2023,6.16,24
+09401534,Altstadt Köpenick,2023,7.57,41
+09401635,Müggelheim,2023,12.9,25
+09501736,Hirschgarten,2023,11.37,20
+09501737,Alt-Friedrichshagen,2023,12.36,56
+09501838,Rahnsdorf,2023,13.64,86
+09501939,Bahnhofstraße,2023,14.45,87
+09501940,Güterbahnhof Köpenick,2023,12.5,36
+09501941,Friedrichshagener Straße,2023,17.0,46
+09502042,Mittelheide,2023,14.0,69
+09502043,Dammheide,2023,10.5,27
+10100101,Marzahn West,2023,5.88,29
+10100102,Rosenbecker Straße,2023,11.75,37
+10100103,Wittenberger Straße,2023,7.17,51
+10100104,Golliner Straße,2023,6.5,20
+10100205,Gewerbegebiet Bitterfelder Straße,2023,,
+10100206,Wuhletalstraße,2023,11.16,42
+10100207,Ahrensfelder Berge,2023,8.43,34
+10100208,Bürgerpark,2023,7.0,45
+10100209,Lea-Grundig-Straße,2023,10.19,23
+10100210,Marzahner Promenade,2023,6.02,43
+10100311,Marzahner Chaussee,2023,11.43,6
+10100312,Springpfuhl,2023,6.11,47
+10100313,Alt-Marzahn,2023,7.42,10
+10100314,Auersbergstraße,2023,9.45,15
+10100315,Bärenstein,2023,11.6,17
+10100316,Landsberger Tor,2023,9.62,12
+10200417,Zossener Straße,2023,6.35,16
+10200418,Kyritzer Straße,2023,11.15,54
+10200419,Havelländer Ring,2023,12.28,145
+10200420,Gut Hellersdorf,2023,11.9,21
+10200421,Helle Mitte,2023,10.83,55
+10200422,Hellersdorfer Promenade,2023,10.28,43
+10200423,Böhlener Straße,2023,,
+10200524,Adele-Sandrock-Straße,2023,11.81,20
+10200525,Schleipfuhl,2023,,
+10200526,Boulevard Kastanienallee,2023,7.56,8
+10200627,Am Kienberg,2023,7.33,9
+10200628,Neue Grottkauer Straße,2023,,
+10200629,Teterower Ring,2023,11.2,12
+10200630,Cecilienplatz,2023,,
+10300731,Oberfeldstraße,2023,12.03,19
+10300732,Buckower Ring,2023,7.94,31
+10300733,Alt-Biesdorf,2023,14.91,13
+10300734,Biesdorf Süd,2023,12.5,18
+10400835,Kaulsdorf Nord,2023,10.04,20
+10400836,Alt-Kaulsdorf,2023,13.18,4
+10400837,Kaulsdorf Süd,2023,14.0,31
+10400938,Mahlsdorf Nord,2023,14.25,20
+10400939,Alt-Mahlsdorf,2023,11.21,10
+10400940,Elsensee,2023,13.98,8
+10400941,Pilgramer Straße,2023,12.0,17
+11100101,Dörfer Malchow-Wartenberg,2023,12.66,5
+11100102,Dorf Falkenberg,2023,9.5,16
+11100203,Falkenberg Ost,2023,6.7,53
+11100204,Falkenberg West,2023,7.54,26
+11100205,Wartenberg Süd,2023,7.02,30
+11100206,Wartenberg Nord,2023,6.14,48
+11100307,Zingster Straße Ost,2023,11.64,47
+11100308,Zingster Straße West,2023,6.76,36
+11100309,Mühlengrund,2023,7.19,8
+11200410,Malchower Weg,2023,7.44,31
+11200411,Hauptstraße,2023,8.2,22
+11200512,Orankesee,2023,12.51,10
+11200513,Große-Leege-Straße,2023,13.25,83
+11200514,Landsberger Allee,2023,8.35,66
+11200515,Weiße Taube,2023,16.0,57
+11300616,Hohenschönhausener Straße,2023,7.33,23
+11300617,Fennpfuhlpark,2023,6.64,12
+11300618,Storkower Bogen,2023,6.74,12
+11300619,Rudolf-Seiffert-Park,2023,13.61,11
+11300620,Fennpfuhl Ost,2023,7.49,18
+11300721,Herzbergstraße,2023,23.88,27
+11300722,Rathaus Lichtenberg,2023,8.25,23
+11300723,Bornitzstraße,2023,11.55,3
+11300724,Roedeliusplatz,2023,14.2,14
+11300725,Nibelungenviertel,2023,10.91,49
+11300826,Frankfurter Allee Süd,2023,6.08,21
+11400927,Victoriastadt,2023,17.0,10
+11400928,Nöldnerplatz,2023,22.05,16
+11400929,Weitlingkiez,2023,9.06,82
+11400930,Zachertstraße,2023,14.0,24
+11400931,Massower Straße,2023,11.0,26
+11401032,Rosenfelder Ring,2023,16.25,119
+11401033,Gensinger Straße,2023,11.89,22
+11401034,Tierpark,2023,11.78,27
+11401135,Dolgenseestraße,2023,8.2,60
+11401136,Volkradstraße,2023,6.94,34
+11401137,Erieseering,2023,6.67,23
+11501238,Rummelsburg,2023,14.7,26
+11501339,Karlshorst West,2023,13.11,58
+11501340,Karlshorst Nord,2023,15.0,37
+11501341,Karlshorst Süd,2023,18.01,101
+12100101,Letteplatz,2023,12.08,67
+12100102,Hausotterplatz,2023,10.01,33
+12100103,Breitkopfbecken,2023,10.66,40
+12100204,Schäfersee,2023,15.0,35
+12100205,Teichstraße,2023,9.0,45
+12100206,Humboldtstraße,2023,10.63,18
+12200307,Reinickes Hof,2023,17.68,7
+12200308,Mellerbogen,2023,9.81,19
+12200309,Scharnweberstraße,2023,10.0,39
+12200310,Klixstraße,2023,7.98,49
+12200411,Schumacher-Quartier,2023,,
+12200412,Waldidyll/Flughafensee,2023,9.72,25
+12200413,Tegel Süd,2023,6.89,97
+12200414,TXL,2023,,
+12200515,Alt-Tegel,2023,13.13,63
+12400616,Konradshöhe/Tegelort,2023,15.05,22
+12400617,Alt-Heiligensee,2023,14.95,5
+12400618,Heiligensee Nord,2023,15.0,11
+12400619,Heiligensee,2023,14.04,12
+12400720,Frohnau West,2023,11.12,13
+12400721,Frohnau Ost,2023,12.0,17
+12400722,Hermsdorf West,2023,12.25,40
+12400723,Hermsdorf Ost/Waldsee,2023,10.96,10
+12500824,Ziekowstraße/Freie Scholle,2023,8.6,26
+12500825,Borsigwalde,2023,10.06,49
+12500926,Wittenau Süd,2023,10.85,20
+12500927,Wittenau Nord,2023,11.5,27
+12500928,Waidmannslust,2023,10.21,11
+12500929,Lübars,2023,16.0,12
+12500930,Wittenau Mitte,2023,10.57,28
+12601031,Lübarser Straße,2023,9.0,3
+12601032,Rollbergesiedlung,2023,5.95,65
+12601133,Treuenbrietzener Straße,2023,5.98,64
+12601134,Märkisches Zentrum,2023,6.82,87
+12601235,Dannenwalder Weg,2023,6.36,14
+12601236,Schorfheidestraße,2023,18.0,4
+01100101,Stülerstraße,2022,16.79,14
+01100102,Großer Tiergarten,2022,17.7,41
+01100103,Lützowstraße,2022,24.0,65
+01100104,Körnerstraße,2022,22.62,57
+01100205,Wilhelmstraße,2022,22.57,49
+01100206,Unter den Linden,2022,17.5,18
+01100207,Leipziger Straße,2022,18.61,69
+01100308,Charitéviertel,2022,18.03,63
+01100309,Oranienburger Straße,2022,19.85,111
+01100310,Alexanderplatzviertel,2022,18.62,79
+01100311,Karl-Marx-Allee,2022,10.02,38
+01100312,Heine-Viertel West,2022,23.46,100
+01100313,Heine-Viertel Ost,2022,19.05,36
+01100414,Nordbahnhof,2022,16.8,68
+01100415,Invalidenstraße,2022,18.72,65
+01100416,Arkonaplatz,2022,18.56,60
+01200517,Huttenkiez,2022,14.0,45
+01200518,Beusselkiez,2022,11.71,36
+01200519,Emdener Straße,2022,18.05,83
+01200520,Bremer Straße,2022,12.19,54
+01200521,Zwinglistraße,2022,12.5,19
+01200522,Elberfelder Straße,2022,10.44,12
+01200623,Stephankiez,2022,12.25,49
+01200624,Heidestraße,2022,21.55,136
+01200625,Lübecker Straße,2022,6.43,6
+01200626,Thomasiusstraße,2022,17.7,24
+01200627,Zillesiedlung,2022,6.87,15
+01200628,Lüneburger Straße,2022,16.59,15
+01200629,Hansaviertel,2022,15.0,24
+01300730,Drontheimer Straße,2022,13.05,39
+01300731,Koloniestraße,2022,12.84,45
+01300732,Soldiner Straße,2022,11.58,64
+01300733,Gesundbrunnen,2022,10.3,35
+01300834,Brunnenstraße,2022,7.58,70
+01300835,Humboldthain Süd,2022,6.85,38
+01300836,Humboldthain Nordwest,2022,12.59,72
+01400937,Afrikanische Straße,2022,15.0,100
+01400938,Kameruner Straße,2022,13.02,49
+01400939,Glasgower Straße,2022,8.31,36
+01400940,Schillerpark,2022,7.19,55
+01400941,Londoner Straße,2022,11.5,15
+01400942,Westliche Müllerstraße,2022,11.24,62
+01401043,Antonstraße,2022,9.04,20
+01401044,Uferstraße,2022,10.44,31
+01401045,Schwedenstraße,2022,10.12,22
+01401046,Nordufer,2022,12.5,34
+01401047,Sparrplatz,2022,14.85,34
+01401048,Leopoldplatz,2022,10.93,50
+01401049,Schulstraße,2022,7.37,26
+02100101,Askanischer Platz,2022,16.56,40
+02100102,Mehringplatz,2022,7.38,52
+02100103,Am Berlin Museum,2022,10.88,11
+02100104,Moritzplatz,2022,8.09,8
+02100105,Prinzenstraße,2022,6.17,37
+02100106,Wassertorplatz,2022,6.77,11
+02200207,Gleisdreieck,2022,19.0,42
+02200208,Rathaus Yorckstraße,2022,13.0,15
+02200209,Viktoriapark,2022,15.0,28
+02200210,Urbanstraße,2022,15.12,30
+02200211,Chamissokiez,2022,16.05,39
+02200212,Graefekiez Süd,2022,15.25,20
+02200213,Graefekiez Nord,2022,14.13,27
+02300314,Oranienplatz,2022,9.04,13
+02300315,Lausitzer Platz,2022,13.51,15
+02300316,Köpenicker Straße,2022,11.02,4
+02300417,Reichenberger Straße West,2022,13.69,23
+02300418,Reichenberger Straße Ost,2022,16.0,21
+02300419,Wrangelkiez,2022,15.0,15
+02400520,Barnimkiez,2022,5.97,27
+02400521,Friedenstraße,2022,15.58,52
+02400522,Richard-Sorge-Viertel,2022,15.81,33
+02400623,Andreasviertel,2022,11.63,69
+02400624,Weberwiese,2022,12.22,37
+02400625,Wriezener Bahnhof,2022,27.08,35
+02500726,Hausburgviertel,2022,13.88,40
+02500727,Forckenbeckplatz,2022,15.71,25
+02500728,Samariterviertel,2022,15.58,50
+02500729,Pettenkofer Straße,2022,16.36,18
+02500830,Niederbarnimstraße,2022,14.94,14
+02500831,Wismarplatz,2022,14.17,35
+02500832,Traveplatz,2022,18.0,80
+02500833,Boxhagener Platz,2022,15.0,42
+02500834,Revaler Straße,2022,17.17,33
+02500835,Stralauer Kiez,2022,15.48,52
+02500836,Stralauer Halbinsel,2022,14.5,15
+03100101,Bucher Forst,2022,11.12,48
+03100102,Klinikum Buch,2022,7.47,45
+03100103,Karower Chaussee,2022,6.23,86
+03200204,Blankenfelde,2022,,
+03200205,Uhlandstraße,2022,11.13,37
+03200206,Pastor-Niemöller-Platz,2022,11.12,26
+03200207,Herthaplatz,2022,11.56,80
+03200308,Nisbléstraße,2022,13.41,61
+03200309,Eddastraße,2022,11.0,24
+03200310,Krugpfuhl,2022,10.71,69
+03300411,Karow Nord,2022,9.19,134
+03300412,Karow Bahnhof,2022,10.1,7
+03300413,Karow Ost,2022,,
+03300514,Blankenburg,2022,9.54,3
+03300515,Blankenburger Süden,2022,,
+03300516,Heinersdorf,2022,15.58,86
+03300517,Märchenland,2022,,
+03400618,Rosenthal,2022,12.41,23
+03400619,Wilhelmsruh,2022,11.0,69
+03400620,Schönholz,2022,12.75,4
+03400721,Florakiez,2022,14.33,65
+03400722,Parkstraße,2022,11.74,16
+03400723,Garbátyplatz,2022,11.38,45
+03400724,Wolfshagener Straße,2022,9.03,26
+03400725,Schlosspark,2022,14.15,23
+03400826,Tiroler Viertel,2022,23.8,32
+03400827,Trelleborger Viertel,2022,10.6,38
+03400828,Spiekermann Straße,2022,16.09,23
+03400829,Arnold-Zweig-Straße,2022,10.28,18
+03400830,Kissingenviertel,2022,6.4,10
+03400831,Pankower Tor,2022,,
+03500932,Bühringstraße,2022,14.63,36
+03500933,Weißer See,2022,13.01,16
+03500934,Weißenseer Spitze,2022,15.0,57
+03500935,Behaimstraße,2022,12.66,46
+03500936,Komponistenviertel Weißensee,2022,12.42,26
+03501037,Rathaus Weißensee,2022,12.5,40
+03501038,Hansastraße,2022,11.96,20
+03601139,Norweger Viertel,2022,16.57,30
+03601140,Malmöer Straße,2022,13.98,29
+03601141,Arnimplatz,2022,14.04,33
+03601142,Falkplatz,2022,17.16,56
+03601243,Rodenbergstraße,2022,12.5,45
+03601244,Humannplatz,2022,12.0,18
+03601245,Ostseestraße,2022,7.1,70
+03601346,Gethsemanekirche,2022,17.91,38
+03601347,Helmholtzplatz,2022,14.0,23
+03601348,Senefelderstraße,2022,16.32,20
+03601449,Michelangelostraße,2022,6.39,39
+03601450,Volkspark Prenzlauer Berg,2022,6.01,12
+03601451,Anton-Saefkow-Park,2022,7.1,19
+03601452,Velodrom,2022,21.5,65
+03601453,Alter Schlachthof,2022,17.13,13
+03701554,Teutoburger Platz,2022,18.12,52
+03701555,Sredzkistraße,2022,16.46,29
+03701556,Kollwitzplatz,2022,17.0,33
+03701657,Thälmannpark,2022,6.98,34
+03701658,Christburger Straße,2022,15.56,33
+03701659,Immanuelkirchstraße,2022,19.44,48
+03701660,Bötzowstraße,2022,15.84,39
+04100101,Jungfernheide/Plötzensee,2022,8.06,39
+04100102,Paul-Hertz-Siedlung,2022,6.11,73
+04200203,Olympiagelände,2022,,
+04200204,Angerburger Allee,2022,9.5,33
+04200205,Flatowallee,2022,14.53,7
+04200206,Kranzallee,2022,13.29,8
+04200207,Eichkamp,2022,,
+04200308,Branitzer Platz,2022,12.89,27
+04200309,Neu Westend,2022,13.0,35
+04200310,Fürstenplatz,2022,13.21,24
+04200311,Königin-Elisabeth-Straße,2022,9.64,23
+04300412,Schlossgarten,2022,10.23,28
+04300413,Klausenerplatz,2022,7.88,45
+04300414,Schloß Charlottenburg,2022,12.73,38
+04300415,Lietzensee,2022,13.98,19
+04300416,Amtsgerichtsplatz,2022,14.18,23
+04300517,Tegeler Weg,2022,16.0,25
+04300518,Kaiserin-Augusta-Allee,2022,14.49,28
+04300619,Alt-Lietzow,2022,14.73,34
+04300620,Spreestadt,2022,22.99,37
+04300621,Richard-Wagner-Straße,2022,12.84,62
+04300622,Ernst-Reuter-Platz,2022,13.85,46
+04300623,Karl-August-Platz,2022,15.48,67
+04300624,Savignyplatz,2022,17.67,51
+04400725,Güterbahnhof Grunewald,2022,,
+04400726,Bismarckallee,2022,18.67,11
+04400727,Flinsberger Platz,2022,16.0,48
+04400728,Hagenplatz,2022,17.63,15
+04400729,Hundekehle,2022,14.11,8
+04400830,Forckenbeckstraße,2022,19.3,74
+04400831,Messelpark,2022,14.92,7
+04400832,Breite Straße,2022,10.95,19
+04400833,Schlangenbader Straße,2022,7.13,12
+04400834,Binger Straße,2022,18.27,4
+04400835,Rüdesheimer Platz,2022,10.41,8
+04500936,Droysenstraße,2022,16.85,27
+04500937,Halensee,2022,17.0,37
+04500938,Hochmeisterplatz,2022,14.87,48
+04500939,Eisenzahnstraße,2022,23.87,37
+04501040,Hindemithplatz,2022,16.01,18
+04501041,George-Grosz-Platz,2022,18.01,22
+04501042,Breitscheidplatz,2022,18.0,36
+04501043,Preußenpark,2022,15.06,45
+04501044,Ludwigkirchplatz,2022,14.0,10
+04501045,Schaperstraße,2022,18.39,45
+04501146,Barstraße,2022,16.0,26
+04501147,Leon-Jessel-Platz,2022,13.41,19
+04501148,Brabanter Platz,2022,14.52,13
+04501149,Nikolsburger Platz,2022,16.67,37
+04501150,Wilhelmsaue,2022,16.87,3
+04501151,Hildegardstraße,2022,12.22,16
+04501152,Prager Platz,2022,8.18,8
+04501153,Babelsberger Straße,2022,13.76,27
+05100101,Hakenfelde Nord,2022,11.0,28
+05100102,Am Forstacker,2022,11.06,56
+05100103,Mertensstraße,2022,9.55,39
+05100104,Maselake,2022,9.5,119
+05100105,Amorbacher Weg,2022,9.18,19
+05100206,Griesingerstraße,2022,5.37,25
+05100207,An der Tränke,2022,11.04,12
+05100208,Im Spektefeld,2022,6.58,105
+05100209,Westerwaldstraße,2022,6.28,36
+05100210,Germersheimer Platz,2022,8.02,92
+05100211,An der Kappe,2022,9.1,15
+05100312,Eckschanze,2022,8.82,20
+05100313,Eiswerder,2022,17.41,75
+05100314,Kurstraße,2022,10.13,58
+05100315,Ackerstraße,2022,9.41,59
+05100316,Carl-Schurz-Straße,2022,6.67,98
+05100317,Freiheit,2022,10.89,25
+05200418,Isenburger Weg,2022,14.08,3
+05200419,Am Heideberg,2022,,
+05200420,Staakener Straße,2022,10.92,14
+05200421,Spandauer Straße,2022,8.2,15
+05200422,Werkstraße,2022,13.72,15
+05200423,Magistratsweg,2022,6.86,48
+05200524,Döberitzer Weg,2022,8.16,10
+05200525,Pillnitzer Weg,2022,9.55,24
+05200526,Rudolf-Wissell-Großsiedlung,2022,7.0,71
+05200527,Maulbeerallee,2022,6.91,253
+05200528,Weinmeisterhornweg,2022,6.36,52
+05200629,Borkumer Straße,2022,9.8,53
+05200630,Wilhelmstadt West,2022,11.1,96
+05200631,Wilhelmstadt Ost,2022,9.75,69
+05200632,Tiefwerder,2022,6.5,18
+05200633,Graetschelsteig,2022,5.76,26
+05200634,Börnicker Straße,2022,9.5,5
+05300735,Haveleck,2022,10.5,145
+05300736,Zitadellenweg,2022,7.27,15
+05300737,Gartenfelder Straße,2022,7.45,185
+05300838,Gartenfeld,2022,,
+05300839,Rohrdamm,2022,8.2,65
+05300840,Nonnendammallee,2022,7.04,4
+05300841,Siemensdamm,2022,10.14,38
+05400942,Alt-Gatow,2022,7.48,9
+05400943,Jägerallee,2022,12.0,11
+05400944,Kladower Damm,2022,16.43,3
+05400945,Kafkastraße,2022,,
+06100101,Fichtenberg,2022,13.95,24
+06100102,Schloßstraße,2022,13.25,52
+06100103,Markelstraße,2022,12.87,21
+06100204,Munsterdamm,2022,15.11,15
+06100205,Südende,2022,11.6,33
+06100206,Stadtpark,2022,10.13,21
+06100207,Mittelstraße,2022,14.5,30
+06100208,Bergstraße,2022,12.5,23
+06100209,Feuerbachstraße,2022,14.01,47
+06100210,Bismarckstraße,2022,13.11,19
+06200311,Alt-Lankwitz,2022,10.0,19
+06200312,Komponistenviertel Lankwitz,2022,10.83,19
+06200313,Lankwitz Kirche,2022,9.58,25
+06200314,Kaiser-Wilhelm-Straße,2022,8.06,35
+06200315,Gallwitzallee,2022,10.13,19
+06200316,Belßstraße,2022,8.66,11
+06200317,Lankwitz Süd,2022,9.0,13
+06200418,Landweg,2022,,
+06200419,Thermometersiedlung,2022,7.22,43
+06200420,Lichterfelde Süd,2022,9.5,33
+06200421,Königsberger Straße,2022,12.49,41
+06200422,Oberhofer Platz,2022,11.0,24
+06200423,Schütte-Lanz-Straße,2022,7.36,24
+06300524,Berlepschstraße,2022,11.82,8
+06300525,Zehlendorf Süd,2022,9.6,25
+06300526,Zehlendorf Mitte,2022,15.32,26
+06300527,Sundgauer Straße,2022,13.54,44
+06300528,Teltower Damm,2022,12.0,32
+06300629,Botanischer Garten,2022,13.27,20
+06300630,Hindenburgdamm,2022,9.85,21
+06300631,Goerzwerke,2022,14.2,6
+06300632,Schweizer Viertel,2022,13.5,36
+06300633,Augustaplatz,2022,11.22,49
+06300634,Lichterfelde West,2022,12.96,13
+06400735,Wannsee,2022,13.0,49
+06400736,Düppel,2022,13.22,13
+06400737,Nikolassee,2022,12.0,18
+06400838,Krumme Lanke,2022,15.26,13
+06400839,Fischerhüttenstraße,2022,13.82,5
+06400840,Fischtal,2022,13.02,5
+06400841,Zehlendorf Eiche,2022,12.59,17
+06400842,Hüttenweg,2022,18.18,3
+06400843,Thielallee,2022,12.1,7
+06400844,Dahlem,2022,14.57,21
+07100101,Wittenbergplatz,2022,17.53,36
+07100102,Kalckreuthstraße,2022,11.99,28
+07100103,Frobenstraße,2022,12.57,43
+07100204,Barbarossaplatz,2022,13.33,21
+07100205,Alvenslebenstraße,2022,6.69,19
+07100206,Großgörschenstraße,2022,7.38,29
+07200307,Bayerischer Platz,2022,13.14,19
+07200308,Volkspark (Rudolph-Wilde-Park),2022,12.38,59
+07200409,Belziger Straße,2022,12.67,30
+07200410,Feurigstraße,2022,12.29,14
+07200411,Julius-Leber-Brücke,2022,12.63,5
+07200412,Schöneberger Linse,2022,20.98,13
+07200413,Cheruskerstraße,2022,11.4,21
+07200414,Hohenfriedbergstraße,2022,14.95,12
+07300515,Taunusstraße,2022,13.75,24
+07300516,Odenwaldstraße,2022,12.0,35
+07300517,Perelsplatz,2022,17.59,33
+07300618,Ceciliengärten,2022,16.02,19
+07300619,Grazer Platz,2022,10.14,26
+07400720,Gontermannstraße,2022,10.23,16
+07400721,Paradestraße,2022,14.52,6
+07400822,Lindenhofsiedlung,2022,16.59,22
+07400823,Wittekindstraße,2022,7.51,20
+07400824,Bosepark,2022,11.97,11
+07400825,Friedrich-Karl-Straße,2022,12.71,26
+07400826,Marienhöhe,2022,10.0,7
+07400927,Rathaus Tempelhof,2022,9.0,33
+07400928,Germaniagarten,2022,12.17,20
+07501029,Ringstraße,2022,7.52,74
+07501030,Machonstraße,2022,11.29,21
+07501031,Eisenacher Straße,2022,8.69,24
+07501032,Imbrosweg,2022,9.9,18
+07501133,Fritz-Werner-Straße,2022,10.02,20
+07501134,Hundsteinweg,2022,8.09,31
+07501135,Birnhornweg,2022,8.9,3
+07601236,Marienfelder Allee Nordwest,2022,8.75,49
+07601237,Kirchstraße,2022,12.01,13
+07601238,Marienfelde Nordost,2022,11.0,7
+07601339,Tirschenreuther Ring West,2022,6.17,43
+07601340,Tirschenreuther Ring Ost,2022,7.46,42
+07601341,Diedersdorfer Weg,2022,6.5,7
+07601442,Kettinger Straße,2022,9.7,42
+07601443,Töpchiner Weg,2022,7.91,23
+07601544,John-Locke-Straße,2022,9.02,20
+07601545,Nahariyastraße,2022,8.08,68
+07601546,Franziusweg,2022,9.63,14
+07601547,Horstwalder Straße,2022,8.43,17
+07601548,Wittelsbacherstraße,2022,,
+08100101,Hasenheide,2022,20.08,7
+08100102,Schillerpromenade Nord,2022,9.5,19
+08100103,Schillerpromenade Süd,2022,15.49,15
+08100104,Wartheplatz,2022,16.3,14
+08100105,Silbersteinstraße,2022,14.1,38
+08100206,Flughafenstraße,2022,11.93,33
+08100207,Rollberg,2022,6.81,11
+08100208,Körnerpark,2022,12.01,48
+08100209,Glasower Straße,2022,15.31,37
+08100310,Maybachufer,2022,17.5,24
+08100311,Reuterplatz,2022,10.43,18
+08100312,Weichselplatz,2022,9.48,32
+08100313,Bouchéstraße,2022,,
+08100314,Donaustraße,2022,11.53,17
+08100415,Ganghoferstraße,2022,17.86,11
+08100416,Alt-Rixdorf,2022,13.75,16
+08100417,Braunschweiger Straße,2022,11.51,32
+08100418,Hertzbergplatz,2022,9.9,24
+08100419,Treptower Straße Nord,2022,9.32,11
+08100520,Weiße Siedlung,2022,8.29,33
+08100521,Schulenburgpark,2022,7.14,43
+08200622,Jahnstraße,2022,12.0,22
+08200623,Park am Buschkrug,2022,13.36,13
+08200624,Tempelhofer Weg,2022,8.91,36
+08200725,Mohriner Allee Nord,2022,10.0,3
+08200726,Hufeisensiedlung,2022,6.39,15
+08200727,Parchimer Allee Süd,2022,8.21,6
+08200728,Ortolanweg,2022,,
+08200729,Britzer Garten,2022,,
+08200730,Handwerker-Siedlung,2022,6.25,5
+08200831,Buckow West,2022,10.66,16
+08200832,Buckow Mitte,2022,7.2,52
+08200833,Buckow Ost,2022,8.09,30
+08300934,Gropiusstadt Nord-West,2022,6.86,42
+08300935,Gropiusstadt Süd-West,2022,9.81,17
+08301036,Gropiusstadt Mitte,2022,6.7,30
+08301037,Gropiusstadt Süd-Ost,2022,6.59,32
+08401138,Goldhähnchenweg,2022,7.14,17
+08401139,Vogelviertel Süd,2022,7.54,12
+08401140,Vogelviertel Nord,2022,,
+08401241,Blumenviertel,2022,7.75,10
+08401242,Zittauer Straße,2022,7.71,7
+08401243,Alt-Rudow,2022,8.31,38
+08401244,Waßmannsdorfer Chaussee,2022,9.62,5
+08401245,Frauenviertel,2022,9.08,20
+08401246,Waltersdorfer Chaussee Ost,2022,6.97,33
+09100101,Alt-Treptow,2022,14.53,48
+09100202,Plänterwald West,2022,13.0,6
+09100203,Plänterwald Ost,2022,14.42,16
+09100304,Baumschulenweg West,2022,10.63,51
+09100305,Baumschulenweg Ost,2022,13.0,15
+09100306,Späthsfelde,2022,,
+09100407,Johannisthal West,2022,16.0,31
+09100408,Johannisthal Ost,2022,11.99,49
+09100409,Landschaftspark Adlershof,2022,8.0,9
+09200510,Helmholtz-Kiez,2022,11.05,66
+09200511,Griechischer Park,2022,7.9,123
+09200512,Wuhlheide,2022,12.09,46
+09200613,Bahnhof Schöneweide,2022,14.68,129
+09200614,Oberspree,2022,16.39,9
+09200715,Wista,2022,10.8,98
+09200716,Dörpfeldstraße West,2022,11.99,46
+09200717,Dörpfeldstraße Ost,2022,11.2,45
+09200818,Spindlersfeld,2022,17.5,96
+09200819,Köllnische Vorstadt,2022,9.55,56
+09300920,Dorf Altglienicke,2022,8.78,79
+09300921,Preußen Siedlung,2022,9.78,12
+09300922,Kosmos Viertel,2022,6.5,4
+09300923,Kölner Viertel,2022,9.06,12
+09301024,Falkenberg,2022,13.5,9
+09301025,Alt-Bohnsdorf,2022,10.0,58
+09301126,Grünau,2022,14.16,126
+09301227,Karolinenhof,2022,10.96,5
+09301228,Schmöckwitz/Rauchfangswerder,2022,12.5,7
+09401329,Kietzer Feld/Nachtheide,2022,7.73,40
+09401330,Wendenschloß,2022,12.21,21
+09401431,Allende I,2022,6.24,31
+09401432,Siedlung Kämmereiheide,2022,9.19,17
+09401433,Allende II,2022,6.17,25
+09401534,Altstadt Köpenick,2022,9.5,110
+09401635,Müggelheim,2022,13.01,36
+09501736,Hirschgarten,2022,7.43,23
+09501737,Alt-Friedrichshagen,2022,11.15,81
+09501838,Rahnsdorf,2022,13.52,78
+09501939,Bahnhofstraße,2022,13.95,94
+09501940,Güterbahnhof Köpenick,2022,11.31,37
+09501941,Friedrichshagener Straße,2022,14.16,29
+09502042,Mittelheide,2022,13.0,38
+09502043,Dammheide,2022,9.5,36
+10100101,Marzahn West,2022,5.58,57
+10100102,Rosenbecker Straße,2022,11.75,46
+10100103,Wittenberger Straße,2022,6.96,42
+10100104,Golliner Straße,2022,6.61,35
+10100205,Gewerbegebiet Bitterfelder Straße,2022,,
+10100206,Wuhletalstraße,2022,5.87,29
+10100207,Ahrensfelder Berge,2022,6.18,28
+10100208,Bürgerpark,2022,7.44,90
+10100209,Lea-Grundig-Straße,2022,9.5,65
+10100210,Marzahner Promenade,2022,6.36,70
+10100311,Marzahner Chaussee,2022,9.94,6
+10100312,Springpfuhl,2022,6.62,83
+10100313,Alt-Marzahn,2022,7.8,21
+10100314,Auersbergstraße,2022,8.03,26
+10100315,Bärenstein,2022,5.74,32
+10100316,Landsberger Tor,2022,8.12,17
+10200417,Zossener Straße,2022,8.09,30
+10200418,Kyritzer Straße,2022,11.7,19
+10200419,Havelländer Ring,2022,11.46,133
+10200420,Gut Hellersdorf,2022,13.69,3
+10200421,Helle Mitte,2022,10.36,51
+10200422,Hellersdorfer Promenade,2022,9.73,53
+10200423,Böhlener Straße,2022,7.65,47
+10200524,Adele-Sandrock-Straße,2022,9.26,51
+10200525,Schleipfuhl,2022,,
+10200526,Boulevard Kastanienallee,2022,8.0,32
+10200627,Am Kienberg,2022,7.29,13
+10200628,Neue Grottkauer Straße,2022,,
+10200629,Teterower Ring,2022,7.68,28
+10200630,Cecilienplatz,2022,18.29,3
+10300731,Oberfeldstraße,2022,13.67,13
+10300732,Buckower Ring,2022,8.95,68
+10300733,Alt-Biesdorf,2022,16.89,22
+10300734,Biesdorf Süd,2022,13.08,20
+10400835,Kaulsdorf Nord,2022,9.11,28
+10400836,Alt-Kaulsdorf,2022,11.58,19
+10400837,Kaulsdorf Süd,2022,11.12,15
+10400938,Mahlsdorf Nord,2022,12.9,33
+10400939,Alt-Mahlsdorf,2022,11.67,19
+10400940,Elsensee,2022,10.94,10
+10400941,Pilgramer Straße,2022,11.07,23
+11100101,Dörfer Malchow-Wartenberg,2022,8.98,7
+11100102,Dorf Falkenberg,2022,9.5,25
+11100203,Falkenberg Ost,2022,7.03,29
+11100204,Falkenberg West,2022,7.14,30
+11100205,Wartenberg Süd,2022,6.38,23
+11100206,Wartenberg Nord,2022,6.06,34
+11100307,Zingster Straße Ost,2022,8.05,90
+11100308,Zingster Straße West,2022,6.14,66
+11100309,Mühlengrund,2022,8.2,29
+11200410,Malchower Weg,2022,7.06,47
+11200411,Hauptstraße,2022,7.64,53
+11200512,Orankesee,2022,13.99,5
+11200513,Große-Leege-Straße,2022,10.63,97
+11200514,Landsberger Allee,2022,9.3,90
+11200515,Weiße Taube,2022,12.0,36
+11300616,Hohenschönhausener Straße,2022,6.4,13
+11300617,Fennpfuhlpark,2022,6.67,28
+11300618,Storkower Bogen,2022,6.68,8
+11300619,Rudolf-Seiffert-Park,2022,11.79,14
+11300620,Fennpfuhl Ost,2022,6.19,18
+11300721,Herzbergstraße,2022,11.7,73
+11300722,Rathaus Lichtenberg,2022,10.19,44
+11300723,Bornitzstraße,2022,,
+11300724,Roedeliusplatz,2022,7.77,34
+11300725,Nibelungenviertel,2022,11.32,63
+11300826,Frankfurter Allee Süd,2022,8.2,81
+11400927,Victoriastadt,2022,11.46,10
+11400928,Nöldnerplatz,2022,19.62,43
+11400929,Weitlingkiez,2022,7.14,84
+11400930,Zachertstraße,2022,11.05,66
+11400931,Massower Straße,2022,16.68,29
+11401032,Rosenfelder Ring,2022,12.77,112
+11401033,Gensinger Straße,2022,9.14,43
+11401034,Tierpark,2022,7.18,30
+11401135,Dolgenseestraße,2022,7.0,71
+11401136,Volkradstraße,2022,6.94,67
+11401137,Erieseering,2022,6.54,43
+11501238,Rummelsburg,2022,10.81,21
+11501339,Karlshorst West,2022,10.25,59
+11501340,Karlshorst Nord,2022,11.0,46
+11501341,Karlshorst Süd,2022,14.41,86
+12100101,Letteplatz,2022,10.76,80
+12100102,Hausotterplatz,2022,8.95,51
+12100103,Breitkopfbecken,2022,9.31,52
+12100204,Schäfersee,2022,10.28,39
+12100205,Teichstraße,2022,7.97,74
+12100206,Humboldtstraße,2022,8.75,15
+12200307,Reinickes Hof,2022,10.45,14
+12200308,Mellerbogen,2022,9.53,19
+12200309,Scharnweberstraße,2022,9.9,30
+12200310,Klixstraße,2022,8.04,74
+12200411,Schumacher-Quartier,2022,,
+12200412,Waldidyll/Flughafensee,2022,10.24,24
+12200413,Tegel Süd,2022,6.89,112
+12200414,TXL,2022,,
+12200515,Alt-Tegel,2022,12.27,82
+12400616,Konradshöhe/Tegelort,2022,12.61,17
+12400617,Alt-Heiligensee,2022,10.8,9
+12400618,Heiligensee Nord,2022,8.46,9
+12400619,Heiligensee,2022,10.8,10
+12400720,Frohnau West,2022,12.5,16
+12400721,Frohnau Ost,2022,10.94,15
+12400722,Hermsdorf West,2022,10.71,39
+12400723,Hermsdorf Ost/Waldsee,2022,10.81,21
+12500824,Ziekowstraße/Freie Scholle,2022,8.92,33
+12500825,Borsigwalde,2022,8.94,62
+12500926,Wittenau Süd,2022,9.81,20
+12500927,Wittenau Nord,2022,14.66,49
+12500928,Waidmannslust,2022,11.73,15
+12500929,Lübars,2022,10.31,5
+12500930,Wittenau Mitte,2022,12.01,23
+12601031,Lübarser Straße,2022,6.31,10
+12601032,Rollbergesiedlung,2022,5.87,76
+12601133,Treuenbrietzener Straße,2022,6.06,67
+12601134,Märkisches Zentrum,2022,6.5,69
+12601235,Dannenwalder Weg,2022,7.04,23
+12601236,Schorfheidestraße,2022,8.18,4
+01100101,Stülerstraße,2021,15.0,30
+01100102,Großer Tiergarten,2021,17.15,111
+01100103,Lützowstraße,2021,15.0,65
+01100104,Körnerstraße,2021,15.0,21
+01100205,Wilhelmstraße,2021,19.0,45
+01100206,Unter den Linden,2021,12.62,45
+01100207,Leipziger Straße,2021,16.0,94
+01100308,Charitéviertel,2021,16.0,119
+01100309,Oranienburger Straße,2021,19.0,152
+01100310,Alexanderplatzviertel,2021,19.85,133
+01100311,Karl-Marx-Allee,2021,13.2,35
+01100312,Heine-Viertel West,2021,21.61,210
+01100313,Heine-Viertel Ost,2021,18.49,67
+01100414,Nordbahnhof,2021,17.19,117
+01100415,Invalidenstraße,2021,20.0,101
+01100416,Arkonaplatz,2021,14.29,70
+01200517,Huttenkiez,2021,14.0,33
+01200518,Beusselkiez,2021,13.05,69
+01200519,Emdener Straße,2021,10.0,65
+01200520,Bremer Straße,2021,11.0,69
+01200521,Zwinglistraße,2021,10.22,32
+01200522,Elberfelder Straße,2021,11.61,39
+01200623,Stephankiez,2021,13.96,98
+01200624,Heidestraße,2021,18.23,194
+01200625,Lübecker Straße,2021,9.18,28
+01200626,Thomasiusstraße,2021,11.93,26
+01200627,Zillesiedlung,2021,7.0,7
+01200628,Lüneburger Straße,2021,11.11,12
+01200629,Hansaviertel,2021,18.02,59
+01300730,Drontheimer Straße,2021,8.4,62
+01300731,Koloniestraße,2021,11.0,73
+01300732,Soldiner Straße,2021,9.6,68
+01300733,Gesundbrunnen,2021,9.68,61
+01300834,Brunnenstraße,2021,8.4,92
+01300835,Humboldthain Süd,2021,6.69,36
+01300836,Humboldthain Nordwest,2021,12.4,117
+01400937,Afrikanische Straße,2021,9.65,72
+01400938,Kameruner Straße,2021,12.0,82
+01400939,Glasgower Straße,2021,9.85,52
+01400940,Schillerpark,2021,7.22,67
+01400941,Londoner Straße,2021,12.0,13
+01400942,Westliche Müllerstraße,2021,11.13,78
+01401043,Antonstraße,2021,8.13,20
+01401044,Uferstraße,2021,11.09,59
+01401045,Schwedenstraße,2021,10.0,40
+01401046,Nordufer,2021,10.58,47
+01401047,Sparrplatz,2021,10.0,20
+01401048,Leopoldplatz,2021,11.06,76
+01401049,Schulstraße,2021,7.69,57
+02100101,Askanischer Platz,2021,15.85,57
+02100102,Mehringplatz,2021,8.36,83
+02100103,Am Berlin Museum,2021,10.57,40
+02100104,Moritzplatz,2021,10.92,17
+02100105,Prinzenstraße,2021,6.92,69
+02100106,Wassertorplatz,2021,8.38,15
+02200207,Gleisdreieck,2021,17.5,34
+02200208,Rathaus Yorckstraße,2021,10.67,20
+02200209,Viktoriapark,2021,14.5,26
+02200210,Urbanstraße,2021,15.1,39
+02200211,Chamissokiez,2021,12.99,48
+02200212,Graefekiez Süd,2021,12.5,27
+02200213,Graefekiez Nord,2021,13.64,39
+02300314,Oranienplatz,2021,6.4,13
+02300315,Lausitzer Platz,2021,11.28,25
+02300316,Köpenicker Straße,2021,10.18,20
+02300417,Reichenberger Straße West,2021,13.25,30
+02300418,Reichenberger Straße Ost,2021,17.0,33
+02300419,Wrangelkiez,2021,12.36,36
+02400520,Barnimkiez,2021,18.27,55
+02400521,Friedenstraße,2021,12.63,45
+02400522,Richard-Sorge-Viertel,2021,13.0,53
+02400623,Andreasviertel,2021,20.49,94
+02400624,Weberwiese,2021,11.25,37
+02400625,Wriezener Bahnhof,2021,18.0,33
+02500726,Hausburgviertel,2021,12.02,74
+02500727,Forckenbeckplatz,2021,14.49,47
+02500728,Samariterviertel,2021,15.0,61
+02500729,Pettenkofer Straße,2021,13.2,32
+02500830,Niederbarnimstraße,2021,15.48,33
+02500831,Wismarplatz,2021,16.4,47
+02500832,Traveplatz,2021,16.98,101
+02500833,Boxhagener Platz,2021,12.5,83
+02500834,Revaler Straße,2021,16.39,72
+02500835,Stralauer Kiez,2021,14.8,70
+02500836,Stralauer Halbinsel,2021,14.38,44
+03100101,Bucher Forst,2021,10.32,61
+03100102,Klinikum Buch,2021,8.57,41
+03100103,Karower Chaussee,2021,6.01,70
+03200204,Blankenfelde,2021,12.18,9
+03200205,Uhlandstraße,2021,9.94,40
+03200206,Pastor-Niemöller-Platz,2021,10.16,43
+03200207,Herthaplatz,2021,10.59,98
+03200308,Nisbléstraße,2021,12.75,62
+03200309,Eddastraße,2021,10.98,29
+03200310,Krugpfuhl,2021,10.31,82
+03300411,Karow Nord,2021,8.81,162
+03300412,Karow Bahnhof,2021,11.3,6
+03300413,Karow Ost,2021,,
+03300514,Blankenburg,2021,9.54,10
+03300515,Blankenburger Süden,2021,,
+03300516,Heinersdorf,2021,10.81,48
+03300517,Märchenland,2021,,
+03400618,Rosenthal,2021,12.47,33
+03400619,Wilhelmsruh,2021,10.79,67
+03400620,Schönholz,2021,12.65,7
+03400721,Florakiez,2021,13.33,56
+03400722,Parkstraße,2021,14.26,26
+03400723,Garbátyplatz,2021,11.83,44
+03400724,Wolfshagener Straße,2021,9.96,26
+03400725,Schlosspark,2021,8.13,32
+03400826,Tiroler Viertel,2021,13.24,16
+03400827,Trelleborger Viertel,2021,11.91,53
+03400828,Spiekermann Straße,2021,17.86,42
+03400829,Arnold-Zweig-Straße,2021,10.45,25
+03400830,Kissingenviertel,2021,9.39,33
+03400831,Pankower Tor,2021,,
+03500932,Bühringstraße,2021,15.31,82
+03500933,Weißer See,2021,11.83,47
+03500934,Weißenseer Spitze,2021,13.0,114
+03500935,Behaimstraße,2021,14.0,52
+03500936,Komponistenviertel Weißensee,2021,12.0,38
+03501037,Rathaus Weißensee,2021,10.6,58
+03501038,Hansastraße,2021,10.11,27
+03601139,Norweger Viertel,2021,12.63,41
+03601140,Malmöer Straße,2021,14.8,50
+03601141,Arnimplatz,2021,13.0,60
+03601142,Falkplatz,2021,14.96,75
+03601243,Rodenbergstraße,2021,11.65,51
+03601244,Humannplatz,2021,12.71,38
+03601245,Ostseestraße,2021,8.94,107
+03601346,Gethsemanekirche,2021,17.0,74
+03601347,Helmholtzplatz,2021,15.23,35
+03601348,Senefelderstraße,2021,14.79,56
+03601449,Michelangelostraße,2021,6.04,53
+03601450,Volkspark Prenzlauer Berg,2021,6.04,27
+03601451,Anton-Saefkow-Park,2021,7.1,48
+03601452,Velodrom,2021,21.53,154
+03601453,Alter Schlachthof,2021,17.5,24
+03701554,Teutoburger Platz,2021,17.09,78
+03701555,Sredzkistraße,2021,13.46,42
+03701556,Kollwitzplatz,2021,15.96,53
+03701657,Thälmannpark,2021,6.9,69
+03701658,Christburger Straße,2021,13.47,52
+03701659,Immanuelkirchstraße,2021,15.09,45
+03701660,Bötzowstraße,2021,11.58,74
+04100101,Jungfernheide/Plötzensee,2021,8.0,48
+04100102,Paul-Hertz-Siedlung,2021,6.08,89
+04200203,Olympiagelände,2021,,
+04200204,Angerburger Allee,2021,8.5,63
+04200205,Flatowallee,2021,12.07,9
+04200206,Kranzallee,2021,9.65,16
+04200207,Eichkamp,2021,,
+04200308,Branitzer Platz,2021,11.25,38
+04200309,Neu Westend,2021,12.14,44
+04200310,Fürstenplatz,2021,11.58,34
+04200311,Königin-Elisabeth-Straße,2021,13.0,30
+04300412,Schlossgarten,2021,12.71,65
+04300413,Klausenerplatz,2021,7.76,57
+04300414,Schloß Charlottenburg,2021,13.59,52
+04300415,Lietzensee,2021,14.0,49
+04300416,Amtsgerichtsplatz,2021,14.29,32
+04300517,Tegeler Weg,2021,11.0,47
+04300518,Kaiserin-Augusta-Allee,2021,12.86,42
+04300619,Alt-Lietzow,2021,10.97,52
+04300620,Spreestadt,2021,17.21,24
+04300621,Richard-Wagner-Straße,2021,12.71,74
+04300622,Ernst-Reuter-Platz,2021,16.79,82
+04300623,Karl-August-Platz,2021,15.28,108
+04300624,Savignyplatz,2021,12.92,56
+04400725,Güterbahnhof Grunewald,2021,,
+04400726,Bismarckallee,2021,16.43,21
+04400727,Flinsberger Platz,2021,13.68,72
+04400728,Hagenplatz,2021,17.0,11
+04400729,Hundekehle,2021,20.5,11
+04400830,Forckenbeckstraße,2021,17.65,67
+04400831,Messelpark,2021,13.53,3
+04400832,Breite Straße,2021,11.3,35
+04400833,Schlangenbader Straße,2021,7.5,43
+04400834,Binger Straße,2021,10.53,14
+04400835,Rüdesheimer Platz,2021,9.75,23
+04500936,Droysenstraße,2021,13.13,36
+04500937,Halensee,2021,16.15,45
+04500938,Hochmeisterplatz,2021,14.9,68
+04500939,Eisenzahnstraße,2021,22.56,50
+04501040,Hindemithplatz,2021,14.79,29
+04501041,George-Grosz-Platz,2021,18.0,32
+04501042,Breitscheidplatz,2021,16.22,44
+04501043,Preußenpark,2021,15.34,75
+04501044,Ludwigkirchplatz,2021,15.54,37
+04501045,Schaperstraße,2021,14.29,49
+04501146,Barstraße,2021,18.95,36
+04501147,Leon-Jessel-Platz,2021,11.37,21
+04501148,Brabanter Platz,2021,8.4,28
+04501149,Nikolsburger Platz,2021,12.72,50
+04501150,Wilhelmsaue,2021,12.05,11
+04501151,Hildegardstraße,2021,11.46,27
+04501152,Prager Platz,2021,12.42,23
+04501153,Babelsberger Straße,2021,14.21,51
+05100101,Hakenfelde Nord,2021,8.7,15
+05100102,Am Forstacker,2021,7.21,39
+05100103,Mertensstraße,2021,9.0,54
+05100104,Maselake,2021,9.5,38
+05100105,Amorbacher Weg,2021,9.19,31
+05100206,Griesingerstraße,2021,5.83,17
+05100207,An der Tränke,2021,10.77,12
+05100208,Im Spektefeld,2021,6.61,123
+05100209,Westerwaldstraße,2021,7.26,125
+05100210,Germersheimer Platz,2021,7.75,118
+05100211,An der Kappe,2021,9.63,16
+05100312,Eckschanze,2021,8.32,42
+05100313,Eiswerder,2021,13.46,57
+05100314,Kurstraße,2021,9.57,67
+05100315,Ackerstraße,2021,8.8,61
+05100316,Carl-Schurz-Straße,2021,7.07,125
+05100317,Freiheit,2021,10.94,25
+05200418,Isenburger Weg,2021,,
+05200419,Am Heideberg,2021,,
+05200420,Staakener Straße,2021,10.53,10
+05200421,Spandauer Straße,2021,9.24,27
+05200422,Werkstraße,2021,11.2,9
+05200423,Magistratsweg,2021,7.79,37
+05200524,Döberitzer Weg,2021,8.33,16
+05200525,Pillnitzer Weg,2021,8.97,24
+05200526,Rudolf-Wissell-Großsiedlung,2021,6.8,83
+05200527,Maulbeerallee,2021,5.93,215
+05200528,Weinmeisterhornweg,2021,6.14,71
+05200629,Borkumer Straße,2021,10.06,106
+05200630,Wilhelmstadt West,2021,10.2,94
+05200631,Wilhelmstadt Ost,2021,9.41,70
+05200632,Tiefwerder,2021,7.02,26
+05200633,Graetschelsteig,2021,5.76,22
+05200634,Börnicker Straße,2021,10.66,8
+05300735,Haveleck,2021,9.0,97
+05300736,Zitadellenweg,2021,7.33,9
+05300737,Gartenfelder Straße,2021,7.45,203
+05300838,Gartenfeld,2021,,
+05300839,Rohrdamm,2021,8.62,75
+05300840,Nonnendammallee,2021,8.21,10
+05300841,Siemensdamm,2021,9.63,26
+05400942,Alt-Gatow,2021,7.77,17
+05400943,Jägerallee,2021,10.72,11
+05400944,Kladower Damm,2021,,
+05400945,Kafkastraße,2021,,
+06100101,Fichtenberg,2021,12.26,32
+06100102,Schloßstraße,2021,12.81,55
+06100103,Markelstraße,2021,11.54,16
+06100204,Munsterdamm,2021,10.25,40
+06100205,Südende,2021,9.79,62
+06100206,Stadtpark,2021,10.77,33
+06100207,Mittelstraße,2021,11.59,47
+06100208,Bergstraße,2021,9.92,24
+06100209,Feuerbachstraße,2021,9.55,50
+06100210,Bismarckstraße,2021,9.96,14
+06200311,Alt-Lankwitz,2021,9.8,14
+06200312,Komponistenviertel Lankwitz,2021,11.84,15
+06200313,Lankwitz Kirche,2021,9.79,44
+06200314,Kaiser-Wilhelm-Straße,2021,8.82,42
+06200315,Gallwitzallee,2021,11.5,57
+06200316,Belßstraße,2021,8.93,22
+06200317,Lankwitz Süd,2021,9.0,16
+06200418,Landweg,2021,,
+06200419,Thermometersiedlung,2021,8.21,23
+06200420,Lichterfelde Süd,2021,8.33,49
+06200421,Königsberger Straße,2021,10.57,44
+06200422,Oberhofer Platz,2021,10.63,21
+06200423,Schütte-Lanz-Straße,2021,7.5,59
+06300524,Berlepschstraße,2021,12.43,22
+06300525,Zehlendorf Süd,2021,11.12,45
+06300526,Zehlendorf Mitte,2021,11.05,26
+06300527,Sundgauer Straße,2021,11.07,31
+06300528,Teltower Damm,2021,11.25,30
+06300629,Botanischer Garten,2021,9.99,38
+06300630,Hindenburgdamm,2021,10.03,28
+06300631,Goerzwerke,2021,9.93,10
+06300632,Schweizer Viertel,2021,12.39,50
+06300633,Augustaplatz,2021,10.77,64
+06300634,Lichterfelde West,2021,11.61,29
+06400735,Wannsee,2021,12.0,67
+06400736,Düppel,2021,13.24,17
+06400737,Nikolassee,2021,11.53,28
+06400838,Krumme Lanke,2021,12.5,25
+06400839,Fischerhüttenstraße,2021,11.52,17
+06400840,Fischtal,2021,10.17,10
+06400841,Zehlendorf Eiche,2021,10.99,25
+06400842,Hüttenweg,2021,11.78,26
+06400843,Thielallee,2021,12.57,15
+06400844,Dahlem,2021,14.69,42
+07100101,Wittenbergplatz,2021,17.5,72
+07100102,Kalckreuthstraße,2021,11.0,52
+07100103,Frobenstraße,2021,9.25,66
+07100204,Barbarossaplatz,2021,11.36,40
+07100205,Alvenslebenstraße,2021,6.57,40
+07100206,Großgörschenstraße,2021,14.26,40
+07200307,Bayerischer Platz,2021,11.64,29
+07200308,Volkspark (Rudolph-Wilde-Park),2021,10.9,61
+07200409,Belziger Straße,2021,12.57,29
+07200410,Feurigstraße,2021,8.12,41
+07200411,Julius-Leber-Brücke,2021,15.0,8
+07200412,Schöneberger Linse,2021,18.94,47
+07200413,Cheruskerstraße,2021,12.1,32
+07200414,Hohenfriedbergstraße,2021,17.46,13
+07300515,Taunusstraße,2021,12.88,21
+07300516,Odenwaldstraße,2021,11.73,43
+07300517,Perelsplatz,2021,8.13,25
+07300618,Ceciliengärten,2021,10.49,24
+07300619,Grazer Platz,2021,10.19,33
+07400720,Gontermannstraße,2021,11.5,15
+07400721,Paradestraße,2021,13.58,11
+07400822,Lindenhofsiedlung,2021,15.52,6
+07400823,Wittekindstraße,2021,8.91,34
+07400824,Bosepark,2021,10.51,33
+07400825,Friedrich-Karl-Straße,2021,11.0,44
+07400826,Marienhöhe,2021,16.9,7
+07400927,Rathaus Tempelhof,2021,10.35,79
+07400928,Germaniagarten,2021,10.92,39
+07501029,Ringstraße,2021,7.34,49
+07501030,Machonstraße,2021,10.17,43
+07501031,Eisenacher Straße,2021,8.77,52
+07501032,Imbrosweg,2021,9.85,24
+07501133,Fritz-Werner-Straße,2021,9.09,37
+07501134,Hundsteinweg,2021,9.41,35
+07501135,Birnhornweg,2021,8.88,6
+07601236,Marienfelder Allee Nordwest,2021,8.93,67
+07601237,Kirchstraße,2021,10.0,16
+07601238,Marienfelde Nordost,2021,9.13,9
+07601339,Tirschenreuther Ring West,2021,6.96,53
+07601340,Tirschenreuther Ring Ost,2021,6.99,32
+07601341,Diedersdorfer Weg,2021,9.25,9
+07601442,Kettinger Straße,2021,8.57,58
+07601443,Töpchiner Weg,2021,7.98,36
+07601544,John-Locke-Straße,2021,7.61,23
+07601545,Nahariyastraße,2021,7.95,100
+07601546,Franziusweg,2021,10.5,20
+07601547,Horstwalder Straße,2021,8.0,23
+07601548,Wittelsbacherstraße,2021,10.6,7
+08100101,Hasenheide,2021,18.45,27
+08100102,Schillerpromenade Nord,2021,12.5,35
+08100103,Schillerpromenade Süd,2021,9.41,28
+08100104,Wartheplatz,2021,11.65,23
+08100105,Silbersteinstraße,2021,13.29,51
+08100206,Flughafenstraße,2021,10.94,54
+08100207,Rollberg,2021,8.67,17
+08100208,Körnerpark,2021,11.04,58
+08100209,Glasower Straße,2021,13.13,67
+08100310,Maybachufer,2021,15.2,20
+08100311,Reuterplatz,2021,12.0,31
+08100312,Weichselplatz,2021,10.21,85
+08100313,Bouchéstraße,2021,,
+08100314,Donaustraße,2021,10.0,47
+08100415,Ganghoferstraße,2021,11.5,13
+08100416,Alt-Rixdorf,2021,13.4,24
+08100417,Braunschweiger Straße,2021,10.16,42
+08100418,Hertzbergplatz,2021,10.23,34
+08100419,Treptower Straße Nord,2021,9.72,28
+08100520,Weiße Siedlung,2021,8.02,59
+08100521,Schulenburgpark,2021,6.63,52
+08200622,Jahnstraße,2021,11.28,22
+08200623,Park am Buschkrug,2021,13.0,30
+08200624,Tempelhofer Weg,2021,7.57,56
+08200725,Mohriner Allee Nord,2021,9.52,4
+08200726,Hufeisensiedlung,2021,7.25,15
+08200727,Parchimer Allee Süd,2021,6.72,18
+08200728,Ortolanweg,2021,,
+08200729,Britzer Garten,2021,,
+08200730,Handwerker-Siedlung,2021,8.52,7
+08200831,Buckow West,2021,7.33,35
+08200832,Buckow Mitte,2021,8.62,36
+08200833,Buckow Ost,2021,7.19,21
+08300934,Gropiusstadt Nord-West,2021,7.24,60
+08300935,Gropiusstadt Süd-West,2021,9.96,26
+08301036,Gropiusstadt Mitte,2021,8.73,28
+08301037,Gropiusstadt Süd-Ost,2021,6.83,70
+08401138,Goldhähnchenweg,2021,7.14,13
+08401139,Vogelviertel Süd,2021,8.6,13
+08401140,Vogelviertel Nord,2021,,
+08401241,Blumenviertel,2021,10.29,24
+08401242,Zittauer Straße,2021,8.0,15
+08401243,Alt-Rudow,2021,8.29,67
+08401244,Waßmannsdorfer Chaussee,2021,7.9,9
+08401245,Frauenviertel,2021,8.62,31
+08401246,Waltersdorfer Chaussee Ost,2021,6.97,26
+09100101,Alt-Treptow,2021,13.33,70
+09100202,Plänterwald West,2021,11.19,7
+09100203,Plänterwald Ost,2021,8.61,17
+09100304,Baumschulenweg West,2021,12.0,74
+09100305,Baumschulenweg Ost,2021,9.52,30
+09100306,Späthsfelde,2021,,
+09100407,Johannisthal West,2021,14.5,54
+09100408,Johannisthal Ost,2021,10.35,62
+09100409,Landschaftspark Adlershof,2021,8.0,12
+09200510,Helmholtz-Kiez,2021,10.05,109
+09200511,Griechischer Park,2021,8.2,192
+09200512,Wuhlheide,2021,12.02,72
+09200613,Bahnhof Schöneweide,2021,14.04,217
+09200614,Oberspree,2021,,
+09200715,Wista,2021,11.76,62
+09200716,Dörpfeldstraße West,2021,10.0,46
+09200717,Dörpfeldstraße Ost,2021,10.35,86
+09200818,Spindlersfeld,2021,15.0,85
+09200819,Köllnische Vorstadt,2021,9.54,115
+09300920,Dorf Altglienicke,2021,9.66,64
+09300921,Preußen Siedlung,2021,11.5,24
+09300922,Kosmos Viertel,2021,6.5,6
+09300923,Kölner Viertel,2021,8.48,10
+09301024,Falkenberg,2021,13.0,15
+09301025,Alt-Bohnsdorf,2021,13.17,22
+09301126,Grünau,2021,14.16,178
+09301227,Karolinenhof,2021,11.33,6
+09301228,Schmöckwitz/Rauchfangswerder,2021,12.5,11
+09401329,Kietzer Feld/Nachtheide,2021,8.5,53
+09401330,Wendenschloß,2021,11.76,27
+09401431,Allende I,2021,6.73,39
+09401432,Siedlung Kämmereiheide,2021,9.21,18
+09401433,Allende II,2021,6.04,39
+09401534,Altstadt Köpenick,2021,9.13,98
+09401635,Müggelheim,2021,13.0,32
+09501736,Hirschgarten,2021,7.1,35
+09501737,Alt-Friedrichshagen,2021,8.95,88
+09501838,Rahnsdorf,2021,12.96,87
+09501939,Bahnhofstraße,2021,11.62,93
+09501940,Güterbahnhof Köpenick,2021,10.5,47
+09501941,Friedrichshagener Straße,2021,14.16,63
+09502042,Mittelheide,2021,12.0,48
+09502043,Dammheide,2021,10.0,50
+10100101,Marzahn West,2021,5.83,63
+10100102,Rosenbecker Straße,2021,12.0,75
+10100103,Wittenberger Straße,2021,7.29,51
+10100104,Golliner Straße,2021,6.04,64
+10100205,Gewerbegebiet Bitterfelder Straße,2021,,
+10100206,Wuhletalstraße,2021,10.56,69
+10100207,Ahrensfelder Berge,2021,7.05,50
+10100208,Bürgerpark,2021,7.38,179
+10100209,Lea-Grundig-Straße,2021,7.91,31
+10100210,Marzahner Promenade,2021,6.17,108
+10100311,Marzahner Chaussee,2021,6.63,8
+10100312,Springpfuhl,2021,7.12,103
+10100313,Alt-Marzahn,2021,8.18,43
+10100314,Auersbergstraße,2021,7.25,37
+10100315,Bärenstein,2021,7.08,69
+10100316,Landsberger Tor,2021,8.03,41
+10200417,Zossener Straße,2021,7.55,81
+10200418,Kyritzer Straße,2021,9.5,48
+10200419,Havelländer Ring,2021,10.88,145
+10200420,Gut Hellersdorf,2021,7.18,12
+10200421,Helle Mitte,2021,9.7,72
+10200422,Hellersdorfer Promenade,2021,8.31,91
+10200423,Böhlener Straße,2021,7.54,65
+10200524,Adele-Sandrock-Straße,2021,8.57,90
+10200525,Schleipfuhl,2021,,
+10200526,Boulevard Kastanienallee,2021,8.26,34
+10200627,Am Kienberg,2021,5.96,22
+10200628,Neue Grottkauer Straße,2021,,
+10200629,Teterower Ring,2021,6.5,54
+10200630,Cecilienplatz,2021,6.2,4
+10300731,Oberfeldstraße,2021,10.42,24
+10300732,Buckower Ring,2021,8.5,142
+10300733,Alt-Biesdorf,2021,10.66,12
+10300734,Biesdorf Süd,2021,13.0,21
+10400835,Kaulsdorf Nord,2021,7.86,32
+10400836,Alt-Kaulsdorf,2021,10.0,17
+10400837,Kaulsdorf Süd,2021,12.58,14
+10400938,Mahlsdorf Nord,2021,12.93,42
+10400939,Alt-Mahlsdorf,2021,12.25,37
+10400940,Elsensee,2021,9.98,9
+10400941,Pilgramer Straße,2021,10.55,29
+11100101,Dörfer Malchow-Wartenberg,2021,8.96,6
+11100102,Dorf Falkenberg,2021,9.5,53
+11100203,Falkenberg Ost,2021,6.96,62
+11100204,Falkenberg West,2021,6.31,39
+11100205,Wartenberg Süd,2021,6.04,29
+11100206,Wartenberg Nord,2021,6.71,19
+11100307,Zingster Straße Ost,2021,7.12,128
+11100308,Zingster Straße West,2021,6.04,151
+11100309,Mühlengrund,2021,8.0,45
+11200410,Malchower Weg,2021,6.82,97
+11200411,Hauptstraße,2021,7.51,50
+11200512,Orankesee,2021,9.22,7
+11200513,Große-Leege-Straße,2021,9.8,163
+11200514,Landsberger Allee,2021,8.94,116
+11200515,Weiße Taube,2021,12.0,30
+11300616,Hohenschönhausener Straße,2021,7.17,20
+11300617,Fennpfuhlpark,2021,6.91,25
+11300618,Storkower Bogen,2021,8.33,12
+11300619,Rudolf-Seiffert-Park,2021,8.4,14
+11300620,Fennpfuhl Ost,2021,7.39,14
+11300721,Herzbergstraße,2021,20.2,35
+11300722,Rathaus Lichtenberg,2021,8.0,89
+11300723,Bornitzstraße,2021,,
+11300724,Roedeliusplatz,2021,8.88,49
+11300725,Nibelungenviertel,2021,10.55,147
+11300826,Frankfurter Allee Süd,2021,5.96,51
+11400927,Victoriastadt,2021,12.0,17
+11400928,Nöldnerplatz,2021,12.78,24
+11400929,Weitlingkiez,2021,9.58,177
+11400930,Zachertstraße,2021,10.46,53
+11400931,Massower Straße,2021,15.85,71
+11401032,Rosenfelder Ring,2021,12.0,144
+11401033,Gensinger Straße,2021,8.73,76
+11401034,Tierpark,2021,6.88,55
+11401135,Dolgenseestraße,2021,6.92,151
+11401136,Volkradstraße,2021,6.94,106
+11401137,Erieseering,2021,6.04,83
+11501238,Rummelsburg,2021,10.3,39
+11501339,Karlshorst West,2021,9.26,91
+11501340,Karlshorst Nord,2021,11.0,60
+11501341,Karlshorst Süd,2021,10.78,22
+12100101,Letteplatz,2021,10.43,129
+12100102,Hausotterplatz,2021,9.21,70
+12100103,Breitkopfbecken,2021,8.91,79
+12100204,Schäfersee,2021,8.68,62
+12100205,Teichstraße,2021,8.85,114
+12100206,Humboldtstraße,2021,9.1,22
+12200307,Reinickes Hof,2021,8.23,10
+12200308,Mellerbogen,2021,9.11,33
+12200309,Scharnweberstraße,2021,9.25,48
+12200310,Klixstraße,2021,7.28,86
+12200411,Schumacher-Quartier,2021,,
+12200412,Waldidyll/Flughafensee,2021,9.0,48
+12200413,Tegel Süd,2021,7.04,148
+12200414,TXL,2021,,
+12200515,Alt-Tegel,2021,11.48,100
+12400616,Konradshöhe/Tegelort,2021,12.0,31
+12400617,Alt-Heiligensee,2021,9.77,6
+12400618,Heiligensee Nord,2021,9.03,9
+12400619,Heiligensee,2021,10.0,8
+12400720,Frohnau West,2021,10.92,18
+12400721,Frohnau Ost,2021,10.96,13
+12400722,Hermsdorf West,2021,10.0,23
+12400723,Hermsdorf Ost/Waldsee,2021,11.0,29
+12500824,Ziekowstraße/Freie Scholle,2021,7.63,83
+12500825,Borsigwalde,2021,8.15,76
+12500926,Wittenau Süd,2021,9.5,32
+12500927,Wittenau Nord,2021,11.51,54
+12500928,Waidmannslust,2021,10.17,14
+12500929,Lübars,2021,11.67,12
+12500930,Wittenau Mitte,2021,9.69,38
+12601031,Lübarser Straße,2021,6.96,13
+12601032,Rollbergesiedlung,2021,5.95,107
+12601133,Treuenbrietzener Straße,2021,6.39,62
+12601134,Märkisches Zentrum,2021,6.5,128
+12601235,Dannenwalder Weg,2021,7.29,40
+12601236,Schorfheidestraße,2021,7.6,11

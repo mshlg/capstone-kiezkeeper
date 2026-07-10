@@ -1,0 +1,543 @@
+plr_id,plr_name,bez,milieu_anteil,milieu_majoritaet
+01100101,Stülerstraße,01 - Mitte,0.0,0
+01100102,Großer Tiergarten,01 - Mitte,0.0,0
+01100103,Lützowstraße,01 - Mitte,0.7967912141560812,1
+01100104,Körnerstraße,01 - Mitte,0.840060250898803,1
+01100205,Wilhelmstraße,01 - Mitte,2.6029486109271992e-08,0
+01100206,Unter den Linden,01 - Mitte,0.0,0
+01100207,Leipziger Straße,01 - Mitte,1.5368819548022018e-09,0
+01100308,Charitéviertel,01 - Mitte,0.0,0
+01100309,Oranienburger Straße,01 - Mitte,0.09829571540335492,0
+01100310,Alexanderplatzviertel,01 - Mitte,0.08773053702447074,0
+01100311,Karl-Marx-Allee,01 - Mitte,0.0,0
+01100312,Heine-Viertel West,01 - Mitte,5.0688820335725365e-09,0
+01100313,Heine-Viertel Ost,01 - Mitte,2.1260439193621202e-05,0
+01100414,Nordbahnhof,01 - Mitte,0.0,0
+01100415,Invalidenstraße,01 - Mitte,0.0,0
+01100416,Arkonaplatz,01 - Mitte,0.0009594333409120982,0
+01200517,Huttenkiez,01 - Mitte,4.634857039514926e-08,0
+01200518,Beusselkiez,01 - Mitte,0.5877699241165701,1
+01200519,Emdener Straße,01 - Mitte,0.9563153126564485,1
+01200520,Bremer Straße,01 - Mitte,0.8734604743488917,1
+01200521,Zwinglistraße,01 - Mitte,0.8605229247539133,1
+01200522,Elberfelder Straße,01 - Mitte,2.6352146918709167e-05,0
+01200623,Stephankiez,01 - Mitte,0.3832257377456466,0
+01200624,Heidestraße,01 - Mitte,0.037451719378816806,0
+01200625,Lübecker Straße,01 - Mitte,0.5610973560521528,1
+01200626,Thomasiusstraße,01 - Mitte,0.3031129356476536,0
+01200627,Zillesiedlung,01 - Mitte,0.0,0
+01200628,Lüneburger Straße,01 - Mitte,0.0,0
+01200629,Hansaviertel,01 - Mitte,0.0,0
+01300730,Drontheimer Straße,01 - Mitte,0.5073095721184328,1
+01300731,Koloniestraße,01 - Mitte,0.2211197337677501,0
+01300732,Soldiner Straße,01 - Mitte,0.5261989917752117,1
+01300733,Gesundbrunnen,01 - Mitte,0.6394329896989681,1
+01300834,Brunnenstraße,01 - Mitte,0.00014300441255354166,0
+01300835,Humboldthain Süd,01 - Mitte,0.0,0
+01300836,Humboldthain Nordwest,01 - Mitte,0.12964140547415065,0
+01400937,Afrikanische Straße,01 - Mitte,0.1448960822319778,0
+01400938,Kameruner Straße,01 - Mitte,0.23812158412016576,0
+01400939,Glasgower Straße,01 - Mitte,0.6488709119245618,1
+01400940,Schillerpark,01 - Mitte,0.0,0
+01400941,Londoner Straße,01 - Mitte,0.0,0
+01400942,Westliche Müllerstraße,01 - Mitte,0.5433997446585463,1
+01401043,Antonstraße,01 - Mitte,0.8013652351523309,1
+01401044,Uferstraße,01 - Mitte,0.4875235821327944,0
+01401045,Schwedenstraße,01 - Mitte,0.7763534689780994,1
+01401046,Nordufer,01 - Mitte,0.7423981902546412,1
+01401047,Sparrplatz,01 - Mitte,0.8752694976378067,1
+01401048,Leopoldplatz,01 - Mitte,0.6980032220031444,1
+01401049,Schulstraße,01 - Mitte,0.23827149492655758,0
+02100101,Askanischer Platz,02 - Friedrichshain-Kreuzberg,0.30111741665721165,0
+02100102,Mehringplatz,02 - Friedrichshain-Kreuzberg,0.9839516470851708,1
+02100103,Am Berlin Museum,02 - Friedrichshain-Kreuzberg,0.9999999883392023,1
+02100104,Moritzplatz,02 - Friedrichshain-Kreuzberg,0.9821833812829425,1
+02100105,Prinzenstraße,02 - Friedrichshain-Kreuzberg,0.9586611056296463,1
+02100106,Wassertorplatz,02 - Friedrichshain-Kreuzberg,0.8833359143115297,1
+02200207,Gleisdreieck,02 - Friedrichshain-Kreuzberg,0.0028885982502097327,0
+02200208,Rathaus Yorckstraße,02 - Friedrichshain-Kreuzberg,0.6146413871056271,1
+02200209,Viktoriapark,02 - Friedrichshain-Kreuzberg,0.5360038463008477,1
+02200210,Urbanstraße,02 - Friedrichshain-Kreuzberg,0.5420620287897168,1
+02200211,Chamissokiez,02 - Friedrichshain-Kreuzberg,0.45304117992832743,0
+02200212,Graefekiez Süd,02 - Friedrichshain-Kreuzberg,0.6499234135458868,1
+02200213,Graefekiez Nord,02 - Friedrichshain-Kreuzberg,0.6550134572386216,1
+02300314,Oranienplatz,02 - Friedrichshain-Kreuzberg,0.7433720834226307,1
+02300315,Lausitzer Platz,02 - Friedrichshain-Kreuzberg,0.9999999137226204,1
+02300316,Köpenicker Straße,02 - Friedrichshain-Kreuzberg,0.6914341289593425,1
+02300417,Reichenberger Straße West,02 - Friedrichshain-Kreuzberg,0.910603531364669,1
+02300418,Reichenberger Straße Ost,02 - Friedrichshain-Kreuzberg,0.8773991716851182,1
+02300419,Wrangelkiez,02 - Friedrichshain-Kreuzberg,0.7688557689108269,1
+02400520,Barnimkiez,02 - Friedrichshain-Kreuzberg,9.07368047147259e-05,0
+02400521,Friedenstraße,02 - Friedrichshain-Kreuzberg,0.000903108719010036,0
+02400522,Richard-Sorge-Viertel,02 - Friedrichshain-Kreuzberg,0.6588410157850858,1
+02400623,Andreasviertel,02 - Friedrichshain-Kreuzberg,0.001600746817846992,0
+02400624,Weberwiese,02 - Friedrichshain-Kreuzberg,0.9125732123163215,1
+02400625,Wriezener Bahnhof,02 - Friedrichshain-Kreuzberg,1.2247669699752587e-07,0
+02500726,Hausburgviertel,02 - Friedrichshain-Kreuzberg,0.9495580354650835,1
+02500727,Forckenbeckplatz,02 - Friedrichshain-Kreuzberg,0.8224616782451517,1
+02500728,Samariterviertel,02 - Friedrichshain-Kreuzberg,0.9522903127297835,1
+02500729,Pettenkofer Straße,02 - Friedrichshain-Kreuzberg,0.5953118513752919,1
+02500830,Niederbarnimstraße,02 - Friedrichshain-Kreuzberg,0.9509923316809931,1
+02500831,Wismarplatz,02 - Friedrichshain-Kreuzberg,0.9999999202387906,1
+02500832,Traveplatz,02 - Friedrichshain-Kreuzberg,0.9157363262393744,1
+02500833,Boxhagener Platz,02 - Friedrichshain-Kreuzberg,0.9521890649522147,1
+02500834,Revaler Straße,02 - Friedrichshain-Kreuzberg,0.7237564083396999,1
+02500835,Stralauer Kiez,02 - Friedrichshain-Kreuzberg,0.21539159559395857,0
+02500836,Stralauer Halbinsel,02 - Friedrichshain-Kreuzberg,0.0,0
+03100101,Bucher Forst,03 - Pankow,0.0,0
+03100102,Klinikum Buch,03 - Pankow,0.0,0
+03100103,Karower Chaussee,03 - Pankow,0.0,0
+03200204,Blankenfelde,03 - Pankow,0.0,0
+03200205,Uhlandstraße,03 - Pankow,0.0,0
+03200206,Pastor-Niemöller-Platz,03 - Pankow,0.0,0
+03200207,Herthaplatz,03 - Pankow,0.0,0
+03200308,Nisbléstraße,03 - Pankow,0.0,0
+03200309,Eddastraße,03 - Pankow,0.0,0
+03200310,Krugpfuhl,03 - Pankow,0.0,0
+03300411,Karow Nord,03 - Pankow,0.0,0
+03300412,Karow Bahnhof,03 - Pankow,0.0,0
+03300413,Karow Ost,03 - Pankow,0.0,0
+03300514,Blankenburg,03 - Pankow,0.0,0
+03300515,Blankenburger Süden,03 - Pankow,0.0,0
+03300516,Heinersdorf,03 - Pankow,0.0,0
+03300517,Märchenland,03 - Pankow,0.0,0
+03400618,Rosenthal,03 - Pankow,0.0,0
+03400619,Wilhelmsruh,03 - Pankow,0.0,0
+03400620,Schönholz,03 - Pankow,8.072342561667491e-05,0
+03400721,Florakiez,03 - Pankow,0.8679620976254832,1
+03400722,Parkstraße,03 - Pankow,0.2778983629569278,0
+03400723,Garbátyplatz,03 - Pankow,0.6241951559869645,1
+03400724,Wolfshagener Straße,03 - Pankow,0.0,0
+03400725,Schlosspark,03 - Pankow,0.0,0
+03400826,Tiroler Viertel,03 - Pankow,0.0023796949524646995,0
+03400827,Trelleborger Viertel,03 - Pankow,0.6952346858098151,1
+03400828,Spiekermann Straße,03 - Pankow,0.16588394136491455,0
+03400829,Arnold-Zweig-Straße,03 - Pankow,0.03556405472705005,0
+03400830,Kissingenviertel,03 - Pankow,0.0,0
+03400831,Pankower Tor,03 - Pankow,0.00023001181896935497,0
+03500932,Bühringstraße,03 - Pankow,0.0,0
+03500933,Weißer See,03 - Pankow,0.005407334266277417,0
+03500934,Weißenseer Spitze,03 - Pankow,0.9487638058437856,1
+03500935,Behaimstraße,03 - Pankow,0.9898594406616821,1
+03500936,Komponistenviertel Weißensee,03 - Pankow,0.36858395898486124,0
+03501037,Rathaus Weißensee,03 - Pankow,0.0,0
+03501038,Hansastraße,03 - Pankow,0.0,0
+03601139,Norweger Viertel,03 - Pankow,0.23042179607671168,0
+03601140,Malmöer Straße,03 - Pankow,0.5367838064366482,1
+03601141,Arnimplatz,03 - Pankow,0.8742302171619761,1
+03601142,Falkplatz,03 - Pankow,0.34887716131455876,0
+03601243,Rodenbergstraße,03 - Pankow,0.7795439776580847,1
+03601244,Humannplatz,03 - Pankow,0.8686749913261153,1
+03601245,Ostseestraße,03 - Pankow,0.6600031947772378,1
+03601346,Gethsemanekirche,03 - Pankow,0.9995393699686356,1
+03601347,Helmholtzplatz,03 - Pankow,0.9420242736995927,1
+03601348,Senefelderstraße,03 - Pankow,0.9150160502653241,1
+03601449,Michelangelostraße,03 - Pankow,0.00022001904226213578,0
+03601450,Volkspark Prenzlauer Berg,03 - Pankow,0.0,0
+03601451,Anton-Saefkow-Park,03 - Pankow,0.14754384689690658,0
+03601452,Velodrom,03 - Pankow,0.36135511525145975,0
+03601453,Alter Schlachthof,03 - Pankow,4.081034105608168e-07,0
+03701554,Teutoburger Platz,03 - Pankow,0.8864395376612056,1
+03701555,Sredzkistraße,03 - Pankow,0.9348846276235725,1
+03701556,Kollwitzplatz,03 - Pankow,0.8908798331165411,1
+03701657,Thälmannpark,03 - Pankow,0.00015850319419727946,0
+03701658,Christburger Straße,03 - Pankow,0.9998868940095892,1
+03701659,Immanuelkirchstraße,03 - Pankow,0.9828794192651535,1
+03701660,Bötzowstraße,03 - Pankow,0.7814645027072825,1
+04100101,Jungfernheide/Plötzensee,04 - Charlottenburg-Wilmersdorf,0.09370595489842251,0
+04100102,Paul-Hertz-Siedlung,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200203,Olympiagelände,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200204,Angerburger Allee,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200205,Flatowallee,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200206,Kranzallee,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200207,Eichkamp,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200308,Branitzer Platz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200309,Neu Westend,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200310,Fürstenplatz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04200311,Königin-Elisabeth-Straße,04 - Charlottenburg-Wilmersdorf,0.0,0
+04300412,Schlossgarten,04 - Charlottenburg-Wilmersdorf,0.08532995723001466,0
+04300413,Klausenerplatz,04 - Charlottenburg-Wilmersdorf,0.9070736316593495,1
+04300414,Schloßstraße,04 - Charlottenburg-Wilmersdorf,0.03928747176279956,0
+04300415,Lietzensee,04 - Charlottenburg-Wilmersdorf,0.0,0
+04300416,Amtsgerichtsplatz,04 - Charlottenburg-Wilmersdorf,0.018464793010429796,0
+04300517,Tegeler Weg,04 - Charlottenburg-Wilmersdorf,0.7505823757474918,1
+04300518,Kaiserin-Augusta-Allee,04 - Charlottenburg-Wilmersdorf,0.12956216771033904,0
+04300619,Alt-Lietzow,04 - Charlottenburg-Wilmersdorf,0.9024899538326197,1
+04300620,Spreestadt,04 - Charlottenburg-Wilmersdorf,0.0,0
+04300621,Richard-Wagner-Straße,04 - Charlottenburg-Wilmersdorf,0.8873436850395086,1
+04300622,Ernst-Reuter-Platz,04 - Charlottenburg-Wilmersdorf,0.05876540861564377,0
+04300623,Karl-August-Platz,04 - Charlottenburg-Wilmersdorf,0.9005700104451869,1
+04300624,Savignyplatz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400725,Güterbahnhof Grunewald,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400726,Bismarckallee,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400727,Flinsberger Platz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400728,Hagenplatz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400729,Hundekehle,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400830,Forckenbeckstraße,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400831,Messelpark,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400832,Breite Straße,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400833,Schlangenbader Straße,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400834,Binger Straße,04 - Charlottenburg-Wilmersdorf,0.0,0
+04400835,Rüdesheimer Platz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04500936,Droysenstraße,04 - Charlottenburg-Wilmersdorf,6.298928106259889e-12,0
+04500937,Halensee,04 - Charlottenburg-Wilmersdorf,0.0,0
+04500938,Hochmeisterplatz,04 - Charlottenburg-Wilmersdorf,0.37484058963931,0
+04500939,Eisenzahnstraße,04 - Charlottenburg-Wilmersdorf,0.40492858530534737,0
+04501040,Hindemithplatz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501041,George-Grosz-Platz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501042,Breitscheidplatz,04 - Charlottenburg-Wilmersdorf,5.816937525906522e-09,0
+04501043,Preußenpark,04 - Charlottenburg-Wilmersdorf,0.0005227919676314128,0
+04501044,Ludwigkirchplatz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501045,Schaperstraße,04 - Charlottenburg-Wilmersdorf,2.7204581233376827e-09,0
+04501146,Barstraße,04 - Charlottenburg-Wilmersdorf,0.001171963074394969,0
+04501147,Leon-Jessel-Platz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501148,Brabanter Platz,04 - Charlottenburg-Wilmersdorf,0.6676674349641263,1
+04501149,Nikolsburger Platz,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501150,Wilhelmsaue,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501151,Hildegardstraße,04 - Charlottenburg-Wilmersdorf,0.0,0
+04501152,Prager Platz,04 - Charlottenburg-Wilmersdorf,0.000514600861701366,0
+04501153,Babelsberger Straße,04 - Charlottenburg-Wilmersdorf,0.0,0
+05100101,Hakenfelde Nord,05 - Spandau,0.0,0
+05100102,Am Forstacker,05 - Spandau,0.0,0
+05100103,Mertensstraße,05 - Spandau,0.0,0
+05100104,Maselake,05 - Spandau,0.0,0
+05100105,Amorbacher Weg,05 - Spandau,0.0,0
+05100206,Griesingerstraße,05 - Spandau,0.0,0
+05100207,An der Tränke,05 - Spandau,0.0,0
+05100208,Im Spektefeld,05 - Spandau,0.0,0
+05100209,Westerwaldstraße,05 - Spandau,0.0,0
+05100210,Germersheimer Platz,05 - Spandau,0.0,0
+05100211,An der Kappe,05 - Spandau,0.0,0
+05100312,Eckschanze,05 - Spandau,0.6417289432987379,1
+05100313,Eiswerder,05 - Spandau,0.01729365282965918,0
+05100314,Kurstraße,05 - Spandau,0.5940986539712203,1
+05100315,Ackerstraße,05 - Spandau,0.6495818275238946,1
+05100316,Carl-Schurz-Straße,05 - Spandau,0.018015734410035063,0
+05100317,Freiheit,05 - Spandau,0.08399462841985918,0
+05200418,Isenburger Weg,05 - Spandau,0.0,0
+05200419,Am Heideberg,05 - Spandau,0.0,0
+05200420,Staakener Straße,05 - Spandau,0.0,0
+05200421,Spandauer Straße,05 - Spandau,0.0,0
+05200422,Werkstraße,05 - Spandau,0.0,0
+05200423,Magistratsweg,05 - Spandau,0.0,0
+05200524,Döberitzer Weg,05 - Spandau,0.0,0
+05200525,Pillnitzer Weg,05 - Spandau,0.0,0
+05200526,Rudolf-Wissell-Großsiedlung,05 - Spandau,0.0,0
+05200527,Maulbeerallee,05 - Spandau,0.0,0
+05200528,Weinmeisterhornweg,05 - Spandau,0.0,0
+05200629,Borkumer Straße,05 - Spandau,0.25962829051372105,0
+05200630,Wilhelmstadt West,05 - Spandau,0.48239791836323903,0
+05200631,Wilhelmstadt Ost,05 - Spandau,0.746071953232722,1
+05200632,Tiefwerder,05 - Spandau,0.018759881367489538,0
+05200633,Graetschelsteig,05 - Spandau,0.0,0
+05200634,Börnicker Straße,05 - Spandau,0.0,0
+05300735,Haveleck,05 - Spandau,0.0,0
+05300736,Zitadellenweg,05 - Spandau,0.0,0
+05300737,Gartenfelder Straße,05 - Spandau,0.0,0
+05300838,Gartenfeld,05 - Spandau,0.0,0
+05300839,Rohrdamm,05 - Spandau,0.0,0
+05300840,Nonnendammallee,05 - Spandau,0.0,0
+05300841,Siemensdamm,05 - Spandau,0.0,0
+05400942,Alt-Gatow,05 - Spandau,0.0,0
+05400943,Jägerallee,05 - Spandau,0.0,0
+05400944,Kladower Damm,05 - Spandau,0.0,0
+05400945,Kafkastraße,05 - Spandau,0.0,0
+06100101,Fichtenberg,06 - Steglitz-Zehlendorf,1.1259454746426062e-07,0
+06100102,Schloßstraße,06 - Steglitz-Zehlendorf,0.24283172847978446,0
+06100103,Markelstraße,06 - Steglitz-Zehlendorf,0.30781234662920237,0
+06100204,Munsterdamm,06 - Steglitz-Zehlendorf,1.7696791502324924e-17,0
+06100205,Südende,06 - Steglitz-Zehlendorf,0.0,0
+06100206,Stadtpark,06 - Steglitz-Zehlendorf,6.303039796559152e-06,0
+06100207,Mittelstraße,06 - Steglitz-Zehlendorf,0.4644845304103933,0
+06100208,Bergstraße,06 - Steglitz-Zehlendorf,0.0019694792511227026,0
+06100209,Feuerbachstraße,06 - Steglitz-Zehlendorf,0.9997739501952261,1
+06100210,Bismarckstraße,06 - Steglitz-Zehlendorf,4.342213481156568e-05,0
+06200311,Alt-Lankwitz,06 - Steglitz-Zehlendorf,0.0,0
+06200312,Komponistenviertel Lankwitz,06 - Steglitz-Zehlendorf,0.0,0
+06200313,Lankwitz Kirche,06 - Steglitz-Zehlendorf,0.0,0
+06200314,Kaiser-Wilhelm-Straße,06 - Steglitz-Zehlendorf,0.0,0
+06200315,Gallwitzallee,06 - Steglitz-Zehlendorf,0.0,0
+06200316,Belßstraße,06 - Steglitz-Zehlendorf,0.0,0
+06200317,Lankwitz Süd,06 - Steglitz-Zehlendorf,0.0,0
+06200418,Landweg,06 - Steglitz-Zehlendorf,0.0,0
+06200419,Thermometersiedlung,06 - Steglitz-Zehlendorf,0.0,0
+06200420,Lichterfelde Süd,06 - Steglitz-Zehlendorf,0.0,0
+06200421,Königsberger Straße,06 - Steglitz-Zehlendorf,0.0,0
+06200422,Oberhofer Platz,06 - Steglitz-Zehlendorf,0.0,0
+06200423,Schütte-Lanz-Straße,06 - Steglitz-Zehlendorf,0.0,0
+06300524,Berlepschstraße,06 - Steglitz-Zehlendorf,0.0,0
+06300525,Zehlendorf Süd,06 - Steglitz-Zehlendorf,0.0,0
+06300526,Zehlendorf Mitte,06 - Steglitz-Zehlendorf,0.0,0
+06300527,Sundgauer Straße,06 - Steglitz-Zehlendorf,0.0,0
+06300528,Teltower Damm,06 - Steglitz-Zehlendorf,0.0,0
+06300629,Botanischer Garten,06 - Steglitz-Zehlendorf,0.0,0
+06300630,Hindenburgdamm,06 - Steglitz-Zehlendorf,0.0,0
+06300631,Goerzwerke,06 - Steglitz-Zehlendorf,0.0,0
+06300632,Schweizer Viertel,06 - Steglitz-Zehlendorf,0.0,0
+06300633,Augustaplatz,06 - Steglitz-Zehlendorf,0.0,0
+06300634,Lichterfelde West,06 - Steglitz-Zehlendorf,0.0,0
+06400735,Wannsee,06 - Steglitz-Zehlendorf,0.0,0
+06400736,Düppel,06 - Steglitz-Zehlendorf,0.0,0
+06400737,Nikolassee,06 - Steglitz-Zehlendorf,0.0,0
+06400838,Krumme Lanke,06 - Steglitz-Zehlendorf,0.0,0
+06400839,Fischerhüttenstraße,06 - Steglitz-Zehlendorf,0.0,0
+06400840,Fischtal,06 - Steglitz-Zehlendorf,0.0,0
+06400841,Zehlendorf Eiche,06 - Steglitz-Zehlendorf,0.0,0
+06400842,Hüttenweg,06 - Steglitz-Zehlendorf,0.0,0
+06400843,Thielallee,06 - Steglitz-Zehlendorf,0.0,0
+06400844,Dahlem,06 - Steglitz-Zehlendorf,0.0,0
+07100101,Wittenbergplatz,07 - Tempelhof-Schöneberg,0.8263085098616538,1
+07100102,Kalckreuthstraße,07 - Tempelhof-Schöneberg,0.7560593868995575,1
+07100103,Frobenstraße,07 - Tempelhof-Schöneberg,0.809307462696147,1
+07100204,Barbarossaplatz,07 - Tempelhof-Schöneberg,0.7632655835833091,1
+07100205,Alvenslebenstraße,07 - Tempelhof-Schöneberg,0.7624435736365015,1
+07100206,Großgörschenstraße,07 - Tempelhof-Schöneberg,0.49563143288166533,0
+07200307,Bayerischer Platz,07 - Tempelhof-Schöneberg,0.892220067852823,1
+07200308,Volkspark (Rudolph-Wilde-Park),07 - Tempelhof-Schöneberg,0.6111547775830327,1
+07200409,Belziger Straße,07 - Tempelhof-Schöneberg,0.6858536428559022,1
+07200410,Feurigstraße,07 - Tempelhof-Schöneberg,0.9003809229418752,1
+07200411,Julius-Leber-Brücke,07 - Tempelhof-Schöneberg,0.7142191447235241,1
+07200412,Schöneberger Linse,07 - Tempelhof-Schöneberg,0.0,0
+07200413,Cheruskerstraße,07 - Tempelhof-Schöneberg,0.2957698550692327,0
+07200414,Hohenfriedbergstraße,07 - Tempelhof-Schöneberg,0.48400846403658976,0
+07300515,Taunusstraße,07 - Tempelhof-Schöneberg,0.0,0
+07300516,Odenwaldstraße,07 - Tempelhof-Schöneberg,0.0,0
+07300517,Perelsplatz,07 - Tempelhof-Schöneberg,0.0,0
+07300618,Ceciliengärten,07 - Tempelhof-Schöneberg,9.716715831955684e-08,0
+07300619,Grazer Platz,07 - Tempelhof-Schöneberg,0.18709815545220077,0
+07400720,Gontermannstraße,07 - Tempelhof-Schöneberg,0.0,0
+07400721,Paradestraße,07 - Tempelhof-Schöneberg,0.0,0
+07400822,Lindenhofsiedlung,07 - Tempelhof-Schöneberg,0.0,0
+07400823,Wittekindstraße,07 - Tempelhof-Schöneberg,0.4716296899961923,0
+07400824,Bosepark,07 - Tempelhof-Schöneberg,0.8275465186031034,1
+07400825,Friedrich-Karl-Straße,07 - Tempelhof-Schöneberg,0.7694414636489901,1
+07400826,Marienhöhe,07 - Tempelhof-Schöneberg,0.014364877315054843,0
+07400927,Rathaus Tempelhof,07 - Tempelhof-Schöneberg,0.10548290584890999,0
+07400928,Germaniagarten,07 - Tempelhof-Schöneberg,0.0,0
+07501029,Ringstraße,07 - Tempelhof-Schöneberg,0.37945778030009714,0
+07501030,Machonstraße,07 - Tempelhof-Schöneberg,0.9912488069895518,1
+07501031,Eisenacher Straße,07 - Tempelhof-Schöneberg,0.1613412926452624,0
+07501032,Imbrosweg,07 - Tempelhof-Schöneberg,0.0,0
+07501133,Fritz-Werner-Straße,07 - Tempelhof-Schöneberg,0.0036209195541366456,0
+07501134,Hundsteinweg,07 - Tempelhof-Schöneberg,0.0,0
+07501135,Birnhornweg,07 - Tempelhof-Schöneberg,0.0,0
+07601236,Marienfelder Allee Nordwest,07 - Tempelhof-Schöneberg,0.0,0
+07601237,Kirchstraße,07 - Tempelhof-Schöneberg,0.0,0
+07601238,Marienfelde Nordost,07 - Tempelhof-Schöneberg,0.0,0
+07601339,Tirschenreuther Ring West,07 - Tempelhof-Schöneberg,0.0,0
+07601340,Tirschenreuther Ring Ost,07 - Tempelhof-Schöneberg,0.0,0
+07601341,Diedersdorfer Weg,07 - Tempelhof-Schöneberg,0.0,0
+07601442,Kettinger Straße,07 - Tempelhof-Schöneberg,0.0,0
+07601443,Töpchiner Weg,07 - Tempelhof-Schöneberg,0.0,0
+07601544,John-Locke-Straße,07 - Tempelhof-Schöneberg,0.0,0
+07601545,Nahariyastraße,07 - Tempelhof-Schöneberg,0.0,0
+07601546,Franziusweg,07 - Tempelhof-Schöneberg,0.0,0
+07601547,Horstwalder Straße,07 - Tempelhof-Schöneberg,0.0,0
+07601548,Wittelsbacherstraße,07 - Tempelhof-Schöneberg,0.0,0
+08100101,Hasenheide,08 - Neukölln,0.1332603878211089,0
+08100102,Schillerpromenade Nord,08 - Neukölln,0.43476979967075685,0
+08100103,Schillerpromenade Süd,08 - Neukölln,0.3880345483236575,0
+08100104,Wartheplatz,08 - Neukölln,0.8774910810492598,1
+08100105,Silbersteinstraße,08 - Neukölln,0.2971784942442361,0
+08100206,Flughafenstraße,08 - Neukölln,0.7969598554222829,1
+08100207,Rollberg,08 - Neukölln,0.9363737172857542,1
+08100208,Körnerpark,08 - Neukölln,0.9744026944564073,1
+08100209,Glasower Straße,08 - Neukölln,0.6206710418310035,1
+08100310,Maybachufer,08 - Neukölln,0.889018752564977,1
+08100311,Reuterplatz,08 - Neukölln,0.9461509289164997,1
+08100312,Weichselplatz,08 - Neukölln,0.8423552664523952,1
+08100313,Bouchéstraße,08 - Neukölln,0.8399426835809605,1
+08100314,Donaustraße,08 - Neukölln,0.8645066965464548,1
+08100415,Ganghoferstraße,08 - Neukölln,0.8567403322155535,1
+08100416,Alt-Rixdorf,08 - Neukölln,0.9997382767827149,1
+08100417,Braunschweiger Straße,08 - Neukölln,0.7408373653902749,1
+08100418,Hertzbergplatz,08 - Neukölln,0.6378850592727905,1
+08100419,Treptower Straße Nord,08 - Neukölln,0.5206500782536063,1
+08100520,Weiße Siedlung,08 - Neukölln,0.0,0
+08100521,Schulenburgpark,08 - Neukölln,0.0038376930035169837,0
+08200622,Jahnstraße,08 - Neukölln,0.4531947949576599,0
+08200623,Park am Buschkrug,08 - Neukölln,0.0,0
+08200624,Tempelhofer Weg,08 - Neukölln,0.2216668077948462,0
+08200725,Mohriner Allee Nord,08 - Neukölln,0.0,0
+08200726,Hufeisensiedlung,08 - Neukölln,3.80277383084514e-12,0
+08200727,Parchimer Allee Süd,08 - Neukölln,0.606175085353731,1
+08200728,Ortolanweg,08 - Neukölln,0.0,0
+08200729,Britzer Garten,08 - Neukölln,0.0,0
+08200730,Handwerker-Siedlung,08 - Neukölln,0.012164358717975289,0
+08200831,Buckow West,08 - Neukölln,0.0,0
+08200832,Buckow Mitte,08 - Neukölln,0.0,0
+08200833,Buckow Ost,08 - Neukölln,0.0,0
+08300934,Gropiusstadt Nord-West,08 - Neukölln,0.9323344929555133,1
+08300935,Gropiusstadt Süd-West,08 - Neukölln,0.916329059833587,1
+08301036,Gropiusstadt Mitte,08 - Neukölln,0.27493224858828,0
+08301037,Gropiusstadt Süd-Ost,08 - Neukölln,0.0,0
+08401138,Goldhähnchenweg,08 - Neukölln,0.0,0
+08401139,Vogelviertel Süd,08 - Neukölln,0.006923656983925227,0
+08401140,Vogelviertel Nord,08 - Neukölln,0.0,0
+08401241,Blumenviertel,08 - Neukölln,0.0,0
+08401242,Zittauer Straße,08 - Neukölln,0.0,0
+08401243,Alt-Rudow,08 - Neukölln,0.0,0
+08401244,Waßmannsdorfer Chaussee,08 - Neukölln,0.0,0
+08401245,Frauenviertel,08 - Neukölln,0.0,0
+08401246,Waltersdorfer Chaussee Ost,08 - Neukölln,0.0,0
+09100101,Alt-Treptow,09 - Treptow-Köpenick,0.18429575731359932,0
+09100202,Plänterwald West,09 - Treptow-Köpenick,0.0,0
+09100203,Plänterwald Ost,09 - Treptow-Köpenick,0.0,0
+09100304,Baumschulenweg West,09 - Treptow-Köpenick,0.0,0
+09100305,Baumschulenweg Ost,09 - Treptow-Köpenick,0.0,0
+09100306,Späthsfelde,09 - Treptow-Köpenick,0.0,0
+09100407,Johannisthal West,09 - Treptow-Köpenick,0.0,0
+09100408,Johannisthal Ost,09 - Treptow-Köpenick,0.0,0
+09100409,Landschaftspark Adlershof,09 - Treptow-Köpenick,0.0,0
+09200510,Helmholtz-Kiez,09 - Treptow-Köpenick,0.12453759800112997,0
+09200511,Griechischer Park,09 - Treptow-Köpenick,0.14088749095003944,0
+09200512,Wuhlheide,09 - Treptow-Köpenick,0.006997781505431497,0
+09200613,Bahnhof Schöneweide,09 - Treptow-Köpenick,0.13934879466218014,0
+09200614,Oberspree,09 - Treptow-Köpenick,0.0,0
+09200715,Wista,09 - Treptow-Köpenick,0.0,0
+09200716,Dörpfeldstraße West,09 - Treptow-Köpenick,0.0,0
+09200717,Dörpfeldstraße Ost,09 - Treptow-Köpenick,0.0,0
+09200818,Spindlersfeld,09 - Treptow-Köpenick,0.0,0
+09200819,Köllnische Vorstadt,09 - Treptow-Köpenick,0.0,0
+09300920,Dorf Altglienicke,09 - Treptow-Köpenick,0.0,0
+09300921,Preußen Siedlung,09 - Treptow-Köpenick,0.0,0
+09300922,Kosmos Viertel,09 - Treptow-Köpenick,0.0,0
+09300923,Kölner Viertel,09 - Treptow-Köpenick,0.0,0
+09301024,Falkenberg,09 - Treptow-Köpenick,0.0,0
+09301025,Alt-Bohnsdorf,09 - Treptow-Köpenick,0.0,0
+09301126,Grünau,09 - Treptow-Köpenick,0.0,0
+09301227,Karolinenhof,09 - Treptow-Köpenick,0.0,0
+09301228,Schmöckwitz/Rauchfangswerder,09 - Treptow-Köpenick,0.0,0
+09401329,Kietzer Feld/Nachtheide,09 - Treptow-Köpenick,0.0,0
+09401330,Wendenschloß,09 - Treptow-Köpenick,0.0,0
+09401431,Allende I,09 - Treptow-Köpenick,0.0,0
+09401432,Siedlung Kämmereiheide,09 - Treptow-Köpenick,0.0,0
+09401433,Allende II,09 - Treptow-Köpenick,0.0,0
+09401534,Altstadt Köpenick,09 - Treptow-Köpenick,0.0,0
+09401635,Müggelheim,09 - Treptow-Köpenick,0.0,0
+09501736,Hirschgarten,09 - Treptow-Köpenick,0.0,0
+09501737,Alt-Friedrichshagen,09 - Treptow-Köpenick,0.0,0
+09501838,Rahnsdorf,09 - Treptow-Köpenick,0.0,0
+09501939,Bahnhofstraße,09 - Treptow-Köpenick,0.0,0
+09501940,Güterbahnhof Köpenick,09 - Treptow-Köpenick,0.0,0
+09501941,Friedrichshagener Straße,09 - Treptow-Köpenick,0.0,0
+09502042,Mittelheide,09 - Treptow-Köpenick,0.0,0
+09502043,Dammheide,09 - Treptow-Köpenick,0.0,0
+10100101,Marzahn West,10 - Marzahn-Hellersdorf,0.0,0
+10100102,Rosenbecker Straße,10 - Marzahn-Hellersdorf,0.0,0
+10100103,Wittenberger Straße,10 - Marzahn-Hellersdorf,0.0,0
+10100104,Golliner Straße,10 - Marzahn-Hellersdorf,0.0,0
+10100205,Gewerbegebiet Bitterfelder Straße,10 - Marzahn-Hellersdorf,0.0,0
+10100206,Wuhletalstraße,10 - Marzahn-Hellersdorf,0.0,0
+10100207,Ahrensfelder Berge,10 - Marzahn-Hellersdorf,0.0,0
+10100208,Bürgerpark,10 - Marzahn-Hellersdorf,0.0,0
+10100209,Lea-Grundig-Straße,10 - Marzahn-Hellersdorf,0.0,0
+10100210,Marzahner Promenade,10 - Marzahn-Hellersdorf,0.0,0
+10100311,Marzahner Chaussee,10 - Marzahn-Hellersdorf,0.0,0
+10100312,Springpfuhl,10 - Marzahn-Hellersdorf,0.0,0
+10100313,Alt-Marzahn,10 - Marzahn-Hellersdorf,0.0,0
+10100314,Auersbergstraße,10 - Marzahn-Hellersdorf,0.0,0
+10100315,Bärenstein,10 - Marzahn-Hellersdorf,0.0,0
+10100316,Landsberger Tor,10 - Marzahn-Hellersdorf,0.0,0
+10200417,Zossener Straße,10 - Marzahn-Hellersdorf,0.0,0
+10200418,Kyritzer Straße,10 - Marzahn-Hellersdorf,0.0,0
+10200419,Havelländer Ring,10 - Marzahn-Hellersdorf,0.0,0
+10200420,Gut Hellersdorf,10 - Marzahn-Hellersdorf,0.0,0
+10200421,Helle Mitte,10 - Marzahn-Hellersdorf,0.0,0
+10200422,Hellersdorfer Promenade,10 - Marzahn-Hellersdorf,0.0,0
+10200423,Böhlener Straße,10 - Marzahn-Hellersdorf,0.0,0
+10200524,Adele-Sandrock-Straße,10 - Marzahn-Hellersdorf,0.0,0
+10200525,Schleipfuhl,10 - Marzahn-Hellersdorf,0.0,0
+10200526,Boulevard Kastanienallee,10 - Marzahn-Hellersdorf,0.0,0
+10200627,Am Kienberg,10 - Marzahn-Hellersdorf,0.0,0
+10200628,Neue Grottkauer Straße,10 - Marzahn-Hellersdorf,0.0,0
+10200629,Teterower Ring,10 - Marzahn-Hellersdorf,0.0,0
+10200630,Cecilienplatz,10 - Marzahn-Hellersdorf,0.0,0
+10300731,Oberfeldstraße,10 - Marzahn-Hellersdorf,0.0,0
+10300732,Buckower Ring,10 - Marzahn-Hellersdorf,0.0,0
+10300733,Alt-Biesdorf,10 - Marzahn-Hellersdorf,0.0,0
+10300734,Biesdorf Süd,10 - Marzahn-Hellersdorf,0.0,0
+10400835,Kaulsdorf Nord,10 - Marzahn-Hellersdorf,0.0,0
+10400836,Alt-Kaulsdorf,10 - Marzahn-Hellersdorf,0.0,0
+10400837,Kaulsdorf Süd,10 - Marzahn-Hellersdorf,0.0,0
+10400938,Mahlsdorf Nord,10 - Marzahn-Hellersdorf,0.0,0
+10400939,Alt-Mahlsdorf,10 - Marzahn-Hellersdorf,0.0,0
+10400940,Elsensee,10 - Marzahn-Hellersdorf,0.0,0
+10400941,Pilgramer Straße,10 - Marzahn-Hellersdorf,0.0,0
+11100101,Dörfer Malchow-Wartenberg,11 - Lichtenberg,0.0,0
+11100102,Dorf Falkenberg,11 - Lichtenberg,0.0,0
+11100203,Falkenberg Ost,11 - Lichtenberg,0.0,0
+11100204,Falkenberg West,11 - Lichtenberg,0.0,0
+11100205,Wartenberg Süd,11 - Lichtenberg,0.0,0
+11100206,Wartenberg Nord,11 - Lichtenberg,0.0,0
+11100307,Zingster Straße Ost,11 - Lichtenberg,0.0,0
+11100308,Zingster Straße West,11 - Lichtenberg,0.0,0
+11100309,Mühlengrund,11 - Lichtenberg,0.0,0
+11200410,Malchower Weg,11 - Lichtenberg,0.0,0
+11200411,Hauptstraße,11 - Lichtenberg,0.0,0
+11200512,Orankesee,11 - Lichtenberg,0.0,0
+11200513,Große-Leege-Straße,11 - Lichtenberg,0.0,0
+11200514,Landsberger Allee,11 - Lichtenberg,0.0,0
+11200515,Weiße Taube,11 - Lichtenberg,0.0,0
+11300616,Hohenschönhauser Straße,11 - Lichtenberg,0.0,0
+11300617,Fennpfuhlpark,11 - Lichtenberg,0.0,0
+11300618,Storkower Bogen,11 - Lichtenberg,0.0,0
+11300619,Rudolf-Seiffert-Park,11 - Lichtenberg,0.0,0
+11300620,Fennpfuhl Ost,11 - Lichtenberg,0.0,0
+11300721,Herzbergstraße,11 - Lichtenberg,0.0,0
+11300722,Rathaus Lichtenberg,11 - Lichtenberg,0.0,0
+11300723,Bornitzstraße,11 - Lichtenberg,0.0,0
+11300724,Roedeliusplatz,11 - Lichtenberg,0.3699228486341389,0
+11300725,Nibelungenviertel,11 - Lichtenberg,0.22684627865435708,0
+11300826,Frankfurter Allee Süd,11 - Lichtenberg,0.00013733317235732596,0
+11400927,Victoriastadt,11 - Lichtenberg,0.5427467098417866,1
+11400928,Nöldnerplatz,11 - Lichtenberg,0.2628623677470773,0
+11400929,Weitlingkiez,11 - Lichtenberg,0.8737247929802551,1
+11400930,Zachertstraße,11 - Lichtenberg,0.09761869276956558,0
+11400931,Massower Straße,11 - Lichtenberg,0.07137961747842449,0
+11401032,Rosenfelder Ring,11 - Lichtenberg,1.3521465978062537e-05,0
+11401033,Gensinger Straße,11 - Lichtenberg,0.0,0
+11401034,Tierpark,11 - Lichtenberg,0.0,0
+11401135,Dolgenseestraße,11 - Lichtenberg,0.0,0
+11401136,Volkradstraße,11 - Lichtenberg,0.0,0
+11401137,Erieseering,11 - Lichtenberg,0.0,0
+11501238,Rummelsburg,11 - Lichtenberg,0.00014303687357459326,0
+11501339,Karlshorst West,11 - Lichtenberg,0.0,0
+11501340,Karlshorst Nord,11 - Lichtenberg,0.0,0
+11501341,Karlshorst Süd,11 - Lichtenberg,0.0,0
+12100101,Letteplatz,12 - Reinickendorf,0.9332275980255708,1
+12100102,Hausotterplatz,12 - Reinickendorf,0.0,0
+12100103,Breitkopfbecken,12 - Reinickendorf,0.0,0
+12100204,Schäfersee,12 - Reinickendorf,0.15236835208387822,0
+12100205,Teichstraße,12 - Reinickendorf,0.0,0
+12100206,Humboldtstraße,12 - Reinickendorf,0.0,0
+12200307,Reinickes Hof,12 - Reinickendorf,0.0,0
+12200308,Meller Bogen,12 - Reinickendorf,0.029787919394584382,0
+12200309,Scharnweberstraße,12 - Reinickendorf,0.584028558984843,1
+12200310,Klixstraße,12 - Reinickendorf,0.20749414028254295,0
+12200411,Schumacher-Quartier,12 - Reinickendorf,0.001209965118474695,0
+12200412,Waldidyll/Flughafensee,12 - Reinickendorf,0.0,0
+12200413,Tegel Süd,12 - Reinickendorf,0.0,0
+12200414,TXL,12 - Reinickendorf,0.0,0
+12200515,Alt-Tegel,12 - Reinickendorf,0.0,0
+12400616,Konradshöhe/Tegelort,12 - Reinickendorf,0.0,0
+12400617,Alt-Heiligensee,12 - Reinickendorf,0.0,0
+12400618,Heiligensee Nord,12 - Reinickendorf,0.0,0
+12400619,Heiligensee,12 - Reinickendorf,0.0,0
+12400720,Frohnau West,12 - Reinickendorf,0.0,0
+12400721,Frohnau Ost,12 - Reinickendorf,0.0,0
+12400722,Hermsdorf West,12 - Reinickendorf,0.0,0
+12400723,Hermsdorf Ost/Waldsee,12 - Reinickendorf,0.0,0
+12500824,Ziekowstraße/Freie Scholle,12 - Reinickendorf,0.0,0
+12500825,Borsigwalde,12 - Reinickendorf,0.0,0
+12500926,Wittenau Mitte,12 - Reinickendorf,0.0,0
+12500927,Wittenau Nord,12 - Reinickendorf,0.0,0
+12500928,Waidmannslust,12 - Reinickendorf,0.0,0
+12500929,Lübars,12 - Reinickendorf,0.0,0
+12500930,Wittenau Süd,12 - Reinickendorf,0.0,0
+12601031,Lübarser Straße,12 - Reinickendorf,0.0,0
+12601032,Rollbergesiedlung,12 - Reinickendorf,0.0,0
+12601133,Treuenbrietzener Straße,12 - Reinickendorf,0.0,0
+12601134,Märkisches Zentrum,12 - Reinickendorf,0.0,0
+12601235,Dannenwalder Weg,12 - Reinickendorf,0.0,0
+12601236,Schorfheidestraße,12 - Reinickendorf,0.0,0
