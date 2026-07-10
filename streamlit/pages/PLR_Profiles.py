@@ -426,7 +426,7 @@ BAR_CHART_DESCRIPTION = (
 
 # waffle chart description text
 WAFFLE_CHART_DESCRIPTION = (
-    "This waffle chart shows the age structure of the housing stock in this planning area, split into three "
+    "This plot shows the age structure of the housing stock in this planning area, split into three "
     "construction eras: pre-war (built before 1949), post-war (1949-2010), and new construction (2011 onwards). "
     "Each square represents one percent of the area's apartments, with the total apartment count shown in the title. "
     "Building age is a useful proxy for gentrification potential: a high pre-war share often marks the characterful "
@@ -530,7 +530,7 @@ with st.container(key="white_container_profile", border=True):
                     st.pyplot(fig_profile, width="stretch")
         with bar_desc_col:
             with st.container(key="bar_description_box", border=False):
-                st.markdown(f"##### Description of Bar Plots \n\n {BAR_CHART_DESCRIPTION}", text_alignment="justify")
+                st.markdown(f"##### The Neighbourhood across Dimensions \n\n {BAR_CHART_DESCRIPTION}", text_alignment="justify")
 
         # waffle chart + description
         waffle_col, waffle_desc_col = st.columns([0.7, 2], gap="small")
@@ -540,7 +540,7 @@ with st.container(key="white_container_profile", border=True):
                     st.pyplot(fig_waffle, width="stretch")
         with waffle_desc_col:
             with st.container(key="waffle_description_box", border=False):
-                st.markdown(f"##### Description of Waffle Chart \n\n {WAFFLE_CHART_DESCRIPTION}", text_alignment="justify")
+                st.markdown(f"##### Distribution of Building Age \n\n {WAFFLE_CHART_DESCRIPTION}", text_alignment="justify")
 
 
 ############################################################
@@ -612,7 +612,7 @@ def build_pdf():
         pdf.image(buf, x=10, w=190)
         pdf.ln(4)
         pdf.set_font("DejaVu", "B", 13)
-        pdf.cell(0, 8, "Description", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 8, "The Neighbourhood across Dimensions", new_x="LMARGIN", new_y="NEXT")
         pdf.ln(2)
         pdf.set_font("DejaVu", "", 10)
         pdf.multi_cell(0, 6, BAR_CHART_DESCRIPTION)
@@ -629,7 +629,7 @@ def build_pdf():
         pdf.image(buf, x=x_centered, w=waffle_pdf_width)
         pdf.ln(4)
         pdf.set_font("DejaVu", "B", 13)
-        pdf.cell(0, 8, "Description", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 8, "Distribution of Building Age", new_x="LMARGIN", new_y="NEXT")
         pdf.ln(2)
         pdf.set_font("DejaVu", "", 10)
         pdf.multi_cell(0, 6, WAFFLE_CHART_DESCRIPTION)
