@@ -1,0 +1,59 @@
+ihk_branch_id,ihk_branch_desc,Bewertung,Touristifizierung,Begründung,Abteilung,Gruppe,Klasse,Ebene,Titel-Quelle
+55,Beherbergung,,,Abteilungsebene (Sammelcode),55,,,Abteilung,Destatis-Gliederung (WZ 2025)
+551,"Hotels, Gasthöfe und Pensionen",,relevant,Hotel/Pension – touristifizierungsrelevant,55,55.1,,Gruppe,Destatis-Gliederung (WZ 2025)
+5510,"Hotels, Gasthöfe und Pensionen",,relevant,Hotel/Pension – touristifizierungsrelevant,55,55.1,55.10,Klasse,Destatis-Gliederung (WZ 2025)
+55101,Hotels (ohne Hotels garnis),,relevant,Hotel/Pension – touristifizierungsrelevant,55,55.1,55.10,Unterklasse,Destatis-Gliederung (WZ 2025)
+55102,Hotels garnis,,relevant,Hotel/Pension – touristifizierungsrelevant,55,55.1,55.10,Unterklasse,Destatis-Gliederung (WZ 2025)
+55103,Gasthöfe,,relevant,Hotel/Pension – touristifizierungsrelevant,55,55.1,55.10,Unterklasse,Destatis-Gliederung (WZ 2025)
+55104,Pensionen,,relevant,Hotel/Pension – touristifizierungsrelevant,55,55.1,55.10,Unterklasse,Destatis-Gliederung (WZ 2025)
+552,Ferienunterkünfte und ähnliche Beherbergungsstätten,,,Sammelcode - lässt sich nicht zuordnen,55,55.2,,Gruppe,Destatis-Gliederung (WZ 2025)
+5520,Ferienunterkünfte und ähnliche Beherbergungsstätten,,,Sammelcode - lässt sich nicht zuordnen,55,55.2,55.20,Klasse,Destatis-Gliederung (WZ 2025)
+55201,Erholungs- und Ferienheime,,,Jugendherberge/Heim – nicht touristifizierungsrelevant,55,55.2,55.20,Unterklasse,Destatis-Gliederung (WZ 2025)
+55202,"Ferienzimmer, Ferienwohnungen, Ferienhäuser und Feriendörfer",,relevant,Ferienunterkunft – touristifizierungsrelevant,55,55.2,55.20,Unterklasse,Destatis-Gliederung (WZ 2025)
+55203,"Jugendherbergen, Hostels und Hütten",,relevant,Hostel – touristifizierungsrelevant | JHB / Hütten eher nicht ,55,55.2,55.20,Unterklasse,Destatis-Gliederung (WZ 2025)
+553,Campingplätze,,,Camping/Stellplatz – nicht touristifizierungsrelevant,55,55.3,,Gruppe,Destatis-Gliederung (WZ 2025)
+5530,Campingplätze,,,Camping/Stellplatz – nicht touristifizierungsrelevant,55,55.3,55.30,Klasse,Destatis-Gliederung (WZ 2025)
+55301,Camping- und Biwakplätze,,,Camping/Stellplatz – nicht touristifizierungsrelevant,55,55.3,55.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+55302,Stellplätze für Wohnmobile,,,Camping/Stellplatz – nicht touristifizierungsrelevant,55,55.3,55.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+554,Vermittlungstätigkeiten für Beherbergungsdienstleistungen,,,Vermittlung/Buchungsplattform ,55,55.4,,Gruppe,Destatis-Gliederung (WZ 2025)
+5540,Vermittlungstätigkeiten für Beherbergungsdienstleistungen,,,Vermittlung/Buchungsplattform ,55,55.4,55.40,Klasse,Destatis-Gliederung (WZ 2025)
+55400,Vermittlungstätigkeiten für Beherbergungsdienstleistungen,,,Vermittlung/Buchungsplattform ,55,55.4,55.40,Unterklasse,Destatis-Gliederung (WZ 2025)
+559,Sonstige Beherbergungsstätten,,,Sammelcode - lässt sich nicht zuordnen,55,55.9,,Gruppe,Destatis-Gliederung (WZ 2025)
+5590,Sonstige Beherbergungsstätten,,,Sammelcode - lässt sich nicht zuordnen,55,55.9,55.90,Klasse,Destatis-Gliederung (WZ 2025)
+55900,Sonstige Beherbergungsstätten,,,Sammelcode - lässt sich nicht zuordnen,55,55.9,55.90,Unterklasse,Destatis-Gliederung (WZ 2025)
+559001,Boardinghouses,,relevant,Boardinghouse (Serviced Apartment) – touristifizierungsrelevant,55,55.9,55.90,Detail,"eigene Daten (WZBRA, 6-Steller)"
+56,Gastronomie,,,Sammelcode - lässt sich nicht zuordnen,56,,,Abteilung,Destatis-Gliederung (WZ 2025)
+561,"Restaurants, Gaststätten, Imbissstuben, Cafés, Eissalons u. Ä.",gemischt,,Sammelcode - lässt sich nicht zuordnen,56,56.1,,Gruppe,Destatis-Gliederung (WZ 2025)
+5611,"Restaurants, Gaststätten, Imbissstuben, Cafés, Eissalons u. Ä.",gemischt,,Sammelcode - lässt sich nicht zuordnen,56,56.1,56.11,Klasse,Destatis-Gliederung (WZ 2025)
+56111,Restaurants mit Bedienung,Aufwertung,,Restaurant mit Bedienung – Aufwertungsgastronomie,56,56.1,56.11,Unterklasse,Destatis-Gliederung (WZ 2025)
+56112,Restaurants mit Selbstbedienung,Aufwertung,,Eher traditionell oder neutral? ,56,56.1,56.11,Unterklasse,Destatis-Gliederung (WZ 2025)
+56113,Imbissstuben u. Ä.,Gesamtgastro ,,Imbiss – traditioneller Betrieb,56,56.1,56.11,Unterklasse,Destatis-Gliederung (WZ 2025)
+56114,Cafés,Aufwertung,,Café – Aufwertungsgastronomie,56,56.1,56.11,Unterklasse,Destatis-Gliederung (WZ 2025)
+561141,Stehcafes,Aufwertung,,Coffee-Shop/Stehcafé – Aufwertungssignal,56,56.1,56.11,Detail,"eigene Daten (WZBRA, 6-Steller)"
+56115,Eissalons,Gesamtgastro ,,Eissalon – kein eindeutiges Signal (Premium-Eisladen mit Zitrone-Basilikum-Manukahonig-Eis lässt sich nicht von der traditionellen Eisdiele abgrenzen),56,56.1,56.11,Unterklasse,Destatis-Gliederung (WZ 2025)
+5612,Mobile Gastronomie,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.1,56.12,Klasse,Destatis-Gliederung (WZ 2025)
+56121,Mobile Gastronomie auf Jahrmärkten u. Ä.,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.1,56.12,Unterklasse,Destatis-Gliederung (WZ 2025)
+56122,Sonstige mobile Gastronomie,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.1,56.12,Unterklasse,Destatis-Gliederung (WZ 2025)
+562,Caterer und Erbringung sonstiger Verpflegungsdienstleistungen,neutral,,Catering - kein Gentrifizierungssignal,56,56.2,,Gruppe,Destatis-Gliederung (WZ 2025)
+5621,Event-Caterer,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.2,56.21,Klasse,Destatis-Gliederung (WZ 2025)
+56210,Event-Caterer,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.2,56.21,Unterklasse,Destatis-Gliederung (WZ 2025)
+562101,Partyservice,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.2,56.21,Detail,"eigene Daten (WZBRA, 6-Steller)"
+562102,Mietkoch,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.2,56.21,Detail,"eigene Daten (WZBRA, 6-Steller)"
+5622,Sonstige Caterer und Erbringung sonstiger Verpflegungsdienstleistungen,neutral,,Sammelcode - lässt sich nicht zuordnen,56,56.2,56.22,Klasse,Destatis-Gliederung (WZ 2025)
+56220,Sonstige Caterer und Erbringung sonstiger Verpflegungsdienstleistungen,neutral,,Sammelcode - lässt sich nicht zuordnen,56,56.2,56.22,Unterklasse,Destatis-Gliederung (WZ 2025)
+562201,gastronomischer Außer-Haus-Verkauf,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.2,56.22,Detail,"eigene Daten (WZBRA, 6-Steller)"
+562202,Kantinen,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.2,56.22,Detail,"eigene Daten (WZBRA, 6-Steller)"
+563,Ausschank von Getränken,gemischt,,Sammelcode - lässt sich nicht zuordnen (umfasst Schankwirtschaften und Bars),56,56.3,,Gruppe,Destatis-Gliederung (WZ 2025)
+5630,Ausschank von Getränken,gemischt,,Sammelcode - lässt sich nicht zuordnen (umfasst Schankwirtschaften und Bars),56,56.3,56.30,Klasse,Destatis-Gliederung (WZ 2025)
+56301,Schankwirtschaften,Gesamtgastro ,,Schankwirtschaft/Eckkneipe – traditioneller Betrieb,56,56.3,56.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+563011,Gastwirtschaften als Zeltbetriebe ,neutral,,mobil - wirkt nicht als Gastro im Kiez,,,,,
+56303,Bars und Vergnügungslokale,gemischt,,Sammelcode - lässt sich nicht zuordnen (umfasst Vergnügungslokale und Bars),56,56.3,56.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+56302,Vergnügungslokale,Gesamtgastro ,,kein klassisches Aufwertungssignal,,,,,
+563031,Bars,Aufwertung,,Bar – Aufwertungsgastronomie,56,56.3,56.30,Detail,"eigene Daten (WZBRA, 6-Steller)"
+563032,Diskotheken und Tanzlokale mit Getränkeausschank,Gesamtgastro ,,Nachtgastronomie – kein eindeutiges Aufwertungssignal,56,56.3,56.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+563033,"Raucherlokale, Shisha Bars",Gesamtgastro ,,Shisha-/Raucherlokal – kein klassisches Aufwertungssignal,56,56.3,56.30,Detail,"eigene Daten (WZBRA, 6-Steller)"
+56304,Ausschank von Getränken auf Jahrmärkten u. Ä.,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.3,56.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+56309,Ausschank von Getränken a. n. g.,neutral,,Versorgung/Catering/Sonstiges – kein Gentrifizierungssignal,56,56.3,56.30,Unterklasse,Destatis-Gliederung (WZ 2025)
+564,Vermittlungstätigkeiten für gastronomische Dienstleistungen,neutral,,Dienstleistung,56,56.4,,Gruppe,Destatis-Gliederung (WZ 2025)
+5640,Vermittlungstätigkeiten für gastronomische Dienstleistungen,neutral,,Dienstleistung,56,56.4,56.40,Klasse,Destatis-Gliederung (WZ 2025)
+56400,Vermittlungstätigkeiten für gastronomische Dienstleistungen,neutral,,Dienstleistung,56,56.4,56.40,Unterklasse,Destatis-Gliederung (WZ 2025)
