@@ -152,7 +152,7 @@ On identical features, GroupKFold-by-district splits and leakage-safe fold-wise 
 Standardized coefficients and SHAP agree that designation-like areas are marked by high Altbau share, land value (BRW), transfer-benefit share and young-adult share, with a level-versus-change divergence that we read as the early-warning signal. 
 From the out-of-fold probabilities we derived the module's core deliverable: a 25-area resemblance watchlist of undesignated PLR that most resemble protected ones, cut at the largest gap in the ranking (0.824 → 0.767, NB3_Watchlist.ipynb). The watchlist is validated two ways: Cleanlab flags all 25 as label-inconsistent (100 %, NB5_cleanlab_validation,ipynb) and an independent regression on the continuous milieu_anteil recovers 20 of 25 (NB6_regression_validation), and an optional urgency layer (oof_prob × (1 − milieu_anteil)) is provided as a transparent policy filter rather than a second module (NB4_UrgencyList.ipynb). Finally, the two models' results (cluster and classification) are combined to further analyse the data (NB7_watchlist+clusters.ipynb)
 
-### Streamlit - Interactive Tool
+## Streamlit - Interactive Tool
 KiezKeeper is a Streamlit web app for exploring gentrification across Berlin's planning areas (PLR). It turns the clustering and classification results into two interactive maps and a per-area profile view.
 
 **Two maps (selectable in the sidebar):**
