@@ -160,3 +160,6 @@ KiezKeeper is a Streamlit web app for exploring gentrification across Berlin's p
 - Watchlist — highlights unprotected PLRs shaded by how closely they resemble already-protected areas, surfacing candidate areas for future protection.
 
 **Per-area profile:** Clicking or selecting a PLR opens a short profile — key facts (district, residents, Milieuschutz status, cluster, watchlist rank), a plain-language cluster description, and bar charts comparing the area's real-estate, social, and commercial indicators against its district and city-wide medians. A location map and a building-age waffle chart add spatial and structural context, and the full profile can be exported as a PDF.
+
+### Starting the App: 
+To start the Streamlit app, first navigate to the corresponding folder in the terminal with cd streamlit, then type streamlit run Welcome.py. This assumes the venv with the necessary dependencies is already activated, as described in the setup section.
