@@ -14,35 +14,26 @@ Within neighbourhoods that do not currently have milieu protection, KiezKeeper c
 
 ## Requirements
 
-#data + geospatial
-geopandas==1.1.3        
-openpyxl==3.1.5         
-pdfplumber==0.11.10     
+| Package | Version |
+|---------|---------|
+| geopandas | 1.1.3 |
+| openpyxl | 3.1.5 |
+| pdfplumber | 0.11.10 |
+| numpy | 2.4.6 |
+| pandas | 3.0.3 |
+| scikit-learn | 1.9.0 |
+| matplotlib | 3.11.0 |
+| seaborn | 0.13.2 |
+| prince | 0.20.1 |
+| pywaffle | 1.1.1 |
+| xgboost | 3.2.0 |
+| shap | 0.51.0 |
+| cleanlab | 2.9.0 |
+| ipykernel | 7.3.0 |
+| streamlit | 1.58.0 |
+| plotly | 5.18.0 |
 
-#numerics 
-numpy==2.4.6
-pandas==3.0.3
-
-#analysis + plotting
-scikit-learn==1.9.0     
-matplotlib==3.11.0
-seaborn==0.13.2   
-prince==0.20.1
-pywaffle==1.1.1
-
-#notebook runtime 
-ipykernel==7.3.0
-
-#Module2 
-xgboost==3.2.0
-shap==0.51.0
-cleanlab==2.9.0
-
-#streamlit
-streamlit==1.58.0
-plotly==5.18.0
-
-### Setup
+## Setup
 
 Use the requirements file in this repo to create a new environment.
 
@@ -59,9 +50,9 @@ pip install -r requirements.txt
 ```
 ## Data
 
-All data used in this project is openly accessible (links provided below). The final dataset used for modeling can be found in the folder **final_datasets** `dataset_0.csv`. A description of all variables and their meaning can be found under **INSERT FILE HERE** The data extraction process for each dimension is provided below, along with a short overview of the merge and cleaning process of the final dataset. 
-#### Real-estate dimension
-##### Data Extraction
+All data used in this project is openly accessible (links provided below). The final dataset used for modeling can be found in the folder **final_datasets** `dataset_0.csv`. A description of all variables and their meaning can be found in the same folder (`feature_dictionary_dataset_0.md`). The data extraction process for each dimension is provided below, along with a short overview of the merge and cleaning process of the final dataset. 
+### Real-estate dimension
+#### Data Extraction
 
 Data loading of the real-estate dimension can be found in notebooks/data_prep/real-estate_dimensions_load.ipnyb. 
 This dimension is based on several datasets depending on the variable: 
@@ -74,7 +65,7 @@ The variables "standard land value trend" and "current standard land value" were
 
 Finally, the variable "density of AirBNBs / 1000 apartments in 2025" was taken from the website InsideAirBnb and can be found here: https://insideairbnb.com/get-the-data/
 
-##### Cleaning, merging, and final dataset pipeline
+#### Cleaning, merging, and final dataset pipeline
 
 Data preprocessing of the real-estate dimension can be found in notebooks/EDA/real-estate_dimensions_EDA.ipnyb. 
 
@@ -82,14 +73,15 @@ Before merging the variables with the other dimensions, an exploratory data anal
 
 All data was collected in June 2026. 
 The dataset including the raw data can be found in ./data/real-estate. 
-#### Social dimension
+
+### Social dimension
 The social dimension is based on several datasets from the [Amt für Statistik Berlin-Brandenburg](https://www.statistik-berlin-brandenburg.de/) — including population data (*Einwohnerbestand*), median income data (*Medianeinkommen*), population fluctuation data (*Einwohnerbewegung*), and household data (*Privathaushalte*) — as well as data from the [Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen](https://www.berlin.de/sen/stadt/stadtdaten/stadtwissen/monitoring-soziale-stadtentwicklung/) (*Monitoring Soziale Stadtentwicklung*, MSS context and index files).
 
 All data was collected in June 2026. Some datasets for previous years were obtained by sending personal requests via email to the two agencies mentioned above.
 
 The datasets can be found in [`data/social/raw`](./data/social/raw), including a [file explaining the variables](./data/social/raw/explanation_variables_raw_datasets_socialD.md) of the datasets.
 
-##### Cleaning, merging, and final dataset pipeline
+#### Cleaning, merging, and final dataset pipeline
 
 1. All input datasets were cleaned in the [`social_data_cleaning.ipynb` notebook](./notebooks/data_prep/social_data_cleaning.ipynb). PLR IDs were corrected, date columns were converted to pandas datetime format, numerical values were formatted consistently, and missing-value symbols were removed. Afterwards, all datasets were merged into one dataset, and duplicate and empty rows were dropped.
    The resulting dataset was saved as [`social_panel_clean.csv`](./data/social/raw/social_panel_clean.csv) in the `data/social/raw` directory.
@@ -99,7 +91,7 @@ The datasets can be found in [`data/social/raw`](./data/social/raw), including a
 3. In the [`social_dimension_EDA.ipynb` notebook](./notebooks/EDA/social_dimension_EDA.ipynb), the final features of the social dimension were analyzed. Due to correlations above 0.8, three features were dropped from the final dataset: unemployment_share_2024, single_person_hh_share_2024 and households_without_minor_children_share_2024. This feature removal was implemented as the final step in the [`social_data_final_features.ipynb` notebook](./notebooks/data_prep/social_data_final_features.ipynb).
 
 
-#### Commercial dimension
+### Commercial dimension
 The commercial dimension is built from 36 monthly IHK Berlin business-register (https://cloud.ihk.berlin/d/62fad06b540745098ab7/; accessed on June 15th, 2026)
 files through a seven-stage pipeline (`py_scripts/ihk_*`), producing one row per Planungsraum (PLR).
 
@@ -151,7 +143,8 @@ The result is dataset_0.csv (527 PLR × 45 columns: 42 features across real esta
 
 ## Modeling 
 
-### Module 1: 
+### Module 1: clustering of gentrification profiles 
+Berlin's 527 planning areas are grouped into four gentrification profiles via block-weighted K-Means (k=4), combining real-estate, social, and commercial indicators weighted equally per dimension. The resulting types — City core, City belt, Disadvantaged outskirts, and Affluent outskirts — capture gentrification as a profile rather than a single score. Cluster stability (subsample ARI = 0.83) and XGBoost classification (GroupKFold accuracy = 0.89) confirm robustness, and the alignment of Milieuschutz coverage with the typology provides external validation. The code can be found in the folder **notebooks/Module1_clustering** (`module_1_clustering`, `module_1_explore-clusters`, `module_1_XGB_clusters`). 
 
 ### Module 2: the supervised classification 
 We built a binary target from the Berlin WFS Milieuschutz layer — milieu_majoritaet, set where more than 50 % of a planning area's surface is protected and treated it as positive-unlabeled, since a 0 means "not (yet) designated" rather than a confirmed negative (109 of 527 PLR positive, 20.7 %; NB0_target_variable.ipynb). 
@@ -159,3 +152,14 @@ On identical features, GroupKFold-by-district splits and leakage-safe fold-wise 
 Standardized coefficients and SHAP agree that designation-like areas are marked by high Altbau share, land value (BRW), transfer-benefit share and young-adult share, with a level-versus-change divergence that we read as the early-warning signal. 
 From the out-of-fold probabilities we derived the module's core deliverable: a 25-area resemblance watchlist of undesignated PLR that most resemble protected ones, cut at the largest gap in the ranking (0.824 → 0.767, NB3_Watchlist.ipynb). The watchlist is validated two ways: Cleanlab flags all 25 as label-inconsistent (100 %, NB5_cleanlab_validation,ipynb) and an independent regression on the continuous milieu_anteil recovers 20 of 25 (NB6_regression_validation), and an optional urgency layer (oof_prob × (1 − milieu_anteil)) is provided as a transparent policy filter rather than a second module (NB4_UrgencyList.ipynb). Finally, the two models' results (cluster and classification) are combined to further analyse the data (NB7_watchlist+clusters.ipynb)
 
+## Streamlit - Interactive Tool
+KiezKeeper is a Streamlit web app for exploring gentrification across Berlin's planning areas (PLR). It turns the clustering and classification results into two interactive maps and a per-area profile view.
+
+**Two maps (selectable in the sidebar):**
+- Gentrification Profiles — every PLR coloured by its cluster (City core, City belt, Disadvantaged / Affluent outskirts), with Milieuschutz areas outlined. A threshold slider lets users vary the protection cut-off (>50% to >90% of area).
+- Watchlist — highlights unprotected PLRs shaded by how closely they resemble already-protected areas, surfacing candidate areas for future protection.
+
+**Per-area profile:** Clicking or selecting a PLR opens a short profile — key facts (district, residents, Milieuschutz status, cluster, watchlist rank), a plain-language cluster description, and bar charts comparing the area's real-estate, social, and commercial indicators against its district and city-wide medians. A location map and a building-age waffle chart add spatial and structural context, and the full profile can be exported as a PDF.
+
+### Starting the App: 
+To start the Streamlit app, first navigate to the corresponding folder in the terminal with cd streamlit, then type streamlit run Welcome.py. This assumes the venv with the necessary dependencies is already activated, as described in the setup section.
