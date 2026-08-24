@@ -31,7 +31,7 @@ Within neighbourhoods that do not currently have milieu protection, KiezKeeper c
 | cleanlab | 2.9.0 |
 | ipykernel | 7.3.0 |
 | streamlit | 1.58.0 |
-| plotly | 5.18.0 |
+| plotly | 6.8.0 |
 
 ## Setup
 
@@ -54,7 +54,7 @@ All data used in this project is openly accessible (links provided below). The f
 ### Real-estate dimension
 #### Data Extraction
 
-Data loading of the real-estate dimension can be found in notebooks/data_prep/real-estate_dimensions_load.ipnyb. 
+Data loading of the real-estate dimension can be found in notebooks/data_prep/real-estate_dimensions_load.ipynb. 
 This dimension is based on several datasets depending on the variable: 
 
 The variables "current median rent level / PLR" and "median rent level change 2021-2025" were taken from the IBB (Berlin's Development Bank). The raw data set used for the variables can be found here: https://www.ibb.de/media/dokumente/publikationen/berliner-wohnungsmarkt/wohnungsmarktbericht/2025/ibb-wohnungsmarktbericht-angebotsmieten_2012-2025.pdf
@@ -67,7 +67,7 @@ Finally, the variable "density of AirBNBs / 1000 apartments in 2025" was taken f
 
 #### Cleaning, merging, and final dataset pipeline
 
-Data preprocessing of the real-estate dimension can be found in notebooks/EDA/real-estate_dimensions_EDA.ipnyb. 
+Data preprocessing of the real-estate dimension can be found in notebooks/EDA/real-estate_dimensions_EDA.ipynb. 
 
 Before merging the variables with the other dimensions, an exploratory data analysis was conducted focusing on the distributions of the variables, the correlation between variables and the missing values. Some variables were highly right-skewed which demands a logarithmic transformation for some analyses. When variables correlated more than 0.8 (Spearman), they were excluded. The missing values, the outliers and the reliability flags were inspected. No further recoding was done based on these analyses, they were conducted after merging due to their dependency on the model. 
 
