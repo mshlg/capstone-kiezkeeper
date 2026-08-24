@@ -145,3 +145,4 @@ mlruns
 #config file has sensitive data
 .mlflow_uri
 .DS_Store
+data/real_estate/raw/AirBNB_listings_raw.csv
