@@ -15,12 +15,18 @@ import geopandas as gpd
 import contextily as cx
 from pywaffle import Waffle
 from fpdf import FPDF
+from pathlib import Path
+
+# resolve paths relative to this file, not the working directory
+# (Streamlit Community Cloud always runs with the repo root as cwd)
+STREAMLIT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = STREAMLIT_DIR.parent
 
 # page config
 st.set_page_config(layout="wide")
 
 # title
-st.logo('kiezkeeper_vector_logo.svg', size="large")
+st.logo(str(STREAMLIT_DIR / "kiezkeeper_vector_logo.svg"), size="large")
 st.markdown("# KiezKeeper :small[Data-Driven Detection of Gentrification in Berlin]")
 st.markdown("***")
 
@@ -72,25 +78,25 @@ st.html(f"<style>{css}</style>")
 ########## LOAD DATA ####################################
 
 # load final dataset
-df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
+df_final = pd.read_csv(ROOT_DIR / "data" / "final_datasets" / "df_clusters_milieuschutz.csv")
 df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 
 # load precomputed profile table
-plot_df = pd.read_csv("data/plot_df.csv", dtype={"plr_id": str})
+plot_df = pd.read_csv(STREAMLIT_DIR / "data" / "plot_df.csv", dtype={"plr_id": str})
 plot_df["plr_id"] = plot_df["plr_id"].str.zfill(8)
 
 # load watchlist
-watchlist_df = pd.read_csv("../notebooks/Module2_classification/watchlist_display.csv", dtype={"plr_id": str})
+watchlist_df = pd.read_csv(ROOT_DIR / "notebooks" / "Module2_classification" / "watchlist_display.csv", dtype={"plr_id": str})
 watchlist_df["plr_id"] = watchlist_df["plr_id"].str.zfill(8)
 
 # load building age shares
-building_age_df = pd.read_csv("data/building_age_df.csv", dtype={"plr_id": str})
+building_age_df = pd.read_csv(STREAMLIT_DIR / "data" / "building_age_df.csv", dtype={"plr_id": str})
 building_age_df["plr_id"] = building_age_df["plr_id"].str.zfill(8)
 
 # load PLR geometries, only for the location map excerpt (cached)
 @st.cache_data
 def load_plr_geometries():
-    plr_geo = gpd.read_file("plr_geometries.gpkg")
+    plr_geo = gpd.read_file(STREAMLIT_DIR / "plr_geometries.gpkg")
     plr_geo["plr_id"] = plr_geo["plr_id"].astype(str).str.zfill(8)
     return plr_geo[["plr_id", "plr_name", "geometry"]]
 
@@ -183,7 +189,7 @@ else:
 def load_profile_texts():
     texts = {}
     for name in ["city_belt", "city_core", "disadvantaged_outskirts", "affluent_outskirts"]:
-        with open(f"texts/profile_{name}.md", encoding="utf-8") as f:
+        with open(STREAMLIT_DIR / "texts" / f"profile_{name}.md", encoding="utf-8") as f:
             texts[name] = f.read()
     return texts
 
@@ -201,7 +207,7 @@ cluster_profile_text = profile_texts.get(cluster_key, "No data available")
 def load_watchlist_texts():
     texts = {}
     for name in ["undesignated", "designated", "watchlist"]:
-        with open(f"texts/profile_{name}.md", encoding="utf-8") as f:
+        with open(STREAMLIT_DIR / "texts" / f"profile_{name}.md", encoding="utf-8") as f:
             texts[name] = f.read()
     return texts
 
@@ -471,7 +477,7 @@ def build_location_map(plr_id):
 
     # real OSM basemap, falls back to a plain outline without internet
     try:
-        cx.add_basemap(ax, crs=plr_geo.crs, source=cx.providers.OpenStreetMap.Mapnik, attribution=False)
+        cx.add_basemap(ax, crs=plr_geo.crs, source=cx.providers.Esri.WorldGrayCanvas, attribution=False)
     except Exception:
         pass
 
