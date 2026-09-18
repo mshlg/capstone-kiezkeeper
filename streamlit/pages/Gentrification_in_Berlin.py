@@ -10,12 +10,18 @@ import geopandas as gpd
 import json
 import numpy as np
 import re
+from pathlib import Path
+
+# resolve paths relative to this file, not the working directory
+# (Streamlit Community Cloud always runs with the repo root as cwd)
+STREAMLIT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = STREAMLIT_DIR.parent
 
 # page config
 st.set_page_config(layout="wide")
 
 # title
-st.logo('kiezkeeper_vector_logo.svg', size="large")
+st.logo(str(STREAMLIT_DIR / "kiezkeeper_vector_logo.svg"), size="large")
 st.markdown("# KiezKeeper :small[Data-Driven Detection of Gentrification in Berlin]")
 st.markdown("***")
 
@@ -118,7 +124,7 @@ def calculate_matching_height(min_lon, max_lon, min_lat, max_lat, width_px):
 
 
 # load final dataset
-df_final = pd.read_csv("../data/final_datasets/df_clusters_milieuschutz.csv")
+df_final = pd.read_csv(ROOT_DIR / "data" / "final_datasets" / "df_clusters_milieuschutz.csv")
 df_final["plr_id"] = df_final["plr_id"].astype(str).str.zfill(8)
 
 # ms threshold columns
@@ -130,7 +136,7 @@ df_map = df_final[["plr_id", "bez", "cluster_4k", "ms_portion", "oof_prob", "on_
 # load PLR geometries (cached)
 @st.cache_data
 def load_plr_geometries():
-    plr_geo = gpd.read_file("plr_geometries.gpkg")
+    plr_geo = gpd.read_file(STREAMLIT_DIR / "plr_geometries.gpkg")
     plr_geo["plr_id"] = plr_geo["plr_id"].astype(str).str.zfill(8)
     plr_geo = plr_geo[["plr_id", "plr_name", "geometry"]]
     plr_geo["geometry"] = plr_geo["geometry"].simplify(
@@ -144,7 +150,7 @@ def load_plr_geometries():
 # load watchlist (cached)
 @st.cache_data
 def load_watchlist():
-    watchlist_df = pd.read_csv("../models/M2_watchlist.csv", dtype={"plr_id": str})
+    watchlist_df = pd.read_csv(ROOT_DIR / "models" / "M2_watchlist.csv", dtype={"plr_id": str})
     return watchlist_df
 
 
@@ -498,7 +504,7 @@ if active_event and active_event["selection"]["points"]:
 ##################### SHORT PROFILE #############################
 
 # load short profile data
-plot_df = pd.read_csv("data/plot_df.csv", dtype={"plr_id": str})
+plot_df = pd.read_csv(STREAMLIT_DIR / "data" / "plot_df.csv", dtype={"plr_id": str})
 # watchlist_df already loaded above (load_watchlist())
 
 # init state
