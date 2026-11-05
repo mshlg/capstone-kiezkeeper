@@ -24,6 +24,7 @@ cleanlab==2.9.0
 
 #streamlit
 streamlit==1.58.0
+starlette==1.7.0  # starlette >=1.8 breaks image delivery (st.pyplot) in streamlit 1.58
 plotly==6.8.0
-fpdf2>=2.7.6
-contextily
+fpdf2==2.9.0
+contextily==1.7.1
