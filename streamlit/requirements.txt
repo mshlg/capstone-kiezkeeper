@@ -2,6 +2,7 @@
 # Streamlit Community Cloud uses this file (it sits next to Welcome.py),
 # so the heavy modelling packages from the root requirements.txt are not installed.
 streamlit==1.58.0
+starlette==1.7.0  # starlette >=1.8 breaks image delivery (st.pyplot) in streamlit 1.58
 pandas==3.0.3
 numpy==2.4.6
 geopandas==1.1.3
